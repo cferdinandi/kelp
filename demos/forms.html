@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Forms</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style type="text/css">
+		body {
+			margin: 0 auto;
+			max-width: 40em;
+			width: 88%;
+		}
+
+		label,
+		input:not([type="checkbox"]),
+		select,
+		textarea {
+			display: block;
+			width: 100%;
+		}
+
+		input:not([type="checkbox"]),
+		select,
+		textarea {
+			margin-bottom: 1em;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app"></div>
+
+	<script src="../dist/kelp.js"></script>
+	<script>
+		let {render} = kelp;
+
+		// Non-reactive state
+		let data = {
+			heading: 'My Form',
+			todos: ['Swim', 'Climb', 'Jump', 'Play'],
+			typed: 'This field is overwritten on each update',
+			typed2: 'This field has a default value by keeps your changes on future renders',
+			wizard: 'hermione',
+			checked: false
+		};
+
+		// Create a template
+		function template () {
+			return `
+				<h1>${data.heading}</h1>
+
+				<label for="type">Type Something</label>
+				<input type="text" id="type" @value="${data.typed}">
+
+				<label for="type2">Type Something</label>
+				<input type="text" id="type2" #value="${data.typed2}">
+
+				<label>
+					<input type="checkbox" id="check" @checked="${data.checked}">
+					This field does whatever the checked property is set to
+				</label>
+
+				<label>
+					<input type="checkbox" id="check2" #checked="${data.checked}">
+					This field is checked by default but stays however you set it on future renders
+				</label>
+
+				<br>
+
+				<label for="wizards">Who is the best wizard? (Is set to the wizards property)</label>
+				<select id="wizards">
+					<option id="harry" value="harry" @selected="${data.wizard === 'harry'}">Harry</option>
+					<option id="hermione" value="hermione" @selected="${data.wizard === 'hermione'}">Hermione</option>
+					<option id="neville" value="neville" @selected="${data.wizard === 'neville'}">Neville</option>
+				</select>
+
+				<label for="wizards2">Who is the best wizard? (Only has a default value)</label>
+				<select id="wizards2">
+					<option id="harry" value="harry" #selected="${data.wizard === 'harry'}">Harry</option>
+					<option id="hermione" value="hermione" #selected="${data.wizard === 'hermione'}">Hermione</option>
+					<option id="neville" value="neville" #selected="${data.wizard === 'neville'}">Neville</option>
+				</select>
+
+				<p><button>Render App</button></p>`;
+		}
+
+		// Render the app
+		render('#app', template());
+
+		// Render whenever the button is clicked, re-render
+		document.addEventListener('click', function (event) {
+			if (!event.target.matches('button')) return;
+			render('#app', template());
+		});
+	</script>
+
+</body>
+</html>

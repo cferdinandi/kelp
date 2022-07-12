@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Style Elements</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style type="text/css">
+		body {
+			margin: 0 auto;
+			max-width: 40em;
+			width: 88%;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app"></div>
+
+	<script src="../dist/kelp.js"></script>
+	<script>
+		let {store, component} = kelp;
+
+		// Create a reactive store
+		let data = store({
+			showStyles: false
+		});
+
+		// Create a template
+		function template () {
+			if (!data.showStyles) return '<p>Hi!</p>';
+			return `
+				<style>.color { color: red; }</style>
+				<p class="color">Hi!</p>`;
+		}
+
+		// Create a reactive component
+		component('#app', template);
+
+		// After 2 seconds, update with styles
+		setTimeout(function () {
+			data.showStyles = true;
+		}, 2000);
+	</script>
+
+</body>
+</html>

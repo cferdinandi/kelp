@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>XSS Prevention</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style type="text/css">
+		body {
+			margin: 0 auto;
+			max-width: 40em;
+			width: 88%;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app"></div>
+
+	<script src="../dist/kelp.js"></script>
+	<script src="xss.js"></script>
+	<script>
+		let {render} = kelp;
+
+		// Setup a cross-site scripting attack
+		// The data object is in xss.js
+		function template () {
+			return xss.map(function (elem) {
+				return elem;
+			}).join('');
+		}
+
+		// Render into the UI
+		// Template is sanitized, so no XSS happens
+		render('#app', template());
+
+		// By allowing on* events, we open up an XSS attack vector
+		// render('#app', template(), {events: true});
+	</script>
+
+</body>
+</html>

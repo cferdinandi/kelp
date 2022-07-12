@@ -1,0 +1,29 @@
+{
+	"name": "kelpjs",
+	"version": "1.0.0",
+	"description": "A lightweight library for creating reactive, state-based UI",
+	"main": "./dist/kelp.cjs.min.js",
+	"module": "./dist/kelp.es.min.js",
+	"browser": {
+		"reef-es": "./dist/kelp.es.min.js",
+		"reef-iife": "./dist/kelp.min.js"
+	},
+	"author": {
+		"name": "Chris Ferdinandi",
+		"url": "http://gomakethings.com"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/cferdinandi/kelp"
+	},
+	"scripts": {
+		"clean": "rm -rf dist",
+		"js": "rollup --config",
+		"build": "npm run clean && npm run js"
+	},
+	"devDependencies": {
+		"rollup": "2.6.1",
+		"rollup-plugin-terser": "^5.3.1"
+	}
+}
