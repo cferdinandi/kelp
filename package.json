@@ -1,7 +1,7 @@
 {
 	"name": "kelpjs",
 	"version": "1.0.0",
-	"description": "A lightweight library for creating reactive, state-based UI",
+	"description": "A small library for creating reactive data and state-based UI",
 	"main": "./dist/kelp.cjs.min.js",
 	"module": "./dist/kelp.es.min.js",
 	"browser": {
