@@ -1,3 +1,6 @@
+import {emit} from './utilities.js';
+
+
 // Form fields and attributes that can be modified by users
 // They also have implicit values that make it hard to know if they were changed by the user or developer
 let formFields = ['input', 'option', 'textarea'];
@@ -16,7 +19,7 @@ function stringToHTML (str) {
     let doc = parser.parseFromString(str, 'text/html');
 
     // If there are items in the head, move them to the body
-    if (doc.head && doc.head.childNodes && doc.head.childNodes.length > 0) {
+    if (doc.head && doc.head.childNodes.length) {
         Array.from(doc.head.childNodes).reverse().forEach(function (node) {
             doc.body.insertBefore(node, doc.body.firstChild);
         });
@@ -341,6 +344,7 @@ function render (elem, template, events) {
 	let node = typeof elem === 'string' ? document.querySelector(elem) : elem;
 	let html = stringToHTML(template);
 	diff(html, node, events);
+	emit('kelp:render', null, node);
 }
 
 export default render;

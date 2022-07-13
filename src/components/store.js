@@ -1,21 +1,5 @@
-/**
- * Emit a custom event
- * @param  {String} type   The event type
- * @param  {*}      detail Any details to pass along with the event
- */
-function emit (type, detail) {
+import {emit} from './utilities.js';
 
-    // Create a new event
-    let event = new CustomEvent(type, {
-        bubbles: true,
-        cancelable: true,
-        detail: detail
-    });
-
-    // Dispatch the event
-    return document.dispatchEvent(event);
-
-}
 
 /**
  * Create a Proxy handler object
@@ -24,23 +8,24 @@ function emit (type, detail) {
  * @return {Object}      The handler object
  */
 function handler (name, data) {
+	let type = 'kelp:store' + (name ? `-${name}` : '');
 	return {
-		get: function (obj, prop) {
+		get (obj, prop) {
 			if (prop === '_isProxy') return true;
 			if (['object', 'array'].includes(Object.prototype.toString.call(obj[prop]).slice(8, -1).toLowerCase()) && !obj[prop]._isProxy) {
 				obj[prop] = new Proxy(obj[prop], handler(name, data));
 			}
 			return obj[prop];
 		},
-		set: function (obj, prop, value) {
+		set (obj, prop, value) {
 			if (obj[prop] === value) return true;
 			obj[prop] = value;
-			emit(name, data);
+			emit(type, data);
 			return true;
 		},
-		deleteProperty: function (obj, prop) {
+		deleteProperty (obj, prop) {
 			delete obj[prop];
-			emit(name, data);
+			emit(type, data);
 			return true;
 		}
 	};
@@ -52,7 +37,7 @@ function handler (name, data) {
  * @param  {String} name The custom event namespace
  * @return {Proxy}       The reactive proxy
  */
-function store (data = {}, name = 'kelp:store') {
+function store (data = {}, name = '') {
 	return new Proxy(data, handler(name, data));
 }
 

@@ -26,7 +26,7 @@ class Component {
 		// Create instance properties
 		this.elem = elem;
 		this.template = template;
-		this.name = options.name || 'kelp:store';
+		this.stores = options.stores ? options.stores.map((store) => `kelp:store-${store}`) : ['kelp:store'];
 		this.events = options.events;
 		this.handler = createHandler(this);
 		this.debounce = null;
@@ -41,14 +41,18 @@ class Component {
 	 * Start reactive data rendering
 	 */
 	start () {
-		document.addEventListener(this.name, this.handler);
+		for (let store of this.stores) {
+			document.addEventListener(store, this.handler);
+		}
 	}
 
 	/**
 	 * Stop reactive data rendering
 	 */
 	stop () {
-		document.removeEventListener(this.name, this.handler);
+		for (let store of this.stores) {
+			document.removeEventListener(store, this.handler);
+		}
 	}
 
 	/**

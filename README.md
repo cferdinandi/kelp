@@ -57,12 +57,12 @@ document.addEventListener('kelp:store', function (event) {
 data.greeting = 'Hi there';
 ```
 
-You can customize the event name by passing in a second argument into the `kelp.store()` method.
+You can customize the event name by passing in a second argument into the `kelp.store()` method. It gets added to the end of the `kelp:store` event with a dash delimiter (`-`).
 
 ```js
 let wizards = store([], 'wizards');
 
-// A "wizards" event gets emitted
+// A "kelp:store-wizards" event gets emitted
 wizards.push('Merlin');
 ```
 
@@ -144,7 +144,7 @@ setTimeout(function () {
 The `kelp.component()` method accepts a third argument, an object of `options`.
 
 - `events` - If `true`, will allow inline events on the template.
-- `name` - A custom event name to use for `kelp.store()` events.
+- `stores` - An array of custom event names to use for `kelp.store()` events.
 
 ```js
 // Allow on* events
@@ -152,10 +152,10 @@ component('#app', template, {events: true});
 
 // Use a custom event name
 let wizards = store([], 'wizards');
-component('#app', template, {name: 'wizards'});
+component('#app', template, {stores: ['wizards']});
 
 // Use a custom name AND allow on* events
-component('#app', template, {name: 'wizards', events: true});
+component('#app', template, {stores: ['wizards'], events: true});
 ```
 
 

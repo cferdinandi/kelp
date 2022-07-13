@@ -3,18 +3,19 @@
  * Emit a custom event
  * @param  {String} type   The event type
  * @param  {*}      detail Any details to pass along with the event
+ * @param  {Node}   elem   The element to emit the event on
  */
-function emit (type, detail) {
+function emit (type, detail, elem = document) {
 
-    // Create a new event
-    let event = new CustomEvent(type, {
-        bubbles: true,
-        cancelable: true,
-        detail: detail
-    });
+	// Create a new event
+	let event = new CustomEvent(type, {
+		bubbles: true,
+		cancelable: true,
+		detail: detail
+	});
 
-    // Dispatch the event
-    return document.dispatchEvent(event);
+	// Dispatch the event
+	return elem.dispatchEvent(event);
 
 }
 
@@ -25,23 +26,24 @@ function emit (type, detail) {
  * @return {Object}      The handler object
  */
 function handler (name, data) {
+	let type = 'kelp:store' + (name ? `-${name}` : '');
 	return {
-		get: function (obj, prop) {
+		get (obj, prop) {
 			if (prop === '_isProxy') return true;
 			if (['object', 'array'].includes(Object.prototype.toString.call(obj[prop]).slice(8, -1).toLowerCase()) && !obj[prop]._isProxy) {
 				obj[prop] = new Proxy(obj[prop], handler(name, data));
 			}
 			return obj[prop];
 		},
-		set: function (obj, prop, value) {
+		set (obj, prop, value) {
 			if (obj[prop] === value) return true;
 			obj[prop] = value;
-			emit(name, data);
+			emit(type, data);
 			return true;
 		},
-		deleteProperty: function (obj, prop) {
+		deleteProperty (obj, prop) {
 			delete obj[prop];
-			emit(name, data);
+			emit(type, data);
 			return true;
 		}
 	};
@@ -53,7 +55,7 @@ function handler (name, data) {
  * @param  {String} name The custom event namespace
  * @return {Proxy}       The reactive proxy
  */
-function store (data = {}, name = 'kelp:store') {
+function store (data = {}, name = '') {
 	return new Proxy(data, handler(name, data));
 }
 
@@ -75,7 +77,7 @@ function stringToHTML (str) {
     let doc = parser.parseFromString(str, 'text/html');
 
     // If there are items in the head, move them to the body
-    if (doc.head && doc.head.childNodes && doc.head.childNodes.length > 0) {
+    if (doc.head && doc.head.childNodes.length) {
         Array.from(doc.head.childNodes).reverse().forEach(function (node) {
             doc.body.insertBefore(node, doc.body.firstChild);
         });
@@ -400,6 +402,7 @@ function render (elem, template, events) {
 	let node = typeof elem === 'string' ? document.querySelector(elem) : elem;
 	let html = stringToHTML(template);
 	diff(html, node, events);
+	emit('kelp:render', null, node);
 }
 
 /**
@@ -428,7 +431,7 @@ class Component {
 		// Create instance properties
 		this.elem = elem;
 		this.template = template;
-		this.name = options.name || 'kelp:store';
+		this.stores = options.stores ? options.stores.map((store) => `kelp:store-${store}`) : ['kelp:store'];
 		this.events = options.events;
 		this.handler = createHandler(this);
 		this.debounce = null;
@@ -443,14 +446,18 @@ class Component {
 	 * Start reactive data rendering
 	 */
 	start () {
-		document.addEventListener(this.name, this.handler);
+		for (let store of this.stores) {
+			document.addEventListener(store, this.handler);
+		}
 	}
 
 	/**
 	 * Stop reactive data rendering
 	 */
 	stop () {
-		document.removeEventListener(this.name, this.handler);
+		for (let store of this.stores) {
+			document.removeEventListener(store, this.handler);
+		}
 	}
 
 	/**
