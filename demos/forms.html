@@ -41,7 +41,7 @@
 			todos: ['Swim', 'Climb', 'Jump', 'Play'],
 			typed: 'This field is overwritten on each update',
 			typed2: 'This field has a default value by keeps your changes on future renders',
-			wizard: 'hermione',
+			wizard: 'merlin',
 			checked: false
 		};
 
@@ -70,16 +70,16 @@
 
 				<label for="wizards">Who is the best wizard? (Is set to the wizards property)</label>
 				<select id="wizards">
-					<option id="harry" value="harry" @selected="${data.wizard === 'harry'}">Harry</option>
-					<option id="hermione" value="hermione" @selected="${data.wizard === 'hermione'}">Hermione</option>
-					<option id="neville" value="neville" @selected="${data.wizard === 'neville'}">Neville</option>
+					<option id="gandalf" value="gandalf" @selected="${data.wizard === 'gandalf'}">Gandalf</option>
+					<option id="merlin" value="merlin" @selected="${data.wizard === 'merlin'}">Merlin</option>
+					<option id="ursula" value="ursula" @selected="${data.wizard === 'ursula'}">Ursula</option>
 				</select>
 
 				<label for="wizards2">Who is the best wizard? (Only has a default value)</label>
 				<select id="wizards2">
-					<option id="harry" value="harry" #selected="${data.wizard === 'harry'}">Harry</option>
-					<option id="hermione" value="hermione" #selected="${data.wizard === 'hermione'}">Hermione</option>
-					<option id="neville" value="neville" #selected="${data.wizard === 'neville'}">Neville</option>
+					<option id="gandalf" value="gandalf" #selected="${data.wizard === 'gandalf'}">Gandalf</option>
+					<option id="merlin" value="merlin" #selected="${data.wizard === 'merlin'}">Merlin</option>
+					<option id="ursula" value="ursula" #selected="${data.wizard === 'ursula'}">Ursula</option>
 				</select>
 
 				<p><button>Render App</button></p>`;

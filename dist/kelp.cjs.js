@@ -24,6 +24,15 @@ function emit (type, detail, elem = document) {
 }
 
 /**
+ * Get the element from the UI
+ * @param  {String|Node} elem The element or selector string
+ * @return {Node}             The element
+ */
+function getElem (elem) {
+	return typeof elem === 'string' ? document.querySelector(elem) : elem;
+}
+
+/**
  * Create a Proxy handler object
  * @param  {String} name The custom event namespace
  * @param  {Object} data The data object
@@ -403,7 +412,7 @@ function diff (template, existing, events) {
  * @param  {Boolean}     events   If true, inline events allowed
  */
 function render (elem, template, events) {
-	let node = typeof elem === 'string' ? document.querySelector(elem) : elem;
+	let node = getElem(elem);
 	let html = stringToHTML(template);
 	diff(html, node, events);
 	emit('kelp:render', null, node);
@@ -441,7 +450,6 @@ class Component {
 		this.debounce = null;
 
 		// Init
-		this.render();
 		this.start();
 
 	}
@@ -453,6 +461,8 @@ class Component {
 		for (let store of this.stores) {
 			document.addEventListener(store, this.handler);
 		}
+		this.render();
+		emit('kelp:start', null, getElem(this.elem));
 	}
 
 	/**
@@ -462,6 +472,7 @@ class Component {
 		for (let store of this.stores) {
 			document.removeEventListener(store, this.handler);
 		}
+		emit('kelp:stop', null, getElem(this.elem));
 	}
 
 	/**

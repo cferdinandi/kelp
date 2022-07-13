@@ -3,6 +3,8 @@ A collection of small functions for creating reactive, state-based UIs.
 
 Kelp is a simpler alternative to React, Vue, and other large frameworks.
 
+
+
 ## Getting Started
 
 There are a few ways to install Kelp.
@@ -158,6 +160,19 @@ component('#app', template, {stores: ['wizards']});
 component('#app', template, {stores: ['wizards'], events: true});
 ```
 
+If you assign your component to a variable, you can stop reactive rendering with the `kelp.component.stop()` method, and start it again with the `kelp.component.start()` method.
+
+```js
+// Create a component
+let app = component('#app', template);
+
+// Stop reactive rendering
+app.stop();
+
+// Restart reactive rendering
+app.start();
+```
+
 
 
 ## Putting it all together
@@ -222,3 +237,168 @@ cart.push({
 	cost: 29
 });
 ```
+
+
+
+## Advanced Techniques
+
+As your project gets bigger, the way you manage components and data may need to grow with it.
+
+
+### Default and state-based HTML attributes
+
+You can use data to conditionally include or change the value of HTML attributes in your template.
+
+To dynamically set `checked`, `selected`, and `value` attributes, prefix them with an `@` symbol. Use a _falsy value_ when the item should _not_ be `checked` or `selected`.
+
+In the example below, the checkbox is `checked` when `agreeToTOS` is `true`.
+
+```js
+// The reactive store
+let data = store({
+	agreeToTOS: true
+});
+
+// The template
+function template () {
+	return `
+		<label>
+			<input type="checkbox" @checked="${agreeToTOS}">
+		</label>`;
+}
+
+// The component
+component('#app', template);
+```
+
+You might instead want to use a default value when an element initially renders, but defer to any changes the user makes after that.
+
+You can do that by prefixing your attributes with a `#` symbol.
+
+In this example, `Merlin` has the `[selected]` attribute on it when first rendered, but will defer to whatever changes the user makes when diffing and updating the UI.
+
+```js
+function template () {
+	return `
+		<label for="wizards">Who is the best wizard?</label>
+		<select>
+			<option>Gandalf</option>
+			<option #selected>Merlin</option>
+			<option>Ursula</option>
+		</select>`;
+}
+```
+
+
+### Batch Rendering
+
+With a `kelp.component()`, multiple reactive data updates are often batched into a single render that happens asynchronously.
+
+```js
+// Reactive store
+let todos = store(['Swim', 'Climb', 'Jump', 'Play']);
+
+// Create a component from a template
+component('#app', template);
+
+// These three updates would result in a single render
+todos.push('Sleep');
+todos.push('Wake up');
+todos.push('Repeat');
+```
+
+You can detect when an element has been rendered by listening for the `kelp:render` event.
+
+It's emitted directly on the element that was rendered, and also bubbles if you want to listen for all render events.
+
+```js
+document.addEventListener('kelp:render', function (event) {
+	console.log(`The #${event.target.id} element has been rendered.`);
+});
+```
+
+
+### More efficient diffing with IDs
+
+Unique IDs can help Kelp more effectively handle UI updates.
+
+For example, imagine you have a list of items, and you're rendering them into the UI as an unordered list.
+
+```js
+// Reactive store
+let todos = store(['Swim', 'Climb', 'Jump', 'Play']);
+
+// The template
+function template () {
+	return `
+		<ul>
+			${todos.map(function (todo) {
+				return `<li>${todo}</li>`;
+			})}
+		</ul>`;
+}
+
+// Create a component
+component('#app', template);
+```
+
+The resulting HTML would look like this.
+
+```html
+<ul>
+	<li>Swim</li>
+	<li>Climb</li>
+	<li>Jump</li>
+	<li>Play</li>
+</ul>
+```
+
+Next, let's imagine that you remove an item from the middle of your array of `todos`.
+
+```js
+// remove "Climb"
+todos.splice(1, 1);
+```
+
+Because of how Kelp diffs the UI, rather than removing the list item (`li`) with `Climb` as it's text, it would update the text of `Climb` to `Jump`, and the text of `Jump` to `Play`, and _then_ remove the last list item from the UI.
+
+For larger and more complex UIs, this can be really inefficient.
+
+You can help Kelp more effectively diff the UI by assigning unique IDs to elements that may change.
+
+```js
+// The template
+function template () {
+	return `
+		<ul>
+			${todos.map(function (todo) {
+				let id = todo.toLowerCase();
+				return `<li id="${id}">${todo}</li>`;
+			})}
+		</ul>`;
+}
+```
+
+Now, the starting HTML looks like this.
+
+```html
+<ul>
+	<li id="swim">Swim</li>
+	<li id="climb">Climb</li>
+	<li id="jump">Jump</li>
+	<li id="play">Play</li>
+</ul>
+```
+
+If you remove `Climb` from the `todos` array, Kelp will now remove the `#climb` element rather than updating all of the other list items (and any content within them).
+
+
+
+## Lifecycle Events
+
+Kelp emits custom events throughout the lifecycle of a component or reactive store.
+
+- **`kelp:store`** is emitted when a reactive store is modified. The `event.detail` property contains the data object.
+- **`kelp:start`** is emitted on a component element when kelp starts listening for reactive data changes.
+- **`kelp:stop`** is emitted on a component element when kelp stops listening for reactive data changes.
+- **`kelp:render`** is emitted on a component element when kelp renders a UI update.

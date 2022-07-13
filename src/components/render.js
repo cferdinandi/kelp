@@ -1,4 +1,4 @@
-import {emit} from './utilities.js';
+import {emit, getElem} from './utilities.js';
 
 
 // Form fields and attributes that can be modified by users
@@ -341,7 +341,7 @@ function diff (template, existing, events) {
  * @param  {Boolean}     events   If true, inline events allowed
  */
 function render (elem, template, events) {
-	let node = typeof elem === 'string' ? document.querySelector(elem) : elem;
+	let node = getElem(elem);
 	let html = stringToHTML(template);
 	diff(html, node, events);
 	emit('kelp:render', null, node);

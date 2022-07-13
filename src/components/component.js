@@ -1,4 +1,6 @@
 import render from './render.js';
+import {emit, getElem} from './utilities.js';
+
 
 /**
  * Create the event handler function
@@ -32,7 +34,6 @@ class Component {
 		this.debounce = null;
 
 		// Init
-		this.render();
 		this.start();
 
 	}
@@ -44,6 +45,8 @@ class Component {
 		for (let store of this.stores) {
 			document.addEventListener(store, this.handler);
 		}
+		this.render();
+		emit('kelp:start', null, getElem(this.elem));
 	}
 
 	/**
@@ -53,6 +56,7 @@ class Component {
 		for (let store of this.stores) {
 			document.removeEventListener(store, this.handler);
 		}
+		emit('kelp:stop', null, getElem(this.elem));
 	}
 
 	/**

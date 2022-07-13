@@ -18,5 +18,14 @@ function emit (type, detail, elem = document) {
 
 }
 
+/**
+ * Get the element from the UI
+ * @param  {String|Node} elem The element or selector string
+ * @return {Node}             The element
+ */
+function getElem (elem) {
+	return typeof elem === 'string' ? document.querySelector(elem) : elem;
+}
 
-export {emit};
+
+export {emit, getElem};
