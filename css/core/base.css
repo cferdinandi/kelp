@@ -1,0 +1,109 @@
+/**
+ * @section Baseline Styles
+ */
+
+@layer kelp.core {
+
+	/**
+	 * Add box sizing to everything
+	 * @link http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+	 */
+	*,
+	*:before,
+	*:after {
+		box-sizing: border-box;
+	}
+
+	/**
+	 * 1. Force scrollbar display to prevent jumping on pages.
+	 * 2. Prevent iOS text size adjust after orientation change, without disabling
+	 *    user zoom.
+	 */
+	html {
+		overflow-y: scroll; /* 1 */
+		/* 2 */
+		-moz-text-size-adjust: none;
+		-webkit-text-size-adjust: none;
+		text-size-adjust: none;
+	}
+
+	/**
+	 * 1. Remove the margin in all browsers (opinionated).
+	 * 2. Force the body to fill the viewport
+	 */
+	body {
+		margin: 0; /* 1 */
+		min-height: 100vh; /* 2 */
+	}
+
+	/**
+	 * Add a cursor to button and summary elements
+	 */
+	button:not([disabled]),
+	summary {
+	    cursor: pointer;
+	}
+
+	:where(
+		p,
+		ol, ul, dl, dd,
+		form, fieldset,
+		audio, video, iframe,
+		blockquote, details, table,
+		pre, figure, address
+	) {
+		margin: 0;
+		margin-block-end: var(--space);
+	}
+
+	:where(
+		p,
+		ol, ul, dl, dd,
+		form, fieldset,
+		audio, video, iframe,
+		blockquote, details, table,
+		pre, figure, address
+	):last-child {
+		margin-block-end: 0;
+	}
+
+	:where(h1, h2, h3, h4, h5, h6) {
+		margin-block: var(--space) var(--size-m);
+	}
+
+	:where(h1) {
+		margin-block-start: var(--size-4xs);
+	}
+
+	:where(h2) {
+		margin-block-start: var(--size-5xl);
+	}
+
+}
+
+@layer kelp.state {
+
+	:is(
+		button, [href],
+		input, select, textarea,
+		summary, [tabindex]
+	):focus-visible {
+		outline-color: var(--focus-ring-color);
+		outline-style: var(--focus-ring-style);
+		outline-width: var(--focus-ring-width);
+		outline-offset: var(--focus-ring-offset);
+	}
+
+	/**
+	 * Remove all animations and transitions for people that prefer not to see them
+	 */
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+
+}

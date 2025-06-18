@@ -1,0 +1,16 @@
+/**
+ * @section Avatars
+ * Rounded images
+ */
+
+@layer kelp.core {
+
+	.avatar {
+		--border-radius: var(--border-radius-circle);
+		display: inline-block;
+		border-radius: var(--border-radius);
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+	}
+
+}

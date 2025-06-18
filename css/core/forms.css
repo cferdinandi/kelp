@@ -1,0 +1,159 @@
+/**
+ * @section Forms
+ * Form elements and various controls
+ */
+
+@layer kelp.core {
+
+	fieldset {
+		border: 0;
+		padding: 0;
+	}
+
+	legend,
+	label {
+		--gap: var(--size-5xs);
+		margin: 0;
+		margin-block-end: var(--gap);
+		padding: 0;
+	}
+
+	legend {
+		display: block;
+	}
+
+	label {
+		--gap: var(--size-4xs);
+		display: flex;
+		align-items: center;
+		column-gap: var(--gap);
+		width: 100%;
+	}
+
+	/**
+	 * 1. Correct font properties not being inherited.
+	 */
+	input,
+	optgroup,
+	select,
+	textarea {
+		color: var(--color-text-normal);
+		font: inherit; /* 1 */
+		margin: 0;
+		padding-block: var(--size-5xs);
+		padding-inline: var(--size-4xs);
+	}
+
+	input,
+	textarea,
+	select {
+		--border-size: 1px;
+		--border-color: var(--color-border-vivid);
+		--border-style: solid;
+		--border-radius: var(--border-radius-s);
+		background-color: var(--color-background);
+		border: var(--border-size) var(--border-style) var(--border-color);
+		border-radius: var(--border-radius);
+		color: var(--color-text-input);
+		display: block;
+		line-height: var(--line-height-m);
+		margin-block-end: var(--size-xl);
+		width: 100%;
+	}
+
+	textarea {
+		--height: 8em;
+		min-height: var(--height);
+		overflow: auto;
+		resize: vertical;
+	}
+
+	[type="image"],
+	[type="checkbox"],
+	[type="radio"] {
+		cursor: pointer;
+		display: inline-block;
+		height: auto;
+		width: auto;
+		padding: 0;
+	}
+
+	[type="checkbox"],
+	[type="radio"] {
+		appearance: none;
+		height: var(--size-m);
+		width: var(--size-m);
+		margin: 0;
+
+		display: inline-flex;
+		flex: 0 0 auto;
+		align-items: center;
+		justify-content: center;
+	}
+
+	[type="checkbox"] {
+		font-weight: bold;
+	}
+
+	[type="radio"] {
+		border-radius: 50%;
+	}
+
+}
+
+@layer kelp.state {
+
+	:is(
+		input,
+		textarea,
+		select
+	)[readonly] {
+		--background-color: var(--color-fill-muted);
+		--color: var(--color-on-muted);
+		background-color: var(--background-color);
+		color: var(--color);
+	}
+
+	:is(
+		input,
+		textarea,
+		select
+	):not(
+		[type="checkbox"],
+		[type="radio"]
+	):focus,
+	:is(
+		[type="checkbox"],
+		[type="radio"]
+	):focus-visible {
+		outline-color: var(--focus-ring-color);
+		outline-style: var(--focus-ring-style);
+		outline-width: var(--focus-ring-width);
+		outline-offset: var(--focus-ring-offset);
+	}
+
+	[type="radio"]:checked {
+		background-color: transparent;
+		border-color: var(--color-checked);
+	}
+
+	[type="radio"]:checked::after {
+		background-color: var(--color-checked);
+		border-radius: 50%;
+		content: '';
+		width: round(calc(100% * 0.75), var(--border-size));
+		aspect-ratio: 1;
+	}
+
+	[type="checkbox"]:checked {
+		background-color: var(--color-checked);
+		border-color: var(--color-checked);
+		color: var(--color-checked-icon);
+	}
+
+	[type="checkbox"]:checked::after {
+		content: '\002713';
+		font-size: var(--size-xs);
+	}
+
+}

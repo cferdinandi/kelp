@@ -1,0 +1,117 @@
+/**
+ * @section Grid
+ * 12 columns, divided using simple fractions
+ */
+
+@layer kelp.core {
+
+	/**
+	 * Base Grid styles
+	 */
+
+	[class*="grid"] {
+		--gap: var(--size-m);
+		--align: stretch;
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: 1fr;
+		gap: var(--gap);
+		align-items: var(--align);
+	}
+
+	.grid,
+	.grid-auto {
+		display: grid;
+	}
+
+	.grid-auto {
+		--width: 15ch;
+		grid-template-columns: repeat(auto-fit, minmax(min(var(--width), 100%), 1fr));
+		grid-template-rows: auto;
+	}
+
+	@media (min-width: 28rem) {
+		.grid-s {
+			display: grid;
+		}
+	}
+
+	@media (min-width: 38rem) {
+		.grid-m {
+			display: grid;
+		}
+	}
+
+	@media (min-width: 52rem) {
+		.grid-l {
+			display: grid;
+		}
+	}
+
+	@media (min-width: 60rem) {
+		.grid-xl {
+			display: grid;
+		}
+	}
+
+
+	/**
+	 * Column widths
+	 */
+
+	[class*="item-"] {
+		--span: 1;
+		grid-column: auto / span var(--span);
+	}
+
+	.item-fourth {
+		--span: 3;
+	}
+
+	.item-third {
+		--span: 4;
+	}
+
+	.item-half {
+		--span: 6;
+	}
+
+	.item-two-thirds {
+		--span: 8;
+	}
+
+	.item-three-fourths {
+		--span: 9;
+	}
+
+
+	/**
+	 * Offsets
+	 */
+
+	[class*="start-"] {
+		--start: 1;
+		grid-row-start: 1;
+		grid-column-start: var(--start);
+	}
+
+	.start-fourth {
+		--start: 4;
+	}
+
+	.start-third {
+		--start: 5;
+	}
+
+	.start-half {
+		--start: 7;
+	}
+
+	.start-two-thirds {
+		--start: 8;
+	}
+
+	.start-three-fourths {
+		--start: 10;
+	}
+
+}

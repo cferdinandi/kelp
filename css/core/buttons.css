@@ -1,0 +1,154 @@
+/**
+ * @section Buttons
+ */
+
+@layer kelp.core {
+
+	button,
+	.btn,
+	input:is(
+		[type="button"],
+		[type="reset"],
+		[type="submit"]
+	) {
+		--background-color: var(--color-fill-vivid);
+		--background-color-hover: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-hover));
+		--background-color-active: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-active));
+
+		--color: var(--color-on-vivid);
+		--color-hover: var(--color-on-vivid);
+		--color-active: var(--color-on-vivid);
+
+		--border-color: transparent;
+		--border-color-hover: transparent;
+		--border-color-active: transparent;
+
+		--border-size: 1px;
+		--border-radius: var(--border-radius-s);
+
+		--font-size: var(--size-s);
+		--font-weight: 400;
+		--gap: var(--size-4xs);
+		--padding-block: var(--size-4xs);
+		--padding-inline: var(--size-m);
+		--line-height: var(--line-height-xs);
+
+		background-color: var(--background-color);
+		border: var(--border-size) solid var(--border-color);
+		border-radius: var(--border-radius);
+		color: var(--color);
+		display: inline-flex;
+		gap: var(--gap);
+		align-items: center;
+		font: inherit;
+		font-size: var(--font-size);
+		font-weight: var(--font-weight);
+		line-height: var(--line-height);
+		padding-block: var(--padding-block);
+		padding-inline: var(--padding-inline);
+
+		cursor: pointer;
+		text-align: center;
+		vertical-align: middle;
+	}
+
+
+	/**
+	 * Button size
+	 */
+
+	.btn-large {
+		--font-size: var(--size-m);
+		--padding-block: var(--size-3xs);
+		--padding-inline: var(--size-s);
+	}
+
+	.btn-small {
+		--font-size: var(--size-xs);
+		--padding-block: var(--size-5xs);
+		--padding-inline: var(--size-4xs);
+	}
+
+	.btn-block {
+		display: block;
+		width: 100%;
+	}
+
+
+	/**
+	 * Buttons styled like links
+	 */
+	.btn-link {
+		--background-color: transparent;
+		--background-color-hover: transparent;
+		--background-color-active: transparent;
+
+		--color: var(--color-text-link);
+		--color-hover: var(--color-text-link-hover);
+		--color-active: var(--color-text-link-hover);
+
+		--font-weight: unset;
+		--decoration: var(--decoration-text-link);
+
+		text-decoration: var(--decoration);
+	}
+
+	a.btn {
+		--decoration: none;
+	}
+
+	/**
+	 * Remove default button styles
+	 */
+	button,
+	[type="submit"] {
+	    appearance: none;
+	}
+
+}
+
+@layer kelp.state {
+
+	:where(
+		button,
+		.btn,
+		input:is(
+			[type="button"],
+			[type="reset"],
+			[type="submit"]
+		)
+	):hover {
+		--background-color: var(--background-color-hover);
+		--border-color: var(--border-color-hover);
+		--color: var(--color-hover);
+	}
+
+	:where(
+		button,
+		.btn,
+		input:is(
+			[type="button"],
+			[type="reset"],
+			[type="submit"]
+		)
+	):is(:active, [data-active]) {
+		--background-color: var(--background-color-active);
+		--border-color: var(--border-color-active);
+		--color: var(--color-active);
+	}
+
+	button[disabled],
+	button[data-disabled],
+	[data-submitting] button {
+		--opacity: 0.7;
+		box-shadow: none;
+		cursor: not-allowed;
+		opacity: var(--opacity);
+		pointer-events: none;
+	}
+
+	.btn-link:hover {
+		--decoration: var(--decoration-text-link-hover);
+	}
+
+}

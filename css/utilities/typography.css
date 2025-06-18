@@ -1,0 +1,53 @@
+/**
+ * @section Text Transforms
+ */
+
+@layer kelp.utilities {
+
+	.text-capitalize {
+		text-transform: capitalize;
+	}
+
+	.text-uppercase {
+		text-transform: uppercase;
+	}
+
+	.text-lowercase {
+		text-transform: lowercase;
+	}
+
+	.text-pretty {
+		text-wrap: pretty;
+	}
+
+	.text-balance {
+		text-wrap: balance;
+	}
+
+	.text-center {
+		text-align: center;
+	}
+
+	.text-end {
+		text-align: end;
+	}
+
+	.text-color {
+		--color: var(--color-outline);
+		color: var(--color);
+	}
+
+	.text-muted {
+		--color: var(--color-text-muted);
+		color: var(--color);
+	}
+
+	.font-primary {
+		font-family: var(--font-primary);
+	}
+
+	.font-secondary {
+		font-family: var(--font-secondary);
+	}
+
+}

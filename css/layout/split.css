@@ -1,0 +1,21 @@
+/**
+ * @section Split
+ * Horizontal content with space between
+ */
+
+@layer kelp.core {
+
+	.split > * {
+		margin: 0;
+	}
+
+	.split {
+		--align: normal;
+		--gap: var(--size-m);
+		display: flex;
+		align-items: var(--align);
+		justify-content: space-between;
+		gap: var(--gap);
+	}
+
+}

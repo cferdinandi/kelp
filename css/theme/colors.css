@@ -1,0 +1,181 @@
+/**
+ * @section Colors
+ * Map named color palette to semantic variable names
+ */
+
+@layer kelp.base {
+
+	/* Light Theme (default) */
+	:where(:root),
+	.kelp-theme-light {
+
+		/* State */
+		--color-mix-hover: black 10%;
+		--color-mix-active: black 20%;
+		--color-mix-transparent: transparent 20%;
+		--color-mix-deleted: transparent 40%;
+		--color-checked: var(--color-blue-50);
+		--color-checked-icon: white;
+
+		/* Focus */
+		--focus-ring-color: var(--color-blue-50);
+		--focus-ring-style: solid;
+		--focus-ring-width: var(--size-6xs);
+		--focus-ring-offset: var(--size-6xs);
+
+		/* Page & Text  */
+		--color-background: white;
+		--color-text-normal: var(--color-gray-10);
+		--color-text-muted: var(--color-gray-50);
+		--color-text-input: var(--color-gray-30);
+		--color-text-code: var(--color-pink-50);
+		--color-highlight: #fbf9c9;
+		--color-fill-highlight: var(--color-highlight);
+		--color-on-highlight: inherit;
+		--color-text-link: var(--color-blue-50);
+		--color-text-link-hover: var(--color-blue-40);
+		--decoration-text-link: underline dotted;
+		--decoration-text-link-hover: underline;
+
+		/* Fills & Borders */
+		--color-neutral-fill-muted: var(--color-gray-95);
+		--color-neutral-fill-accent: var(--color-gray-90);
+		--color-neutral-fill-vivid: var(--color-gray-30);
+		--color-neutral-border-muted: var(--color-gray-90);
+		--color-neutral-border-accent: var(--color-gray-80);
+		--color-neutral-border-vivid: var(--color-gray-40);
+		--color-neutral-on-muted: var(--color-gray-10);
+		--color-neutral-on-accent: var(--color-gray-10);
+		--color-neutral-on-vivid: white;
+		--color-neutral-outline: var(--color-gray-20);
+
+		--color-primary-fill-muted: var(--color-blue-95);
+		--color-primary-fill-accent: var(--color-blue-90);
+		--color-primary-fill-vivid: var(--color-blue-50);
+		--color-primary-border-muted: var(--color-blue-90);
+		--color-primary-border-accent: var(--color-blue-80);
+		--color-primary-border-vivid: var(--color-blue-60);
+		--color-primary-on-muted: var(--color-blue-30);
+		--color-primary-on-accent: var(--color-blue-20);
+		--color-primary-on-vivid: white;
+		--color-primary-outline: var(--color-blue-50);
+
+		--color-secondary-fill-muted: var(--color-indigo-95);
+		--color-secondary-fill-accent: var(--color-indigo-90);
+		--color-secondary-fill-vivid: var(--color-indigo-50);
+		--color-secondary-border-muted: var(--color-indigo-90);
+		--color-secondary-border-accent: var(--color-indigo-80);
+		--color-secondary-border-vivid: var(--color-indigo-60);
+		--color-secondary-on-muted: var(--color-indigo-30);
+		--color-secondary-on-accent: var(--color-indigo-20);
+		--color-secondary-on-vivid: white;
+		--color-secondary-outline: var(--color-indigo-50);
+
+		--color-success-fill-muted: var(--color-green-95);
+		--color-success-fill-accent: var(--color-green-90);
+		--color-success-fill-vivid: var(--color-green-50);
+		--color-success-border-muted: var(--color-green-90);
+		--color-success-border-accent: var(--color-green-80);
+		--color-success-border-vivid: var(--color-green-60);
+		--color-success-on-muted: var(--color-green-30);
+		--color-success-on-accent: var(--color-green-20);
+		--color-success-on-vivid: white;
+		--color-success-outline: var(--color-green-50);
+
+		--color-warning-fill-muted: var(--color-yellow-95);
+		--color-warning-fill-accent: var(--color-yellow-90);
+		--color-warning-fill-vivid: var(--color-yellow-50);
+		--color-warning-border-muted: var(--color-yellow-90);
+		--color-warning-border-accent: var(--color-yellow-80);
+		--color-warning-border-vivid: var(--color-yellow-60);
+		--color-warning-on-muted: var(--color-yellow-30);
+		--color-warning-on-accent: var(--color-yellow-20);
+		--color-warning-on-vivid: white;
+		--color-warning-outline: var(--color-yellow-50);
+
+		--color-danger-fill-muted: var(--color-red-95);
+		--color-danger-fill-accent: var(--color-red-90);
+		--color-danger-fill-vivid: var(--color-red-50);
+		--color-danger-border-muted: var(--color-red-90);
+		--color-danger-border-accent: var(--color-red-80);
+		--color-danger-border-vivid: var(--color-red-60);
+		--color-danger-on-muted: var(--color-red-30);
+		--color-danger-on-accent: var(--color-red-20);
+		--color-danger-on-vivid: white;
+		--color-danger-outline: var(--color-red-50);
+
+	}
+
+
+	/* Dark Theme */
+	.kelp-theme-dark {
+
+		/* State */
+		--color-checked: var(--color-blue-60);
+		--focus-ring-color: var(--color-blue-60);
+
+		/* Page & Text  */
+		--color-background: var(--color-gray-10);
+		--color-text-normal: white;
+		--color-text-muted: var(--color-gray-80);
+		--color-text-input: var(--color-gray-80);
+		--color-text-code: var(--color-pink-80);
+		--color-fill-highlight: color-mix(in oklab, var(--color-highlight), transparent 85%);
+		--color-text-link: var(--color-blue-70);
+		--color-text-link-hover: var(--color-blue-80);
+
+		/* Fills & Borders */
+		--color-neutral-fill-muted: var(--color-gray-20);
+		--color-neutral-fill-accent: var(--color-gray-30);
+		--color-neutral-fill-vivid: var(--color-gray-80);
+		--color-neutral-border-muted: var(--color-gray-30);
+		--color-neutral-border-accent: var(--color-gray-40);
+		--color-neutral-border-vivid: var(--color-gray-70);
+		--color-neutral-on-muted: var(--color-gray-95);
+		--color-neutral-on-accent: var(--color-gray-95);
+		--color-neutral-on-vivid: var(--color-gray-05);
+		--color-neutral-outline: var(--color-gray-80);
+
+		--color-primary-fill-muted: var(--color-blue-20);
+		--color-primary-fill-accent: var(--color-blue-30);
+		--color-primary-border-muted: var(--color-blue-30);
+		--color-primary-border-accent: var(--color-blue-40);
+		--color-primary-on-muted: var(--color-blue-95);
+		--color-primary-on-accent: var(--color-blue-95);
+		--color-primary-outline: var(--color-blue-70);
+
+		--color-secondary-fill-muted: var(--color-indigo-20);
+		--color-secondary-fill-accent: var(--color-indigo-30);
+		--color-secondary-border-muted: var(--color-indigo-30);
+		--color-secondary-border-accent: var(--color-indigo-40);
+		--color-secondary-on-muted: var(--color-indigo-95);
+		--color-secondary-on-accent: var(--color-indigo-95);
+		--color-secondary-outline: var(--color-indigo-70);
+
+		--color-success-fill-muted: var(--color-green-20);
+		--color-success-fill-accent: var(--color-green-30);
+		--color-success-border-muted: var(--color-green-30);
+		--color-success-border-accent: var(--color-green-40);
+		--color-success-on-muted: var(--color-green-95);
+		--color-success-on-accent: var(--color-green-95);
+		--color-success-outline: var(--color-green-70);
+
+		--color-warning-fill-muted: var(--color-yellow-20);
+		--color-warning-fill-accent: var(--color-yellow-30);
+		--color-warning-border-muted: var(--color-yellow-30);
+		--color-warning-border-accent: var(--color-yellow-40);
+		--color-warning-on-muted: var(--color-yellow-95);
+		--color-warning-on-accent: var(--color-yellow-95);
+		--color-warning-outline: var(--color-yellow-70);
+
+		--color-danger-fill-muted: var(--color-red-20);
+		--color-danger-fill-accent: var(--color-red-30);
+		--color-danger-border-muted: var(--color-red-30);
+		--color-danger-border-accent: var(--color-red-40);
+		--color-danger-on-muted: var(--color-red-95);
+		--color-danger-on-accent: var(--color-red-95);
+		--color-danger-outline: var(--color-red-70);
+
+	}
+
+}

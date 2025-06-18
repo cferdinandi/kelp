@@ -1,0 +1,42 @@
+/**
+ * @section Tables
+ */
+
+@layer kelp.core {
+
+	table {
+		--border-color: var(--color-border-muted);
+		--background-color: var(--color-fill-muted);
+		--color: var(--color-text-normal);
+		border-collapse: collapse;
+		border-spacing: 0;
+		max-width: 100%;
+		width: 100%;
+	}
+
+	th,
+	td {
+		text-align: left;
+		padding: var(--size-4xs);
+	}
+
+	th {
+		border-block-end: var(--size-6xs) solid var(--border-color);
+		font-weight: bold;
+		vertical-align: bottom;
+	}
+
+	td {
+		border-block-start: 1px solid var(--border-color);
+		vertical-align: top;
+	}
+
+	/**
+	 * Adds zebra striping
+	 */
+	.table-striped tbody tr:nth-child(odd of :not([hidden])) {
+		background-color: var(--background-color);
+		color: var(--color);
+	}
+
+}

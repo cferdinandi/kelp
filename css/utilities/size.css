@@ -1,0 +1,57 @@
+/**
+ * @section Sizes
+ * Override font sizes
+ */
+
+@layer kelp.utilities {
+
+	[class*="size-"] {
+		--font-size: 1em;
+		font-size: var(--font-size);
+	}
+
+	.size-2xs {
+		--font-size: var(--size-2xs);
+	}
+
+	.size-xs {
+		--font-size: var(--size-xs);
+	}
+
+	.size-s {
+		--font-size: var(--size-s);
+	}
+
+	.size-m {
+		--font-size: var(--size-m);
+	}
+
+	.size-l {
+		--font-size: var(--size-l);
+	}
+
+	.size-xl {
+		--font-size: var(--size-xl);
+	}
+
+	.size-2xl {
+		--font-size: var(--size-2xl);
+	}
+
+	.size-3xl {
+		--font-size: var(--size-3xl);
+	}
+
+	.size-4xl {
+		--font-size: var(--size-4xl);
+	}
+
+	.size-5xl {
+		--font-size: var(--size-5xl);
+	}
+
+	.size-6xl {
+		--font-size: var(--size-6xl);
+	}
+
+}

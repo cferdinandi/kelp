@@ -1,0 +1,33 @@
+/**
+ * @section Skeleton
+ * Pulsing placeholders for content that's not loaded
+ */
+
+@layer kelp.core {
+
+	.skeleton {
+		--border-radius: var(--border-radius-s);
+		--font-size: var(--size-m);
+		--width: 100%;
+
+		animation: loadingPulse 3s ease-in infinite;
+		background-color: var(--color-neutral-light);
+		border-radius: var(--border-radius);
+		margin-block-end: var(--margin-bottom);
+		height: var(--font-size);
+		width: var(--width);
+	}
+
+	@keyframes loadingPulse {
+		0% {
+			background-color: var(--color-fill-accent);
+		}
+		50% {
+			background-color: color-mix(in oklab, var(--color-fill-accent), var(--color-mix-hover));
+		}
+		100% {
+			background-color: var(--color-fill-accent);
+		}
+	}
+
+}

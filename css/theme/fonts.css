@@ -1,0 +1,13 @@
+/**
+ * @section Fonts
+ */
+
+@layer kelp.base {
+
+	:where(:root) {
+		--font-primary: ui-sans-serif, system-ui, sans-serif;
+		--font-secondary: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+		--font-monospace: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+	}
+
+}

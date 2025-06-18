@@ -1,0 +1,14 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"lineWidth": 120,
+			"indentWidth": 4,
+			"trailingCommas": "es5"
+		}
+	},
+	"files": {
+		"include": ["./css/*", "./js/*"]
+	}
+}

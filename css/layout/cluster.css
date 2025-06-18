@@ -1,0 +1,20 @@
+/**
+ * @section Cluster
+ */
+
+@layer kelp.core {
+
+	.cluster > * {
+		margin: 0;
+	}
+
+	.cluster {
+		--align: normal;
+		--gap: var(--size-m);
+		display: flex;
+		align-items: var(--align);
+		flex-wrap: wrap;
+		gap: var(--gap);
+	}
+
+}
