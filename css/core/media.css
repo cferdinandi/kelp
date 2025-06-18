@@ -1,0 +1,47 @@
+/**
+ * @Section Media
+ * Images, audio, video, iframes, SVG, and more!
+ */
+
+@layer kelp.core {
+
+	/**
+	 * Prevent elements from spilling outside of the page on smaller screens.
+	 */
+	img,
+	picture,
+	video,
+	svg,
+	iframe,
+	object,
+	embed {
+		max-width: 100%;
+	}
+
+	img,
+	picture,
+	video {
+	    height: auto;
+	}
+
+	/**
+	 * Make media elements fill full available width
+	 */
+	audio,
+	vido,
+	iframe {
+		width: 100%;
+	}
+
+	figcaption {
+		--background-color: var(--background-color);
+		--color: var(--color-fill-vivid);
+		--align: center;
+		font-size: var(--size-s);
+		font-style: italic;
+		color: var(--color);
+		padding-block-start: var(--size-4xs);
+		text-align: var(--align);
+	}
+
+}

@@ -1,0 +1,44 @@
+/**
+ * @section Containers
+ * Contain the max width of content
+ */
+
+@layer kelp.core {
+
+	[class*="container"] {
+		--width: var(--breakpoint-m);
+		margin-inline-start: auto;
+		margin-inline-end: auto;
+		max-width: var(--width);
+		width: 88%;
+	}
+
+	.container-xs {
+		--width: var(--breakpoint-xs);
+	}
+
+	.container-s {
+		--width: var(--breakpoint-s);
+	}
+
+	.container-l {
+		--width: var(--breakpoint-l);
+	}
+
+	.container-xl {
+		--width: var(--breakpoint-xl);
+	}
+
+	.container-2xl {
+		--width: var(--breakpoint-2xl);
+	}
+
+	.container-full {
+		--width: 100vw;
+		margin-inline-start: calc(50% - 50vw);
+		min-width: var(--width);
+		max-width: var(--width);
+		width: var(--width);
+	}
+
+}

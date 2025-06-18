@@ -1,0 +1,50 @@
+/**
+ * @section Accessibility
+ * A11Y modifier and utilities
+ */
+
+@layer kelp.utilities {
+
+	/**
+	 * Allow horizontal scroll
+	 */
+	.scroll-horizontal {
+		display: block;
+		overflow-x: auto;
+	}
+
+	/*
+	 * Hide only visually, but have it available for screen readers:
+	 * @link https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+	 *
+	 * 1. For long content, line feeds are not interpreted as spaces and small width
+	 *    causes content to wrap 1 word per line:
+	 *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+	 */
+	.visually-hidden {
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		white-space: nowrap; /* 1 */
+		width: 1px;
+	}
+
+	/*
+	 * Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard
+	 * @link https://www.drupal.org/node/897638
+	 */
+	.visually-hidden-focusable:is(:active, :focus) {
+		clip: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		position: static;
+		white-space: inherit;
+		width: auto;
+	}
+
+}

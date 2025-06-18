@@ -1,0 +1,59 @@
+/**
+ * @section Details + Summary
+ */
+
+@layer kelp.core {
+
+	details {
+		--border-color: var(--color-border-accent);
+		--gap: var(--size-3xs);
+	}
+
+	details + details {
+		padding: 0;
+		padding-block-start: var(--gap);
+	}
+
+	details:has(+ details) {
+		border-block-end: 1px solid var(--border-color);
+		margin: 0;
+		padding-block: var(--gap);
+		padding-inline: 0;
+	}
+
+	summary {
+		--gap: var(--size-3xs);
+		--icon: "\00FF0B";
+		--rotation: rotate(45deg);
+		display: flex;
+		align-items: center;
+		gap: var(--size-4xs);
+		list-style: none;
+	}
+
+	:where(
+		details + details,
+		details:has(+ details)
+	) summary {
+		justify-content: space-between;
+	}
+
+	[open] > summary {
+		margin-block-end: var(--gap);
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary::after {
+		content: var(--icon);
+		font-weight: bold;
+		transition: transform 150ms ease-in-out;
+	}
+
+	[open] > summary::after {
+		transform: var(--rotation);
+	}
+
+}

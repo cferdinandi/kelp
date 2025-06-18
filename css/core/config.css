@@ -1,0 +1,56 @@
+/**
+ * @section Sizes
+ */
+
+@layer kelp.base {
+
+	/* Theme Defaults */
+	:where(:root) {
+
+		/* Breakpoints (can't use in media queries) */
+		--breakpoint-xs: 18em;
+		--breakpoint-s: 28em;
+		--breakpoint-m: 38em;
+		--breakpoint-l: 52em;
+		--breakpoint-xl: 60em;
+		--breakpoint-2xl: 80em;
+
+
+		/* Line Height */
+		--line-height-xs: 1.2;
+		--line-height-s: 1.4;
+		--line-height-m: 1.5;
+
+
+		/* Sizing */
+		--font-size-base: 112.5%;
+		--size-6xs: 0.125em;
+		--size-5xs: 0.25em;
+		--size-4xs: 0.5em;
+		--size-3xs: 0.6875em;
+		--size-2xs: 0.75em;
+		--size-xs: 0.8125em;
+		--size-s: 0.9375em;
+		--size-m: 1em;
+		--size-l: 1.0625em;
+		--size-xl: 1.1875em;
+		--size-2xl: 1.3125em;
+		--size-3xl: 1.5em;
+		--size-4xl: 1.75em;
+		--size-5xl: 2em;
+		--size-6xl: 3em;
+
+
+		/* Space after paragraphs and other elements */
+		--space: calc(var(--line-height-m) * 1em);
+
+
+		/* Border Radius */
+		--border-radius-s: 0.25em;
+		--border-radius-m: 0.5em;
+		--border-radius-l: 1.3125em;
+		--border-radius-circle: 50%;
+
+	}
+
+}

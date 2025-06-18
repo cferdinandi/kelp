@@ -1,0 +1,18 @@
+/**
+ * @section Fill
+ * Fill an element with color
+ */
+
+@layer kelp.core {
+
+	.fill {
+		--background-color: var(--color-fill-muted);
+		background-color: var(--background-color);
+	}
+
+	.fill.vivid {
+		--color: var(--color-on-vivid);
+		color: var(--color);
+	}
+
+}

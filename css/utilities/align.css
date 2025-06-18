@@ -1,0 +1,20 @@
+/**
+ * @section Alignment
+ * Adjust the vertical alignment in flexbox and grid layouts
+ */
+
+@layer kelp.utilities {
+
+	.align-start {
+		--align: start;
+	}
+
+	.align-end {
+		--align: end;
+	}
+
+	.align-center {
+		--align: center;
+	}
+
+}

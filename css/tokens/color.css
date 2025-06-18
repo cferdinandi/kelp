@@ -1,0 +1,88 @@
+/**
+ * @section Color Variants
+ * Change the color hue on an element
+ */
+
+/* Light Theme (default) */
+@layer kelp.tokens {
+
+	:where(:root),
+	.neutral {
+		--color-fill-vivid: var(--color-neutral-fill-vivid);
+		--color-fill-accent: var(--color-neutral-fill-accent);
+		--color-fill-muted: var(--color-neutral-fill-muted);
+		--color-border-vivid: var(--color-neutral-border-vivid);
+		--color-border-accent: var(--color-neutral-border-accent);
+		--color-border-muted: var(--color-neutral-border-muted);
+		--color-on-vivid: var(--color-neutral-on-vivid);
+		--color-on-accent: var(--color-neutral-on-accent);
+		--color-on-muted: var(--color-neutral-on-muted);
+		--color-outline: var(--color-neutral-outline);
+	}
+
+	.primary {
+		--color-fill-vivid: var(--color-primary-fill-vivid);
+		--color-fill-accent: var(--color-primary-fill-accent);
+		--color-fill-muted: var(--color-primary-fill-muted);
+		--color-border-vivid: var(--color-primary-border-vivid);
+		--color-border-accent: var(--color-primary-border-accent);
+		--color-border-muted: var(--color-primary-border-muted);
+		--color-on-vivid: var(--color-primary-on-vivid);
+		--color-on-accent: var(--color-primary-on-accent);
+		--color-on-muted: var(--color-primary-on-muted);
+		--color-outline: var(--color-primary-outline);
+	}
+
+	.secondary {
+		--color-fill-vivid: var(--color-secondary-fill-vivid);
+		--color-fill-accent: var(--color-secondary-fill-accent);
+		--color-fill-muted: var(--color-secondary-fill-muted);
+		--color-border-vivid: var(--color-secondary-border-vivid);
+		--color-border-accent: var(--color-secondary-border-accent);
+		--color-border-muted: var(--color-secondary-border-muted);
+		--color-on-vivid: var(--color-secondary-on-vivid);
+		--color-on-accent: var(--color-secondary-on-accent);
+		--color-on-muted: var(--color-secondary-on-muted);
+		--color-outline: var(--color-secondary-outline);
+	}
+
+	.success {
+		--color-fill-vivid: var(--color-success-fill-vivid);
+		--color-fill-accent: var(--color-success-fill-accent);
+		--color-fill-muted: var(--color-success-fill-muted);
+		--color-border-vivid: var(--color-success-border-vivid);
+		--color-border-accent: var(--color-success-border-accent);
+		--color-border-muted: var(--color-success-border-muted);
+		--color-on-vivid: var(--color-success-on-vivid);
+		--color-on-accent: var(--color-success-on-accent);
+		--color-on-muted: var(--color-success-on-muted);
+		--color-outline: var(--color-success-outline);
+	}
+
+	.danger {
+		--color-fill-vivid: var(--color-danger-fill-vivid);
+		--color-fill-accent: var(--color-danger-fill-accent);
+		--color-fill-muted: var(--color-danger-fill-muted);
+		--color-border-vivid: var(--color-danger-border-vivid);
+		--color-border-accent: var(--color-danger-border-accent);
+		--color-border-muted: var(--color-danger-border-muted);
+		--color-on-vivid: var(--color-danger-on-vivid);
+		--color-on-accent: var(--color-danger-on-accent);
+		--color-on-muted: var(--color-danger-on-muted);
+		--color-outline: var(--color-danger-outline);
+	}
+
+	.warning {
+		--color-fill-vivid: var(--color-warning-fill-vivid);
+		--color-fill-accent: var(--color-warning-fill-accent);
+		--color-fill-muted: var(--color-warning-fill-muted);
+		--color-border-vivid: var(--color-warning-border-vivid);
+		--color-border-accent: var(--color-warning-border-accent);
+		--color-border-muted: var(--color-warning-border-muted);
+		--color-on-vivid: var(--color-warning-on-vivid);
+		--color-on-accent: var(--color-warning-on-accent);
+		--color-on-muted: var(--color-warning-on-muted);
+		--color-outline: var(--color-warning-outline);
+	}
+
+}

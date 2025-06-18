@@ -1,6 +1,6 @@
 {
 	"name": "kelpui",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "A UI library for people who love HTML, powered by modern CSS and Web Components.",
 	"keywords": [
 		"html",
@@ -25,5 +25,11 @@
 	"repository": {
 		"type": "git",
 		"url": "http://github.com/cferdinandi/kelp"
+	},
+	"scripts": {
+		"lint": "npx @biomejs/biome lint"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4"
 	}
 }
