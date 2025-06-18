@@ -18,6 +18,10 @@
 		align-items: var(--align);
 	}
 
+	[class*="grid"]:not(:last-child) {
+		margin-block-end: var(--space);
+	}
+
 	.grid,
 	.grid-auto {
 		display: grid;

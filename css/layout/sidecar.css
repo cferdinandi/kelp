@@ -33,4 +33,8 @@
 		min-inline-size: var(--main-size, 50%);
 	}
 
+	[class*="sidecar"]:not(:last-child) {
+		margin-block-end: var(--space);
+	}
+
 }

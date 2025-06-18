@@ -18,4 +18,8 @@
 		gap: var(--gap);
 	}
 
+	.stack:not(:last-child) {
+		margin-block-end: var(--space);
+	}
+
 }
