@@ -17,4 +17,8 @@
 		gap: var(--gap);
 	}
 
+	.cluster:not(:last-child) {
+		margin-block-end: var(--space);
+	}
+
 }
