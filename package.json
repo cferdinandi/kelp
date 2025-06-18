@@ -1,0 +1,29 @@
+{
+	"name": "kelpui",
+	"version": "0.0.1",
+	"description": "A UI library for people who love HTML, powered by modern CSS and Web Components.",
+	"keywords": [
+		"html",
+		"css",
+		"javascript",
+		"web components",
+		"ui",
+		"front-end",
+		"framework",
+		"library",
+		"design system",
+		"web"
+	],
+	"homepage": "https://kelpui.com",
+	"browser": "./js/kelp.js",
+	"style": "./css/kelp.css",
+	"author": {
+		"name": "Chris Ferdinandi",
+		"url": "http://gomakethings.com"
+	},
+	"license": "SEE LICENSE IN LICENSE.md",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/cferdinandi/kelp"
+	}
+}
