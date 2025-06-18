@@ -44,6 +44,10 @@
 		padding-inline: var(--size-4xs);
 	}
 
+	::placeholder {
+		color: var(--color-text-muted);
+	}
+
 	input,
 	textarea,
 	select {
@@ -57,8 +61,15 @@
 		color: var(--color-text-input);
 		display: block;
 		line-height: var(--line-height-m);
-		margin-block-end: var(--size-xl);
 		width: 100%;
+	}
+
+	:is(
+		input,
+		textarea,
+		select
+	):not(:last-child) {
+		margin-block-end: var(--size-xl);
 	}
 
 	textarea {
