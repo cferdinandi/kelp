@@ -33,6 +33,9 @@
 		--padding-inline: var(--size-m);
 		--line-height: var(--line-height-xs);
 
+		--decoration: none;
+		--decoration-hover: none;
+
 		background-color: var(--background-color);
 		border: var(--border-size) solid var(--border-color);
 		border-radius: var(--border-radius);
@@ -57,13 +60,13 @@
 	 * Button size
 	 */
 
-	.btn-large {
+	.btn-l {
 		--font-size: var(--size-m);
 		--padding-block: var(--size-3xs);
 		--padding-inline: var(--size-s);
 	}
 
-	.btn-small {
+	.btn-s {
 		--font-size: var(--size-xs);
 		--padding-block: var(--size-5xs);
 		--padding-inline: var(--size-4xs);
@@ -89,12 +92,9 @@
 
 		--font-weight: unset;
 		--decoration: var(--decoration-text-link);
+		--decoration-hover: var(--decoration-text-link-hover);
 
 		text-decoration: var(--decoration);
-	}
-
-	a.btn {
-		--decoration: none;
 	}
 
 	/**

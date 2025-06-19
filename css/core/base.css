@@ -30,10 +30,12 @@
 	/**
 	 * 1. Remove the margin in all browsers (opinionated).
 	 * 2. Force the body to fill the viewport
+	 * 3. Prevent overflow in breakout containers
 	 */
 	body {
 		margin: 0; /* 1 */
 		min-height: 100vh; /* 2 */
+		overflow-x: hidden; /* 3 */
 	}
 
 	/**
