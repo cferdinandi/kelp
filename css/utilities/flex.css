@@ -1,0 +1,30 @@
+/**
+ * @section Flex
+ * Generic Flexbox utilities
+ */
+
+@layer kelp.utilities {
+
+	.flex {
+		--gap: 0;
+		display: flex;
+		gap: var(--gap);
+	}
+
+	.direction-row {
+		flex-direction: row;
+	}
+
+	.direction-column {
+		flex-direction: column;
+	}
+
+	.wrap {
+		flex-wrap: wrap;
+	}
+
+	.no-wrap {
+		flex-wrap: nowrap;
+	}
+
+}

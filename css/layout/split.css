@@ -3,23 +3,18 @@
  * Horizontal content with space between
  */
 
-@layer kelp.core {
+@layer kelp.layout {
 
 	.split > * {
 		margin: 0;
 	}
 
 	.split {
-		--align: normal;
 		--gap: var(--size-m);
 		display: flex;
-		align-items: var(--align);
-		justify-content: space-between;
 		gap: var(--gap);
-	}
-
-	.split:not(:last-child) {
-		margin-block-end: var(--space);
+		justify-content: space-between;
+		flex-wrap: wrap;
 	}
 
 }

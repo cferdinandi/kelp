@@ -1,0 +1,60 @@
+/**
+ * @section Margin
+ * Override margin settings
+ */
+
+@layer kelp.utilities {
+
+	.padding-0 {
+		padding: 0;
+	}
+
+	.padding-4xs {
+		padding: var(--size-4xs);
+	}
+
+	.padding-3xs {
+		padding: var(--size-3xs);
+	}
+
+	.padding-2xs {
+		padding: var(--size-2xs);
+	}
+
+	.padding-xs {
+		padding: var(--size-xs);
+	}
+
+	.padding-m {
+		padding: var(--size-m);
+	}
+
+	.padding-l {
+		padding: var(--size-l);
+	}
+
+	.padding-xl {
+		padding: var(--size-xl);
+	}
+
+	.padding-2xl {
+		padding: var(--size-2xl);
+	}
+
+	.padding-3xl {
+		padding: var(--size-3xl);
+	}
+
+	.padding-4xl {
+		padding: var(--size-4xl);
+	}
+
+	.padding-5xl {
+		padding: var(--size-5xl);
+	}
+
+	.padding-6xl {
+		padding: var(--size-6xl);
+	}
+
+}

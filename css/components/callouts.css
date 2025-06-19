@@ -9,17 +9,13 @@
 		--background-color: var(--color-fill-muted);
 		--color: var(--color-on-muted);
 		--border-color: var(--color-border-muted);
-		--border-size: 1px;
-		--border-radius: var(--border-radius-m);
-		--padding-block: var(--size-2xs);
-		--padding-inline: var(--size-xs);
 
 		background-color: var(--background-color);
-		border: var(--border-size) solid var(--border-color);
-		border-radius: var(--border-radius);
+		border: 1px solid var(--border-color);
+		border-radius: var(--border-radius-m);
 		color: var(--color);
-		padding-block: var(--padding-block);
-		padding-inline: var(--padding-inline);
+		margin-block-end: var(--size-5xs);
+		padding: var(--size-xs);
 	}
 
 	.callout:not(.outline, .vivid) {

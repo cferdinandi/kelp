@@ -13,6 +13,7 @@
 	kelp.theme, /* 1 */
 	kelp.core,
 	kelp.extend, /* 2 */
+	kelp.layout,
 	kelp.utilities,
 	kelp.tokens,
 	kelp.overrides, /* 3 */
@@ -24,7 +25,11 @@
 /* Core Styles */
 @import "./core/config.css";
 @import "./core/base.css";
-@import "./core/typography.css";
+@import "./core/lists.css";
+@import "./core/headings.css";
+@import "./core/blockquotes.css";
+@import "./core/links.css";
+@import "./core/accents.css";
 @import "./core/forms.css";
 @import "./core/buttons.css";
 @import "./core/tables.css";
@@ -49,12 +54,16 @@
 
 
 /* Utilities */
-@import "./utilities/typography.css";
-@import "./utilities/size.css";
-@import "./utilities/space.css";
-@import "./utilities/align.css";
 @import "./utilities/fill.css";
 @import "./utilities/aspect-ratios.css";
+@import "./utilities/typography.css";
+@import "./utilities/size.css";
+@import "./utilities/margin.css";
+@import "./utilities/padding.css";
+@import "./utilities/flex.css";
+@import "./utilities/gap.css";
+@import "./utilities/align.css";
+@import "./utilities/justify.css";
 @import "./utilities/accessibility.css";
 
 

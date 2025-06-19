@@ -1,0 +1,68 @@
+/**
+ * @section Space
+ * Control the gap between items
+ */
+
+@layer kelp.utilities {
+
+	.gap-0 {
+		--gap: 0;
+	}
+
+	.gap-4xs {
+		--gap: var(--size-4xs);
+	}
+
+	.gap-3xs {
+		--gap: var(--size-3xs);
+	}
+
+	.gap-2xs {
+		--gap: var(--size-2xs);
+	}
+
+	.gap-xs {
+		--gap: var(--size-xs);
+	}
+
+	.gap-m {
+		--gap: var(--size-m);
+	}
+
+	.gap-l {
+		--gap: var(--size-l);
+	}
+
+	.gap-xl {
+		--gap: var(--size-xl);
+	}
+
+	.gap-2xl {
+		--gap: var(--size-2xl);
+	}
+
+	.gap-3xl {
+		--gap: var(--size-3xl);
+	}
+
+	.gap-4xl {
+		--gap: var(--size-4xl);
+	}
+
+	.gap-5xl {
+		--gap: var(--size-5xl);
+	}
+
+	.gap-6xl {
+		--gap: var(--size-6xl);
+	}
+
+	.gap-end {
+		margin-block-end: var(--gap);
+	}
+
+	.gap-start {
+		margin-block-start: var(--gap);
+	}
+
+}
