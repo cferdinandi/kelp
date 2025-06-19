@@ -9,6 +9,14 @@
 		padding: 0;
 	}
 
+	.padding-6xs {
+		padding: var(--size-6xs);
+	}
+
+	.padding-5xs {
+		padding: var(--size-5xs);
+	}
+
 	.padding-4xs {
 		padding: var(--size-4xs);
 	}
