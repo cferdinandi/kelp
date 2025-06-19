@@ -9,6 +9,14 @@
 		--gap: 0;
 	}
 
+	.gap-6xs {
+		--gap: var(--size-6xs);
+	}
+
+	.gap-5xs {
+		--gap: var(--size-5xs);
+	}
+
 	.gap-4xs {
 		--gap: var(--size-4xs);
 	}
