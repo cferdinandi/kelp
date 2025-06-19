@@ -1,0 +1,32 @@
+/**
+ * @section Justify
+ * Control alignment on the primary axis in flexbox and grid layouts
+ */
+
+@layer kelp.utilities {
+
+	.justify-start {
+		justify-content: start;
+	}
+
+	.justify-end {
+		justify-content: end;
+	}
+
+	.justify-center {
+		justify-content: center;
+	}
+
+	.justify-between {
+		justify-content: space-between;
+	}
+
+	.justify-around {
+		justify-content: space-around;
+	}
+
+	.justify-even {
+		justify-content: space-evenly;
+	}
+
+}

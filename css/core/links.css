@@ -1,0 +1,31 @@
+/**
+ * @section Links
+ */
+
+@layer kelp.core {
+	a {
+		--color: var(--color-text-link);
+		--color-hover: var(--color-text-link-hover);
+		--decoration: var(--decoration-text-link);
+		--decoration-hover: var(--decoration-text-link-hover);
+		color: var(--color);
+		text-decoration: var(--decoration);
+		word-wrap: break-word;
+	}
+}
+
+@layer kelp.state {
+
+	a:hover {
+		color: var(--color-hover);
+		text-decoration: var(--decoration-hover);
+	}
+
+	/**
+	 * Link without underline until hover
+	 */
+	.link-subtle:not(:hover) {
+		text-decoration: none;
+	}
+
+}

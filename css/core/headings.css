@@ -1,0 +1,42 @@
+/**
+ * @section Headings
+ * Heading class lets you use one heading type for semantics, but style it as another heading type
+ */
+
+@layer kelp.core {
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: var(--font-secondary);
+		line-height: var(--line-height-s);
+		text-wrap: pretty;
+		word-wrap: break-word;
+	}
+
+	h1,
+	.h1 {
+		font-size: var(--size-3xl);
+	}
+
+	@media (min-width: 38em) {
+		h1,
+		.h1 {
+			font-size: var(--size-4xl);
+		}
+	}
+
+	h2,
+	.h2 {
+		font-size: var(--size-2xl);
+	}
+
+	h3,
+	.h3 {
+		font-size: var(--size-l);
+	}
+
+	h4, h5, h6,
+	.h4, .h5, .h6 {
+		font-size: var(--size-m);
+	}
+
+}

@@ -20,6 +20,8 @@
 	 *    user zoom.
 	 */
 	html {
+		font-size: var(--font-size-base);
+		scroll-behavior: smooth;
 		overflow-y: scroll; /* 1 */
 		/* 2 */
 		-moz-text-size-adjust: none;
@@ -33,6 +35,11 @@
 	 * 3. Prevent overflow in breakout containers
 	 */
 	body {
+		--color: var(--color-text-normal);
+		background: var(--color-background);
+		color: var(--color);
+		font-family: var(--font-primary);
+		line-height: var(--line-height-m);
 		margin: 0; /* 1 */
 		min-height: 100vh; /* 2 */
 		overflow-x: hidden; /* 3 */
@@ -70,7 +77,7 @@
 	}
 
 	:where(h1, h2, h3, h4, h5, h6) {
-		margin-block: var(--space) var(--size-m);
+		margin-block: 0 var(--size-m);
 	}
 
 	:where(h1) {

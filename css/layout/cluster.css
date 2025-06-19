@@ -2,23 +2,17 @@
  * @section Cluster
  */
 
-@layer kelp.core {
+@layer kelp.layout {
 
 	.cluster > * {
 		margin: 0;
 	}
 
 	.cluster {
-		--align: normal;
 		--gap: var(--size-m);
 		display: flex;
-		align-items: var(--align);
 		flex-wrap: wrap;
 		gap: var(--gap);
-	}
-
-	.cluster:not(:last-child) {
-		margin-block-end: var(--space);
 	}
 
 }

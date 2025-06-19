@@ -3,19 +3,17 @@
  * Side-by-side content
  */
 
-@layer kelp.core {
+@layer kelp.layout {
 
 	[class*="sidecar"] > * {
 		margin: 0;
 	}
 
 	[class*="sidecar"] {
-		--align: normal;
 		--gap: var(--size-m);
 		--main-size: initial;
 		--secondary-size: initial;
 		display: flex;
-		align-items: var(--align);
 		flex-wrap: wrap;
 		gap: var(--gap);
 	}
@@ -31,10 +29,6 @@
 		flex-basis: 0;
 		flex-grow: 999;
 		min-inline-size: var(--main-size, 50%);
-	}
-
-	[class*="sidecar"]:not(:last-child) {
-		margin-block-end: var(--space);
 	}
 
 }

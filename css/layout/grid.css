@@ -3,7 +3,7 @@
  * 12 columns, divided using simple fractions
  */
 
-@layer kelp.core {
+@layer kelp.layout {
 
 	/**
 	 * Base Grid styles
@@ -11,15 +11,10 @@
 
 	[class*="grid"] {
 		--gap: var(--size-m);
-		--align: stretch;
 		grid-template-columns: repeat(12, 1fr);
 		grid-template-rows: 1fr;
 		gap: var(--gap);
-		align-items: var(--align);
-	}
-
-	[class*="grid"]:not(:last-child) {
-		margin-block-end: var(--space);
+		align-items: stretch;
 	}
 
 	.grid,

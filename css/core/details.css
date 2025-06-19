@@ -22,12 +22,12 @@
 	}
 
 	summary {
-		--gap: var(--size-3xs);
+		--gap: var(--size-4xs);
 		--icon: "\00FF0B";
 		--rotation: rotate(45deg);
 		display: flex;
 		align-items: center;
-		gap: var(--size-4xs);
+		gap: var(--gap);
 		list-style: none;
 	}
 
@@ -39,7 +39,7 @@
 	}
 
 	[open] > summary {
-		margin-block-end: var(--gap);
+		margin-block-end: var(--size-3xs);
 	}
 
 	summary::-webkit-details-marker {

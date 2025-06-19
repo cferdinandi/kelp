@@ -3,23 +3,17 @@
  * Stack content on top of each other and control spacing
  */
 
-@layer kelp.core {
+@layer kelp.layout {
 
 	.stack > * {
 		margin: 0;
 	}
 
 	.stack {
-		--align: normal;
 		--gap: var(--size-m);
 		display: flex;
-		align-items: var(--align);
 		flex-direction: column;
 		gap: var(--gap);
-	}
-
-	.stack:not(:last-child) {
-		margin-block-end: var(--space);
 	}
 
 }

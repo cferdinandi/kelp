@@ -1,0 +1,27 @@
+/**
+ * @section Blockquotes
+ */
+
+@layer kelp.core {
+
+	blockquote {
+		--border-color: var(--color-border-accent);
+		--padding-block: var(--size-4xs);
+		--padding-inline: var(--size-m);
+		border-inline-start: var(--size-5xs) solid var(--border-color);
+		padding-block: var(--padding-block);
+		padding-inline: var(--padding-inline);
+	}
+
+	blockquote pre {
+		font-style: normal;
+	}
+
+	cite {
+		color: var(--color-text-muted);
+		display: block;
+		font-size: var(--size-s);
+		padding-block-start: var(--size-m);
+	}
+
+}

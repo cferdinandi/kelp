@@ -1,0 +1,112 @@
+/**
+ * @section Margin
+ * Override margin settings
+ */
+
+@layer kelp.utilities {
+
+	.margin-start-0 {
+		margin-block-start: 0;
+	}
+
+	.margin-start-4xs {
+		margin-block-start: var(--size-4xs);
+	}
+
+	.margin-start-3xs {
+		margin-block-start: var(--size-3xs);
+	}
+
+	.margin-start-2xs {
+		margin-block-start: var(--size-2xs);
+	}
+
+	.margin-start-xs {
+		margin-block-start: var(--size-xs);
+	}
+
+	.margin-start-m {
+		margin-block-start: var(--size-m);
+	}
+
+	.margin-start-l {
+		margin-block-start: var(--size-l);
+	}
+
+	.margin-start-xl {
+		margin-block-start: var(--size-xl);
+	}
+
+	.margin-start-2xl {
+		margin-block-start: var(--size-2xl);
+	}
+
+	.margin-start-3xl {
+		margin-block-start: var(--size-3xl);
+	}
+
+	.margin-start-4xl {
+		margin-block-start: var(--size-4xl);
+	}
+
+	.margin-start-5xl {
+		margin-block-start: var(--size-5xl);
+	}
+
+	.margin-start-6xl {
+		margin-block-start: var(--size-6xl);
+	}
+
+	.margin-end-0 {
+		margin-block-end: 0;
+	}
+
+	.margin-end-4xs {
+		margin-block-end: var(--size-4xs);
+	}
+
+	.margin-end-3xs {
+		margin-block-end: var(--size-3xs);
+	}
+
+	.margin-end-2xs {
+		margin-block-end: var(--size-2xs);
+	}
+
+	.margin-end-xs {
+		margin-block-end: var(--size-xs);
+	}
+
+	.margin-end-m {
+		margin-block-end: var(--size-m);
+	}
+
+	.margin-end-l {
+		margin-block-end: var(--size-l);
+	}
+
+	.margin-end-xl {
+		margin-block-end: var(--size-xl);
+	}
+
+	.margin-end-2xl {
+		margin-block-end: var(--size-2xl);
+	}
+
+	.margin-end-3xl {
+		margin-block-end: var(--size-3xl);
+	}
+
+	.margin-end-4xl {
+		margin-block-end: var(--size-4xl);
+	}
+
+	.margin-end-5xl {
+		margin-block-end: var(--size-5xl);
+	}
+
+	.margin-end-6xl {
+		margin-block-end: var(--size-6xl);
+	}
+
+}
