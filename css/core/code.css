@@ -9,7 +9,7 @@
 	pre,
 	samp {
 		font-family: var(--font-monospace);
-		font-size: var(--size-s);
+		font-size: var(--font-size-code);
 	}
 
 	code {
@@ -18,15 +18,10 @@
 	}
 
 	pre {
-		--background-color: var(--color-fill-muted);
-		--border-color: var(--color-border-muted);
-		--border-size: 1px;
-		--border-radius: var(--border-radius-s);
-		--font-size: var(--size-s);
-		background-color: var(--background-color);
-		border: var(--border-size) solid var(--border-color);
-		border-radius: var(--border-radius);
-		color: var(--color-text-normal);
+		background-color: var(--color-code-fill);
+		border: 1px solid var(--color-code-border);
+		border-radius: var(--border-radius-s);
+		color: var(--color-code-on);
 		display: block;
 		line-height: var(--line-height-m);
 		overflow: auto;

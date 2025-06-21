@@ -24,6 +24,7 @@
 
 		/* Sizing */
 		--font-size-base: 112.5%;
+		--font-size-code: 0.875em;
 		--size-6xs: 0.125em;
 		--size-5xs: 0.25em;
 		--size-4xs: 0.5em;

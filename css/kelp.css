@@ -1,25 +1,5 @@
-/**
- * Establish Cascade Layer order
- * 1. User theme customizations
- * 2. Add more components
- * 3. override utilities
- * 4. Add/override state-based effects (eg. :hover)
- */
-
-@layer kelp;
-@layer
-	kelp.palette,
-	kelp.base,
-	kelp.theme, /* 1 */
-	kelp.core,
-	kelp.extend, /* 2 */
-	kelp.layout,
-	kelp.utilities,
-	kelp.tokens,
-	kelp.overrides, /* 3 */
-	kelp.state,
-	kelp.effects; /* 4 */
-
+/* Cascade Layers */
+@import "./layers/layers.css";
 
 
 /* Core Styles */
