@@ -104,6 +104,10 @@
 		--color-danger-on-vivid: white;
 		--color-danger-outline: var(--color-red-50);
 
+		--color-code-fill: var(--color-gray-10);
+		--color-code-border: var(--color-gray-20);
+		--color-code-on: white;
+
 	}
 
 
@@ -175,6 +179,8 @@
 		--color-danger-on-muted: var(--color-red-95);
 		--color-danger-on-accent: var(--color-red-95);
 		--color-danger-outline: var(--color-red-70);
+
+		--color-code-fill: var(--color-gray-05);
 
 	}
 

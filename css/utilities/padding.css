@@ -65,4 +65,8 @@
 		padding: var(--size-6xl);
 	}
 
+	.padding-space {
+		padding: var(--space);
+	}
+
 }

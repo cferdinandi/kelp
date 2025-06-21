@@ -65,6 +65,10 @@
 		margin-block-start: var(--size-6xl);
 	}
 
+	.margin-start-space {
+		margin-block-start: var(--space);
+	}
+
 	.margin-end-0 {
 		margin-block-end: 0;
 	}
@@ -123,6 +127,10 @@
 
 	.margin-end-6xl {
 		margin-block-end: var(--size-6xl);
+	}
+
+	.margin-end-space {
+		margin-block-end: var(--space);
 	}
 
 }
