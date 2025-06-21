@@ -3,7 +3,6 @@
 
 
 /* Core Styles */
-@import "./core/config.css";
 @import "./core/base.css";
 @import "./core/lists.css";
 @import "./core/headings.css";
@@ -36,7 +35,7 @@
 /* Utilities */
 @import "./utilities/fill.css";
 @import "./utilities/aspect-ratios.css";
-@import "./utilities/typography.css";
+@import "./utilities/text.css";
 @import "./utilities/size.css";
 @import "./utilities/margin.css";
 @import "./utilities/padding.css";

@@ -9,7 +9,7 @@
 	pre,
 	samp {
 		font-family: var(--font-monospace);
-		font-size: var(--font-size-code);
+		font-size: 1em;
 	}
 
 	code {
@@ -23,6 +23,7 @@
 		border-radius: var(--border-radius-s);
 		color: var(--color-code-on);
 		display: block;
+		font-size: var(--font-size-code);
 		line-height: var(--line-height-m);
 		overflow: auto;
 		padding: var(--size-xs);
@@ -39,7 +40,6 @@
 
 	pre code {
 		color: inherit;
-		font-size: 1em;
 	}
 
 }

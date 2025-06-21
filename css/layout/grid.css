@@ -28,25 +28,25 @@
 		grid-template-rows: auto;
 	}
 
-	@media (min-width: 28rem) {
+	@media (min-width: 28em) {
 		.grid-s {
 			display: grid;
 		}
 	}
 
-	@media (min-width: 38rem) {
+	@media (min-width: 38em) {
 		.grid-m {
 			display: grid;
 		}
 	}
 
-	@media (min-width: 52rem) {
+	@media (min-width: 52em) {
 		.grid-l {
 			display: grid;
 		}
 	}
 
-	@media (min-width: 60rem) {
+	@media (min-width: 60em) {
 		.grid-xl {
 			display: grid;
 		}
@@ -106,7 +106,7 @@
 	}
 
 	.start-two-thirds {
-		--start: 8;
+		--start: 9;
 	}
 
 	.start-three-fourths {

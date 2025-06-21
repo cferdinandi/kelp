@@ -6,10 +6,9 @@
 
 	hr {
 		--border-color: var(--color-border-accent);
-		--gap: var(--size-5xl);
 		border: 0;
 		border-block-start: 1px solid var(--border-color);
-		margin-block: var(--gap);
+		margin-block: var(--size-5xl);
 		margin-inline: auto;
 	}
 
