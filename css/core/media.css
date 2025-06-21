@@ -34,14 +34,11 @@
 	}
 
 	figcaption {
-		--background-color: var(--background-color);
-		--color: var(--color-fill-vivid);
-		--align: center;
 		font-size: var(--size-s);
 		font-style: italic;
-		color: var(--color);
+		color: var(--color-text-muted);
 		padding-block-start: var(--size-4xs);
-		text-align: var(--align);
+		text-align: center;
 	}
 
 }
