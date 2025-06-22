@@ -48,6 +48,10 @@
 		color: var(--color-text-muted);
 	}
 
+	::-webkit-calendar-picker-indicator {
+		filter: invert(1);
+	}
+
 	input,
 	textarea,
 	select {
@@ -108,6 +112,11 @@
 
 	[type="radio"] {
 		border-radius: 50%;
+	}
+
+	[type="color"] {
+		height: 3em;
+		width: 3em;
 	}
 
 }

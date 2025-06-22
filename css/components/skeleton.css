@@ -8,13 +8,14 @@
 	.skeleton {
 		--border-radius: var(--border-radius-s);
 		--font-size: var(--size-m);
+		--height: var(--font-size);
 		--width: 100%;
 
 		animation: loadingPulse 3s ease-in infinite;
 		background-color: var(--color-neutral-light);
 		border-radius: var(--border-radius);
 		margin-block-end: var(--margin-bottom);
-		height: var(--font-size);
+		height: var(--height);
 		width: var(--width);
 	}
 
