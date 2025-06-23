@@ -7,13 +7,13 @@
 
 	iframe[class*="aspect-ratio"] {
 		height: 100%;
+		width: 100%;
 	}
 
 	[class*="aspect-ratio"] {
 		--ratio: auto;
 		aspect-ratio: var(--ratio);
 		object-fit: cover;
-		width: 100%;
 	}
 
 	.aspect-ratio-21x9 {

@@ -7,7 +7,6 @@
 
 	.skeleton {
 		--border-radius: var(--border-radius-s);
-		--font-size: var(--size-m);
 		--height: var(--font-size);
 		--width: 100%;
 
