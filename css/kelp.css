@@ -2,19 +2,19 @@
 @import "./layers/layers.css";
 
 
-/* Core Styles */
-@import "./core/base.css";
-@import "./core/lists.css";
-@import "./core/headings.css";
-@import "./core/blockquotes.css";
-@import "./core/links.css";
-@import "./core/accents.css";
-@import "./core/forms.css";
-@import "./core/buttons.css";
-@import "./core/tables.css";
-@import "./core/details.css";
-@import "./core/media.css";
-@import "./core/code.css";
+/* Native Elements */
+@import "./native/base.css";
+@import "./native/lists.css";
+@import "./native/headings.css";
+@import "./native/blockquotes.css";
+@import "./native/links.css";
+@import "./native/accents.css";
+@import "./native/forms.css";
+@import "./native/buttons.css";
+@import "./native/tables.css";
+@import "./native/details.css";
+@import "./native/media.css";
+@import "./native/code.css";
 
 
 /* Layout */
