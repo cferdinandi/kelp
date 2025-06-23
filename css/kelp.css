@@ -2,6 +2,13 @@
 @import "./layers/layers.css";
 
 
+/* Theme Files */
+@import "./theme/palette.css";
+@import "./theme/colors.css";
+@import "./theme/fonts.css";
+@import "./theme/sizes.css";
+
+
 /* Native Elements */
 @import "./native/base.css";
 @import "./native/lists.css";

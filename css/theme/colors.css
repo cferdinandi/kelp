@@ -9,20 +9,6 @@
 	:where(:root),
 	.kelp-theme-light {
 
-		/* State */
-		--color-mix-hover: black 10%;
-		--color-mix-active: black 20%;
-		--color-mix-transparent: transparent 20%;
-		--color-mix-deleted: transparent 40%;
-		--color-checked: var(--color-blue-50);
-		--color-checked-icon: white;
-
-		/* Focus */
-		--focus-ring-color: var(--color-blue-50);
-		--focus-ring-style: solid;
-		--focus-ring-width: var(--size-6xs);
-		--focus-ring-offset: var(--size-6xs);
-
 		/* Page & Text  */
 		--color-background: white;
 		--color-text-normal: var(--color-gray-10);
@@ -36,6 +22,22 @@
 		--color-text-link-hover: var(--color-blue-40);
 		--decoration-text-link: underline dotted;
 		--decoration-text-link-hover: underline;
+
+		/* State */
+		--color-checked: var(--color-blue-50);
+		--color-checked-icon: white;
+
+		/* Mixes */
+		--color-mix-hover: black 10%;
+		--color-mix-active: black 20%;
+		--color-mix-transparent: transparent 20%;
+		--color-mix-deleted: transparent 40%;
+
+		/* Focus */
+		--focus-ring-color: var(--color-blue-50);
+		--focus-ring-style: solid;
+		--focus-ring-width: var(--size-6xs);
+		--focus-ring-offset: var(--size-6xs);
 
 		/* Fills & Borders */
 		--color-neutral-fill-muted: var(--color-gray-95);
@@ -104,6 +106,7 @@
 		--color-danger-on-vivid: white;
 		--color-danger-outline: var(--color-red-50);
 
+		/* Code Snippets */
 		--color-code-fill: var(--color-gray-10);
 		--color-code-border: var(--color-gray-20);
 		--color-code-on: white;
@@ -114,10 +117,6 @@
 	/* Dark Theme */
 	.kelp-theme-dark {
 
-		/* State */
-		--color-checked: var(--color-blue-60);
-		--focus-ring-color: var(--color-blue-60);
-
 		/* Page & Text  */
 		--color-background: var(--color-gray-10);
 		--color-text-normal: white;
@@ -127,6 +126,10 @@
 		--color-fill-highlight: color-mix(in oklab, var(--color-highlight), transparent 85%);
 		--color-text-link: var(--color-blue-70);
 		--color-text-link-hover: var(--color-blue-80);
+
+		/* State */
+		--color-checked: var(--color-blue-60);
+		--focus-ring-color: var(--color-blue-60);
 
 		/* Fills & Borders */
 		--color-neutral-fill-muted: var(--color-gray-20);
@@ -180,6 +183,7 @@
 		--color-danger-on-accent: var(--color-red-95);
 		--color-danger-outline: var(--color-red-70);
 
+		/* Code Snippets */
 		--color-code-fill: var(--color-gray-05);
 
 	}
