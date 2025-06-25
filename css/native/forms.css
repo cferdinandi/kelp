@@ -48,7 +48,7 @@
 		color: var(--color-text-muted);
 	}
 
-	::-webkit-calendar-picker-indicator {
+	.kelp-theme-dark ::-webkit-calendar-picker-indicator {
 		filter: invert(1);
 	}
 
