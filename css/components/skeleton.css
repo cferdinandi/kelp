@@ -7,7 +7,7 @@
 
 	.skeleton {
 		--border-radius: var(--border-radius-s);
-		--height: var(--font-size);
+		--height: var(--space);
 		--width: 100%;
 
 		animation: loadingPulse 3s ease-in infinite;
