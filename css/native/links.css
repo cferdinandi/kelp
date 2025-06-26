@@ -10,6 +10,7 @@
 		--decoration-hover: var(--decoration-text-link-hover);
 		color: var(--color);
 		text-decoration: var(--decoration);
+		-webkit-text-decoration: var(--decoration);
 		word-wrap: break-word;
 	}
 }
@@ -19,6 +20,7 @@
 	a:hover {
 		color: var(--color-hover);
 		text-decoration: var(--decoration-hover);
+		-webkit-text-decoration: var(--decoration-hover);
 	}
 
 	/**
