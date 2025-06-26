@@ -11,6 +11,12 @@
 		gap: var(--gap);
 	}
 
+	.flex-inline {
+		--gap: 0;
+		display: inline-flex;
+		gap: var(--gap);
+	}
+
 	.direction-row {
 		flex-direction: row;
 	}
