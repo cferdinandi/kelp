@@ -7,13 +7,13 @@
 
 	.skeleton {
 		--border-radius: var(--border-radius-s);
-		--height: var(--font-size);
+		--height: var(--space);
 		--width: 100%;
 
 		animation: loadingPulse 3s ease-in infinite;
-		background-color: var(--color-neutral-light);
+		background-color: var(--color-fill-accent);
 		border-radius: var(--border-radius);
-		margin-block-end: var(--margin-bottom);
+		margin-block-end: var(--size-m);
 		height: var(--height);
 		width: var(--width);
 	}
