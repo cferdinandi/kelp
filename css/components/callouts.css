@@ -22,4 +22,12 @@
 		color: var(--color-text-normal);
 	}
 
+	.callout > :first-child {
+		margin-block-start: 0;
+	}
+
+	.callout > :last-child {
+		margin-block-end: 0;
+	}
+
 }
