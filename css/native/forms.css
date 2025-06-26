@@ -23,7 +23,7 @@
 	}
 
 	label {
-		--gap: var(--size-4xs);
+		--gap: var(--size-5xs);
 		display: flex;
 		align-items: center;
 		column-gap: var(--gap);
