@@ -95,6 +95,7 @@
 		--decoration-hover: var(--decoration-text-link-hover);
 
 		text-decoration: var(--decoration);
+		-webkit-text-decoration: var(--decoration);
 	}
 
 	/**
