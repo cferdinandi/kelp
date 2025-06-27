@@ -140,11 +140,13 @@
 		select
 	):not(
 		[type="checkbox"],
-		[type="radio"]
+		[type="radio"],
+		[type="range"]
 	):focus,
 	:is(
 		[type="checkbox"],
-		[type="radio"]
+		[type="radio"],
+		[type="range"]
 	):focus-visible {
 		outline-color: var(--focus-ring-color);
 		outline-style: var(--focus-ring-style);
