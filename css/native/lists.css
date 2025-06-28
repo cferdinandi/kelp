@@ -23,8 +23,4 @@
 		padding-inline: 0;
 	}
 
-	:is(ul, ol)[class*="gap-"] > li {
-		margin-block-end: var(--gap);
-	}
-
 }
