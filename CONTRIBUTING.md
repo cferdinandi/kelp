@@ -64,8 +64,12 @@ If you're missing any or all of these, no worries! I'll take care of it. But if 
 
 ## Contributor License Agreement
 
-Please note that any Pull Requests must agree to the [Kelp Contributor License Agreement]() in order to be merged into the project. 
+Please note that any Pull Requests must agree to the _Kelp Contributor License Agreement_ below in order to be merged into the project. 
 
 This allows me to dual license PRs under the Kelp Commons and Kelp Pro/Enterprise licenses. I'm unable to accept PRs that don't agree to the contributor license.
 
 Thanks!
+
+> I give Chris Ferdinandi and Go Make Things, LLC permission to license my contributions on any terms they like. I am giving them this license in order to make it possible for them to accept my contributions into their project.
+> 
+> **_As far as the law allows, my contributions come as is, without any warranty or condition, and I will not be liable to anyone for any damages related to this software or this license, under any kind of legal claim._**
