@@ -58,7 +58,9 @@ Before creating a PR, it's a good idea to...
 
 You don't _have_ to do either of these things, but it can prevent wasted or duplicated work.
 
-**Optional nice-to-haves...**
+**Please merge all PRs into the `develop`branch.**
+
+Optional nice-to-haves..
 
 - Written documentation on what was changed, why, and how it works
 - In-code documentation (wherever needed)
