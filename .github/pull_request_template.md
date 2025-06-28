@@ -18,6 +18,19 @@ to be your best writing, just a few words and/or code snippets.
 -->
 
 
+## Ready?
+<!--
+Did you do any of the following? If not, no worries, but if you can
+it's really helpful.
+-->
+
+- [ ] Documented what's new
+- [ ] Added in-code documentation (wherever needed)
+- [ ] Wrote tests for new components/features
+- [ ] Ran the linter to ensure style guidelines were followed
+- [ ] Created a demo
+
+
 ## Kelp Contributor License Agreement
 
 I give Chris Ferdinandi and Go Make Things, LLC permission to license my contributions on any terms they like. I am giving them this license in order to make it possible for them to accept my contributions into their project.

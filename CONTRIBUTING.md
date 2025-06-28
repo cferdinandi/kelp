@@ -2,6 +2,13 @@
 
 Want to help grow and improve Kelp? Awesome! ❤️
 
+- [Code of Conduct](#code-of-conduct)
+- [v0 Alpha](#v0-alph)
+- [Roadmap & Issues](#roadmap--issues)
+- [Code Standards](#code-standards)
+- [Pull Request Process](#pull-request-process)
+- [Contributor License Agreement](#contributor-license-agreement)
+
 
 ## Code of Conduct
 
