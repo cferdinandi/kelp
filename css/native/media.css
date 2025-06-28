@@ -28,7 +28,7 @@
 	 * Make media elements fill full available width
 	 */
 	audio,
-	vido,
+	video,
 	iframe {
 		width: 100%;
 	}
