@@ -12,7 +12,7 @@ Want to help grow and improve Kelp? Awesome! ❤️
 
 ## Code of Conduct
 
-This project and everyone participating in it are governed by the Code of Conduct. By participating, you are expected to uphold this code. 
+This project and everyone participating in it are governed by the [Code of Conduct](https://github.com/cferdinandi/kelp/blob/main/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. 
 
 
 ## v0 Alpha
