@@ -18,29 +18,13 @@
 	 * For semantic reasons, should only be used on unordered lists.
 	 * @link https://matuzo.at/blog/2023/removing-list-styles-without-affecting-semantics
 	 */
-	.list-unstyled,
-	[class*="list-inline"] {
+	.list-unstyled {
 		list-style-type: "";
 		padding-inline: 0;
 	}
 
-	/**
-	 * Display lists on a single line.
-	 */
-
-	[class*="list-inline"] {
-		--gap: var(--size-m);
-		--align: center;
-		display: flex;
-		align-items: var(--align);
-		column-gap: var(--gap);
-		flex-wrap: wrap;
-	}
-
-	@media (max-width: 38rem) {
-		.list-inline-responsive li {
-			min-width: 100%;
-		}
+	:is(ul, ol)[class*="gap-"] > li {
+		margin-block-end: var(--gap);
 	}
 
 }
