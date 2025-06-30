@@ -8,9 +8,9 @@
 
 @layer kelp;
 @layer
-	kelp.palette,
 	kelp.base,
 	kelp.theme, /* 1 */
+	kelp.palette,
 	kelp.core,
 	kelp.extend, /* 2 */
 	kelp.layout,
