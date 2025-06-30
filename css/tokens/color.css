@@ -6,7 +6,7 @@
 /* Light Theme (default) */
 @layer kelp.tokens {
 
-	:where(:root),
+	:where(:root, :root *),
 	.neutral {
 		--color-fill-vivid: var(--color-neutral-fill-vivid);
 		--color-fill-accent: var(--color-neutral-fill-accent);
