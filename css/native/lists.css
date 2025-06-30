@@ -6,12 +6,7 @@
 
 	ul,
 	ol {
-		--gap: 0;
 		padding-inline: var(--size-5xl) 0;
-	}
-
-	:is(ul, ol) > li {
-		margin-block-end: var(--gap);
 	}
 
 	dt {
@@ -36,10 +31,6 @@
 		row-gap: calc(var(--gap) * 0.5);
 		flex-wrap: wrap;
 		align-items: center;
-	}
-
-	.list-inline > li {
-		margin-block-end: initial;
 	}
 
 }
