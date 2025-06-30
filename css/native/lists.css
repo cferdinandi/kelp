@@ -18,9 +18,19 @@
 	 * For semantic reasons, should only be used on unordered lists.
 	 * @link https://matuzo.at/blog/2023/removing-list-styles-without-affecting-semantics
 	 */
-	.list-unstyled {
+	.list-unstyled,
+	.list-inline {
 		list-style-type: "";
 		padding-inline: 0;
+	}
+
+	.list-inline {
+		--gap: var(--size-m);
+		display: flex;
+		column-gap: var(--gap);
+		row-gap: calc(var(--gap) * 0.5);
+		flex-wrap: wrap;
+		align-items: center;
 	}
 
 }
