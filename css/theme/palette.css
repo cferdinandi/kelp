@@ -9,33 +9,43 @@
 
 		--color-red-base: #e50000;
 		--color-red-hue: 29.23;
+		--color-red-chroma: 1;
 
 		--color-orange-base: #ff8d00;
 		--color-orange-hue: 58.75;
+		--color-orange-chroma: 1;
 
 		--color-yellow-base: #ffc107;
 		--color-yellow-hue: 84.9338;
+		--color-yellow-chroma: 1;
 
 		--color-green-base: #028121;
 		--color-green-hue: 145.01;
+		--color-green-chroma: 1;
 
 		--color-cyan-base: #73d7ee;
 		--color-cyan-hue: 214.56;
+		--color-cyan-chroma: 1;
 
 		--color-blue-base: #004cff;
 		--color-blue-hue: 263.27;
+		--color-blue-chroma: 1;
 
 		--color-indigo-base: #5936c2;
 		--color-indigo-hue: 287;
+		--color-indigo-chroma: 1;
 
 		--color-purple-base: #760088;
 		--color-purple-hue: 321.05;
+		--color-purple-chroma: 1;
 
 		--color-pink-base: #ffafc7;
 		--color-pink-hue: 359.86;
+		--color-pink-chroma: 1;
 
 		--color-gray-base: #808080;
 		--color-gray-hue: 0;
+		--color-gray-chroma: 0;
 
 	}
 
@@ -45,125 +55,125 @@
 
 	:where(:root) {
 
-		--color-red-05: oklch(18.5% .08 var(--color-red-hue));
-		--color-red-10: oklch(24% .1 var(--color-red-hue));
-		--color-red-20: oklch(32.5% .135 var(--color-red-hue));
-		--color-red-30: oklch(40% .16 var(--color-red-hue));
-		--color-red-40: oklch(47% .185 var(--color-red-hue));
-		--color-red-50: oklch(57% .2 var(--color-red-hue));
-		--color-red-60: oklch(67% .175 var(--color-red-hue));
-		--color-red-70: oklch(75% .13 var(--color-red-hue));
-		--color-red-80: oklch(83.5% .085 var(--color-red-hue));
-		--color-red-90: oklch(92% .04 var(--color-red-hue));
-		--color-red-95: oklch(96% .02 var(--color-red-hue));
+		--color-red-05: oklch(18.5% calc(.08 * var(--color-red-chroma)) var(--color-red-hue));
+		--color-red-10: oklch(24% calc(.1 * var(--color-red-chroma)) var(--color-red-hue));
+		--color-red-20: oklch(32.5% calc(.135 * var(--color-red-chroma)) var(--color-red-hue));
+		--color-red-30: oklch(40% calc(.16 * var(--color-red-chroma)) var(--color-red-hue));
+		--color-red-40: oklch(47% calc(.185 * var(--color-red-chroma)) var(--color-red-hue));
+		--color-red-50: oklch(57% calc(.2 * var(--color-red-chroma)) var(--color-red-hue));
+		--color-red-60: oklch(67% calc(.175 * var(--color-red-chroma)) var(--color-red-hue));
+		--color-red-70: oklch(75% calc(.13 * var(--color-red-chroma)) var(--color-red-hue));
+		--color-red-80: oklch(83.5% calc(.085 * var(--color-red-chroma)) var(--color-red-hue));
+		--color-red-90: oklch(92% calc(.04 * var(--color-red-chroma)) var(--color-red-hue));
+		--color-red-95: oklch(96% calc(.02 * var(--color-red-chroma)) var(--color-red-hue));
 
-		--color-orange-05: oklch(18.5% .08 var(--color-orange-hue));
-		--color-orange-10: oklch(24% .1 var(--color-orange-hue));
-		--color-orange-20: oklch(32.5% .135 var(--color-orange-hue));
-		--color-orange-30: oklch(40% .16 var(--color-orange-hue));
-		--color-orange-40: oklch(47% .185 var(--color-orange-hue));
-		--color-orange-50: oklch(57% .2 var(--color-orange-hue));
-		--color-orange-60: oklch(67% .175 var(--color-orange-hue));
-		--color-orange-70: oklch(75% .13 var(--color-orange-hue));
-		--color-orange-80: oklch(83.5% .085 var(--color-orange-hue));
-		--color-orange-90: oklch(92% .04 var(--color-orange-hue));
-		--color-orange-95: oklch(96% .02 var(--color-orange-hue));
+		--color-orange-05: oklch(18.5% calc(.08 * var(--color-orange-chroma)) var(--color-orange-hue));
+		--color-orange-10: oklch(24% calc(.1 * var(--color-orange-chroma)) var(--color-orange-hue));
+		--color-orange-20: oklch(32.5% calc(.135 * var(--color-orange-chroma)) var(--color-orange-hue));
+		--color-orange-30: oklch(40% calc(.16 * var(--color-orange-chroma)) var(--color-orange-hue));
+		--color-orange-40: oklch(47% calc(.185 * var(--color-orange-chroma)) var(--color-orange-hue));
+		--color-orange-50: oklch(57% calc(.2 * var(--color-orange-chroma)) var(--color-orange-hue));
+		--color-orange-60: oklch(67% calc(.175 * var(--color-orange-chroma)) var(--color-orange-hue));
+		--color-orange-70: oklch(75% calc(.13 * var(--color-orange-chroma)) var(--color-orange-hue));
+		--color-orange-80: oklch(83.5% calc(.085 * var(--color-orange-chroma)) var(--color-orange-hue));
+		--color-orange-90: oklch(92% calc(.04 * var(--color-orange-chroma)) var(--color-orange-hue));
+		--color-orange-95: oklch(96% calc(.02 * var(--color-orange-chroma)) var(--color-orange-hue));
 
-		--color-yellow-05: oklch(18.5% .08 var(--color-yellow-hue));
-		--color-yellow-10: oklch(24% .1 var(--color-yellow-hue));
-		--color-yellow-20: oklch(32.5% .135 var(--color-yellow-hue));
-		--color-yellow-30: oklch(40% .16 var(--color-yellow-hue));
-		--color-yellow-40: oklch(47% .185 var(--color-yellow-hue));
-		--color-yellow-50: oklch(57% .2 var(--color-yellow-hue));
-		--color-yellow-60: oklch(67% .175 var(--color-yellow-hue));
-		--color-yellow-70: oklch(75% .13 var(--color-yellow-hue));
-		--color-yellow-80: oklch(83.5% .085 var(--color-yellow-hue));
-		--color-yellow-90: oklch(92% .04 var(--color-yellow-hue));
-		--color-yellow-95: oklch(96% .02 var(--color-yellow-hue));
+		--color-yellow-05: oklch(18.5% calc(.08 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+		--color-yellow-10: oklch(24% calc(.1 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+		--color-yellow-20: oklch(32.5% calc(.135 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+		--color-yellow-30: oklch(40% calc(.16 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+		--color-yellow-40: oklch(47% calc(.185 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+		--color-yellow-50: oklch(57% calc(.2 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+		--color-yellow-60: oklch(67% calc(.175 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+		--color-yellow-70: oklch(75% calc(.13 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+		--color-yellow-80: oklch(83.5% calc(.085 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+		--color-yellow-90: oklch(92% calc(.04 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+		--color-yellow-95: oklch(96% calc(.02 * var(--color-yellow-chroma)) var(--color-yellow-hue));
 
-		--color-green-05: oklch(18.5% .08 var(--color-green-hue));
-		--color-green-10: oklch(24% .1 var(--color-green-hue));
-		--color-green-20: oklch(32.5% .135 var(--color-green-hue));
-		--color-green-30: oklch(40% .16 var(--color-green-hue));
-		--color-green-40: oklch(47% .185 var(--color-green-hue));
-		--color-green-50: oklch(57% .2 var(--color-green-hue));
-		--color-green-60: oklch(67% .175 var(--color-green-hue));
-		--color-green-70: oklch(75% .13 var(--color-green-hue));
-		--color-green-80: oklch(83.5% .085 var(--color-green-hue));
-		--color-green-90: oklch(92% .04 var(--color-green-hue));
-		--color-green-95: oklch(96% .02 var(--color-green-hue));
+		--color-green-05: oklch(18.5% calc(.08 * var(--color-green-chroma)) var(--color-green-hue));
+		--color-green-10: oklch(24% calc(.1 * var(--color-green-chroma)) var(--color-green-hue));
+		--color-green-20: oklch(32.5% calc(.135 * var(--color-green-chroma)) var(--color-green-hue));
+		--color-green-30: oklch(40% calc(.16 * var(--color-green-chroma)) var(--color-green-hue));
+		--color-green-40: oklch(47% calc(.185 * var(--color-green-chroma)) var(--color-green-hue));
+		--color-green-50: oklch(57% calc(.2 * var(--color-green-chroma)) var(--color-green-hue));
+		--color-green-60: oklch(67% calc(.175 * var(--color-green-chroma)) var(--color-green-hue));
+		--color-green-70: oklch(75% calc(.13 * var(--color-green-chroma)) var(--color-green-hue));
+		--color-green-80: oklch(83.5% calc(.085 * var(--color-green-chroma)) var(--color-green-hue));
+		--color-green-90: oklch(92% calc(.04 * var(--color-green-chroma)) var(--color-green-hue));
+		--color-green-95: oklch(96% calc(.02 * var(--color-green-chroma)) var(--color-green-hue));
 
-		--color-cyan-05: oklch(18.5% .08 var(--color-cyan-hue));
-		--color-cyan-10: oklch(24% .1 var(--color-cyan-hue));
-		--color-cyan-20: oklch(32.5% .135 var(--color-cyan-hue));
-		--color-cyan-30: oklch(40% .16 var(--color-cyan-hue));
-		--color-cyan-40: oklch(47% .185 var(--color-cyan-hue));
-		--color-cyan-50: oklch(57% .2 var(--color-cyan-hue));
-		--color-cyan-60: oklch(67% .175 var(--color-cyan-hue));
-		--color-cyan-70: oklch(75% .13 var(--color-cyan-hue));
-		--color-cyan-80: oklch(83.5% .085 var(--color-cyan-hue));
-		--color-cyan-90: oklch(92% .04 var(--color-cyan-hue));
-		--color-cyan-95: oklch(96% .02 var(--color-cyan-hue));
+		--color-cyan-05: oklch(18.5% calc(.08 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+		--color-cyan-10: oklch(24% calc(.1 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+		--color-cyan-20: oklch(32.5% calc(.135 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+		--color-cyan-30: oklch(40% calc(.16 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+		--color-cyan-40: oklch(47% calc(.185 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+		--color-cyan-50: oklch(57% calc(.2 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+		--color-cyan-60: oklch(67% calc(.175 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+		--color-cyan-70: oklch(75% calc(.13 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+		--color-cyan-80: oklch(83.5% calc(.085 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+		--color-cyan-90: oklch(92% calc(.04 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+		--color-cyan-95: oklch(96% calc(.02 * var(--color-cyan-chroma)) var(--color-cyan-hue));
 
-		--color-blue-05: oklch(18.5% .08 var(--color-blue-hue));
-		--color-blue-10: oklch(24% .1 var(--color-blue-hue));
-		--color-blue-20: oklch(32.5% .135 var(--color-blue-hue));
-		--color-blue-30: oklch(40% .16 var(--color-blue-hue));
-		--color-blue-40: oklch(47% .185 var(--color-blue-hue));
-		--color-blue-50: oklch(57% .2 var(--color-blue-hue));
-		--color-blue-60: oklch(67% .175 var(--color-blue-hue));
-		--color-blue-70: oklch(75% .13 var(--color-blue-hue));
-		--color-blue-80: oklch(83.5% .085 var(--color-blue-hue));
-		--color-blue-90: oklch(92% .04 var(--color-blue-hue));
-		--color-blue-95: oklch(96% .02 var(--color-blue-hue));
+		--color-blue-05: oklch(18.5% calc(.08 * var(--color-blue-chroma)) var(--color-blue-hue));
+		--color-blue-10: oklch(24% calc(.1 * var(--color-blue-chroma)) var(--color-blue-hue));
+		--color-blue-20: oklch(32.5% calc(.135 * var(--color-blue-chroma)) var(--color-blue-hue));
+		--color-blue-30: oklch(40% calc(.16 * var(--color-blue-chroma)) var(--color-blue-hue));
+		--color-blue-40: oklch(47% calc(.185 * var(--color-blue-chroma)) var(--color-blue-hue));
+		--color-blue-50: oklch(57% calc(.2 * var(--color-blue-chroma)) var(--color-blue-hue));
+		--color-blue-60: oklch(67% calc(.175 * var(--color-blue-chroma)) var(--color-blue-hue));
+		--color-blue-70: oklch(75% calc(.13 * var(--color-blue-chroma)) var(--color-blue-hue));
+		--color-blue-80: oklch(83.5% calc(.085 * var(--color-blue-chroma)) var(--color-blue-hue));
+		--color-blue-90: oklch(92% calc(.04 * var(--color-blue-chroma)) var(--color-blue-hue));
+		--color-blue-95: oklch(96% calc(.02 * var(--color-blue-chroma)) var(--color-blue-hue));
 
-		--color-indigo-05: oklch(18.5% .08 var(--color-indigo-hue));
-		--color-indigo-10: oklch(24% .1 var(--color-indigo-hue));
-		--color-indigo-20: oklch(32.5% .135 var(--color-indigo-hue));
-		--color-indigo-30: oklch(40% .16 var(--color-indigo-hue));
-		--color-indigo-40: oklch(47% .185 var(--color-indigo-hue));
-		--color-indigo-50: oklch(57% .2 var(--color-indigo-hue));
-		--color-indigo-60: oklch(67% .175 var(--color-indigo-hue));
-		--color-indigo-70: oklch(75% .13 var(--color-indigo-hue));
-		--color-indigo-80: oklch(83.5% .085 var(--color-indigo-hue));
-		--color-indigo-90: oklch(92% .04 var(--color-indigo-hue));
-		--color-indigo-95: oklch(96% .02 var(--color-indigo-hue));
+		--color-indigo-05: oklch(18.5% calc(.08 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+		--color-indigo-10: oklch(24% calc(.1 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+		--color-indigo-20: oklch(32.5% calc(.135 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+		--color-indigo-30: oklch(40% calc(.16 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+		--color-indigo-40: oklch(47% calc(.185 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+		--color-indigo-50: oklch(57% calc(.2 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+		--color-indigo-60: oklch(67% calc(.175 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+		--color-indigo-70: oklch(75% calc(.13 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+		--color-indigo-80: oklch(83.5% calc(.085 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+		--color-indigo-90: oklch(92% calc(.04 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+		--color-indigo-95: oklch(96% calc(.02 * var(--color-indigo-chroma)) var(--color-indigo-hue));
 
-		--color-purple-05: oklch(18.5% .08 var(--color-purple-hue));
-		--color-purple-10: oklch(24% .1 var(--color-purple-hue));
-		--color-purple-20: oklch(32.5% .135 var(--color-purple-hue));
-		--color-purple-30: oklch(40% .16 var(--color-purple-hue));
-		--color-purple-40: oklch(47% .185 var(--color-purple-hue));
-		--color-purple-50: oklch(57% .2 var(--color-purple-hue));
-		--color-purple-60: oklch(67% .175 var(--color-purple-hue));
-		--color-purple-70: oklch(75% .13 var(--color-purple-hue));
-		--color-purple-80: oklch(83.5% .085 var(--color-purple-hue));
-		--color-purple-90: oklch(92% .04 var(--color-purple-hue));
-		--color-purple-95: oklch(96% .02 var(--color-purple-hue));
+		--color-purple-05: oklch(18.5% calc(.08 * var(--color-purple-chroma)) var(--color-purple-hue));
+		--color-purple-10: oklch(24% calc(.1 * var(--color-purple-chroma)) var(--color-purple-hue));
+		--color-purple-20: oklch(32.5% calc(.135 * var(--color-purple-chroma)) var(--color-purple-hue));
+		--color-purple-30: oklch(40% calc(.16 * var(--color-purple-chroma)) var(--color-purple-hue));
+		--color-purple-40: oklch(47% calc(.185 * var(--color-purple-chroma)) var(--color-purple-hue));
+		--color-purple-50: oklch(57% calc(.2 * var(--color-purple-chroma)) var(--color-purple-hue));
+		--color-purple-60: oklch(67% calc(.175 * var(--color-purple-chroma)) var(--color-purple-hue));
+		--color-purple-70: oklch(75% calc(.13 * var(--color-purple-chroma)) var(--color-purple-hue));
+		--color-purple-80: oklch(83.5% calc(.085 * var(--color-purple-chroma)) var(--color-purple-hue));
+		--color-purple-90: oklch(92% calc(.04 * var(--color-purple-chroma)) var(--color-purple-hue));
+		--color-purple-95: oklch(96% calc(.02 * var(--color-purple-chroma)) var(--color-purple-hue));
 
-		--color-pink-05: oklch(18.5% .08 var(--color-pink-hue));
-		--color-pink-10: oklch(24% .1 var(--color-pink-hue));
-		--color-pink-20: oklch(32.5% .135 var(--color-pink-hue));
-		--color-pink-30: oklch(40% .16 var(--color-pink-hue));
-		--color-pink-40: oklch(47% .185 var(--color-pink-hue));
-		--color-pink-50: oklch(57% .2 var(--color-pink-hue));
-		--color-pink-60: oklch(67% .175 var(--color-pink-hue));
-		--color-pink-70: oklch(75% .13 var(--color-pink-hue));
-		--color-pink-80: oklch(83.5% .085 var(--color-pink-hue));
-		--color-pink-90: oklch(92% .04 var(--color-pink-hue));
-		--color-pink-95: oklch(96% .02 var(--color-pink-hue));
+		--color-pink-05: oklch(18.5% calc(.08 * var(--color-pink-chroma)) var(--color-pink-hue));
+		--color-pink-10: oklch(24% calc(.1 * var(--color-pink-chroma)) var(--color-pink-hue));
+		--color-pink-20: oklch(32.5% calc(.135 * var(--color-pink-chroma)) var(--color-pink-hue));
+		--color-pink-30: oklch(40% calc(.16 * var(--color-pink-chroma)) var(--color-pink-hue));
+		--color-pink-40: oklch(47% calc(.185 * var(--color-pink-chroma)) var(--color-pink-hue));
+		--color-pink-50: oklch(57% calc(.2 * var(--color-pink-chroma)) var(--color-pink-hue));
+		--color-pink-60: oklch(67% calc(.175 * var(--color-pink-chroma)) var(--color-pink-hue));
+		--color-pink-70: oklch(75% calc(.13 * var(--color-pink-chroma)) var(--color-pink-hue));
+		--color-pink-80: oklch(83.5% calc(.085 * var(--color-pink-chroma)) var(--color-pink-hue));
+		--color-pink-90: oklch(92% calc(.04 * var(--color-pink-chroma)) var(--color-pink-hue));
+		--color-pink-95: oklch(96% calc(.02 * var(--color-pink-chroma)) var(--color-pink-hue));
 
-		--color-gray-05: oklch(18.5% 0 var(--color-gray-hue));
-		--color-gray-10: oklch(24% 0 var(--color-gray-hue));
-		--color-gray-20: oklch(32.5% 0 var(--color-gray-hue));
-		--color-gray-30: oklch(40% 0 var(--color-gray-hue));
-		--color-gray-40: oklch(47% 0 var(--color-gray-hue));
-		--color-gray-50: oklch(57% 0 var(--color-gray-hue));
-		--color-gray-60: oklch(67% 0 var(--color-gray-hue));
-		--color-gray-70: oklch(75% 0 var(--color-gray-hue));
-		--color-gray-80: oklch(83.5% 0 var(--color-gray-hue));
-		--color-gray-90: oklch(92% 0 var(--color-gray-hue));
-		--color-gray-95: oklch(96% 0 var(--color-gray-hue));
+		--color-gray-05: oklch(18.5% calc(.08 * var(--color-gray-chroma)) var(--color-gray-hue));
+		--color-gray-10: oklch(24% calc(.1 * var(--color-gray-chroma)) var(--color-gray-hue));
+		--color-gray-20: oklch(32.5% calc(.135 * var(--color-gray-chroma)) var(--color-gray-hue));
+		--color-gray-30: oklch(40% calc(.16 * var(--color-gray-chroma)) var(--color-gray-hue));
+		--color-gray-40: oklch(47% calc(.185 * var(--color-gray-chroma)) var(--color-gray-hue));
+		--color-gray-50: oklch(57% calc(.2 * var(--color-gray-chroma)) var(--color-gray-hue));
+		--color-gray-60: oklch(67% calc(.175 * var(--color-gray-chroma)) var(--color-gray-hue));
+		--color-gray-70: oklch(75% calc(.13 * var(--color-gray-chroma)) var(--color-gray-hue));
+		--color-gray-80: oklch(83.5% calc(.085 * var(--color-gray-chroma)) var(--color-gray-hue));
+		--color-gray-90: oklch(92% calc(.04 * var(--color-gray-chroma)) var(--color-gray-hue));
+		--color-gray-95: oklch(96% calc(.02 * var(--color-gray-chroma)) var(--color-gray-hue));
 
 	}
 
