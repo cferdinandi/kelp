@@ -73,10 +73,6 @@
 		margin-block-start: var(--space);
 	}
 
-	.margin-start-gap {
-		margin-block-start: var(--gap);
-	}
-
 
 	/**
 	 * Margin Block End
@@ -140,6 +136,10 @@
 
 	.margin-end-6xl {
 		margin-block-end: var(--size-6xl);
+	}
+
+	.margin-end-space {
+		margin-block-end: var(--space);
 	}
 
 }

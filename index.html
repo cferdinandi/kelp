@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Kelp</title>
+		<meta name="description" content="A UI library for people who love HTML, powered by modern CSS and Web Components.">
+
+		<!-- Mobile Screen Resizing -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Kelp CSS -->
+		<link rel="stylesheet" type="text/css" href="./css/kelp.css">
+
+		<!-- Dark Mode -->
+		<script src="./js/dark-mode-auto.js"></script>
+	</head>
+	<body>
+
+		<main>
+
+			<div class="container">
+				<h1>Kelp</h1>
+				<p>This is the "kitchen sink" demo that includes all of the components in one spot.</p>
+
+				<p><a class="btn secondary size-l" href="https://kelpui.com">View the Docs &rarr;</a></p>
+
+
+				<simple-toc heading="On this page..."></simple-toc>
+
+
+				<h2>Containers</h2>
+			</div>
+
+				<div class="container-xs callout">
+					<code>.container-xs</code>
+				</div>
+
+				<div class="container-s callout">
+					<code>.container-s</code>
+				</div>
+
+				<div class="container-m callout">
+					<code>.container</code> or <code>.container-m</code>
+				</div>
+
+				<div class="container-l callout">
+					<code>.container-l</code>
+				</div>
+
+				<div class="container-xl callout">
+					<code>.container-xl</code>
+				</div>
+
+				<div class="container-2xl callout">
+					<code>.container-2xl</code>
+				</div>
+
+			<div class="container">
+
+				<div class="container-full callout margin-end-space">
+					<code>.container-full</code>
+				</div>
+
+
+				<h2>Cluster</h2>
+
+				<div class="cluster margin-end-space">
+					<div class="callout">Merlin</div>
+					<div class="callout">Gandalf</div>
+					<div class="callout">Radagast and his animals</div>
+					<div class="callout">Wand</div>
+					<div class="callout">Sword</div>
+					<div class="callout">Wizard Staff</div>
+					<div class="callout">The magical secrets of the universe</div>
+					<div class="callout">Potions</div>
+					<div class="callout">Cauldron</div>
+					<div class="callout">Supercalifragilisticexpialidocious</div>
+				</div>
+
+
+				<h2>Grid</h2>
+
+				<div class="grid margin-end-space">
+					<div class="item-third callout">.item-third</div>
+					<div class="item-two-thirds callout">.item-two-thirds</div>
+				</div>
+
+				<div class="grid margin-end-space">
+					<div class="item-fourth callout">.item-fourth</div>
+					<div class="item-three-fourths callout">.item-three-fourths</div>
+				</div>
+
+				<div class="grid margin-end-space">
+					<div class="item-half callout">.item-half</div>
+					<div class="item-half callout">.item-half</div>
+				</div>
+
+				<div class="grid margin-end-space">
+					<div class="item-fourth callout">.item-fourth</div>
+					<div class="item-half callout">.item-half</div>
+					<div class="item-fourth callout">.item-fourth</div>
+				</div>
+
+				<h3>Content Choreography</h3>
+
+				<div class="grid-m margin-end-space">
+					<div class="item-third callout">1</div>
+					<div class="item-third start-first callout">2</div>
+					<div class="item-third callout">3</div>
+				</div>
+
+				<div class="grid-m margin-end-space">
+					<div class="item-third callout">1</div>
+					<div class="item-third start-two-thirds callout">2</div>
+				</div>
+
+				<div class="grid-m margin-end-space">
+					<div class="item-third start-two-thirds callout">1</div>
+					<div class="item-third start-third callout">2</div>
+					<div class="item-third start-first callout">3</div>
+				</div>
+
+				<h3>Automatic Grid</h3>
+
+				<div class="grid-auto">
+					<div class="callout">Merlin</div>
+					<div class="callout">Gandalf</div>
+					<div class="callout">Radagast and his animals</div>
+					<div class="callout">Wand</div>
+					<div class="callout">Sword</div>
+					<div class="callout">Wizard Staff</div>
+					<div class="callout">The magical secrets of the universe</div>
+					<div class="callout">Potions</div>
+				</div>
+
+
+				<h2>Sidecar</h2>
+
+				<div class="sidecar margin-end-space">
+					<div class="callout" style="width: 9em">👋</div>
+					<div class="callout">Hello there!</div>
+				</div>
+
+				<div class="sidecar-end margin-end-space">
+					<div>
+						<label class="visually-hidden" for="search">Search this site</label>
+						<input type="text" id="search">
+					</div>
+					<div>
+						<button class="btn-block primary">Search</button>
+					</div>
+				</div>
+
+
+				<h2>Split</h2>
+
+				<div class="split margin-end-space">
+					<div class="callout">...</div>
+					<div class="callout">...</div>
+				</div>
+
+
+				<h2>Stack</h2>
+
+				<div class="stack margin-end-space">
+					<div class="callout">Merlin</div>
+					<div class="callout">Gandalf</div>
+					<div class="callout">Radagast</div>
+				</div>
+
+
+				<h2>Text</h2>
+
+				<p>
+					This is default text.<br>
+					<strong>This is bold...</strong><br>
+					<em>...and this is italic.</em><br>
+					<strong><em>This is what they look like together.</em></strong><br>
+					<del>This is strikethrough text.</del><br>
+					<mark>This text is highlighted.</mark><br>
+					Superscripts<sup>1</sup> and subscripts<sub>xyz</sub>
+				</p>
+
+
+				<h2>Links</h2>
+
+				<p>
+					<a href="#">Regular Link</a><br>
+					<a class="link-subtle" href="#">Subtle Link</a>
+				</p>
+
+
+				<h2>Headings</h2>
+
+				<h1>h1. Heading 1</h1>
+				<h2>h2. Heading 2</h2>
+				<h3>h3. Heading 3</h3>
+				<h4>h4. Heading 4</h4>
+				<h5>h5. Heading 5</h5>
+				<h6>h6. Heading 6</h6>
+				<h2 class="h4">This is an h2 heading styled like an h4</h2>
+
+
+				<h2>Lists</h2>
+
+				<ul>
+					<li>Whale</li>
+					<li>Shark</li>
+					<li>
+						Dolphin
+						<ul>
+							<li>Smart</li>
+							<li>Friend of humans</li>
+						</ul>
+					</li>
+				</ul>
+
+				<ol>
+					<li>Merlin</li>
+					<li>Radagast</li>
+					<li>
+						Gandalf
+						<ul>
+							<li>Wizard</li>
+							<li>Friend of the small folk</li>
+						</ul>
+					</li>
+				</ol>
+
+				<ul class="list-unstyled">
+					<li>Wand</li>
+					<li>Potions</li>
+					<li>Wizard Staff</li>
+				</ul>
+
+				<ul class="list-inline">
+					<li>Wand</li>
+					<li>Potions</li>
+					<li>Wizard Staff</li>
+				</ul>
+
+				<dl>
+				    <dt>Definition List</dt>
+				    <dd>Encloses a list of pairs of terms and descriptions. Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).</dd>
+
+				    <dt>Here's another term</dt>
+				    <dd>And here's the definition that would go with it.</dd>
+				</dl>
+
+
+				<h2>Tables</h2>
+
+				<table>
+					<thead>
+						<tr>
+							<th scope="col">First Name</th>
+							<th scope="col">Last Name</th>
+							<th scope="col">Super Hero</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Peter</td>
+							<td>Parker</td>
+							<td>Spiderman</td>
+						</tr>
+						<tr>
+							<td>Bruce</td>
+							<td>Wayne</td>
+							<td>Batman</td>
+						</tr>
+						<tr>
+							<td>Clark</td>
+							<td>Kent</td>
+							<td>Superman</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table class="table-striped">
+					<thead>
+						<tr>
+							<th scope="col">First Name</th>
+							<th scope="col">Last Name</th>
+							<th scope="col">Super Hero</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Peter</td>
+							<td>Parker</td>
+							<td>Spiderman</td>
+						</tr>
+						<tr>
+							<td>Bruce</td>
+							<td>Wayne</td>
+							<td>Batman</td>
+						</tr>
+						<tr>
+							<td>Clark</td>
+							<td>Kent</td>
+							<td>Superman</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table class="table-striped secondary">
+					<thead>
+						<tr>
+							<th scope="col">First Name</th>
+							<th scope="col">Last Name</th>
+							<th scope="col">Super Hero</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Peter</td>
+							<td>Parker</td>
+							<td>Spiderman</td>
+						</tr>
+						<tr>
+							<td>Bruce</td>
+							<td>Wayne</td>
+							<td>Batman</td>
+						</tr>
+						<tr>
+							<td>Clark</td>
+							<td>Kent</td>
+							<td>Superman</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="scroll-horizontal margin-end-space">
+				    <table>
+				        <thead>
+				            <tr>
+				                <th scope="col">First</th>
+				                <th scope="col">Last</th>
+				                <th scope="col">Hero Name</th>
+				                <th scope="col">Super Power</th>
+				                <th scope="col">Costume Color</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				            <tr>
+				                <td>Peter</td>
+				                <td>Parker</td>
+				                <td>Spiderman</td>
+				                <td>Spider Stuff</td>
+				                <td>Red and Blue</td>
+				            </tr>
+				            <tr>
+				                <td>Bruce</td>
+				                <td>Wayne</td>
+				                <td>Batman</td>
+				                <td>Bat Stuff</td>
+				                <td>Black</td>
+				            </tr>
+				            <tr>
+				                <td>Tony</td>
+				                <td>Stark</td>
+				                <td>Ironman</td>
+				                <td>Iron Stuff</td>
+				                <td>Red and Yellow</td>
+				            </tr>
+				        </tbody>
+				    </table>
+				</div>
+
+
+				<h2>Blockquote</h2>
+
+				<blockquote>
+					Someone once said something so important, it was deemed worthy of repeating here in the form of a blockquote. This is that blockquote.
+					<cite>- Someone Important</cite>
+				</blockquote>
+
+				<blockquote class="secondary">
+					Someone once said something so important, it was deemed worthy of repeating here in the form of a blockquote. This is that blockquote.
+					<cite>- Someone Important</cite>
+				</blockquote>
+
+
+				<h2>Code</h2>
+
+				Inline code: <code>.js-example</code>.
+
+				<pre><code>/* Preformatted Text */
+.js-example {
+	color: #272727;
+	background: #ffffff;
+}</code></pre>
+
+
+				<h2>Images</h2>
+
+				<img
+					height="960"
+					width="1440"
+					alt="A gorgeous jellyfish drifting in the ocean"
+					src="https://kelpui.com/img/docs/jellyfish.jpg"
+				>
+
+				<figure>
+					<img
+						height="960"
+						width="1440"
+						alt="A gorgeous jellyfish drifting in the ocean"
+						src="https://kelpui.com/img/docs/jellyfish.jpg"
+					>
+					<figcaption>Ran into this big fella on my last snorkeling trip (not really!)</figcaption>
+				</figure>
+
+
+				<h2>Multimedia</h2>
+
+				<video controls src="https://36100d17-642b-427f-8851-5c2f94e1df79.mdnplay.dev/shared-assets/videos/flower.mp4"></video>
+
+				<audio controls="controls" src="https://cdn.gomakethings.com/podcast/episode148_bye-bye-build-steps.mp3"></audio>
+
+				<iframe class="aspect-ratio-16x9" width="560" height="315" src="https://www.youtube.com/embed/u3aauiR9M88?si=Y9nr4jGId4IrKKDB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+				<h2>Dividers</h2>
+
+				<hr>
+
+
+				<h2>Buttons</h2>
+
+				<p class="cluster align-end">
+					<button>Default Button</button>
+					<button class="size-xl">Large Button</button>
+					<button class="size-xs">Small Button</button>
+				</p>
+
+				<p class="cluster">
+					<button>Neutral</button>
+					<button class="primary">Primary</button>
+					<button class="secondary">Secondary</button>
+					<button class="success">Success</button>
+					<button class="danger">Danger</button>
+					<button class="warning">Warning</button>
+				</p>
+
+				<p class="cluster">
+					<button class="muted">Neutral</button>
+					<button class="muted primary">Primary</button>
+					<button class="muted secondary">Secondary</button>
+					<button class="muted success">Success</button>
+					<button class="muted danger">Danger</button>
+					<button class="muted warning">Warning</button>
+				</p>
+
+				<p class="cluster">
+					<button class="outline">Neutral</button>
+					<button class="outline primary">Primary</button>
+					<button class="outline secondary">Secondary</button>
+					<button class="outline success">Success</button>
+					<button class="outline danger">Danger</button>
+					<button class="outline warning">Warning</button>
+				</p>
+
+				<p class="stack align-center">
+					<button class="btn-block">Block Button</button>
+					<button class="btn-block">Block Button</button>
+				</p>
+
+				<p class="cluster align-center">
+					<a class="btn" href="#">This is a Link</a>
+					<button class="btn-link">This is a button</button>
+					<button class="btn-link link-subtle">So is this</button>
+				</p>
+
+
+				<h2>Forms</h2>
+
+				<div class="stack">
+					<div>
+						<label for="greeting">What's your preferred greeting?</label>
+						<input type="text" id="greeting" name="greeting">
+					</div>
+
+					<div>
+						<label for="vacation">What's your favorite vacation spot?</label>
+						<textarea type="text" id="vacation" name="vacation"></textarea>
+					</div>
+
+					<div>
+						<label for="password">Password</label>
+						<input type="password" id="password" name="password">
+					</div>
+
+					<div>
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email">
+					</div>
+
+					<div>
+						<label for="tel">Telephone</label>
+						<input type="tel" id="tel" name="tel">
+					</div>
+
+					<div>
+						<label for="num">Number</label>
+						<input type="num" id="num" name="num">
+					</div>
+
+					<div>
+						<label for="url">URL</label>
+						<input type="url" id="url" name="url">
+					</div>
+
+					<div>
+						<label for="greeting-readonly">What's your preferred greeting (readonly)?</label>
+						<input
+							type="text"
+							id="greeting-readonly"
+							name="greeting"
+							value="Hey there!"
+							readonly
+						>
+					</div>
+
+					<div>
+						<label for="vacation-readonly">What's your favorite vacation spot (readonly)?</label>
+						<textarea
+							type="text"
+							id="vacation-readonly"
+							name="vacation"
+							readonly
+						>Anywhere with sun and sand!</textarea>
+					</div>
+
+					<label>
+						<input type="checkbox" name="awesome">
+						I love Pixar movies
+					</label>
+
+					<fieldset>
+						<legend>What's your favorite Pixar movie?</legend>
+
+						<label>
+							<input type="radio" name="movie" value="up">
+							Up!
+						</label>
+						<label>
+							<input type="radio" name="movie" value="wall-e">
+							WALL-E
+						</label>
+						<label>
+							<input type="radio" name="movie" value="toy-story">
+							Toy Story
+						</label>
+					</fieldset>
+
+					<div>
+						<label for="wizard">Who is the best wizard?</label>
+						<select id="wizard" name="wizard">
+							<option value="merlin">Merlin the Wise</option>
+							<option value="gandalf">Gandalf the Gray</option>
+							<option value="radagast">Radagast the Brown</option>
+						</select>
+					</div>
+
+					<div>
+						<label for="color">Pick your favorite color</label>
+						<input type="color" id="color" name="color">
+					</div>
+
+					<div>
+						<label for="start">When will you arrive?</label>
+						<div class="flex">
+							<input type="date" id="start" name="start">
+						</div>
+					</div>
+
+					<div>
+						<label for="reservation">Reservation Time</label>
+						<div class="flex">
+							<input type="time" id="reservation" name="reservation">
+						</div>
+					</div>
+
+					<div>
+						<label for="reservation">Book an Appointment</label>
+						<div class="flex">
+							<input type="datetime-local" id="appointment" name="appointment">
+						</div>
+					</div>
+				</div>
+
+
+				<h2>Avatar</h2>
+
+				<p>
+					<img
+						class="avatar"
+						alt="A headshot of a white male in a purple gingham shirt with a shaved head and stubble."
+						src="https://gomakethings.com/img/chris-ferdinandi-high-res.jpg"
+						width="175"
+						height="175"
+					>
+				</p>
+
+
+				<h2>Callouts</h2>
+
+				<div class="stack margin-end-space">
+					<div class="callout">Neutral Callout</div>
+					<div class="callout primary">Primary Callout</div>
+					<div class="callout secondary">Secondary Callout</div>
+					<div class="callout success">Success Callout</div>
+					<div class="callout danger">Danger Callout</div>
+					<div class="callout warning">Warning Callout</div>
+				</div>
+
+				<div class="stack margin-end-space">
+					<div class="callout vivid">Neutral Callout</div>
+					<div class="callout vivid primary">Primary Callout</div>
+					<div class="callout vivid secondary">Secondary Callout</div>
+					<div class="callout vivid success">Success Callout</div>
+					<div class="callout vivid danger">Danger Callout</div>
+					<div class="callout vivid warning">Warning Callout</div>
+				</div>
+
+				<div class="stack margin-end-space">
+					<div class="callout outline">Neutral Callout</div>
+					<div class="callout outline primary">Primary Callout</div>
+					<div class="callout outline secondary">Secondary Callout</div>
+					<div class="callout outline success">Success Callout</div>
+					<div class="callout outline danger">Danger Callout</div>
+					<div class="callout outline warning">Warning Callout</div>
+				</div>
+
+				<div class="callout success sidecar margin-end-space">
+					<div class="margin-start-5xs">
+						<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg>
+					</div>
+					<div><strong>Hey!</strong> You're awesome!</div>
+				</div>
+
+
+				<h2>Details &amp; Summary</h2>
+
+				<details class="margin-end-space">
+					<summary><strong>The Toggle</strong></summary>
+					The content.
+				</details>
+
+				<div class="margin-end-space">
+					<details>
+						<summary><strong>Callout Content</strong></summary>
+						<div class="callout">
+							The content.
+						</div>
+					</details>
+				</div>
+
+				<div class="margin-end-space">
+					<div class="callout outline">
+						<details>
+							<summary><strong>Callout Wrapper</strong></summary>
+							The content.
+						</details>
+					</div>
+				</div>
+
+				<h3>Details Groups</h3>
+
+				<details>
+					<summary><strong>Merlin</strong></summary>
+					The wizard...
+				</details>
+
+				<details>
+					<summary><strong>Gandalf</strong></summary>
+					The gray...
+				</details>
+
+				<details>
+					<summary><strong>Radagast</strong></summary>
+					The dude who talks to animals...
+				</details>
+
+
+				<h2>Skeleton</h2>
+
+				<div class="sidecar margin-end-space">
+					<div>
+						<div class="skeleton" style="--height: 8em; --width: 8em; --border-radius: 50%;"></div>
+					</div>
+					<div class="stack">
+						<div class="skeleton" style="--width: 8em;"></div>
+						<div class="skeleton"></div>
+						<div class="skeleton" style="--width: 12em;"></div>
+						<div class="skeleton" style="--height: 2em; --width: 6em;"></div>
+					</div>
+				</div>
+
+
+				<h2>Visibility</h2>
+
+				<p>
+					<button>
+						<span class="visually-hidden">
+							Favorite This
+						</span>
+						<span aria-hidden="true">
+							❤️
+						</span>
+					</button>
+				</p>
+
+				<a
+					class="visually-hidden-focusable"
+					href="#"
+				>
+					Skip to Content
+				</a>
+
+
+
+				<h2>Aspect Ratio</h2>
+
+				<p>
+					<img
+						class="aspect-ratio-1x1"
+						height="250"
+						width="250"
+						alt="A gorgeous jellyfish drifting in the ocean"
+						src="https://kelpui.com/img/docs/jellyfish.jpg"
+					>
+				</p>
+
+				<iframe
+					class="aspect-ratio-16x9"
+					width="560"
+					height="315"
+					src="https://www.youtube.com/embed/u3aauiR9M88?si=Y9nr4jGId4IrKKDB"
+					title="YouTube video player"
+					frameborder="0"
+					referrerpolicy="strict-origin-when-cross-origin"
+					allowfullscreen
+				></iframe>
+
+
+				<h2>Fills</h2>
+
+				<div class="stack margin-end-space">
+					<div class="fill">.fill</div>
+					<div class="fill primary">.fill .primary</div>
+					<div class="fill secondary">.fill .secondary</div>
+					<div class="fill success">.fill .success</div>
+					<div class="fill danger">.fill .danger</div>
+					<div class="fill warning">.fill .warning</div>
+				</div>
+
+				<div class="stack margin-end-space">
+					<div class="fill vivid">.fill .vivid</div>
+					<div class="fill primary vivid">.fill .primary .vivid</div>
+					<div class="fill secondary vivid">.fill .secondary .vivid</div>
+					<div class="fill success vivid">.fill .success .vivid</div>
+					<div class="fill danger vivid">.fill .danger .vivid</div>
+					<div class="fill warning vivid">.fill .warning .vivid</div>
+				</div>
+
+
+				<h2>Text Modifiers</h2>
+
+				<p class="text-center">This text is centered.</p>
+				<p class="text-end">This text is aligned to the end.</p>
+				<p class="text-muted">I am muted.</p>
+
+				<p class="size-2xs">text .size.2xs</p>
+				<p class="size-xs">text .size.xs</p>
+				<p class="size-s">text .size.s</p>
+				<p class="size-l">text .size.l</p>
+				<p class="size-xl">text .size.xl</p>
+				<p class="size-2xl">text .size.2xl</p>
+				<p class="size-3xl">text .size.3xl</p>
+				<p class="size-4xl">text .size.4xl</p>
+				<p class="size-5xl">text .size.5xl</p>
+				<p class="size-6xl">text .size.6xl</p>
+
+				<div class="stack margin-end-space">
+					<span class="text-color">.text-color</span>
+					<span class="text-color primary">.text-color .primary</span>
+					<span class="text-color secondary">.text-color .secondary</span>
+					<span class="text-color success">.text-color .success</span>
+					<span class="text-color danger">.text-color .danger</span>
+					<span class="text-color warning">.text-color .warning</span>
+				</div>
+
+				<p class="font-secondary">This is regular text that's using the secondary font, usually applied to headings.</p>
+				<h3 class="font-primary">This is a heading that's using the primary font, usually used for body text.</h3>
+
+
+			</div>
+
+		</main>
+
+
+		<script>
+			// Not in Kelp yet, but coming soon!
+			customElements.define('simple-toc', class extends HTMLElement {
+
+				/**
+				 * Instantiate the Web Component
+				 */
+				constructor () {
+
+					// Get parent class properties
+					super();
+
+					// Generate HTML
+					const heading = this.getAttribute('heading');
+					const navList = Array.from(document.querySelectorAll('h2:not(.visually-hidden)')).map((heading) => {
+						if (!heading.id) {
+							heading.id = `toc_${crypto.randomUUID()}`;
+						}
+						return `<li><a class="link-subtle" href="#${heading.id}">${heading.textContent}</a></li>`;
+					}).join('');
+
+					// Make sure a navList exists
+					if (navList.length < 1) return;
+
+					// Render the HTML
+					this.innerHTML = `<ul class="list-inline">${heading ? `<li><strong>${heading}</strong></li>` : ''}${navList}</ul>`;
+
+				}
+
+			});
+		</script>
+
+	</body>
+</html>
