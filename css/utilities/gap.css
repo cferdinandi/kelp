@@ -65,12 +65,4 @@
 		--gap: var(--size-6xl);
 	}
 
-	.gap-end {
-		margin-block-end: var(--gap);
-	}
-
-	.gap-start {
-		margin-block-start: var(--gap);
-	}
-
 }
