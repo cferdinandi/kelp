@@ -33,7 +33,7 @@
 		--width: var(--breakpoint-2xl);
 	}
 
-	.container-full {
+	.breakout {
 		--width: 100vw;
 		margin-inline-start: calc(50% - 50vw);
 		min-width: var(--width);
