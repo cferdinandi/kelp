@@ -103,7 +103,8 @@
 		outline-offset: var(--focus-ring-offset);
 	}
 
-	[hidden] {
+	[hidden],
+	[hide-until-ready]:not([is-ready]) {
 		display: none;
 	}
 
