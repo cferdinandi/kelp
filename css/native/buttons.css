@@ -23,32 +23,24 @@
 		--border-color-hover: transparent;
 		--border-color-active: transparent;
 
-		--border-size: 1px;
-		--border-radius: var(--border-radius-s);
-
-		--font-size: var(--size-s);
-		--font-weight: 400;
 		--gap: var(--size-4xs);
-		--padding-block: var(--size-4xs);
-		--padding-inline: var(--size-m);
-		--line-height: var(--line-height-xs);
 
 		--decoration: none;
 		--decoration-hover: none;
 
 		background-color: var(--background-color);
-		border: var(--border-size) solid var(--border-color);
-		border-radius: var(--border-radius);
+		border: 1px solid var(--border-color);
+		border-radius: var(--border-radius-s);
 		color: var(--color);
 		display: inline-flex;
 		gap: var(--gap);
 		align-items: center;
 		font: inherit;
-		font-size: var(--font-size);
-		font-weight: var(--font-weight);
-		line-height: var(--line-height);
-		padding-block: var(--padding-block);
-		padding-inline: var(--padding-inline);
+		font-size: var(--size-s);
+		font-weight: 400;
+		line-height: var(--line-height-xs);
+		padding-block: var(--size-4xs);
+		padding-inline: var(--size-m);
 
 		cursor: pointer;
 		text-align: center;
@@ -59,18 +51,6 @@
 	/**
 	 * Button size
 	 */
-
-	.btn-l {
-		--font-size: var(--size-m);
-		--padding-block: var(--size-3xs);
-		--padding-inline: var(--size-s);
-	}
-
-	.btn-s {
-		--font-size: var(--size-xs);
-		--padding-block: var(--size-5xs);
-		--padding-inline: var(--size-4xs);
-	}
 
 	.btn-block {
 		display: block;

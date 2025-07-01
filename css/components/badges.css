@@ -1,0 +1,30 @@
+/**
+ * @section Buttons
+ */
+
+@layer kelp.core {
+
+	.badge {
+		--background-color: var(--color-fill-vivid);
+		--color: var(--color-on-vivid);
+		--border-color: transparent;
+		--gap: var(--size-4xs);
+		--decoration: none;
+		--decoration-hover: none;
+
+		background-color: var(--background-color);
+		border: 1px solid var(--border-color);
+		border-radius: var(--border-radius-s);
+		color: var(--color);
+		display: inline-flex;
+		gap: var(--gap);
+		align-items: center;
+		font: inherit;
+		font-size: var(--size-2xs);
+		font-weight: 500;
+		line-height: var(--line-height-xs);
+		padding-block: var(--size-5xs);
+		padding-inline: var(--size-3xs);
+	}
+
+}

@@ -1,6 +1,6 @@
 {
 	"name": "kelpui",
-	"version": "0.7.3",
+	"version": "0.8.0",
 	"description": "A UI library for people who love HTML, powered by modern CSS and Web Components.",
 	"keywords": [
 		"html",
