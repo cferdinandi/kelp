@@ -71,6 +71,15 @@ Optional nice-to-haves..
 If you're missing any or all of these, no worries! I'll take care of it. But if you're able to do any of that work, it's immensely helpful.
 
 
+## Writing Tests
+
+Tests for interactive Kelp components can be found in the `/tests` directory, and use [Playwright](https://playwright.dev).
+
+Because it's a UI library, Kelp tests use a real HTML file in addition to a test spec.
+
+See the `/tests/example` directory for a starter for writing a new test.
+
+
 ## Contributor License Agreement
 
 Please note that any Pull Requests must agree to the _Kelp Contributor License Agreement_ below in order to be merged into the project. 

@@ -1,10 +1,14 @@
 # Node
 node_modules
-test/results
-test/coverage
 
 ## OS X
 .DS_Store
 ._*
 .Spotlight-V100
 .Trashes
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
