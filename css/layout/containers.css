@@ -7,10 +7,10 @@
 
 	[class*="container"] {
 		--width: var(--breakpoint-m);
-		margin-inline-start: auto;
-		margin-inline-end: auto;
+		display: block;
+		margin-inline: auto;
 		max-width: var(--width);
-		width: 88%;
+		width: 100%;
 	}
 
 	.container-xs {

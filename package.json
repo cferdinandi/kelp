@@ -27,9 +27,16 @@
 		"url": "http://github.com/cferdinandi/kelp"
 	},
 	"scripts": {
-		"lint": "npx @biomejs/biome lint"
+		"lint": "npx @biomejs/biome lint",
+		"test": "npx playwright test",
+		"start": "http-server"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.0.0"
+		"@biomejs/biome": "2.0.0",
+		"@playwright/test": "^1.53.2",
+		"@types/node": "^24.0.10"
+	},
+	"dependencies": {
+		"http-server": "^14.1.1"
 	}
 }
