@@ -77,7 +77,7 @@ Tests for interactive Kelp components can be found in the `/tests` directory, an
 
 Because it's a UI library, Kelp tests use a real HTML file in addition to a test spec.
 
-See the `/tests/example` directory for a starter for writing a new test.
+See the `/tests` directory for test examples.
 
 
 ## Contributor License Agreement
