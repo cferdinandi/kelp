@@ -5,12 +5,6 @@ customElements.define('kelp-toc', class extends HTMLElement {
 		this.init();
 	}
 
-	// Cleanup on disconnect
-	disconnectedCallback () {
-		this.innerHTML = '';
-		this.removeAttribute('is-ready');
-	}
-
 	// Initialize the component
 	init () {
 
