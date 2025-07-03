@@ -25,7 +25,7 @@
 				<p><a class="btn secondary size-l" href="https://kelpui.com">View the Docs &rarr;</a></p>
 
 
-				<simple-toc heading="On this page..."></simple-toc>
+				<kelp-toc heading="On this page..."></kelp-toc>
 
 
 				<h2>Containers</h2>
@@ -715,6 +715,19 @@
 				</details>
 
 
+				<h2>Table of Contents</h2>
+
+				<p>Comes in two forms&mdash;simple...</p>
+
+				<kelp-toc class="stack margin-end-space" heading="On this page..."></kelp-toc>
+
+				<p>And nested...</p>
+
+				<kelp-toc-nested class="stack margin-end-space" list-type="ol"></kelp-toc-nested>
+
+
+
+
 				<h2>Skeleton</h2>
 
 				<div class="sidecar margin-end-space">
@@ -838,37 +851,8 @@
 		</main>
 
 
-		<script>
-			// Not in Kelp yet, but coming soon!
-			customElements.define('simple-toc', class extends HTMLElement {
-
-				/**
-				 * Instantiate the Web Component
-				 */
-				constructor () {
-
-					// Get parent class properties
-					super();
-
-					// Generate HTML
-					const heading = this.getAttribute('heading');
-					const navList = Array.from(document.querySelectorAll('h2:not(.visually-hidden)')).map((heading) => {
-						if (!heading.id) {
-							heading.id = `toc_${crypto.randomUUID()}`;
-						}
-						return `<li><a class="link-subtle" href="#${heading.id}">${heading.textContent}</a></li>`;
-					}).join('');
-
-					// Make sure a navList exists
-					if (navList.length < 1) return;
-
-					// Render the HTML
-					this.innerHTML = `<ul class="list-inline">${heading ? `<li><strong>${heading}</strong></li>` : ''}${navList}</ul>`;
-
-				}
-
-			});
-		</script>
+		<script src="./js/components/kelp-toc.js"></script>
+		<script src="./js/components/kelp-toc-nested.js"></script>
 
 	</body>
 </html>
