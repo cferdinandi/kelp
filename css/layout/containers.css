@@ -9,7 +9,7 @@
 		--width: var(--breakpoint-m);
 		margin-inline: auto;
 		max-width: var(--width);
-		width: 88%;
+		width: 86vw;
 	}
 
 	.container-xs {
