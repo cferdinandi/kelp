@@ -1,3 +1,6 @@
+import { emit } from '../utilities/emit.js';
+import { debug } from '../utilities/debug.js';
+
 customElements.define('kelp-toc-nested', class extends HTMLElement {
 
 	// Initialize on connect
@@ -20,10 +23,13 @@ customElements.define('kelp-toc-nested', class extends HTMLElement {
 		this.listType = this.getAttribute('list-type') || 'ul';
 
 		// Render
-		this.render();
+		if (!this.render()) {
+			debug(this, 'No matching headings were found');
+			return;
+		}
 
 		// Ready
-		this.emit();
+		emit(this, 'toc-nested', 'ready');
 		this.setAttribute('is-ready', '');
 
 	}
@@ -33,7 +39,7 @@ customElements.define('kelp-toc-nested', class extends HTMLElement {
 
 		// Get matching headings
 		const headings = document.querySelectorAll(`${this.target} :is(${this.levels})`);
-		if (!headings) return;
+		if (!headings.length) return;
 
 		// Track the current heading level
 		let level = headings[0].tagName.slice(1);
@@ -73,6 +79,8 @@ customElements.define('kelp-toc-nested', class extends HTMLElement {
 
 				}).join('')}
 			</${this.listType}>`;
+
+			return true;
 
 	}
 
@@ -124,12 +132,6 @@ customElements.define('kelp-toc-nested', class extends HTMLElement {
 			html += `</${this.listType}></li>`;
 		}
 		return html;
-	}
-
-	// Emit ready event
-	emit () {
-		const event = new CustomEvent('kelp-toc-nested-ready', {bubbles: true});
-		return this.dispatchEvent(event);
 	}
 
 });
