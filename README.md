@@ -22,6 +22,23 @@ Kelp uses semantic versioning. You can grab a major, minor, or patch version fro
 
 
 
+## Demo
+
+The included `index.html` file is a kitchen sink demo of Kelp. It includes every feature and component in one giant file.
+
+While in beta, Kelp has no compile step. The web component use ES imports, and require a local server to run.
+
+Use your preferred server, or use the included `http-server` by running `npm run dev`.
+
+```bash
+npm install
+npm run dev
+```
+
+As Kelp nears v1, it will use a compile step to make this unnecessary.
+
+
+
 ## Tests
 
 Kelp uses... 
