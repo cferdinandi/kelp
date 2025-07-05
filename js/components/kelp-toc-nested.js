@@ -1,8 +1,13 @@
 customElements.define('kelp-toc-nested', class extends HTMLElement {
 
-	// Initialize on connect
+	// Initialize on connect, or if still loading, wait for parser to finish (in case the headings we're targeting are
+	// not yet attached to the DOM)
 	connectedCallback () {
-		this.init();
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', () => this.init());
+		} else {
+			this.init();
+		}
 	}
 
 	// Initialize the component

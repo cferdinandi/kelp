@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>&lt;kelp-toc-nested&gt; | Kelp</title>
+		<meta name="description" content="A UI library for people who love HTML, powered by modern CSS and Web Components.">
+
+		<!-- Mobile Screen Resizing -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Kelp CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/kelp.css">
+
+		<!-- Load component using classic synchronous script tag -->
+		<script src="../../js/components/kelp-toc-nested.js"></script>
+		<script>
+			// Ensures we can test the ready event
+			document.addEventListener('kelp-toc-nested-ready', (event) => {
+				console.log('ready');
+			});
+		</script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>&lt;kelp-toc-nested&gt;</h1>
+
+			<kelp-toc-nested></kelp-toc-nested>
+
+			<div data-testid="content">
+				<h2 id="cat-o-nine-tails">Cat O'Nine Tails</h2>
+				<p>A particularly cruel form of punishment at sea.</p>
+
+				<h3 id="the-brig">The Brig</h3>
+				<p>Where troublemakers were confined.</p>
+
+				<h2 id="privateer">Privateer</h2>
+				<p>Privately owned armed vessels commissioned by governments.</p>
+
+				<h3 id="ahoy">Ahoy</h3>
+				<p>A sailor's call to hail a ship or person.</p>
+
+				<h2 id="man-of-war">Man-of-War</h2>
+				<p>A powerful naval warship from the 16th to 19th centuries.</p>
+
+				<h3 id="corsair">Corsair</h3>
+				<p>A privateer of the Mediterranean.</p>
+
+				<h2 id="shiver-me-timbers">Shiver Me Timbers</h2>
+				<p>An expression of surprise or shock.</p>
+
+				<h3 id="scurvy-dog">Scurvy Dog</h3>
+				<p>A common insult among pirates.</p>
+			</div>
+
+		</main>
+
+	</body>
+</html>

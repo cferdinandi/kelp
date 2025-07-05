@@ -81,4 +81,13 @@ test.describe('<kelp-toc-nested>', () => {
 		expect(listType).toBe(listTypeAtt);
 	});
 
+	// Validate classic synchronous (parser-blocking) <script> tags. If this component is defined early, its
+	// connectedCallback will run immediately and runs the risk of not finding the headings if they are not yet parsed.
+	test('classic <script>: one nav item is generated per heading', async ({ page }) => {
+		await page.goto('/tests/toc-nested/classic-script.html');
+		const links = await page.locator('kelp-toc-nested').getByRole('listitem').count();
+		const headings = await page.getByTestId('content').getByRole('heading').count();
+		expect(links).toEqual(headings);
+	});
+
 });
