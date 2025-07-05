@@ -11,8 +11,19 @@
 		<!-- Kelp CSS -->
 		<link rel="stylesheet" type="text/css" href="../../css/kelp.css">
 
-		<!-- Dark Mode -->
-		<script src="../../js/dark-mode-auto.js"></script>
+		<!-- Component JS -->
+		<script type="module" src="../../js/components/kelp-toc.js"></script>
+		<script>
+			// Ensures we can test the ready event
+			document.addEventListener('kelp-toc-ready', (event) => {
+				console.log('ready');
+			});
+
+			// Test debug events
+			document.addEventListener('kelp-debug', (event) => {
+				console.log(`kelp-debug : target-${event.target.getAttribute('data-testid')} : ${event.detail}`);
+			});
+		</script>
 	</head>
 	<body>
 
@@ -46,20 +57,6 @@
 			<div id="empty"></div>
 
 		</main>
-
-		<script>
-			// Ensures we can test the ready event
-			document.addEventListener('kelp-toc-ready', (event) => {
-				console.log('ready');
-			});
-
-			// Test debug events
-			document.addEventListener('kelp-debug', (event) => {
-				console.log(`kelp-debug : target-${event.target.getAttribute('data-testid')} : ${event.detail}`);
-			});
-		</script>
-
-		<script type="module" src="../../js/components/kelp-toc.js"></script>
 
 	</body>
 </html>

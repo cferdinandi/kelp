@@ -1,3 +1,4 @@
+import { ready } from '../utilities/ready.js';
 import { emit } from '../utilities/emit.js';
 import { debug } from '../utilities/debug.js';
 
@@ -5,7 +6,7 @@ customElements.define('kelp-toc', class extends HTMLElement {
 
 	// Initialize on connect
 	connectedCallback () {
-		this.init();
+		ready(this);
 	}
 
 	// Initialize the component
