@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>&lt;kelp-toc&gt; | Kelp</title>
+		<meta name="description" content="A UI library for people who love HTML, powered by modern CSS and Web Components.">
+
+		<!-- Mobile Screen Resizing -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Kelp CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/kelp.css">
+
+		<!-- Component JS -->
+		<script type="module" src="../../js/components/kelp-toc.js"></script>
+		<script>
+			// Ensures we can test the ready event
+			document.addEventListener('kelp-toc-ready', (event) => {
+				console.log('ready');
+			});
+
+			// Test debug events
+			document.addEventListener('kelp-debug', (event) => {
+				console.log(`kelp-debug : target-${event.target.getAttribute('data-testid')} : ${event.detail}`);
+			});
+		</script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>&lt;kelp-toc&gt;</h1>
+
+			<kelp-toc data-testid="toc-1"></kelp-toc>
+			<kelp-toc heading="On this page..." data-testid="toc-2"></kelp-toc>
+			<kelp-toc level="h3" data-testid="toc-3"></kelp-toc>
+			<kelp-toc target="#subsection" data-testid="toc-4"></kelp-toc>
+			<kelp-toc list-class="list-unstyled" data-testid="toc-5"></kelp-toc>
+			<kelp-toc target="#empty" data-testid="toc-6"></kelp-toc>
+
+			<h2 data-testid="heading-no-id">Cat O'Nine Tails</h2>
+			<h3 id="the-brig">The Brig</h3>
+			<h4>Privateer</h4>
+			<h2>Ahoy</h2>
+			<div id="subsection" data-testid="subsection">
+				<h3 id="man-of-war">Man-of-War</h3>
+				<h2 id="corsair">Corsair</h2>
+				<h3 id="shiver-me-timbers">Shiver Me Timbers</h3>
+				<h2 id="scurvy-dog">Scurvy Dog</h4>
+			</div>
+			<h4>Sea Legs</h4>
+			<h2 id="quarterdeck" data-testid="heading-with-id">On the Quarterdeck</h2>
+			<h3 id="jolly-roger">Jolly Roger</h3>
+			<h3 id="sloop">Sloop</h3>
+			<h4 id="swab">Swab</h4>
+			<h5>Grog</h5>
+			<div id="empty"></div>
+
+		</main>
+
+	</body>
+</html>

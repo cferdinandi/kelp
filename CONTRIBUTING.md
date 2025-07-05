@@ -2,12 +2,14 @@
 
 Want to help grow and improve Kelp? Awesome! ❤️
 
-- [Code of Conduct](#code-of-conduct)
-- [v0 Beta](#v0-beta)
-- [Roadmap & Issues](#roadmap--issues)
-- [Code Standards](#code-standards)
-- [Pull Request Process](#pull-request-process)
-- [Contributor License Agreement](#contributor-license-agreement)
+0. [Code of Conduct](#code-of-conduct)
+0. [v0 Beta](#v0-beta)
+0. [Roadmap & Issues](#roadmap--issues)
+0. [Code Standards](#code-standards)
+0. [Pull Request Process](#pull-request-process)
+0. [Writing Tests](#writing-tests)
+0. [Templates](#templates)
+0. [Contributor License Agreement](#contributor-license-agreement)
 
 
 ## Code of Conduct
@@ -75,7 +77,15 @@ Tests for interactive Kelp components can be found in the `/tests` directory, an
 
 Because it's a UI library, Kelp tests use a real HTML file in addition to a test spec.
 
-See the `/tests` directory for test examples.
+**[Testing Docs &rarr;](https://github.com/cferdinandi/kelp/blob/main/README.md#tests)**
+
+
+## Templates
+
+The `/templates` directory contains templates for... 
+
+- Creating a custom web component
+- Writing a component test
 
 
 ## Contributor License Agreement
