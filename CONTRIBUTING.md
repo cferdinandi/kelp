@@ -3,7 +3,7 @@
 Want to help grow and improve Kelp? Awesome! ❤️
 
 - [Code of Conduct](#code-of-conduct)
-- [v0 Alpha](#v0-alph)
+- [v0 Beta](#v0-beta)
 - [Roadmap & Issues](#roadmap--issues)
 - [Code Standards](#code-standards)
 - [Pull Request Process](#pull-request-process)
@@ -15,9 +15,9 @@ Want to help grow and improve Kelp? Awesome! ❤️
 This project and everyone participating in it are governed by the [Code of Conduct](https://github.com/cferdinandi/kelp/blob/main/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. 
 
 
-## v0 Alpha
+## v0 Beta
 
-Right now, Kelp is alpha and I'm still defining the shape of it. 
+Right now, Kelp is beta and I'm still defining the shape of it. 
 
 The best way you can help is by testing it, breaking things, and [opening issues](https://github.com/cferdinandi/kelp/issues) when you encounter bugs. If you have feature requests, please open an issue for those, too!
 
@@ -58,9 +58,7 @@ Before creating a PR, it's a good idea to...
 
 You don't _have_ to do either of these things, but it can prevent wasted or duplicated work.
 
-**Please merge all PRs into the `develop`branch.**
-
-Optional nice-to-haves..
+**Optional nice-to-haves..**
 
 - Written documentation on what was changed, why, and how it works
 - In-code documentation (wherever needed)
