@@ -1,4 +1,5 @@
 import { emit } from '../utilities/emit.js';
+import { debug } from '../utilities/debug.js';
 
 customElements.define('kelp-toc', class extends HTMLElement {
 
@@ -20,7 +21,10 @@ customElements.define('kelp-toc', class extends HTMLElement {
 		this.listClass = this.getAttribute('list-class') || 'list-inline';
 
 		// Render
-		this.render();
+		if (!this.render()) {
+			debug(this, 'No matching headings were found');
+			return;
+		}
 
 		// Ready
 		emit(this, 'toc', 'ready');
@@ -44,6 +48,8 @@ customElements.define('kelp-toc', class extends HTMLElement {
 
 		// Render the HTML
 		this.innerHTML = `<ul class="${this.listClass}">${this.heading ? `<li><strong>${this.heading}</strong></li>` : ''}${navList}</ul>`;
+
+		return true;
 
 	}
 

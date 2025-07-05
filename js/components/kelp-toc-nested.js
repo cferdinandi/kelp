@@ -1,4 +1,5 @@
 import { emit } from '../utilities/emit.js';
+import { debug } from '../utilities/debug.js';
 
 customElements.define('kelp-toc-nested', class extends HTMLElement {
 
@@ -22,7 +23,10 @@ customElements.define('kelp-toc-nested', class extends HTMLElement {
 		this.listType = this.getAttribute('list-type') || 'ul';
 
 		// Render
-		this.render();
+		if (!this.render()) {
+			debug(this, 'No matching headings were found');
+			return;
+		}
 
 		// Ready
 		emit(this, 'toc-nested', 'ready');
@@ -75,6 +79,8 @@ customElements.define('kelp-toc-nested', class extends HTMLElement {
 
 				}).join('')}
 			</${this.listType}>`;
+
+			return true;
 
 	}
 
