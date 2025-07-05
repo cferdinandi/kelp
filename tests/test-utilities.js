@@ -6,7 +6,7 @@ import { test, expect } from '@playwright/test';
  * @param  {String}  eventName The event name to listen for
  * @return {Promise}           Resolves to true if event emits
  */
-export async function waitForCustomEvent(component, eventID) {
+export async function waitForCustomEvent (component, eventID) {
 	return await component.evaluate((element, eventID) => {
 		return new Promise((resolve) => {
 			return element.addEventListener(eventID, () => {
@@ -21,7 +21,7 @@ export async function waitForCustomEvent(component, eventID) {
  * @param  {String}  selector The component selector
  * @param  {String}  url      The URL to navigate to
  */
-export async function testComponentReadyState(selector, url) {
+export async function testComponentReadyState (selector, url) {
 	test('component instantiates', async ({ page }) => {
 		let isReady = false;
 		page.on('console', msg => {
@@ -31,5 +31,19 @@ export async function testComponentReadyState(selector, url) {
 		await page.goto(url);
 		expect(isReady).toEqual(true);
 		await expect(page.locator(selector).first()).toHaveAttribute('is-ready');
+	});
+}
+
+export async function testDebugEvent (url, id, error) {
+	test(`kelp-debug${error ? ` "${error}"` : ''} catches errors`, async ({ page }) => {
+		let hasError = false;
+		page.on('console', msg => {
+			const text = msg.text();
+			if (!text.includes(error ? error : 'kelp-debug')) return;
+			if (id && !text.includes(`target-${id}`)) return;
+			hasError = true;
+		});
+		await page.goto(url);
+		expect(hasError).toEqual(true);
 	});
 }

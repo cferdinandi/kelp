@@ -39,7 +39,7 @@ customElements.define('kelp-toc-nested', class extends HTMLElement {
 
 		// Get matching headings
 		const headings = document.querySelectorAll(`${this.target} :is(${this.levels})`);
-		if (!headings) return;
+		if (!headings.length) return;
 
 		// Track the current heading level
 		let level = headings[0].tagName.slice(1);

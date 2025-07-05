@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
-import { testComponentReadyState } from '../test-utilities.js';
+import { testComponentReadyState, testDebugEvent } from '../test-utilities.js';
 
 
 test.describe('<kelp-toc-nested>', () => {
 
 	testComponentReadyState('kelp-toc-nested', '/tests/toc-nested');
+	testDebugEvent('/tests/toc-nested', 'toc-8');
 
 	test('one nav item is generated per heading', async ({ page }) => {
 		await page.goto('/tests/toc-nested');

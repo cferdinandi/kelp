@@ -27,6 +27,7 @@
 			<kelp-toc-nested target="#subsection" data-testid="toc-5"></kelp-toc-nested>
 			<kelp-toc-nested list-class="stack gap-4xs margin-start-4xs" data-testid="toc-6"></kelp-toc-nested>
 			<kelp-toc-nested list-type="ol" data-testid="toc-7"></kelp-toc-nested>
+			<kelp-toc-nested target="#empty" data-testid="toc-8"></kelp-toc-nested>
 
 			<div data-testid="content">
 				<h2 data-testid="heading-no-id">Cat O'Nine Tails</h2>
@@ -37,7 +38,7 @@
 					<h2 id="man-of-war">Man-of-War</h2>
 					<h3 id="corsair">Corsair</h3>
 					<h3 id="shiver-me-timbers">Shiver Me Timbers</h3>
-					<h2 id="scurvy-dog">Scurvy Dog</h4>
+					<h2 id="scurvy-dog">Scurvy Dog</h2>
 				</div>
 				<h3>Sea Legs</h3>
 				<h2 id="quarterdeck" data-testid="heading-with-id">On the Quarterdeck</h2>
@@ -45,6 +46,7 @@
 				<h3 id="sloop">Sloop</h3>
 				<h4 id="swab">Swab</h4>
 				<h5>Grog</h5>
+				<div id="empty"></div>
 			</h2>
 
 		</main>
@@ -53,6 +55,11 @@
 			// Ensures we can test the ready event
 			document.addEventListener('kelp-toc-nested-ready', (event) => {
 				console.log('ready');
+			});
+
+			// Test debug events
+			document.addEventListener('kelp-debug', (event) => {
+				console.log(`kelp-debug : target-${event.target.getAttribute('data-testid')} : ${event.detail}`);
 			});
 		</script>
 
