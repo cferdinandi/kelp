@@ -1,3 +1,5 @@
+import { emit } from '../utilities/emit.js';
+
 customElements.define('kelp-toc-nested', class extends HTMLElement {
 
 	// Initialize on connect
@@ -23,7 +25,7 @@ customElements.define('kelp-toc-nested', class extends HTMLElement {
 		this.render();
 
 		// Ready
-		this.emit();
+		emit(this, 'toc-nested', 'ready');
 		this.setAttribute('is-ready', '');
 
 	}
@@ -124,12 +126,6 @@ customElements.define('kelp-toc-nested', class extends HTMLElement {
 			html += `</${this.listType}></li>`;
 		}
 		return html;
-	}
-
-	// Emit ready event
-	emit () {
-		const event = new CustomEvent('kelp-toc-nested-ready', {bubbles: true});
-		return this.dispatchEvent(event);
 	}
 
 });
