@@ -34,14 +34,14 @@ jobs:
         id: get-latest-tag
       - name: Publish GitHub Release
         uses: release-drafter/release-drafter@v6
-        if: ${{ steps.get-latest-tag.outputs.tag != steps.version.outputs.value }}
+        if: ${{ contains(steps.get-latest-tag.outputs.tag, steps.version.outputs.value) == false }}
         with:
           version: ${{ steps.version.outputs.value }}
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Publish to NPM
-        if: ${{ steps.get-latest-tag.outputs.tag != steps.version.outputs.value }}
+        if: ${{ contains(steps.get-latest-tag.outputs.tag, steps.version.outputs.value) == false }}
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
