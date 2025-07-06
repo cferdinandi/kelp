@@ -35,7 +35,8 @@ jobs:
       - name: Publish GitHub Release
         uses: release-drafter/release-drafter@v6
         if: ${{ steps.get-latest-tag.outputs.tag != steps.version.outputs.value }}
-        version: ${{ steps.version.outputs.value }}
+        with:
+          version: ${{ steps.version.outputs.value }}
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Publish to NPM
