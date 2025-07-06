@@ -55,6 +55,13 @@ npm run test
 npm run lint
 ```
 
+The test suite uses port `8080`. If that's already in use, you can set a different `PORT` when running your test, like this...
+
+```bash
+# Run tests on port 8082
+PORT=8082 npm run test
+```
+
 
 
 ## License

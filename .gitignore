@@ -10,6 +10,5 @@ node_modules
 # Playwright
 /test-results/
 /playwright-report/
-/playwright-report_e2e/
 /blob-report/
 /playwright/.cache/
