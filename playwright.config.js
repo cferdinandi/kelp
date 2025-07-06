@@ -24,21 +24,21 @@ export default defineConfig({
 		['list'],
 		[
 			'html',
-			{ outputFolder: 'playwright-report_e2e' }
+			{ outputFolder: 'playwright-report' }
 		]
 	],
 
 	// Run your local dev server before starting the tests
 	webServer: {
 		command: 'npm run start',
-		url: 'http://localhost:' + port,
+		url: `http://localhost:${port}`,
 		reuseExistingServer: !process.env.CI,
 	},
 
 	// Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
 	use: {
 		// Base URL to use in actions like `await page.goto('/')`.
-		baseURL: 'http://localhost:' + port,
+		baseURL: `http://localhost:${port}`,
 
 		// Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer
 		trace: 'on-first-retry',
