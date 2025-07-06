@@ -37,6 +37,7 @@ jobs:
         if: ${{ steps.get-latest-tag.outputs.tag != steps.version.outputs.value }}
         with:
           version: ${{ steps.version.outputs.value }}
+          publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Publish to NPM
