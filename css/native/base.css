@@ -42,7 +42,7 @@
 		line-height: var(--line-height-m);
 		margin: 0; /* 1 */
 		min-height: 100vh; /* 2 */
-		overflow-x: hidden; /* 3 */
+		overflow-x: clip; /* 3 */
 	}
 
 	/**
