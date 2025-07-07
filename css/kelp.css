@@ -40,6 +40,10 @@
 @import "./components/skeleton.css";
 
 
+/* Web Components */
+@import "./components/toggle-pw.css";
+
+
 /* Utilities */
 @import "./utilities/fill.css";
 @import "./utilities/aspect-ratios.css";
