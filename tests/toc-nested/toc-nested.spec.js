@@ -18,6 +18,8 @@ test.describe(`<${componentName}>`, () => {
 		const numberOfLinks = await links.count();
 		const heading = page.locator('#content h2');
 		const headingID = await heading.first().evaluate((elem) => elem.id);
+		const skipLevel = await page.locator('kelp-toc-nested').getByText('Sea Legs');
+		const skipLevelListParent = await skipLevel.evaluate((elem) => elem.closest('ul').parentElement.tagName.toLowerCase());
 
 		// Number of links should match number of headings
 		await expect(numberOfLinks).toEqual(14);
@@ -28,7 +30,8 @@ test.describe(`<${componentName}>`, () => {
 		await expect(links.first()).toHaveAttribute('href', `#${headingID}`);
 
 		// Heading level jumps are correctly handled
-		// @TODO
+		// @TODO fix in future PR
+		// await expect(skipLevelListParent).toEqual('li');
 
 	});
 
