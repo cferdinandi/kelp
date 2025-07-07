@@ -19,7 +19,7 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 		this.passwords = this.querySelectorAll('[type="password"]');
 		this.trigger = this.querySelector('[toggle]');
 		this.isBtn = this.trigger?.tagName.toLowerCase() === 'button';
-		this.visible = this.hasAttribute('visible');
+		this.isVisible = this.hasAttribute('visible');
 
 		// If there's no toggle
 		if (!this.trigger) {
@@ -35,12 +35,15 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 
 		// If toggle is a button, add aria-pressed
 		if (this.isBtn) {
-			this.trigger.setAttribute('aria-pressed', this.visible);
+			this.trigger.setAttribute('aria-pressed', this.isVisible);
 			this.trigger.setAttribute('type', 'button');
 		}
 
 		// If passwords should be visible, show them by default
-		if (this.visible) {
+		if (this.isVisible) {
+			if (!this.isBtn) {
+				this.trigger.checked = true;
+			}
 			this.show();
 		}
 

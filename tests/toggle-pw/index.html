@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>&lt;kelp-toggle-pw&gt; | Kelp</title>
+		<title>Kelp</title>
 		<meta name="description" content="A UI library for people who love HTML, powered by modern CSS and Web Components.">
 
 		<!-- Mobile Screen Resizing -->
@@ -29,7 +29,7 @@
 
 		<main class="container">
 
-			<h1>&lt;kelp-toggle-pw&gt;</h1>
+			<h1>kelp-toggle-pw</h1>
 
 			<!-- A checkbox toggle -->
 			<kelp-toggle-pw data-testid="wc-1">
@@ -58,7 +58,7 @@
 				</div>
 			</kelp-toggle-pw>
 
-			<!-- Show password fields by default -->
+			<!-- Show password fields by default: button -->
 			<kelp-toggle-pw visible data-testid="wc-3">
 				<label for="password-3">Password</label>
 				<div class="sidecar-end">
@@ -74,10 +74,10 @@
 				</div>
 			</kelp-toggle-pw>
 
-			<!-- Test methods -->
+			<!-- Show password fields by default: checkbox -->
 			<kelp-toggle-pw data-testid="wc-4">
-				<label for="password-1">Password</label>
-				<input id="password-1" name="password" type="password" value="test1234" data-testid="input-4">
+				<label for="password-4">Password</label>
+				<input id="password-4" name="password" type="password" value="test1234" data-testid="input-4">
 
 				<label>
 					<input toggle type="checkbox" data-testid="toggle-4">
@@ -85,25 +85,36 @@
 				</label>
 			</kelp-toggle-pw>
 
-			<!-- Test ARIA -->
-			<kelp-toggle-pw visible data-testid="wc-5">
+			<!-- Test methods -->
+			<kelp-toggle-pw data-testid="wc-5">
 				<label for="password-5">Password</label>
+				<input id="password-5" name="password" type="password" value="test1234" data-testid="input-5">
+
+				<label>
+					<input toggle type="checkbox" data-testid="toggle-5">
+					Show password
+				</label>
+			</kelp-toggle-pw>
+
+			<!-- Test ARIA -->
+			<kelp-toggle-pw visible data-testid="wc-6">
+				<label for="password-6">Password</label>
 				<div class="sidecar-end">
 					<div>
-						<input id="password-5" name="password" type="password" value="test1234" data-testid="input-5">
+						<input id="password-6" name="password" type="password" value="test1234" data-testid="input-6">
 					</div>
 					<div>
-						<button toggle data-testid="toggle-5">Toggle PW</button>
+						<button toggle data-testid="toggle-6">Toggle PW</button>
 					</div>
 				</div>
 			</kelp-toggle-pw>
 
 			<!-- Should throw errors -->
-			<kelp-toggle-pw data-testid="wc-6">
+			<kelp-toggle-pw data-testid="wc-7">
 				<button toggle>Toggle PW</button>
 			</kelp-toggle-pw>
-			<kelp-toggle-pw data-testid="wc-7">
-				<input id="password-3" name="password" type="password" value="test1234">
+			<kelp-toggle-pw data-testid="wc-8">
+				<input id="password-8" name="password" type="password" value="test1234">
 			</kelp-toggle-pw>
 
 		</main>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Kelp</title>
+		<meta name="description" content="A UI library for people who love HTML, powered by modern CSS and Web Components.">
+
+		<!-- Mobile Screen Resizing -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Kelp CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/kelp.css">
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-toggle-pw - no JS</h1>
+
+			<!-- A checkbox toggle -->
+			<kelp-toggle-pw data-testid="wc-1">
+				<label for="password-1">Password</label>
+				<input id="password-1" name="password" type="password" value="test1234" data-testid="input-1">
+
+				<label data-testid="label-1">
+					<input toggle type="checkbox" data-testid="toggle-1">
+					Show password
+				</label>
+			</kelp-toggle-pw>
+
+			<!-- A button toggle -->
+			<kelp-toggle-pw data-testid="wc-2">
+				<label for="password-2">Password</label>
+				<div class="sidecar-end">
+					<div>
+						<input id="password-2" name="password" type="password" value="test1234" data-testid="input-2">
+					</div>
+					<div>
+						<button class="btn-link link-subtle" toggle aria-label="show-password" data-testid="toggle-2">Toggle PW</button>
+					</div>
+				</div>
+			</kelp-toggle-pw>
+
+		</main>
+
+	</body>
+</html>
