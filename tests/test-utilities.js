@@ -21,16 +21,18 @@ export async function waitForCustomEvent (component, eventID) {
  * @param  {String}  selector The component selector
  * @param  {String}  url      The URL to navigate to
  */
-export async function testComponentReadyState (selector, url) {
-	test('component instantiates', async ({ page }) => {
+export async function testComponentReadyState (selector, url, path = 'default.html') {
+	test(`component instantiates${path !== 'default.html' ? ` - ${path}` : ''}`, async ({ page }) => {
 		let isReady = false;
 		page.on('console', msg => {
 			if (msg.text() !== 'ready') return;
 			isReady = true;
 		});
-		await page.goto(url);
+		await page.goto(`${url}/${path}`);
 		expect(isReady).toEqual(true);
-		await expect(page.locator(selector).first()).toHaveAttribute('is-ready');
+		const component = page.locator(selector).first();
+		await expect(component).toHaveAttribute('is-ready');
+		await expect(component).toBeVisible();
 	});
 }
 

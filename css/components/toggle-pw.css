@@ -1,0 +1,19 @@
+/**
+ * @section <kelp-toggle-pw>
+ */
+
+@layer kelp.core {
+
+	kelp-toggle-pw:not([is-ready]) :is(
+		[toggle],
+		label:has([toggle])
+	) {
+		display: none;
+	}
+
+	kelp-toggle-pw [aria-pressed="true"] [is-hidden],
+	kelp-toggle-pw [aria-pressed="false"] [is-visible] {
+		display: none;
+	}
+
+}

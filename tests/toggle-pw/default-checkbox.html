@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Kelp</title>
+		<meta name="description" content="A UI library for people who love HTML, powered by modern CSS and Web Components.">
+
+		<!-- Mobile Screen Resizing -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Kelp CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/kelp.css">
+
+		<!-- Component JS -->
+		<script type="module" src="../../js/components/kelp-toggle-pw.js"></script>
+		<script>
+			// Ensures we can test the ready event
+			document.addEventListener('kelp-toggle-pw-ready', (event) => {
+				console.log('ready');
+			});
+		</script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-toggle-pw - checkbox - default settings</h1>
+
+			<kelp-toggle-pw>
+				<label for="password">Password</label>
+				<input id="password" name="password" type="password" value="test1234">
+
+				<label data-testid="label">
+					<input toggle type="checkbox">
+					Show password
+				</label>
+			</kelp-toggle-pw>
+
+		</main>
+
+	</body>
+</html>

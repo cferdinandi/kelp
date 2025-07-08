@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Kelp</title>
+		<meta name="description" content="A UI library for people who love HTML, powered by modern CSS and Web Components.">
+
+		<!-- Mobile Screen Resizing -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Kelp CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/kelp.css">
+
+		<!-- Component JS -->
+		<script type="module" src="../../js/components/kelp-toc.js"></script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-toc - options and settings</h1>
+
+			<kelp-toc
+				heading="On this page..."
+				level="h3"
+				target="#subsection"
+				list-class="list-unstyled"
+			></kelp-toc>
+
+			<h2>Cat O'Nine Tails</h2>
+			<h3 id="the-brig">The Brig</h3>
+			<h4>Privateer</h4>
+			<h2>Ahoy</h2>
+			<div id="subsection">
+				<h3 id="man-of-war">Man-of-War</h3>
+				<h2 id="corsair">Corsair</h2>
+				<h3 id="shiver-me-timbers">Shiver Me Timbers</h3>
+				<h2 id="scurvy-dog">Scurvy Dog</h2>
+				<h3 id="sloop">Sloop</h3>
+				<h4 id="swab">Swab</h4>
+			</div>
+			<h4>Sea Legs</h4>
+			<h2 id="quarterdeck">On the Quarterdeck</h2>
+			<h3 id="jolly-roger">Jolly Roger</h3>
+			<h5>Grog</h5>
+
+		</main>
+
+	</body>
+</html>
