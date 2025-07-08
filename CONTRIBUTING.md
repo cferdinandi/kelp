@@ -80,14 +80,6 @@ Because it's a UI library, Kelp tests use a real HTML file in addition to a test
 **[Testing Docs &rarr;](https://github.com/cferdinandi/kelp/blob/main/README.md#tests)**
 
 
-## Templates
-
-The `/templates` directory contains templates for... 
-
-- Creating a custom web component
-- Writing a component test
-
-
 ## Contributor License Agreement
 
 Please note that any Pull Requests must agree to the _Kelp Contributor License Agreement_ below in order to be merged into the project. 

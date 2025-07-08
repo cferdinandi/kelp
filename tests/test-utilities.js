@@ -22,7 +22,7 @@ export async function waitForCustomEvent (component, eventID) {
  * @param  {String}  url      The URL to navigate to
  */
 export async function testComponentReadyState (selector, url, path = 'default.html') {
-	test('component instantiates', async ({ page }) => {
+	test(`component instantiates${path !== 'default.html' ? ` - ${path}` : ''}`, async ({ page }) => {
 		let isReady = false;
 		page.on('console', msg => {
 			if (msg.text() !== 'ready') return;

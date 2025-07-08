@@ -10,27 +10,23 @@
 
 		<!-- Kelp CSS -->
 		<link rel="stylesheet" type="text/css" href="../../css/kelp.css">
+
+		<!-- Component JS -->
+		<script type="module" src="../../js/components/kelp-toggle-pw.js"></script>
 	</head>
 	<body>
 
 		<main class="container">
 
-			<h1>kelp-toggle-pw - no JS</h1>
+			<h1>kelp-toggle-pw - errors</h1>
 
-			<kelp-toggle-pw>
-				<label for="password-1">Password</label>
-				<input id="password-1" name="password" type="password" value="test1234">
-
-				<label data-testid="label">
-					<input toggle type="checkbox">
-					Show password
-				</label>
+			<kelp-toggle-pw data-testid="wc-1">
+				<label for="password">Password</label>
+				<input id="password" name="password" type="password" value="test1234">
 			</kelp-toggle-pw>
 
-			<kelp-toggle-pw>
-				<label for="password-2">Password</label>
-				<input id="password-2" name="password" type="password" value="test1234">
-				<button toggle data-testid="button">Toggle PW</button>
+			<kelp-toggle-pw data-testid="wc-2">
+				<button toggle>Toggle PW</button>
 			</kelp-toggle-pw>
 
 		</main>

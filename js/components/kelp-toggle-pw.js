@@ -19,7 +19,8 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 		this.passwords = this.querySelectorAll('[type="password"]');
 		this.trigger = this.querySelector('[toggle]');
 		this.isBtn = this.trigger?.tagName.toLowerCase() === 'button';
-		this.isVisible = this.hasAttribute('visible');
+		const startVisible = this.hasAttribute('visible');
+		this.isVisible = startVisible;
 
 		// If there's no toggle
 		if (!this.trigger) {
@@ -35,12 +36,12 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 
 		// If toggle is a button, add aria-pressed
 		if (this.isBtn) {
-			this.trigger.setAttribute('aria-pressed', this.isVisible);
+			this.trigger.setAttribute('aria-pressed', startVisible);
 			this.trigger.setAttribute('type', 'button');
 		}
 
 		// If passwords should be visible, show them by default
-		if (this.isVisible) {
+		if (startVisible) {
 			if (!this.isBtn) {
 				this.trigger.checked = true;
 			}
@@ -63,31 +64,36 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 
 	// Toggle password visibility on or off
 	toggle () {
-		const show = this.isBtn ? this.trigger.getAttribute('aria-pressed') === 'false' : this.trigger.checked;
-		if (show) {
-			this.show();
-		} else {
+		if (this.isVisible) {
 			this.hide();
+		} else {
+			this.show();
 		}
 	}
 
 	// Show passwords
 	show () {
+		this.isVisible = true;
 		for (const pw of this.passwords) {
 			pw.type = 'text';
 		}
 		if (this.isBtn) {
 			this.trigger.setAttribute('aria-pressed', true);
+		} else {
+			this.trigger.checked = true;
 		}
 	}
 
 	// Hide password visibility
 	hide () {
+		this.isVisible = false;
 		for (const pw of this.passwords) {
 			pw.type = 'password';
 		}
 		if (this.isBtn) {
 			this.trigger.setAttribute('aria-pressed', false);
+		} else {
+			this.trigger.checked = false;
 		}
 	}
 
