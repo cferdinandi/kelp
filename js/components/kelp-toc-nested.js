@@ -30,7 +30,7 @@ customElements.define('kelp-toc-nested', class extends HTMLElement {
 		}
 
 		// Ready
-		emit(this, 'toc-nested', 'ready');
+		emit(this, 'tocnested', 'ready');
 		this.setAttribute('is-ready', '');
 
 	}

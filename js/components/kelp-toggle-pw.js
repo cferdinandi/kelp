@@ -52,7 +52,7 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 		this.trigger.addEventListener('click', this);
 
 		// Ready
-		emit(this, 'toggle-pw', 'ready');
+		emit(this, 'togglepw', 'ready');
 		this.setAttribute('is-ready', '');
 
 	}
@@ -82,6 +82,7 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 		} else {
 			this.trigger.checked = true;
 		}
+		emit(this, 'togglepw', 'show');
 	}
 
 	// Hide password visibility
@@ -95,6 +96,7 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 		} else {
 			this.trigger.checked = false;
 		}
+		emit(this, 'togglepw', 'hide');
 	}
 
 });
