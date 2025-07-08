@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { testComponentReadyState, testDebugEvent } from '../test-utilities.js';
+import { testComponentReadyState } from '../test-utilities.js';
 
 // Component details
 const componentName = 'kelp-toc-nested';

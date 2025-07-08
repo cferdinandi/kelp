@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { testComponentReadyState, testDebugEvent } from '../test-utilities.js';
+import { testComponentReadyState, waitForCustomEvent } from '../test-utilities.js';
 
 // Component details
 const componentName = 'kelp-toggle-pw';
@@ -24,13 +24,17 @@ test.describe(`<${componentName}>`, () => {
 		await expect(label).toBeVisible();
 
 		// Checking checkbox should make password visible
+		const eventShow = waitForCustomEvent(wc, 'kelp:togglepw-show');
 		await expect(password).toHaveAttribute('type', 'password');
 		await toggle.setChecked(true);
 		await expect(password).toHaveAttribute('type', 'text');
+		await expect(eventShow).toBeTruthy();
 
 		// Unchecking it should hide the password
+		const eventHide = waitForCustomEvent(wc, 'kelp:togglepw-hide');
 		await toggle.setChecked(false);
 		await expect(password).toHaveAttribute('type', 'password');
+		await expect(eventHide).toBeTruthy();
 
 		// .show() method should show password
 		await wc.evaluate((elem) => elem.show());
@@ -73,18 +77,22 @@ test.describe(`<${componentName}>`, () => {
 		await expect(toggle).toHaveAttribute('aria-pressed', 'false');
 
 		// Clicking button should make password visible and update attributes
+		const eventShow = waitForCustomEvent(wc, 'kelp:togglepw-show');
 		await toggle.click();
 		await expect(password).toHaveAttribute('type', 'text');
 		await expect(showText).not.toBeVisible();
 		await expect(hideText).toBeVisible();
 		await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+		await expect(eventShow).toBeTruthy();
 
 		// Clicking it again should hide the password
+		const eventHide = waitForCustomEvent(wc, 'kelp:togglepw-hide');
 		await toggle.click();
 		await expect(password).toHaveAttribute('type', 'password');
 		await expect(showText).toBeVisible();
 		await expect(hideText).not.toBeVisible();
 		await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+		await expect(eventHide).toBeTruthy();
 
 		// .show() method should show password
 		await wc.evaluate((elem) => elem.show());

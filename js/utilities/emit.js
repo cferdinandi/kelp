@@ -8,7 +8,7 @@
 export function emit (elem, component, id, detail) {
 
 	// Create a new event
-	const event = new CustomEvent(`kelp-${component}-${id}`, {
+	const event = new CustomEvent(`kelp:${component}-${id}`, {
 		bubbles: true,
 		cancelable: true,
 		detail
