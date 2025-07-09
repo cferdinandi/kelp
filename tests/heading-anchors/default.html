@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Kelp</title>
+		<meta name="description" content="A UI library for people who love HTML, powered by modern CSS and Web Components.">
+
+		<!-- Mobile Screen Resizing -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Kelp CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/kelp.css">
+
+		<!-- Component JS -->
+		<script type="module" src="../../js/components/kelp-heading-anchors.js"></script>
+		<script>
+			// Ensures we can test the ready event
+			document.addEventListener('kelp:headinganchors-ready', (event) => {
+				console.log('ready');
+			});
+		</script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-heading-anchors - default settings</h1>
+
+			<kelp-heading-anchors>
+
+				<h2>Cat O'Nine Tails</h2>
+				<h3 id="the-brig">The Brig</h3>
+				<h4 data-testid="code">Privateer <code>.this-here-class</code></h4>
+				<h5>Ahoy</h5>
+				<h6>Sea Legs</h6>
+
+			</kelp-heading-anchors>
+
+		</main>
+
+	</body>
+</html>
