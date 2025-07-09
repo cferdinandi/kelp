@@ -10,6 +10,8 @@ Use this section for review hints, explanations or discussion points/todos.
 How to contribute: https://kelpui.com/docs/getting-started/contributing/
 -->
 
+Closes {LINK TO GH ISSUE}
+
 
 ## Docs
 <!--
