@@ -1,6 +1,6 @@
-import { ready } from '../utilities/ready.js';
-import { emit } from '../utilities/emit.js';
 import { debug } from '../utilities/debug.js';
+import { emit } from '../utilities/emit.js';
+import { ready } from '../utilities/ready.js';
 
 customElements.define('kelp-heading-anchors', class extends HTMLElement {
 

@@ -1,0 +1,34 @@
+/**
+ * @section Auto-expanding Textarea
+ */
+
+@layer kelp.core {
+
+	kelp-autogrow {
+		display: grid;
+	}
+
+	kelp-autogrow::after {
+		content: attr(data-replicated-value) " ";
+		white-space: pre-wrap;
+		visibility: hidden;
+	}
+
+	kelp-autogrow textarea {
+		min-height: 8rem;
+		resize: none;
+	}
+
+	kelp-autogrow textarea,
+	kelp-autogrow::after {
+		grid-area: 1 / 1 / 2 / 2;
+	}
+
+	kelp-autogrow::after {
+		border: 1px solid transparent;
+		line-height: var(--line-height-m);
+		padding-block: var(--size-5xs);
+		padding-inline: var(--size-4xs);
+	}
+
+}

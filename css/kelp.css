@@ -43,6 +43,7 @@
 /* Web Components */
 @import "./components/heading-anchors.css";
 @import "./components/toggle-pw.css";
+@import "./components/autogrow.css";
 
 
 /* Utilities */
