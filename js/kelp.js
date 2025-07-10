@@ -1,3 +1,4 @@
-import './components/kelp-toc.js';
-import './components/kelp-toc-nested.js';
-import './components/kelp-toggle-pw.js';
+import './components/toc.js';
+import './components/toc-nested.js';
+import './components/heading-anchors.js';
+import './components/toggle-pw.js';

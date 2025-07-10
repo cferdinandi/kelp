@@ -57,7 +57,7 @@ customElements.define('kelp-toc-nested', class extends HTMLElement {
 
 					// Add an ID if one is missing
 					if (!heading.id) {
-						heading.id = `toc_${crypto.randomUUID()}`;
+						heading.id = `h_${crypto.randomUUID()}`;
 					}
 
 					// Check the heading level vs. the current list

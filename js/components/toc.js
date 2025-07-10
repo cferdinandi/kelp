@@ -39,7 +39,7 @@ customElements.define('kelp-toc', class extends HTMLElement {
 		// Generate list items
 		const navList = Array.from(document.querySelectorAll(`${this.target} ${this.level}`)).map((heading) => {
 			if (!heading.id) {
-				heading.id = `toc_${crypto.randomUUID()}`;
+				heading.id = `h_${crypto.randomUUID()}`;
 			}
 			return `<li><a class="link-subtle" href="#${heading.id}">${heading.textContent}</a></li>`;
 		}).join('');
