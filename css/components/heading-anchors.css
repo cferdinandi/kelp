@@ -1,0 +1,34 @@
+/**
+ * @section Heading Anchors
+ */
+
+@layer kelp.core {
+
+	.anchor-link {
+		--color: inherit;
+		--color-hover: inherit;
+		--decoration: none;
+		--decoration-hover: none;
+	}
+
+	.anchor-icon {
+		color: var(--color-text-link);
+	}
+
+	@media (min-width: 38em) {
+		kelp-heading-anchors[before] .anchor-link {
+			--indent: -1em;
+			text-indent: var(--indent);
+		}
+	}
+
+}
+
+@layer kelp.state {
+
+	.anchor-link:hover .anchor-icon {
+		color: var(--color-text-link-hover);
+		text-decoration: var(--decoration-text-link-hover);
+	}
+
+}

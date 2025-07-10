@@ -41,6 +41,7 @@
 
 
 /* Web Components */
+@import "./components/heading-anchors.css";
 @import "./components/toggle-pw.css";
 
 

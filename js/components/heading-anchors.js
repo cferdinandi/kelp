@@ -42,7 +42,6 @@ customElements.define('kelp-heading-anchors', class extends HTMLElement {
 		for (const heading of headings) {
 
 			// Store original heading and add class
-			heading.setAttribute('kelp-htext', heading.innerHTML);
 			heading.classList.add('anchor-h');
 
 			// Add missing IDs

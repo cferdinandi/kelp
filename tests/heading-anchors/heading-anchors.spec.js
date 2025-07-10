@@ -43,9 +43,6 @@ test.describe(`<${componentName}>`, () => {
 			// Icon should be hidden from screen readers
 			await expect(last).toHaveAttribute('aria-hidden', 'true');
 
-			// Has a [kelp-htext] attribute with original text
-			await expect(heading).toHaveAttribute('kelp-htext', /(.|\s)*\S(.|\s)*/);
-
 		}
 
 		// HTML in the heading is preserved
