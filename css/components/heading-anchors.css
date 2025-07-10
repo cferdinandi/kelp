@@ -17,8 +17,7 @@
 
 	@media (min-width: 38em) {
 		kelp-heading-anchors[before] .anchor-link {
-			--indent: -1em;
-			text-indent: var(--indent);
+			text-indent: -1em;
 		}
 	}
 

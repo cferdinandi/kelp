@@ -7,5 +7,5 @@ export function ready (instance) {
 		instance.init();
 		return;
 	}
-	document.addEventListener('DOMContentLoaded', () => instance.init());
+	document.addEventListener('DOMContentLoaded', () => instance.init(), {once: true});
 }
