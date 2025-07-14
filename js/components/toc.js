@@ -82,18 +82,17 @@ customElements.define('kelp-toc', class extends HTMLElement {
 
 			// Get the current and next heading levels
 			const currentLevel = heading.tagName.slice(1);
-			const nextLevel = headings[index + 1]?.tagName.slice(1) || currentLevel;
 
 			// Append the HTML
 			// If nested and next heading is smaller than current, run recursively
 			list +=
 				`<li>
 					<a class="link-subtle" href="#${heading.id}">${heading.textContent}</a>
-					${this.nested && nextLevel > currentLevel ? this.createList(headings, index + 1) : ''}
+					${this.nested && (headings[this.index.val + 1]?.tagName.slice(1) || currentLevel) > currentLevel ? this.createList(headings, index + 1) : ''}
 				</li>`;
 
 			// If next heading is bigger, finish this list
-			if (!isFirst && nextLevel < currentLevel) break;
+			if (!isFirst && (headings[this.index.val + 1]?.tagName.slice(1) || currentLevel) < currentLevel) break;
 
 		}
 
