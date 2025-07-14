@@ -63,12 +63,17 @@ test.describe(`<${componentName}>`, () => {
 		const numberOfLinks = await links.count();
 		const skipLevel = await page.locator('kelp-toc').getByText('The Brig');
 		const skipLevelLink = await skipLevel.evaluate((elem) => elem.closest('ul').parentElement.querySelector('a').textContent);
+		const topLevelLinks = page.locator('kelp-toc > ul > li > a');
 
 		// Number of links should match number of headings
 		await expect(numberOfLinks).toEqual(15);
 
 		// Heading level jumps are correctly handled
 		await expect(skipLevelLink).toEqual(`Cat O'Nine Tails`);
+
+		// Should use correct nesting order
+		await expect(topLevelLinks.first()).toHaveText(`Cat O'Nine Tails`);
+		await expect(topLevelLinks.nth(2)).toHaveText('Ahoy');
 
 	});
 
