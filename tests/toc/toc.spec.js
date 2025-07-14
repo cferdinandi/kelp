@@ -54,6 +54,24 @@ test.describe(`<${componentName}>`, () => {
 
 	});
 
+	test('nested table of contents', async ({ page }) => {
+
+		await page.goto(`${testPath}/nested.html`);
+
+		// Get elements
+		const links = page.locator('kelp-toc li a');
+		const numberOfLinks = await links.count();
+		const skipLevel = await page.locator('kelp-toc').getByText('The Brig');
+		const skipLevelLink = await skipLevel.evaluate((elem) => elem.closest('ul').parentElement.querySelector('a').textContent);
+
+		// Number of links should match number of headings
+		await expect(numberOfLinks).toEqual(15);
+
+		// Heading level jumps are correctly handled
+		await expect(skipLevelLink).toEqual(`Cat O'Nine Tails`);
+
+	});
+
 	test('error handling', async ({ page }) => {
 
 		await page.goto(`${testPath}/errors.html`);

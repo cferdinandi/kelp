@@ -12,13 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="../../css/kelp.css">
 
 		<!-- Kelp JS -->
-		<script type="module" src="../../js/components/toc-reboot.js"></script>
-		<script>
-			// Ensures we can test the ready event
-			document.addEventListener('kelp:toc-ready', (event) => {
-				console.log('ready');
-			});
-		</script>
+		<script type="module" src="../../js/kelp.js"></script>
 	</head>
 	<body>
 
@@ -26,10 +20,10 @@
 
 			<h1>kelp-toc - nested</h1>
 
-			<kelp-toc heading="On this page..." nested></kelp-toc>
+			<kelp-toc nested></kelp-toc>
 
 			<h2>Cat O'Nine Tails</h2>
-			<h5 id="the-brig">The Brig</h5>
+			<h5 id="the-barig">The Brig</h5>
 			<h6>Sea Legs</h6>
 			<h4>Privateer</h4>
 			<h2>Ahoy</h2>
@@ -43,7 +37,6 @@
 			<h3 id="sloop">Sloop</h3>
 			<h4 id="swab">Swab</h4>
 			<h5>Grog</h5>
-			<div id="empty"></div>
 
 		</main>
 
