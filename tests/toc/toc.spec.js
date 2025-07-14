@@ -18,6 +18,8 @@ test.describe(`<${componentName}>`, () => {
 		const numberOfLinks = await links.count();
 		const heading = page.locator('h2');
 		const headingID = await heading.first().evaluate((elem) => elem.id);
+		const validIDHeading = await page.getByTestId('valid-id');
+		const validID = await validIDHeading.first().evaluate((elem) => elem.id);
 
 		// Number of links should match number of H2 headings
 		await expect(numberOfLinks).toEqual(5);
@@ -26,6 +28,9 @@ test.describe(`<${componentName}>`, () => {
 		// and their values are used in the ToC
 		await expect(headingID).toBeTruthy();
 		await expect(links.first()).toHaveAttribute('href', `#${headingID}`);
+
+		// IDs are valid
+		await expect(validID).toEqual('h_123-------text-small----S-bado-----');
 
 	});
 

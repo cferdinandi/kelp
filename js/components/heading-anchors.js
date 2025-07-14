@@ -1,6 +1,7 @@
 import { debug } from '../utilities/debug.js';
 import { emit } from '../utilities/emit.js';
 import { ready } from '../utilities/ready.js';
+import { setHeadingID } from '../utilities/setHeadingID.js';
 
 customElements.define('kelp-heading-anchors', class extends HTMLElement {
 
@@ -45,9 +46,7 @@ customElements.define('kelp-heading-anchors', class extends HTMLElement {
 			heading.classList.add('anchor-h');
 
 			// Add missing IDs
-			if (!heading.id) {
-				heading.id = `h_${crypto.randomUUID()}`;
-			}
+			setHeadingID(heading);
 
 			// Create anchor content
 			const text = `<span class="anchor-text">${heading.innerHTML}</span>`;
