@@ -23,6 +23,9 @@ customElements.define('kelp-toc', class extends HTMLElement {
 		this.target = this.getAttribute('target') || '';
 		this.listClass = this.getAttribute('list-class') || (this.nested ? null : 'list-inline');
 		this.listType = this.getAttribute('list-type') || 'ul';
+		this.index = {
+			val: 0
+		};
 
 		// Render
 		if (!this.render()) {
@@ -44,7 +47,7 @@ customElements.define('kelp-toc', class extends HTMLElement {
 		if (!headings.length) return;
 
 		// Create TOC
-		this.innerHTML = this.createList(headings, 0, true);
+		this.innerHTML = this.createList(headings, true);
 
 		return true;
 
@@ -54,26 +57,20 @@ customElements.define('kelp-toc', class extends HTMLElement {
 	 * Create the list HTML
 	 * Runs recursively on nested ToCs
 	 * @param  {NodeList} headings The headings to generate the list from
-	 * @param  {Integer}  start    The index to start at
 	 * @param  {Boolean}  isFirst  If true, this is the start of the list
 	 * @return {String}            The HTML string
 	 */
-	createList (headings, start, isFirst) {
+	createList (headings, isFirst) {
 
-		// If this is the start of the list, define this.index
-		if (isFirst) {
-			this.index = {
-				val: -1
-			};
-		}
+		// Define or update this.index.value
+		this.index.val = isFirst ? 0 : this.index.val + 1;
 
 		// Create HTML string
 		let list = '';
-		for (const [index, heading] of headings.entries()) {
+		for (; this.index.val < headings.length; this.index.val++) {
 
-			// If already rendered, skip
-			if (this.index.val >= index || index < start) continue;
-			this.index.val = index;
+			// Get the heading element
+			const heading = headings[this.index.val];
 
 			// If there's no heading, create one
 			if (!heading.id) {
@@ -88,7 +85,7 @@ customElements.define('kelp-toc', class extends HTMLElement {
 			list +=
 				`<li>
 					<a class="link-subtle" href="#${heading.id}">${heading.textContent}</a>
-					${this.nested && (headings[this.index.val + 1]?.tagName.slice(1) || currentLevel) > currentLevel ? this.createList(headings, index + 1) : ''}
+					${this.nested && (headings[this.index.val + 1]?.tagName.slice(1) || currentLevel) > currentLevel ? this.createList(headings) : ''}
 				</li>`;
 
 			// If next heading is bigger, finish this list
@@ -96,7 +93,7 @@ customElements.define('kelp-toc', class extends HTMLElement {
 
 		}
 
-		// Check if a heading should be rendere
+		// Check if a heading should be rendered
 		const renderHeading = isFirst && this.heading;
 
 		return `
