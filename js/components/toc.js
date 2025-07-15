@@ -1,7 +1,7 @@
 import { debug } from '../utilities/debug.js';
 import { emit } from '../utilities/emit.js';
 import { ready } from '../utilities/ready.js';
-import { setHeadingID } from '../utilities/setHeadingID.js';
+import { setTextAsID } from '../utilities/setTextAsID.js';
 
 customElements.define('kelp-toc', class extends HTMLElement {
 
@@ -74,7 +74,7 @@ customElements.define('kelp-toc', class extends HTMLElement {
 			const heading = headings[this.index.val];
 
 			// If there's no heading, create one
-			setHeadingID(heading);
+			setTextAsID(heading);
 
 			// Get the current and next heading levels
 			const currentLevel = heading.tagName.slice(1);
