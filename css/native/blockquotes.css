@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	blockquote {
 		--border-color: var(--color-border-accent);
 		--padding-block: var(--size-4xs);
@@ -23,5 +22,4 @@
 		font-size: var(--size-s);
 		padding-block-start: var(--size-m);
 	}
-
 }

@@ -4,7 +4,6 @@
  */
 
 @layer kelp.layout {
-
 	/**
 	 * Base Grid styles
 	 */
@@ -26,7 +25,10 @@
 
 	.grid-auto {
 		--width: 15ch;
-		grid-template-columns: repeat(auto-fit, minmax(min(var(--width), 100%), 1fr));
+		grid-template-columns: repeat(
+				auto-fit,
+				minmax(min(var(--width), 100%), 1fr)
+			);
 		grid-template-rows: auto;
 	}
 
@@ -53,7 +55,6 @@
 			display: grid;
 		}
 	}
-
 
 	/**
 	 * Column widths
@@ -84,7 +85,6 @@
 		--span: 9;
 	}
 
-
 	/**
 	 * Offsets
 	 */
@@ -114,5 +114,4 @@
 	.start-three-fourths {
 		--start: 10;
 	}
-
 }

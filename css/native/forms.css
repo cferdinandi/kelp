@@ -4,7 +4,6 @@
  */
 
 @layer kelp.core {
-
 	fieldset {
 		border: 0;
 		padding: 0;
@@ -68,11 +67,7 @@
 		width: 100%;
 	}
 
-	:where(
-		input,
-		textarea,
-		select
-	):not(:last-child) {
+	:where(input, textarea, select):not(:last-child) {
 		margin-block-end: var(--size-xl);
 	}
 
@@ -118,36 +113,22 @@
 		height: 3em;
 		width: 3em;
 	}
-
 }
 
 @layer kelp.state {
-
-	:is(
-		input,
-		textarea,
-		select
-	)[readonly] {
+	:is(input, textarea, select)[readonly] {
 		--background-color: var(--color-fill-muted);
 		--color: var(--color-on-muted);
 		background-color: var(--background-color);
 		color: var(--color);
 	}
 
-	:is(
-		input,
-		textarea,
-		select
-	):not(
-		[type="checkbox"],
-		[type="radio"],
-		[type="range"]
-	):focus,
-	:is(
-		[type="checkbox"],
-		[type="radio"],
-		[type="range"]
-	):focus-visible {
+	:is(input, textarea, select):not(
+			[type="checkbox"],
+			[type="radio"],
+			[type="range"]
+		):focus,
+	:is([type="checkbox"], [type="radio"], [type="range"]):focus-visible {
 		outline-color: var(--focus-ring-color);
 		outline-style: var(--focus-ring-style);
 		outline-width: var(--focus-ring-width);
@@ -162,7 +143,7 @@
 	[type="radio"]:checked::after {
 		background-color: var(--color-checked);
 		border-radius: 50%;
-		content: '';
+		content: "";
 		width: round(calc(100% * 0.75), var(--border-size));
 		aspect-ratio: 1;
 	}
@@ -174,8 +155,7 @@
 	}
 
 	[type="checkbox"]:checked::after {
-		content: '\002713';
+		content: "\002713";
 		font-size: var(--size-xs);
 	}
-
 }

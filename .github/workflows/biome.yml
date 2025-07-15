@@ -16,4 +16,4 @@ jobs:
         with:
           version: latest
       - name: Run Biome
-        run: biome lint
+        run: biome check

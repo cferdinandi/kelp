@@ -3,7 +3,6 @@
  */
 
 @layer kelp.layout {
-
 	.cluster > * {
 		margin: 0;
 	}
@@ -14,5 +13,4 @@
 		flex-wrap: wrap;
 		gap: var(--gap);
 	}
-
 }

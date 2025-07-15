@@ -5,7 +5,6 @@
 
 /* Light Theme (default) */
 @layer kelp.tokens {
-
 	:where(:root, :root *),
 	.neutral {
 		--color-fill-vivid: var(--color-neutral-fill-vivid);
@@ -84,5 +83,4 @@
 		--color-on-muted: var(--color-warning-on-muted);
 		--color-outline: var(--color-warning-outline);
 	}
-
 }

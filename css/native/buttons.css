@@ -3,17 +3,20 @@
  */
 
 @layer kelp.core {
-
 	button,
 	.btn,
-	input:is(
-		[type="button"],
-		[type="reset"],
-		[type="submit"]
-	) {
+	input:is([type="button"], [type="reset"], [type="submit"]) {
 		--background-color: var(--color-fill-vivid);
-		--background-color-hover: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-hover));
-		--background-color-active: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-active));
+		--background-color-hover: color-mix(
+			in oklab,
+			var(--color-fill-vivid),
+			var(--color-mix-hover)
+		);
+		--background-color-active: color-mix(
+			in oklab,
+			var(--color-fill-vivid),
+			var(--color-mix-active)
+		);
 
 		--color: var(--color-on-vivid);
 		--color-hover: var(--color-on-vivid);
@@ -47,7 +50,6 @@
 		vertical-align: middle;
 	}
 
-
 	/**
 	 * Button size
 	 */
@@ -56,7 +58,6 @@
 		display: block;
 		width: 100%;
 	}
-
 
 	/**
 	 * Buttons styled like links
@@ -83,36 +84,26 @@
 	 */
 	button,
 	[type="submit"] {
-	    appearance: none;
+		appearance: none;
 	}
-
 }
 
 @layer kelp.state {
-
 	:where(
-		button,
-		.btn,
-		input:is(
-			[type="button"],
-			[type="reset"],
-			[type="submit"]
-		)
-	):hover {
+			button,
+			.btn,
+			input:is([type="button"], [type="reset"], [type="submit"])
+		):hover {
 		--background-color: var(--background-color-hover);
 		--border-color: var(--border-color-hover);
 		--color: var(--color-hover);
 	}
 
 	:where(
-		button,
-		.btn,
-		input:is(
-			[type="button"],
-			[type="reset"],
-			[type="submit"]
-		)
-	):is(:active, [data-active]) {
+			button,
+			.btn,
+			input:is([type="button"], [type="reset"], [type="submit"])
+		):is(:active, [data-active]) {
 		--background-color: var(--background-color-active);
 		--border-color: var(--border-color-active);
 		--color: var(--color-active);
@@ -131,5 +122,4 @@
 	.btn-link:hover {
 		--decoration: var(--decoration-text-link-hover);
 	}
-
 }

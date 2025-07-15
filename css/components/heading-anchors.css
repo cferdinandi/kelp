@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	.anchor-link {
 		--color: inherit;
 		--color-hover: inherit;
@@ -20,14 +19,11 @@
 			text-indent: -1em;
 		}
 	}
-
 }
 
 @layer kelp.state {
-
 	.anchor-link:hover .anchor-icon {
 		color: var(--color-text-link-hover);
 		text-decoration: var(--decoration-text-link-hover);
 	}
-
 }

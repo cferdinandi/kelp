@@ -4,7 +4,6 @@
  */
 
 @layer kelp.core {
-
 	.avatar {
 		--border-radius: var(--border-radius-circle);
 		display: inline-block;
@@ -12,5 +11,4 @@
 		aspect-ratio: 1 / 1;
 		object-fit: cover;
 	}
-
 }

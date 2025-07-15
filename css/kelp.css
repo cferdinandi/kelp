@@ -1,13 +1,11 @@
 /* Cascade Layers */
 @import "./layers/layers.css";
 
-
 /* Theme Files */
 @import "./theme/palette.css";
 @import "./theme/colors.css";
 @import "./theme/fonts.css";
 @import "./theme/sizes.css";
-
 
 /* Native Elements */
 @import "./native/base.css";
@@ -23,7 +21,6 @@
 @import "./native/media.css";
 @import "./native/code.css";
 
-
 /* Layout */
 @import "./layout/containers.css";
 @import "./layout/grid.css";
@@ -32,19 +29,16 @@
 @import "./layout/cluster.css";
 @import "./layout/sidecar.css";
 
-
 /* Components */
 @import "./components/badges.css";
 @import "./components/callouts.css";
 @import "./components/avatar.css";
 @import "./components/skeleton.css";
 
-
 /* Web Components */
 @import "./components/heading-anchors.css";
 @import "./components/toggle-pw.css";
 @import "./components/autogrow.css";
-
 
 /* Utilities */
 @import "./utilities/fill.css";
@@ -58,7 +52,6 @@
 @import "./utilities/align.css";
 @import "./utilities/justify.css";
 @import "./utilities/accessibility.css";
-
 
 /* Design Tokens */
 @import "./tokens/style.css";

@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	table {
 		--border-color: var(--color-border-muted);
 		--background-color: var(--color-fill-muted);
@@ -38,5 +37,4 @@
 		background-color: var(--background-color);
 		color: var(--color);
 	}
-
 }

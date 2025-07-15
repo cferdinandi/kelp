@@ -4,18 +4,29 @@
  */
 
 @layer kelp.tokens {
-
 	/**
 	 * Outline with a transparent background
 	 */
 	.outline {
 		--background-color: transparent;
 		--background-color-hover: var(--color-fill-vivid);
-		--background-color-active: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-active));
+		--background-color-active: color-mix(
+			in oklab,
+			var(--color-fill-vivid),
+			var(--color-mix-active)
+		);
 
 		--border-color: var(--color-outline);
-		--border-color-hover: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-hover));
-		--border-color-active: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-active));
+		--border-color-hover: color-mix(
+			in oklab,
+			var(--color-fill-vivid),
+			var(--color-mix-hover)
+		);
+		--border-color-active: color-mix(
+			in oklab,
+			var(--color-fill-vivid),
+			var(--color-mix-active)
+		);
 
 		--color: var(--color-outline);
 		--color-hover: var(--color-on-vivid);
@@ -28,11 +39,19 @@
 	.muted {
 		--background-color: var(--color-fill-muted);
 		--background-color-hover: var(--color-fill-accent);
-		--background-color-active: color-mix(in oklab, var(--color-fill-muted), var(--color-mix-transparent));
+		--background-color-active: color-mix(
+			in oklab,
+			var(--color-fill-muted),
+			var(--color-mix-transparent)
+		);
 
 		--border-color: var(--color-border-muted);
 		--border-color-hover: var(--color-border-accent);
-		--border-color-active: color-mix(in oklab, var(--color-border-muted), var(--color-mix-transparent));
+		--border-color-active: color-mix(
+			in oklab,
+			var(--color-border-muted),
+			var(--color-mix-transparent)
+		);
 
 		--color: var(--color-on-muted);
 		--color-hover: var(--color-on-accent);
@@ -44,8 +63,16 @@
 	 */
 	.vivid {
 		--background-color: var(--color-fill-vivid);
-		--background-color-hover: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-hover));
-		--background-color-active: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-active));
+		--background-color-hover: color-mix(
+			in oklab,
+			var(--color-fill-vivid),
+			var(--color-mix-hover)
+		);
+		--background-color-active: color-mix(
+			in oklab,
+			var(--color-fill-vivid),
+			var(--color-mix-active)
+		);
 
 		--border-color: transparent;
 		--border-color-hover: transparent;
@@ -56,8 +83,11 @@
 		--color-active: var(--color-on-vivid);
 
 		--color-text-link: var(--color);
-		--color-text-link-hover: color-mix(in oklab, var(--color), var(--color-mix-hover));
+		--color-text-link-hover: color-mix(
+			in oklab,
+			var(--color),
+			var(--color-mix-hover)
+		);
 		--focus-ring-color: var(--color);
 	}
-
 }

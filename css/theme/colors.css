@@ -4,11 +4,9 @@
  */
 
 @layer kelp.base {
-
 	/* Light Theme (default) */
 	:where(:root),
 	.kelp-theme-light {
-
 		/* Page & Text  */
 		--color-background: white;
 		--color-text-normal: var(--color-gray-10);
@@ -110,20 +108,21 @@
 		--color-code-fill: var(--color-gray-10);
 		--color-code-border: var(--color-gray-20);
 		--color-code-on: white;
-
 	}
-
 
 	/* Dark Theme */
 	.kelp-theme-dark {
-
 		/* Page & Text  */
 		--color-background: var(--color-gray-10);
 		--color-text-normal: white;
 		--color-text-muted: var(--color-gray-80);
 		--color-text-input: var(--color-gray-80);
 		--color-text-code: var(--color-pink-80);
-		--color-fill-highlight: color-mix(in oklab, var(--color-highlight), transparent 85%);
+		--color-fill-highlight: color-mix(
+			in oklab,
+			var(--color-highlight),
+			transparent 85%
+		);
 		--color-text-link: var(--color-blue-70);
 		--color-text-link-hover: var(--color-blue-80);
 
@@ -185,7 +184,5 @@
 
 		/* Code Snippets */
 		--color-code-fill: var(--color-gray-05);
-
 	}
-
 }

@@ -16,7 +16,6 @@
 }
 
 @layer kelp.state {
-
 	a:hover {
 		color: var(--color-hover);
 		text-decoration: var(--decoration-hover);
@@ -29,5 +28,4 @@
 	.link-subtle:not(:hover) {
 		text-decoration: none;
 	}
-
 }

@@ -4,7 +4,6 @@
  */
 
 @layer kelp.core {
-
 	iframe[class*="aspect-ratio"] {
 		height: 100%;
 		width: 100%;
@@ -35,5 +34,4 @@
 	.aspect-ratio-1x1 {
 		--ratio: 1 / 1;
 	}
-
 }

@@ -7,15 +7,17 @@
  */
 
 @layer kelp;
-@layer
-	kelp.base,
-	kelp.theme, /* 1 */
+@layer kelp.base,
+	/* 1 */
+	kelp.theme,
 	kelp.palette,
 	kelp.core,
-	kelp.extend, /* 2 */
+	/* 2 */
+	kelp.extend,
 	kelp.layout,
 	kelp.utilities,
 	kelp.tokens,
-	kelp.overrides, /* 3 */
+	/* 3 */
+	kelp.overrides,
 	kelp.state,
 	kelp.effects; /* 4 */

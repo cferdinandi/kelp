@@ -4,7 +4,6 @@
  */
 
 @layer kelp.layout {
-
 	.split > * {
 		margin: 0;
 	}
@@ -16,5 +15,4 @@
 		justify-content: space-between;
 		flex-wrap: wrap;
 	}
-
 }

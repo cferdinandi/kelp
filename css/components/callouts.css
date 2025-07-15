@@ -4,7 +4,6 @@
  */
 
 @layer kelp.core {
-
 	.callout {
 		--background-color: var(--color-fill-muted);
 		--color: var(--color-on-muted);
@@ -29,5 +28,4 @@
 	.callout > :last-child {
 		margin-block-end: 0;
 	}
-
 }

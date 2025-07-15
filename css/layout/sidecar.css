@@ -4,7 +4,6 @@
  */
 
 @layer kelp.layout {
-
 	[class*="sidecar"] > * {
 		margin: 0;
 	}
@@ -30,5 +29,4 @@
 		flex-grow: 999;
 		min-inline-size: var(--main-size, 50%);
 	}
-
 }

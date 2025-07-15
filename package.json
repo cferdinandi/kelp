@@ -1,6 +1,6 @@
 {
 	"name": "kelpui",
-	"version": "0.14.5",
+	"version": "0.14.6",
 	"description": "A UI library for people who love HTML, powered by modern CSS and Web Components.",
 	"keywords": [
 		"html",
@@ -27,7 +27,8 @@
 		"url": "http://github.com/cferdinandi/kelp"
 	},
 	"scripts": {
-		"lint": "npx @biomejs/biome lint",
+		"lint": "npx @biomejs/biome check",
+		"lint-fix":  "npx @biomejs/biome check --write",
 		"test": "npx playwright test",
 		"start": "http-server",
 		"dev": "http-server -o"

@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	details {
 		--border-color: var(--color-border-accent);
 		--gap: var(--size-3xs);
@@ -31,10 +30,7 @@
 		list-style: none;
 	}
 
-	:where(
-		details + details,
-		details:has(+ details)
-	) summary {
+	:where(details + details, details:has(+ details)) summary {
 		justify-content: space-between;
 	}
 
@@ -55,5 +51,4 @@
 	[open] > summary::after {
 		transform: var(--rotation);
 	}
-
 }

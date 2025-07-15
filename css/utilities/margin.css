@@ -4,7 +4,6 @@
  */
 
 @layer kelp.utilities {
-
 	/**
 	 * Margin Block Start
 	 */
@@ -73,7 +72,6 @@
 		margin-block-start: var(--space);
 	}
 
-
 	/**
 	 * Margin Block End
 	 */
@@ -141,5 +139,4 @@
 	.margin-end-space {
 		margin-block-end: var(--space);
 	}
-
 }
