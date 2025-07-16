@@ -28,6 +28,7 @@
 	},
 	"scripts": {
 		"lint": "npx @biomejs/biome lint",
+		"type": "npx tsc",
 		"test": "npx playwright test",
 		"start": "http-server",
 		"dev": "http-server -o"
@@ -35,7 +36,8 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.0.0",
 		"@playwright/test": "^1.53.2",
-		"@types/node": "^24.0.10"
+		"@types/node": "^24.0.10",
+		"typescript": "^5.8.3"
 	},
 	"dependencies": {
 		"http-server": "^14.1.1"

@@ -1,0 +1,14 @@
+{
+	"include": [
+		"js/**/*"
+	],
+	"compilerOptions": {
+		"target": "es2022",
+		"allowJs": true,
+		"checkJs": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"noEmit": true
+	}
+}
