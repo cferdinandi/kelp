@@ -5,6 +5,11 @@ import { setTextAsID } from '../utilities/setTextAsID.js';
 
 customElements.define('kelp-heading-anchors', class extends HTMLElement {
 
+	// Private class properties
+	#icon
+	#levels;
+	#before;
+
 	// Initialize on connect
 	connectedCallback () {
 		ready(this);
@@ -17,9 +22,9 @@ customElements.define('kelp-heading-anchors', class extends HTMLElement {
 		if (this.hasAttribute('is-ready')) return;
 
 		// Get settings
-		this.icon = this.getAttribute('icon') || '#';
-		this.levels = this.getAttribute('levels') || 'h2, h3, h4, h5, h6';
-		this.before = this.hasAttribute('before');
+		this.#icon = this.getAttribute('icon') || '#';
+		this.#levels = this.getAttribute('levels') || 'h2, h3, h4, h5, h6';
+		this.#before = this.hasAttribute('before');
 
 		// Render
 		if (!this.render()) {
@@ -37,7 +42,7 @@ customElements.define('kelp-heading-anchors', class extends HTMLElement {
 	render () {
 
 		// Get the headings
-		const headings = this.querySelectorAll(this.levels);
+		const headings = this.querySelectorAll(this.#levels);
 		if (!headings.length) return;
 
 		for (const heading of headings) {
@@ -50,12 +55,12 @@ customElements.define('kelp-heading-anchors', class extends HTMLElement {
 
 			// Create anchor content
 			const text = `<span class="anchor-text">${heading.innerHTML}</span>`;
-			const icon = `<span class="anchor-icon" aria-hidden="true">${this.icon}</span>`;
+			const icon = `<span class="anchor-icon" aria-hidden="true">${this.#icon}</span>`;
 
 			// Inject the link
 			heading.innerHTML =
 				`<a class="anchor-link" href="#${heading.id}">
-					${this.before ? `${icon} ${text}` : `${text} ${icon}`}
+					${this.#before ? `${icon} ${text}` : `${text} ${icon}`}
 				</a>`;
 
 		}

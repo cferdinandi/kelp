@@ -5,7 +5,7 @@
  * @param  {String}  id        The event ID
  * @param  {*}       detail    Any details about the event (optional)
  */
-export function emit (elem, component, id, detail) {
+export function emit (elem, component, id, detail = null) {
 
 	// Create a new event
 	const event = new CustomEvent(`kelp:${component}-${id}`, {

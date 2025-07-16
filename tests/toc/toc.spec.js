@@ -30,7 +30,7 @@ test.describe(`<${componentName}>`, () => {
 		await expect(links.first()).toHaveAttribute('href', `#${headingID}`);
 
 		// IDs are valid
-		await expect(validID).toEqual('h_123-text-small-是不-Sábado-😀🎉');
+		await expect(validID).toEqual('kelp_123-text-small-是不-Sábado-😀🎉');
 
 	});
 
