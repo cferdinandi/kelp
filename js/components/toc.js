@@ -81,7 +81,7 @@ customElements.define('kelp-toc', class extends HTMLElement {
 		for (; this.#index.val < headings.length; this.#index.val++) {
 
 			// Get the heading element
-			const heading = headings[this.#index.val];
+			const heading = /** @type {Element} */ (headings[this.#index.val]);
 
 			// If there's no heading, create one
 			setTextAsID(heading);
@@ -94,11 +94,11 @@ customElements.define('kelp-toc', class extends HTMLElement {
 			list +=
 				`<li>
 					<a class="link-subtle" href="#${heading.id}">${heading.textContent}</a>
-					${this.#nested && (headings[this.#index.val + 1]?.tagName.slice(1) || currentLevel) > currentLevel ? this.#createList(headings) : ''}
+					${this.#nested && (/** @type {Element} */ (headings[this.#index.val + 1])?.tagName.slice(1) || currentLevel) > currentLevel ? this.#createList(headings) : ''}
 				</li>`;
 
 			// If next heading is bigger, finish this list
-			if (!isFirst && (headings[this.#index.val + 1]?.tagName.slice(1) || currentLevel) < currentLevel) break;
+			if (!isFirst && (/** @type {Element} */ (headings[this.#index.val + 1])?.tagName.slice(1) || currentLevel) < currentLevel) break;
 
 		}
 
