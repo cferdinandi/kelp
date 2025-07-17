@@ -5,15 +5,14 @@ import { setTextAsID } from '../utilities/setTextAsID.js';
 
 customElements.define('kelp-toc', class extends HTMLElement {
 
-	// Private class properties
-	#nested;
-	#level;
-	#heading;
-	#headingType;
-	#target;
-	#listClass;
-	#listType;
-	#index;
+	/** @type Boolean */       #nested;
+	/** @type String */        #level;
+	/** @type String | null */ #heading;
+	/** @type String | null */ #headingType;
+	/** @type String */        #target;
+	/** @type String | null */ #listClass;
+	/** @type String */        #listType;
+	/** @type Object */	       #index;
 
 	// Initialize on connect
 	connectedCallback () {

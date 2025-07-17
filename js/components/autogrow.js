@@ -4,7 +4,7 @@ import { ready } from '../utilities/ready.js';
 
 customElements.define('kelp-autogrow', class extends HTMLElement {
 
-	// Private class properties
+	/** @type HTMLTextAreaElement | null */
 	#textarea;
 
 	// Initialize on connect
@@ -14,7 +14,7 @@ customElements.define('kelp-autogrow', class extends HTMLElement {
 
 	// Handle events
 	handleEvent () {
-		this.setAttribute('data-replicated-value', this.#textarea.value);
+		this.setAttribute('data-replicated-value', this.#textarea?.value ?? '');
 	}
 
 	// Initialize the component

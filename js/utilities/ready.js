@@ -1,6 +1,6 @@
 /**
  * Run .init() method after DOM is ready
- * @param  {Instance} instance The component class instance
+ * @param  {KelpWCInstance} instance The component class instance
  */
 export function ready (instance) {
 	if (document.readyState !== 'loading') {

@@ -5,10 +5,9 @@ import { setTextAsID } from '../utilities/setTextAsID.js';
 
 customElements.define('kelp-heading-anchors', class extends HTMLElement {
 
-	// Private class properties
-	#icon
-	#levels;
-	#before;
+	/** @type String */  #icon
+	/** @type String */  #levels;
+	/** @type Boolean */ #before;
 
 	// Initialize on connect
 	connectedCallback () {

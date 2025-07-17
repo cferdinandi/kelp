@@ -4,11 +4,10 @@ import { ready } from '../utilities/ready.js';
 
 customElements.define('kelp-toggle-pw', class extends HTMLElement {
 
-	// Private class properties
-	#passwords;
-	#trigger;
-	#isBtn;
-	#isVisible;
+	/** @type NodeList */                 #passwords;
+	/** @type HTMLButtonElement | null */ #btn
+	/** @type HTMLInputElement | null */  #checkbox
+	/** @type Boolean */                  #isVisible;
 
 	// Initialize on connect
 	connectedCallback () {
@@ -23,13 +22,14 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 
 		// Get settings
 		this.#passwords = this.querySelectorAll('[type="password"]');
-		this.#trigger = this.querySelector('[toggle]');
-		this.#isBtn = this.#trigger?.tagName.toLowerCase() === 'button';
+		const toggle = this.querySelector('[toggle]');
+		this.#btn = toggle?.tagName.toLowerCase() === 'button' ? /** @type {HTMLButtonElement} */ (toggle) : null;
+		this.#checkbox = toggle?.getAttribute('type') === 'checkbox' ? /** @type {HTMLInputElement} */ (toggle) : null;
 		const startVisible = this.hasAttribute('visible');
 		this.#isVisible = startVisible;
 
 		// If there's no toggle
-		if (!this.#trigger) {
+		if (!this.#btn && !this.#checkbox) {
 			debug(this, 'No password toggle found');
 			return;
 		}
@@ -41,21 +41,22 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 		}
 
 		// If toggle is a button, add aria-pressed
-		if (this.#isBtn) {
-			this.#trigger.setAttribute('aria-pressed', startVisible);
-			this.#trigger.setAttribute('type', 'button');
+		if (this.#btn) {
+			this.#btn.setAttribute('aria-pressed', startVisible.toString());
+			this.#btn.setAttribute('type', 'button');
 		}
 
 		// If passwords should be visible, show them by default
 		if (startVisible) {
-			if (!this.#isBtn) {
-				this.#trigger.checked = true;
+			if (this.#checkbox) {
+				this.#checkbox.checked = true;
 			}
 			this.show();
 		}
 
-		// Listen for click events
-		this.#trigger.addEventListener('click', this);
+		// Listen for click/input events
+		this.#btn?.addEventListener('click', this);
+		this.#checkbox?.addEventListener('input', this);
 
 		// Ready
 		emit(this, 'togglepw', 'ready');
@@ -63,7 +64,7 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 
 	}
 
-	// Readonly property
+	// readonly property
 	// Returns true if password is visible
 	get isVisible () {
 		return this.#isVisible;
@@ -87,12 +88,12 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 	show () {
 		this.#isVisible = true;
 		for (const pw of this.#passwords) {
-			pw.type = 'text';
+			/** @type {Element} */
+			(pw).setAttribute('type', 'text');
 		}
-		if (this.#isBtn) {
-			this.#trigger.setAttribute('aria-pressed', true);
-		} else {
-			this.#trigger.checked = true;
+		this.#btn?.setAttribute('aria-pressed', 'true');
+		if (this.#checkbox) {
+			this.#checkbox.checked = true;
 		}
 		emit(this, 'togglepw', 'show');
 	}
@@ -101,12 +102,12 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 	hide () {
 		this.#isVisible = false;
 		for (const pw of this.#passwords) {
-			pw.type = 'password';
+			/** @type {Element} */
+			(pw).setAttribute('type', 'password');
 		}
-		if (this.#isBtn) {
-			this.#trigger.setAttribute('aria-pressed', false);
-		} else {
-			this.#trigger.checked = false;
+		this.#btn?.setAttribute('aria-pressed', 'false');
+		if (this.#checkbox) {
+			this.#checkbox.checked = false;
 		}
 		emit(this, 'togglepw', 'hide');
 	}

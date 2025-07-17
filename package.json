@@ -30,6 +30,7 @@
 		"lint": "npx @biomejs/biome lint",
 		"type": "npx tsc",
 		"test": "npx playwright test",
+		"release": "npm --no-git-tag-version version",
 		"start": "http-server",
 		"dev": "http-server -o"
 	},
