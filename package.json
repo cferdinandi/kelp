@@ -30,6 +30,7 @@
 		"lint": "npx @biomejs/biome lint",
 		"type": "npx tsc",
 		"test": "npx playwright test",
+		"build": "node ./esbuild.mjs",
 		"release": "npm --no-git-tag-version version",
 		"start": "http-server",
 		"dev": "http-server -o"
@@ -38,9 +39,11 @@
 		"@biomejs/biome": "2.0.0",
 		"@playwright/test": "^1.53.2",
 		"@types/node": "^24.0.10",
+		"esbuild": "0.25.6",
 		"typescript": "^5.8.3"
 	},
 	"dependencies": {
+		"glob": "^11.0.3",
 		"http-server": "^14.1.1"
 	}
 }
