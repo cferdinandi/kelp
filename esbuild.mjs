@@ -2,7 +2,7 @@ import * as esbuild from 'esbuild';
 import { glob } from 'glob';
 import pkg from './package.json' with { type: "json" };
 
-const banner = `/*! ${pkg.name} v${pkg.version} | (c) ${pkg.author.name} | Kelp Commons License | ${pkg.repository.url} */`;
+const banner = `/*! ${pkg.name} v${pkg.version} | (c) ${pkg.author.name} | ${pkg.repository.url} */`;
 
 // Get all .raw files
 const js = await glob('js/**/*.raw.js');

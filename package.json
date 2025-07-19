@@ -31,7 +31,7 @@
 		"type": "npx tsc",
 		"test": "npx playwright test",
 		"build": "node ./esbuild.mjs",
-		"release": "npm --no-git-tag-version version",
+		"version": "npm --no-git-tag-version version",
 		"start": "http-server",
 		"dev": "http-server -o"
 	},
