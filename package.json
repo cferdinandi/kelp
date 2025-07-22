@@ -30,6 +30,7 @@
 		"lint": "npx @biomejs/biome lint",
 		"type": "npx tsc",
 		"test": "npx playwright test",
+		"check": "npm run lint && npm run type && npm run test",
 		"build": "node ./esbuild.mjs",
 		"version": "npm --no-git-tag-version version",
 		"start": "http-server",

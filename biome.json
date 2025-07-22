@@ -1,7 +1,10 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"files": {
-		"includes": ["css/**/*", "js/**/*"]
+		"includes": [
+			"modules/css/**/*",
+			"modules/js/**/*"
+		]
 	},
 	"linter": {
 		"rules": {

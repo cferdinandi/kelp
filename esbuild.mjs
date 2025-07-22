@@ -4,23 +4,22 @@ import pkg from './package.json' with { type: "json" };
 
 const banner = `/*! ${pkg.name} v${pkg.version} | (c) ${pkg.author.name} | ${pkg.repository.url} */`;
 
-// Get all .raw files
-const js = await glob('js/**/*.raw.js');
-const css = await glob('css/**/*.raw.css');
-const files = [...js, ...css];
-
-// Generate the input/output object for the files
-const entryPoints = files.map((file) => {
-	const output = file.replace('.raw', '').replace('.js', '').replace('.css', '');
-	return {
-		in: file,
-		out: output,
-	};
-});
-
 // Build the files
 await esbuild.build({
-	entryPoints,
+	entryPoints: [
+		{
+			in: 'modules/css/kelp.css',
+			out: 'css/kelp',
+		},
+		{
+			in: 'modules/js/kelp.js',
+			out: 'js/kelp',
+		},
+		{
+			in: 'modules/js/dark-mode-auto.js',
+			out: 'js/dark-mode-auto',
+		}
+	],
 	outdir: './',
 	banner: {
 		js: banner,

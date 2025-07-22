@@ -1,13 +1,10 @@
-/**
- * Automatically toggle dark mode based on users prefers-color-scheme OS setting
- */
+/*! kelpui v0.14.6 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+"use strict";
 (() => {
-
-	const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-	document.documentElement.classList.toggle('kelp-theme-dark', prefersDarkMode.matches);
-
-	prefersDarkMode.addEventListener('change', (event) => {
-		document.documentElement.classList.toggle('kelp-theme-dark', event.matches);
-	});
-
+  // modules/js/dark-mode-auto.js
+  var prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+  document.documentElement.classList.toggle("kelp-theme-dark", prefersDarkMode.matches);
+  prefersDarkMode.addEventListener("change", (event) => {
+    document.documentElement.classList.toggle("kelp-theme-dark", event.matches);
+  });
 })();
