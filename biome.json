@@ -1,15 +1,10 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"javascript": {
-		"formatter": {
-			"quoteStyle": "single",
-			"lineWidth": 120,
-			"indentWidth": 4,
-			"trailingCommas": "es5"
-		}
-	},
 	"files": {
-		"includes": ["css/**/*", "js/**/*"]
+		"includes": [
+			"modules/css/**/*",
+			"modules/js/**/*"
+		]
 	},
 	"linter": {
 		"rules": {

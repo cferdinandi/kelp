@@ -1,65 +1,1769 @@
-/* Cascade Layers */
-@import "./layers/layers.css";
+/*! kelpui v0.14.7 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/* modules/css/layers/layers.css */
+@layer kelp;
+@layer kelp.base, kelp.theme, kelp.palette, kelp.core, kelp.extend, kelp.layout, kelp.utilities, kelp.tokens, kelp.overrides, kelp.state, kelp.effects;
 
+/* modules/css/theme/palette.css */
+@layer kelp.base {
+  :where(:root) {
+    --color-red-base: #e50000;
+    --color-red-hue: 29.23;
+    --color-red-chroma: 1;
+    --color-orange-base: #ff8d00;
+    --color-orange-hue: 58.75;
+    --color-orange-chroma: 1;
+    --color-yellow-base: #ffc107;
+    --color-yellow-hue: 84.9338;
+    --color-yellow-chroma: 1;
+    --color-green-base: #028121;
+    --color-green-hue: 145.01;
+    --color-green-chroma: 1;
+    --color-cyan-base: #73d7ee;
+    --color-cyan-hue: 214.56;
+    --color-cyan-chroma: 1;
+    --color-blue-base: #004cff;
+    --color-blue-hue: 263.27;
+    --color-blue-chroma: 1;
+    --color-indigo-base: #5936c2;
+    --color-indigo-hue: 287;
+    --color-indigo-chroma: 1;
+    --color-purple-base: #760088;
+    --color-purple-hue: 321.05;
+    --color-purple-chroma: 1;
+    --color-pink-base: #ffafc7;
+    --color-pink-hue: 359.86;
+    --color-pink-chroma: 1;
+    --color-gray-base: #808080;
+    --color-gray-hue: 0;
+    --color-gray-chroma: 0;
+  }
+}
+@layer kelp.palette {
+  :where(:root) {
+    --color-red-05: oklch(18.5% calc(.08 * var(--color-red-chroma)) var(--color-red-hue));
+    --color-red-10: oklch(24% calc(.1 * var(--color-red-chroma)) var(--color-red-hue));
+    --color-red-20: oklch(32.5% calc(.135 * var(--color-red-chroma)) var(--color-red-hue));
+    --color-red-30: oklch(40% calc(.16 * var(--color-red-chroma)) var(--color-red-hue));
+    --color-red-40: oklch(47% calc(.185 * var(--color-red-chroma)) var(--color-red-hue));
+    --color-red-50: oklch(57% calc(.2 * var(--color-red-chroma)) var(--color-red-hue));
+    --color-red-60: oklch(67% calc(.175 * var(--color-red-chroma)) var(--color-red-hue));
+    --color-red-70: oklch(75% calc(.13 * var(--color-red-chroma)) var(--color-red-hue));
+    --color-red-80: oklch(83.5% calc(.085 * var(--color-red-chroma)) var(--color-red-hue));
+    --color-red-90: oklch(92% calc(.04 * var(--color-red-chroma)) var(--color-red-hue));
+    --color-red-95: oklch(96% calc(.02 * var(--color-red-chroma)) var(--color-red-hue));
+    --color-orange-05: oklch(18.5% calc(.08 * var(--color-orange-chroma)) var(--color-orange-hue));
+    --color-orange-10: oklch(24% calc(.1 * var(--color-orange-chroma)) var(--color-orange-hue));
+    --color-orange-20: oklch(32.5% calc(.135 * var(--color-orange-chroma)) var(--color-orange-hue));
+    --color-orange-30: oklch(40% calc(.16 * var(--color-orange-chroma)) var(--color-orange-hue));
+    --color-orange-40: oklch(47% calc(.185 * var(--color-orange-chroma)) var(--color-orange-hue));
+    --color-orange-50: oklch(57% calc(.2 * var(--color-orange-chroma)) var(--color-orange-hue));
+    --color-orange-60: oklch(67% calc(.175 * var(--color-orange-chroma)) var(--color-orange-hue));
+    --color-orange-70: oklch(75% calc(.13 * var(--color-orange-chroma)) var(--color-orange-hue));
+    --color-orange-80: oklch(83.5% calc(.085 * var(--color-orange-chroma)) var(--color-orange-hue));
+    --color-orange-90: oklch(92% calc(.04 * var(--color-orange-chroma)) var(--color-orange-hue));
+    --color-orange-95: oklch(96% calc(.02 * var(--color-orange-chroma)) var(--color-orange-hue));
+    --color-yellow-05: oklch(18.5% calc(.08 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+    --color-yellow-10: oklch(24% calc(.1 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+    --color-yellow-20: oklch(32.5% calc(.135 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+    --color-yellow-30: oklch(40% calc(.16 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+    --color-yellow-40: oklch(47% calc(.185 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+    --color-yellow-50: oklch(57% calc(.2 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+    --color-yellow-60: oklch(67% calc(.175 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+    --color-yellow-70: oklch(75% calc(.13 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+    --color-yellow-80: oklch(83.5% calc(.085 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+    --color-yellow-90: oklch(92% calc(.04 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+    --color-yellow-95: oklch(96% calc(.02 * var(--color-yellow-chroma)) var(--color-yellow-hue));
+    --color-green-05: oklch(18.5% calc(.08 * var(--color-green-chroma)) var(--color-green-hue));
+    --color-green-10: oklch(24% calc(.1 * var(--color-green-chroma)) var(--color-green-hue));
+    --color-green-20: oklch(32.5% calc(.135 * var(--color-green-chroma)) var(--color-green-hue));
+    --color-green-30: oklch(40% calc(.16 * var(--color-green-chroma)) var(--color-green-hue));
+    --color-green-40: oklch(47% calc(.185 * var(--color-green-chroma)) var(--color-green-hue));
+    --color-green-50: oklch(57% calc(.2 * var(--color-green-chroma)) var(--color-green-hue));
+    --color-green-60: oklch(67% calc(.175 * var(--color-green-chroma)) var(--color-green-hue));
+    --color-green-70: oklch(75% calc(.13 * var(--color-green-chroma)) var(--color-green-hue));
+    --color-green-80: oklch(83.5% calc(.085 * var(--color-green-chroma)) var(--color-green-hue));
+    --color-green-90: oklch(92% calc(.04 * var(--color-green-chroma)) var(--color-green-hue));
+    --color-green-95: oklch(96% calc(.02 * var(--color-green-chroma)) var(--color-green-hue));
+    --color-cyan-05: oklch(18.5% calc(.08 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+    --color-cyan-10: oklch(24% calc(.1 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+    --color-cyan-20: oklch(32.5% calc(.135 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+    --color-cyan-30: oklch(40% calc(.16 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+    --color-cyan-40: oklch(47% calc(.185 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+    --color-cyan-50: oklch(57% calc(.2 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+    --color-cyan-60: oklch(67% calc(.175 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+    --color-cyan-70: oklch(75% calc(.13 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+    --color-cyan-80: oklch(83.5% calc(.085 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+    --color-cyan-90: oklch(92% calc(.04 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+    --color-cyan-95: oklch(96% calc(.02 * var(--color-cyan-chroma)) var(--color-cyan-hue));
+    --color-blue-05: oklch(18.5% calc(.08 * var(--color-blue-chroma)) var(--color-blue-hue));
+    --color-blue-10: oklch(24% calc(.1 * var(--color-blue-chroma)) var(--color-blue-hue));
+    --color-blue-20: oklch(32.5% calc(.135 * var(--color-blue-chroma)) var(--color-blue-hue));
+    --color-blue-30: oklch(40% calc(.16 * var(--color-blue-chroma)) var(--color-blue-hue));
+    --color-blue-40: oklch(47% calc(.185 * var(--color-blue-chroma)) var(--color-blue-hue));
+    --color-blue-50: oklch(57% calc(.2 * var(--color-blue-chroma)) var(--color-blue-hue));
+    --color-blue-60: oklch(67% calc(.175 * var(--color-blue-chroma)) var(--color-blue-hue));
+    --color-blue-70: oklch(75% calc(.13 * var(--color-blue-chroma)) var(--color-blue-hue));
+    --color-blue-80: oklch(83.5% calc(.085 * var(--color-blue-chroma)) var(--color-blue-hue));
+    --color-blue-90: oklch(92% calc(.04 * var(--color-blue-chroma)) var(--color-blue-hue));
+    --color-blue-95: oklch(96% calc(.02 * var(--color-blue-chroma)) var(--color-blue-hue));
+    --color-indigo-05: oklch(18.5% calc(.08 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+    --color-indigo-10: oklch(24% calc(.1 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+    --color-indigo-20: oklch(32.5% calc(.135 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+    --color-indigo-30: oklch(40% calc(.16 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+    --color-indigo-40: oklch(47% calc(.185 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+    --color-indigo-50: oklch(57% calc(.2 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+    --color-indigo-60: oklch(67% calc(.175 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+    --color-indigo-70: oklch(75% calc(.13 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+    --color-indigo-80: oklch(83.5% calc(.085 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+    --color-indigo-90: oklch(92% calc(.04 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+    --color-indigo-95: oklch(96% calc(.02 * var(--color-indigo-chroma)) var(--color-indigo-hue));
+    --color-purple-05: oklch(18.5% calc(.08 * var(--color-purple-chroma)) var(--color-purple-hue));
+    --color-purple-10: oklch(24% calc(.1 * var(--color-purple-chroma)) var(--color-purple-hue));
+    --color-purple-20: oklch(32.5% calc(.135 * var(--color-purple-chroma)) var(--color-purple-hue));
+    --color-purple-30: oklch(40% calc(.16 * var(--color-purple-chroma)) var(--color-purple-hue));
+    --color-purple-40: oklch(47% calc(.185 * var(--color-purple-chroma)) var(--color-purple-hue));
+    --color-purple-50: oklch(57% calc(.2 * var(--color-purple-chroma)) var(--color-purple-hue));
+    --color-purple-60: oklch(67% calc(.175 * var(--color-purple-chroma)) var(--color-purple-hue));
+    --color-purple-70: oklch(75% calc(.13 * var(--color-purple-chroma)) var(--color-purple-hue));
+    --color-purple-80: oklch(83.5% calc(.085 * var(--color-purple-chroma)) var(--color-purple-hue));
+    --color-purple-90: oklch(92% calc(.04 * var(--color-purple-chroma)) var(--color-purple-hue));
+    --color-purple-95: oklch(96% calc(.02 * var(--color-purple-chroma)) var(--color-purple-hue));
+    --color-pink-05: oklch(18.5% calc(.08 * var(--color-pink-chroma)) var(--color-pink-hue));
+    --color-pink-10: oklch(24% calc(.1 * var(--color-pink-chroma)) var(--color-pink-hue));
+    --color-pink-20: oklch(32.5% calc(.135 * var(--color-pink-chroma)) var(--color-pink-hue));
+    --color-pink-30: oklch(40% calc(.16 * var(--color-pink-chroma)) var(--color-pink-hue));
+    --color-pink-40: oklch(47% calc(.185 * var(--color-pink-chroma)) var(--color-pink-hue));
+    --color-pink-50: oklch(57% calc(.2 * var(--color-pink-chroma)) var(--color-pink-hue));
+    --color-pink-60: oklch(67% calc(.175 * var(--color-pink-chroma)) var(--color-pink-hue));
+    --color-pink-70: oklch(75% calc(.13 * var(--color-pink-chroma)) var(--color-pink-hue));
+    --color-pink-80: oklch(83.5% calc(.085 * var(--color-pink-chroma)) var(--color-pink-hue));
+    --color-pink-90: oklch(92% calc(.04 * var(--color-pink-chroma)) var(--color-pink-hue));
+    --color-pink-95: oklch(96% calc(.02 * var(--color-pink-chroma)) var(--color-pink-hue));
+    --color-gray-05: oklch(18.5% calc(.08 * var(--color-gray-chroma)) var(--color-gray-hue));
+    --color-gray-10: oklch(24% calc(.1 * var(--color-gray-chroma)) var(--color-gray-hue));
+    --color-gray-20: oklch(32.5% calc(.135 * var(--color-gray-chroma)) var(--color-gray-hue));
+    --color-gray-30: oklch(40% calc(.16 * var(--color-gray-chroma)) var(--color-gray-hue));
+    --color-gray-40: oklch(47% calc(.185 * var(--color-gray-chroma)) var(--color-gray-hue));
+    --color-gray-50: oklch(57% calc(.2 * var(--color-gray-chroma)) var(--color-gray-hue));
+    --color-gray-60: oklch(67% calc(.175 * var(--color-gray-chroma)) var(--color-gray-hue));
+    --color-gray-70: oklch(75% calc(.13 * var(--color-gray-chroma)) var(--color-gray-hue));
+    --color-gray-80: oklch(83.5% calc(.085 * var(--color-gray-chroma)) var(--color-gray-hue));
+    --color-gray-90: oklch(92% calc(.04 * var(--color-gray-chroma)) var(--color-gray-hue));
+    --color-gray-95: oklch(96% calc(.02 * var(--color-gray-chroma)) var(--color-gray-hue));
+  }
+}
 
-/* Theme Files */
-@import "./theme/palette.css";
-@import "./theme/colors.css";
-@import "./theme/fonts.css";
-@import "./theme/sizes.css";
+/* modules/css/theme/colors.css */
+@layer kelp.base {
+  :where(:root),
+  .kelp-theme-light {
+    --color-background: white;
+    --color-text-normal: var(--color-gray-10);
+    --color-text-muted: var(--color-gray-50);
+    --color-text-input: var(--color-gray-30);
+    --color-text-code: var(--color-pink-50);
+    --color-highlight: #fbf9c9;
+    --color-fill-highlight: var(--color-highlight);
+    --color-on-highlight: inherit;
+    --color-text-link: var(--color-blue-50);
+    --color-text-link-hover: var(--color-blue-40);
+    --decoration-text-link: underline dotted;
+    --decoration-text-link-hover: underline;
+    --color-checked: var(--color-blue-50);
+    --color-checked-icon: white;
+    --color-mix-hover: black 10%;
+    --color-mix-active: black 20%;
+    --color-mix-transparent: transparent 20%;
+    --color-mix-deleted: transparent 40%;
+    --focus-ring-color: var(--color-blue-50);
+    --focus-ring-style: solid;
+    --focus-ring-width: var(--size-6xs);
+    --focus-ring-offset: var(--size-6xs);
+    --color-neutral-fill-muted: var(--color-gray-95);
+    --color-neutral-fill-accent: var(--color-gray-90);
+    --color-neutral-fill-vivid: var(--color-gray-30);
+    --color-neutral-border-muted: var(--color-gray-90);
+    --color-neutral-border-accent: var(--color-gray-80);
+    --color-neutral-border-vivid: var(--color-gray-40);
+    --color-neutral-on-muted: var(--color-gray-10);
+    --color-neutral-on-accent: var(--color-gray-10);
+    --color-neutral-on-vivid: white;
+    --color-neutral-outline: var(--color-gray-20);
+    --color-primary-fill-muted: var(--color-blue-95);
+    --color-primary-fill-accent: var(--color-blue-90);
+    --color-primary-fill-vivid: var(--color-blue-50);
+    --color-primary-border-muted: var(--color-blue-90);
+    --color-primary-border-accent: var(--color-blue-80);
+    --color-primary-border-vivid: var(--color-blue-60);
+    --color-primary-on-muted: var(--color-blue-30);
+    --color-primary-on-accent: var(--color-blue-20);
+    --color-primary-on-vivid: white;
+    --color-primary-outline: var(--color-blue-50);
+    --color-secondary-fill-muted: var(--color-indigo-95);
+    --color-secondary-fill-accent: var(--color-indigo-90);
+    --color-secondary-fill-vivid: var(--color-indigo-50);
+    --color-secondary-border-muted: var(--color-indigo-90);
+    --color-secondary-border-accent: var(--color-indigo-80);
+    --color-secondary-border-vivid: var(--color-indigo-60);
+    --color-secondary-on-muted: var(--color-indigo-30);
+    --color-secondary-on-accent: var(--color-indigo-20);
+    --color-secondary-on-vivid: white;
+    --color-secondary-outline: var(--color-indigo-50);
+    --color-success-fill-muted: var(--color-green-95);
+    --color-success-fill-accent: var(--color-green-90);
+    --color-success-fill-vivid: var(--color-green-50);
+    --color-success-border-muted: var(--color-green-90);
+    --color-success-border-accent: var(--color-green-80);
+    --color-success-border-vivid: var(--color-green-60);
+    --color-success-on-muted: var(--color-green-30);
+    --color-success-on-accent: var(--color-green-20);
+    --color-success-on-vivid: white;
+    --color-success-outline: var(--color-green-50);
+    --color-warning-fill-muted: var(--color-yellow-95);
+    --color-warning-fill-accent: var(--color-yellow-90);
+    --color-warning-fill-vivid: var(--color-yellow-50);
+    --color-warning-border-muted: var(--color-yellow-90);
+    --color-warning-border-accent: var(--color-yellow-80);
+    --color-warning-border-vivid: var(--color-yellow-60);
+    --color-warning-on-muted: var(--color-yellow-30);
+    --color-warning-on-accent: var(--color-yellow-20);
+    --color-warning-on-vivid: white;
+    --color-warning-outline: var(--color-yellow-50);
+    --color-danger-fill-muted: var(--color-red-95);
+    --color-danger-fill-accent: var(--color-red-90);
+    --color-danger-fill-vivid: var(--color-red-50);
+    --color-danger-border-muted: var(--color-red-90);
+    --color-danger-border-accent: var(--color-red-80);
+    --color-danger-border-vivid: var(--color-red-60);
+    --color-danger-on-muted: var(--color-red-30);
+    --color-danger-on-accent: var(--color-red-20);
+    --color-danger-on-vivid: white;
+    --color-danger-outline: var(--color-red-50);
+    --color-code-fill: var(--color-gray-10);
+    --color-code-border: var(--color-gray-20);
+    --color-code-on: white;
+  }
+  .kelp-theme-dark {
+    --color-background: var(--color-gray-10);
+    --color-text-normal: white;
+    --color-text-muted: var(--color-gray-80);
+    --color-text-input: var(--color-gray-80);
+    --color-text-code: var(--color-pink-80);
+    --color-fill-highlight: color-mix(in oklab, var(--color-highlight), transparent 85%);
+    --color-text-link: var(--color-blue-70);
+    --color-text-link-hover: var(--color-blue-80);
+    --color-checked: var(--color-blue-60);
+    --focus-ring-color: var(--color-blue-60);
+    --color-neutral-fill-muted: var(--color-gray-20);
+    --color-neutral-fill-accent: var(--color-gray-30);
+    --color-neutral-fill-vivid: var(--color-gray-80);
+    --color-neutral-border-muted: var(--color-gray-30);
+    --color-neutral-border-accent: var(--color-gray-40);
+    --color-neutral-border-vivid: var(--color-gray-70);
+    --color-neutral-on-muted: var(--color-gray-95);
+    --color-neutral-on-accent: var(--color-gray-95);
+    --color-neutral-on-vivid: var(--color-gray-05);
+    --color-neutral-outline: var(--color-gray-80);
+    --color-primary-fill-muted: var(--color-blue-20);
+    --color-primary-fill-accent: var(--color-blue-30);
+    --color-primary-border-muted: var(--color-blue-30);
+    --color-primary-border-accent: var(--color-blue-40);
+    --color-primary-on-muted: var(--color-blue-95);
+    --color-primary-on-accent: var(--color-blue-95);
+    --color-primary-outline: var(--color-blue-70);
+    --color-secondary-fill-muted: var(--color-indigo-20);
+    --color-secondary-fill-accent: var(--color-indigo-30);
+    --color-secondary-border-muted: var(--color-indigo-30);
+    --color-secondary-border-accent: var(--color-indigo-40);
+    --color-secondary-on-muted: var(--color-indigo-95);
+    --color-secondary-on-accent: var(--color-indigo-95);
+    --color-secondary-outline: var(--color-indigo-70);
+    --color-success-fill-muted: var(--color-green-20);
+    --color-success-fill-accent: var(--color-green-30);
+    --color-success-border-muted: var(--color-green-30);
+    --color-success-border-accent: var(--color-green-40);
+    --color-success-on-muted: var(--color-green-95);
+    --color-success-on-accent: var(--color-green-95);
+    --color-success-outline: var(--color-green-70);
+    --color-warning-fill-muted: var(--color-yellow-20);
+    --color-warning-fill-accent: var(--color-yellow-30);
+    --color-warning-border-muted: var(--color-yellow-30);
+    --color-warning-border-accent: var(--color-yellow-40);
+    --color-warning-on-muted: var(--color-yellow-95);
+    --color-warning-on-accent: var(--color-yellow-95);
+    --color-warning-outline: var(--color-yellow-70);
+    --color-danger-fill-muted: var(--color-red-20);
+    --color-danger-fill-accent: var(--color-red-30);
+    --color-danger-border-muted: var(--color-red-30);
+    --color-danger-border-accent: var(--color-red-40);
+    --color-danger-on-muted: var(--color-red-95);
+    --color-danger-on-accent: var(--color-red-95);
+    --color-danger-outline: var(--color-red-70);
+    --color-code-fill: var(--color-gray-05);
+  }
+}
 
+/* modules/css/theme/fonts.css */
+@layer kelp.base {
+  :where(:root) {
+    --font-primary:
+      ui-sans-serif,
+      system-ui,
+      sans-serif;
+    --font-secondary:
+      Charter,
+      "Bitstream Charter",
+      "Sitka Text",
+      Cambria,
+      serif;
+    --font-monospace:
+      ui-monospace,
+      "Cascadia Code",
+      "Source Code Pro",
+      Menlo,
+      Consolas,
+      "DejaVu Sans Mono",
+      monospace;
+  }
+}
 
-/* Native Elements */
-@import "./native/base.css";
-@import "./native/lists.css";
-@import "./native/headings.css";
-@import "./native/blockquotes.css";
-@import "./native/links.css";
-@import "./native/accents.css";
-@import "./native/forms.css";
-@import "./native/buttons.css";
-@import "./native/tables.css";
-@import "./native/details.css";
-@import "./native/media.css";
-@import "./native/code.css";
+/* modules/css/theme/sizes.css */
+@layer kelp.base {
+  :where(:root) {
+    --breakpoint-xs: 18em;
+    --breakpoint-s: 28em;
+    --breakpoint-m: 38em;
+    --breakpoint-l: 52em;
+    --breakpoint-xl: 60em;
+    --breakpoint-2xl: 80em;
+    --line-height-xs: 1.2;
+    --line-height-s: 1.4;
+    --line-height-m: 1.5;
+    --font-size-base: 112.5%;
+    --font-size-code: 0.875em;
+    --size-6xs: 0.125em;
+    --size-5xs: 0.25em;
+    --size-4xs: 0.5em;
+    --size-3xs: 0.6875em;
+    --size-2xs: 0.75em;
+    --size-xs: 0.8125em;
+    --size-s: 0.9375em;
+    --size-m: 1em;
+    --size-l: 1.0625em;
+    --size-xl: 1.1875em;
+    --size-2xl: 1.3125em;
+    --size-3xl: 1.5em;
+    --size-4xl: 1.75em;
+    --size-5xl: 2em;
+    --size-6xl: 3em;
+    --space: calc(var(--line-height-m) * 1em);
+    --border-radius-s: 0.25em;
+    --border-radius-m: 0.5em;
+    --border-radius-l: 1.3125em;
+    --border-radius-circle: 50%;
+  }
+}
 
+/* modules/css/native/base.css */
+@layer kelp.core {
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+  html {
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+  body {
+    --color: var(--color-text-normal);
+    background: var(--color-background);
+    color: var(--color);
+    font-family: var(--font-primary);
+    line-height: var(--line-height-m);
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: clip;
+  }
+  button:not([disabled]),
+  summary {
+    cursor: pointer;
+  }
+  :where(p, ol, ul, dl, dd, form, fieldset, audio, video, iframe, blockquote, details, table, pre, figure, address) {
+    margin: 0;
+    margin-block-end: var(--space);
+  }
+  :where(p, ol, ul, dl, dd, form, fieldset, audio, video, iframe, blockquote, details, table, pre, figure, address):last-child {
+    margin-block-end: 0;
+  }
+  :where(h1, h2, h3, h4, h5, h6) {
+    margin-block: 0 var(--size-m);
+  }
+  :where(h1) {
+    margin-block-start: var(--size-4xs);
+  }
+  :where(h2) {
+    margin-block-start: var(--size-5xl);
+  }
+}
+@layer kelp.state {
+  :is(button, [href], input, select, textarea, summary, [tabindex]):focus-visible {
+    outline-color: var(--focus-ring-color);
+    outline-style: var(--focus-ring-style);
+    outline-width: var(--focus-ring-width);
+    outline-offset: var(--focus-ring-offset);
+  }
+  [hidden],
+  [hide-until-ready]:not([is-ready]) {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    :after,
+    :before {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
 
-/* Layout */
-@import "./layout/containers.css";
-@import "./layout/grid.css";
-@import "./layout/stack.css";
-@import "./layout/split.css";
-@import "./layout/cluster.css";
-@import "./layout/sidecar.css";
+/* modules/css/native/lists.css */
+@layer kelp.core {
+  ul,
+  ol {
+    padding-inline: var(--size-5xl) 0;
+  }
+  dt {
+    font-weight: bold;
+  }
+  .list-unstyled,
+  .list-inline {
+    list-style-type: "";
+    padding-inline: 0;
+  }
+  .list-inline {
+    --gap: var(--size-m);
+    display: flex;
+    column-gap: var(--gap);
+    row-gap: calc(var(--gap) * 0.5);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
 
+/* modules/css/native/headings.css */
+@layer kelp.core {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-secondary);
+    line-height: var(--line-height-s);
+    text-wrap: pretty;
+    word-wrap: break-word;
+  }
+  h1,
+  .h1 {
+    font-size: var(--size-3xl);
+  }
+  @media (min-width: 38em) {
+    h1,
+    .h1 {
+      font-size: var(--size-4xl);
+    }
+  }
+  h2,
+  .h2 {
+    font-size: var(--size-2xl);
+  }
+  h3,
+  .h3 {
+    font-size: var(--size-l);
+  }
+  h4,
+  h5,
+  h6,
+  .h4,
+  .h5,
+  .h6 {
+    font-size: var(--size-m);
+  }
+}
 
-/* Components */
-@import "./components/badges.css";
-@import "./components/callouts.css";
-@import "./components/avatar.css";
-@import "./components/skeleton.css";
+/* modules/css/native/blockquotes.css */
+@layer kelp.core {
+  blockquote {
+    --border-color: var(--color-border-accent);
+    --padding-block: var(--size-4xs);
+    --padding-inline: var(--size-m);
+    border-inline-start: var(--size-5xs) solid var(--border-color);
+    padding-block: var(--padding-block);
+    padding-inline: var(--padding-inline);
+  }
+  blockquote pre {
+    font-style: normal;
+  }
+  cite {
+    color: var(--color-text-muted);
+    display: block;
+    font-size: var(--size-s);
+    padding-block-start: var(--size-m);
+  }
+}
 
+/* modules/css/native/links.css */
+@layer kelp.core {
+  a {
+    --color: var(--color-text-link);
+    --color-hover: var(--color-text-link-hover);
+    --decoration: var(--decoration-text-link);
+    --decoration-hover: var(--decoration-text-link-hover);
+    color: var(--color);
+    text-decoration: var(--decoration);
+    -webkit-text-decoration: var(--decoration);
+    word-wrap: break-word;
+  }
+}
+@layer kelp.state {
+  a:hover {
+    color: var(--color-hover);
+    text-decoration: var(--decoration-hover);
+    -webkit-text-decoration: var(--decoration-hover);
+  }
+  .link-subtle:not(:hover) {
+    text-decoration: none;
+  }
+}
 
-/* Web Components */
-@import "./components/heading-anchors.css";
-@import "./components/toggle-pw.css";
-@import "./components/autogrow.css";
+/* modules/css/native/accents.css */
+@layer kelp.core {
+  hr {
+    --border-color: var(--color-border-accent);
+    border: 0;
+    border-block-start: 1px solid var(--border-color);
+    margin-block: var(--size-5xl);
+    margin-inline: auto;
+  }
+  mark {
+    background: var(--color-fill-highlight);
+    color: var(--color-on-highlight);
+  }
+  del {
+    color: color-mix(in oklab, var(--color), var(--color-mix-deleted));
+  }
+}
 
+/* modules/css/native/forms.css */
+@layer kelp.core {
+  fieldset {
+    border: 0;
+    padding: 0;
+  }
+  legend,
+  label {
+    --gap: var(--size-5xs);
+    margin: 0;
+    margin-block-end: var(--gap);
+    padding: 0;
+  }
+  legend {
+    display: block;
+  }
+  label {
+    --gap: var(--size-5xs);
+    display: flex;
+    align-items: center;
+    column-gap: var(--gap);
+    width: 100%;
+  }
+  input,
+  optgroup,
+  select,
+  textarea {
+    color: var(--color-text-normal);
+    font: inherit;
+    margin: 0;
+    padding-block: var(--size-5xs);
+    padding-inline: var(--size-4xs);
+  }
+  ::placeholder {
+    color: var(--color-text-muted);
+  }
+  .kelp-theme-dark ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+  input,
+  textarea,
+  select {
+    --border-size: 1px;
+    --border-color: var(--color-border-vivid);
+    --border-style: solid;
+    --border-radius: var(--border-radius-s);
+    background-color: var(--color-background);
+    border: var(--border-size) var(--border-style) var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--color-text-input);
+    display: block;
+    line-height: var(--line-height-m);
+    width: 100%;
+  }
+  :where(input, textarea, select):not(:last-child) {
+    margin-block-end: var(--size-xl);
+  }
+  textarea {
+    --height: 8em;
+    min-height: var(--height);
+    overflow: auto;
+    resize: vertical;
+  }
+  [type=image],
+  [type=checkbox],
+  [type=radio] {
+    cursor: pointer;
+    display: inline-block;
+    height: auto;
+    width: auto;
+    padding: 0;
+  }
+  [type=checkbox],
+  [type=radio] {
+    appearance: none;
+    height: var(--size-m);
+    width: var(--size-m);
+    margin: 0;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+  [type=checkbox] {
+    font-weight: bold;
+  }
+  [type=radio] {
+    border-radius: 50%;
+  }
+  [type=color] {
+    height: 3em;
+    width: 3em;
+  }
+}
+@layer kelp.state {
+  :is(input, textarea, select)[readonly] {
+    --background-color: var(--color-fill-muted);
+    --color: var(--color-on-muted);
+    background-color: var(--background-color);
+    color: var(--color);
+  }
+  :is(input, textarea, select):not([type=checkbox], [type=radio], [type=range]):focus,
+  :is([type=checkbox], [type=radio], [type=range]):focus-visible {
+    outline-color: var(--focus-ring-color);
+    outline-style: var(--focus-ring-style);
+    outline-width: var(--focus-ring-width);
+    outline-offset: var(--focus-ring-offset);
+  }
+  [type=radio]:checked {
+    background-color: transparent;
+    border-color: var(--color-checked);
+  }
+  [type=radio]:checked::after {
+    background-color: var(--color-checked);
+    border-radius: 50%;
+    content: "";
+    width: round(calc(100% * 0.75), var(--border-size));
+    aspect-ratio: 1;
+  }
+  [type=checkbox]:checked {
+    background-color: var(--color-checked);
+    border-color: var(--color-checked);
+    color: var(--color-checked-icon);
+  }
+  [type=checkbox]:checked::after {
+    content: "\2713";
+    font-size: var(--size-xs);
+  }
+}
 
-/* Utilities */
-@import "./utilities/fill.css";
-@import "./utilities/aspect-ratios.css";
-@import "./utilities/text.css";
-@import "./utilities/size.css";
-@import "./utilities/margin.css";
-@import "./utilities/padding.css";
-@import "./utilities/flex.css";
-@import "./utilities/gap.css";
-@import "./utilities/align.css";
-@import "./utilities/justify.css";
-@import "./utilities/accessibility.css";
+/* modules/css/native/buttons.css */
+@layer kelp.core {
+  button,
+  .btn,
+  input:is([type=button], [type=reset], [type=submit]) {
+    --background-color: var(--color-fill-vivid);
+    --background-color-hover: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-hover));
+    --background-color-active: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-active));
+    --color: var(--color-on-vivid);
+    --color-hover: var(--color-on-vivid);
+    --color-active: var(--color-on-vivid);
+    --border-color: transparent;
+    --border-color-hover: transparent;
+    --border-color-active: transparent;
+    --gap: var(--size-4xs);
+    --decoration: none;
+    --decoration-hover: none;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-s);
+    color: var(--color);
+    display: inline-flex;
+    gap: var(--gap);
+    align-items: center;
+    font: inherit;
+    font-size: var(--size-s);
+    font-weight: 400;
+    line-height: var(--line-height-xs);
+    padding-block: var(--size-4xs);
+    padding-inline: var(--size-m);
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .btn-block {
+    display: block;
+    width: 100%;
+  }
+  .btn-link {
+    --background-color: transparent;
+    --background-color-hover: transparent;
+    --background-color-active: transparent;
+    --color: var(--color-text-link);
+    --color-hover: var(--color-text-link-hover);
+    --color-active: var(--color-text-link-hover);
+    --font-weight: unset;
+    --decoration: var(--decoration-text-link);
+    --decoration-hover: var(--decoration-text-link-hover);
+    text-decoration: var(--decoration);
+    -webkit-text-decoration: var(--decoration);
+  }
+  button,
+  [type=submit] {
+    appearance: none;
+  }
+}
+@layer kelp.state {
+  :where(button, .btn, input:is([type=button], [type=reset], [type=submit])):hover {
+    --background-color: var(--background-color-hover);
+    --border-color: var(--border-color-hover);
+    --color: var(--color-hover);
+  }
+  :where(button, .btn, input:is([type=button], [type=reset], [type=submit])):is(:active, [data-active]) {
+    --background-color: var(--background-color-active);
+    --border-color: var(--border-color-active);
+    --color: var(--color-active);
+  }
+  button[disabled],
+  button[data-disabled],
+  [data-submitting] button {
+    --opacity: 0.7;
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: var(--opacity);
+    pointer-events: none;
+  }
+  .btn-link:hover {
+    --decoration: var(--decoration-text-link-hover);
+  }
+}
 
+/* modules/css/native/tables.css */
+@layer kelp.core {
+  table {
+    --border-color: var(--color-border-muted);
+    --background-color: var(--color-fill-muted);
+    --color: var(--color-text-normal);
+    border-collapse: collapse;
+    border-spacing: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  th,
+  td {
+    text-align: left;
+    padding: var(--size-4xs);
+  }
+  th {
+    border-block-end: var(--size-6xs) solid var(--border-color);
+    font-weight: bold;
+    vertical-align: bottom;
+  }
+  td {
+    border-block-start: 1px solid var(--border-color);
+    vertical-align: top;
+  }
+  .table-striped tbody tr:nth-child(odd of :not([hidden])) {
+    background-color: var(--background-color);
+    color: var(--color);
+  }
+}
 
-/* Design Tokens */
-@import "./tokens/style.css";
-@import "./tokens/color.css";
+/* modules/css/native/details.css */
+@layer kelp.core {
+  details {
+    --border-color: var(--color-border-accent);
+    --gap: var(--size-3xs);
+  }
+  details + details {
+    padding: 0;
+    padding-block-start: var(--gap);
+  }
+  details:has(+ details) {
+    border-block-end: 1px solid var(--border-color);
+    margin: 0;
+    padding-block: var(--gap);
+    padding-inline: 0;
+  }
+  summary {
+    --gap: var(--size-4xs);
+    --icon: "\ff0b";
+    --rotation: rotate(45deg);
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    list-style: none;
+  }
+  :where(details + details, details:has(+ details)) summary {
+    justify-content: space-between;
+  }
+  [open] > summary {
+    margin-block-end: var(--size-3xs);
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: var(--icon);
+    font-weight: bold;
+    transition: transform 150ms ease-in-out;
+  }
+  [open] > summary::after {
+    transform: var(--rotation);
+  }
+}
+
+/* modules/css/native/media.css */
+@layer kelp.core {
+  img,
+  picture,
+  video,
+  svg,
+  iframe,
+  object,
+  embed {
+    max-width: 100%;
+  }
+  img,
+  picture,
+  video {
+    height: auto;
+  }
+  audio,
+  video,
+  iframe {
+    width: 100%;
+  }
+  figcaption {
+    font-size: var(--size-s);
+    font-style: italic;
+    color: var(--color-text-muted);
+    padding-block-start: var(--size-4xs);
+    text-align: center;
+  }
+}
+
+/* modules/css/native/code.css */
+@layer kelp.core {
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: var(--font-monospace);
+    font-size: 1em;
+  }
+  code {
+    color: var(--color-text-code);
+    word-wrap: break-word;
+  }
+  pre {
+    background-color: var(--color-code-fill);
+    border: 1px solid var(--color-code-border);
+    border-radius: var(--border-radius-m);
+    color: var(--color-code-on);
+    display: block;
+    font-size: var(--font-size-code);
+    line-height: var(--line-height-m);
+    overflow: auto;
+    padding: var(--size-xs);
+    tab-size: 2;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  @media (min-width: 38rem) {
+    pre {
+      tab-size: 4;
+    }
+  }
+  pre code {
+    color: inherit;
+  }
+}
+
+/* modules/css/layout/containers.css */
+@layer kelp.layout {
+  [class*=container] {
+    --width: var(--breakpoint-m);
+    margin-inline: auto;
+    max-width: var(--width);
+    width: 86vw;
+  }
+  .container-xs {
+    --width: var(--breakpoint-xs);
+  }
+  .container-s {
+    --width: var(--breakpoint-s);
+  }
+  .container-l {
+    --width: var(--breakpoint-l);
+  }
+  .container-xl {
+    --width: var(--breakpoint-xl);
+  }
+  .container-2xl {
+    --width: var(--breakpoint-2xl);
+  }
+  .breakout {
+    --width: 100vw;
+    margin-inline-start: calc(50% - 50vw);
+    min-width: var(--width);
+    max-width: var(--width);
+    width: var(--width);
+  }
+}
+
+/* modules/css/layout/grid.css */
+@layer kelp.layout {
+  [class*=grid] {
+    --gap: var(--size-m);
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    gap: var(--gap);
+    display: flex;
+    flex-direction: column;
+  }
+  .grid,
+  .grid-auto {
+    display: grid;
+  }
+  .grid-auto {
+    --width: 15ch;
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--width), 100%), 1fr));
+    grid-template-rows: auto;
+  }
+  @media (min-width: 28em) {
+    .grid-s {
+      display: grid;
+    }
+  }
+  @media (min-width: 38em) {
+    .grid-m {
+      display: grid;
+    }
+  }
+  @media (min-width: 52em) {
+    .grid-l {
+      display: grid;
+    }
+  }
+  @media (min-width: 60em) {
+    .grid-xl {
+      display: grid;
+    }
+  }
+  [class*=item-] {
+    --span: 1;
+    grid-column: auto / span var(--span);
+  }
+  .item-fourth {
+    --span: 3;
+  }
+  .item-third {
+    --span: 4;
+  }
+  .item-half {
+    --span: 6;
+  }
+  .item-two-thirds {
+    --span: 8;
+  }
+  .item-three-fourths {
+    --span: 9;
+  }
+  [class*=start-] {
+    --start: 1;
+    grid-row-start: 1;
+    grid-column-start: var(--start);
+  }
+  .start-fourth {
+    --start: 4;
+  }
+  .start-third {
+    --start: 5;
+  }
+  .start-half {
+    --start: 7;
+  }
+  .start-two-thirds {
+    --start: 9;
+  }
+  .start-three-fourths {
+    --start: 10;
+  }
+}
+
+/* modules/css/layout/stack.css */
+@layer kelp.layout {
+  .stack > * {
+    margin: 0;
+  }
+  .stack {
+    --gap: var(--size-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+  }
+}
+
+/* modules/css/layout/split.css */
+@layer kelp.layout {
+  .split > * {
+    margin: 0;
+  }
+  .split {
+    --gap: var(--size-m);
+    display: flex;
+    gap: var(--gap);
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+/* modules/css/layout/cluster.css */
+@layer kelp.layout {
+  .cluster > * {
+    margin: 0;
+  }
+  .cluster {
+    --gap: var(--size-m);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+  }
+}
+
+/* modules/css/layout/sidecar.css */
+@layer kelp.layout {
+  [class*=sidecar] > * {
+    margin: 0;
+  }
+  [class*=sidecar] {
+    --gap: var(--size-m);
+    --main-size: initial;
+    --secondary-size: initial;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+  }
+  .sidecar > :first-child,
+  .sidecar-end > :last-child {
+    flex-basis: var(--secondary-size, auto);
+    flex-grow: 1;
+  }
+  .sidecar > :last-child,
+  .sidecar-end > :first-child {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-inline-size: var(--main-size, 50%);
+  }
+}
+
+/* modules/css/components/badges.css */
+@layer kelp.core {
+  .badge {
+    --background-color: var(--color-fill-vivid);
+    --color: var(--color-on-vivid);
+    --border-color: transparent;
+    --gap: var(--size-4xs);
+    --decoration: none;
+    --decoration-hover: none;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-s);
+    color: var(--color);
+    display: inline-flex;
+    gap: var(--gap);
+    align-items: center;
+    font: inherit;
+    font-size: var(--size-2xs);
+    font-weight: 500;
+    line-height: var(--line-height-xs);
+    padding-block: var(--size-5xs);
+    padding-inline: var(--size-3xs);
+  }
+}
+
+/* modules/css/components/callouts.css */
+@layer kelp.core {
+  .callout {
+    --background-color: var(--color-fill-muted);
+    --color: var(--color-on-muted);
+    --border-color: var(--color-border-muted);
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-m);
+    color: var(--color);
+    margin-block-end: var(--size-5xs);
+    padding: var(--size-xs);
+  }
+  .callout:not(.outline, .vivid) {
+    color: var(--color-text-normal);
+  }
+  .callout > :first-child {
+    margin-block-start: 0;
+  }
+  .callout > :last-child {
+    margin-block-end: 0;
+  }
+}
+
+/* modules/css/components/avatar.css */
+@layer kelp.core {
+  .avatar {
+    --border-radius: var(--border-radius-circle);
+    display: inline-block;
+    border-radius: var(--border-radius);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+}
+
+/* modules/css/components/skeleton.css */
+@layer kelp.core {
+  .skeleton {
+    --border-radius: var(--border-radius-s);
+    --height: var(--space);
+    --width: 100%;
+    animation: loadingPulse 3s ease-in infinite;
+    background-color: var(--color-fill-accent);
+    border-radius: var(--border-radius);
+    margin-block-end: var(--size-m);
+    height: var(--height);
+    width: var(--width);
+  }
+  @keyframes loadingPulse {
+    0% {
+      background-color: var(--color-fill-accent);
+    }
+    50% {
+      background-color: color-mix(in oklab, var(--color-fill-accent), var(--color-mix-hover));
+    }
+    100% {
+      background-color: var(--color-fill-accent);
+    }
+  }
+}
+
+/* modules/css/components/heading-anchors.css */
+@layer kelp.core {
+  .anchor-link {
+    --color: inherit;
+    --color-hover: inherit;
+    --decoration: none;
+    --decoration-hover: none;
+  }
+  .anchor-icon {
+    color: var(--color-text-link);
+  }
+  @media (min-width: 38em) {
+    kelp-heading-anchors[before] .anchor-link {
+      text-indent: -1em;
+    }
+  }
+}
+@layer kelp.state {
+  .anchor-link:hover .anchor-icon {
+    color: var(--color-text-link-hover);
+    text-decoration: var(--decoration-text-link-hover);
+  }
+}
+
+/* modules/css/components/toggle-pw.css */
+@layer kelp.core {
+  kelp-toggle-pw:not([is-ready]) :is([toggle], label:has([toggle])) {
+    display: none;
+  }
+  kelp-toggle-pw [aria-pressed=true] [is-hidden],
+  kelp-toggle-pw [aria-pressed=false] [is-visible] {
+    display: none;
+  }
+}
+
+/* modules/css/components/autogrow.css */
+@layer kelp.core {
+  kelp-autogrow {
+    display: grid;
+  }
+  kelp-autogrow::after {
+    content: attr(data-replicated-value) " ";
+    white-space: pre-wrap;
+    visibility: hidden;
+  }
+  kelp-autogrow textarea {
+    min-height: 8rem;
+    resize: none;
+  }
+  kelp-autogrow textarea,
+  kelp-autogrow::after {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  kelp-autogrow::after {
+    border: 1px solid transparent;
+    line-height: var(--line-height-m);
+    padding-block: var(--size-5xs);
+    padding-inline: var(--size-4xs);
+  }
+}
+
+/* modules/css/utilities/fill.css */
+@layer kelp.core {
+  .fill {
+    --background-color: var(--color-fill-muted);
+    background-color: var(--background-color);
+  }
+  .fill.vivid {
+    --color: var(--color-on-vivid);
+    color: var(--color);
+  }
+}
+
+/* modules/css/utilities/aspect-ratios.css */
+@layer kelp.core {
+  iframe[class*=aspect-ratio] {
+    height: 100%;
+    width: 100%;
+  }
+  [class*=aspect-ratio] {
+    --ratio: auto;
+    aspect-ratio: var(--ratio);
+    object-fit: cover;
+  }
+  .aspect-ratio-21x9 {
+    --ratio: 21 / 9;
+  }
+  .aspect-ratio-16x9 {
+    --ratio: 16 / 9;
+  }
+  .aspect-ratio-4x3 {
+    --ratio: 4 / 3;
+  }
+  .aspect-ratio-3x2 {
+    --ratio: 3 / 2;
+  }
+  .aspect-ratio-1x1 {
+    --ratio: 1 / 1;
+  }
+}
+
+/* modules/css/utilities/text.css */
+@layer kelp.utilities {
+  .text-capitalize {
+    text-transform: capitalize;
+  }
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+  .text-lowercase {
+    text-transform: lowercase;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-end {
+    text-align: end;
+  }
+  .text-color {
+    --color: var(--color-outline);
+    color: var(--color);
+  }
+  .text-muted {
+    --color: var(--color-text-muted);
+    color: var(--color);
+  }
+  .font-primary {
+    font-family: var(--font-primary);
+  }
+  .font-secondary {
+    font-family: var(--font-secondary);
+  }
+}
+
+/* modules/css/utilities/size.css */
+@layer kelp.utilities {
+  [class*=size-] {
+    --font-size: 1em;
+    font-size: var(--font-size);
+  }
+  .size-2xs {
+    --font-size: var(--size-2xs);
+  }
+  .size-xs {
+    --font-size: var(--size-xs);
+  }
+  .size-s {
+    --font-size: var(--size-s);
+  }
+  .size-m {
+    --font-size: var(--size-m);
+  }
+  .size-l {
+    --font-size: var(--size-l);
+  }
+  .size-xl {
+    --font-size: var(--size-xl);
+  }
+  .size-2xl {
+    --font-size: var(--size-2xl);
+  }
+  .size-3xl {
+    --font-size: var(--size-3xl);
+  }
+  .size-4xl {
+    --font-size: var(--size-4xl);
+  }
+  .size-5xl {
+    --font-size: var(--size-5xl);
+  }
+  .size-6xl {
+    --font-size: var(--size-6xl);
+  }
+}
+
+/* modules/css/utilities/margin.css */
+@layer kelp.utilities {
+  .margin-start-0 {
+    margin-block-start: 0;
+  }
+  .margin-start-6xs {
+    margin-block-start: var(--size-6xs);
+  }
+  .margin-start-5xs {
+    margin-block-start: var(--size-5xs);
+  }
+  .margin-start-4xs {
+    margin-block-start: var(--size-4xs);
+  }
+  .margin-start-3xs {
+    margin-block-start: var(--size-3xs);
+  }
+  .margin-start-2xs {
+    margin-block-start: var(--size-2xs);
+  }
+  .margin-start-xs {
+    margin-block-start: var(--size-xs);
+  }
+  .margin-start-m {
+    margin-block-start: var(--size-m);
+  }
+  .margin-start-l {
+    margin-block-start: var(--size-l);
+  }
+  .margin-start-xl {
+    margin-block-start: var(--size-xl);
+  }
+  .margin-start-2xl {
+    margin-block-start: var(--size-2xl);
+  }
+  .margin-start-3xl {
+    margin-block-start: var(--size-3xl);
+  }
+  .margin-start-4xl {
+    margin-block-start: var(--size-4xl);
+  }
+  .margin-start-5xl {
+    margin-block-start: var(--size-5xl);
+  }
+  .margin-start-6xl {
+    margin-block-start: var(--size-6xl);
+  }
+  .margin-start-space {
+    margin-block-start: var(--space);
+  }
+  .margin-end-0 {
+    margin-block-end: 0;
+  }
+  .margin-end-6xs {
+    margin-block-end: var(--size-6xs);
+  }
+  .margin-end-5xs {
+    margin-block-end: var(--size-5xs);
+  }
+  .margin-end-4xs {
+    margin-block-end: var(--size-4xs);
+  }
+  .margin-end-3xs {
+    margin-block-end: var(--size-3xs);
+  }
+  .margin-end-2xs {
+    margin-block-end: var(--size-2xs);
+  }
+  .margin-end-xs {
+    margin-block-end: var(--size-xs);
+  }
+  .margin-end-m {
+    margin-block-end: var(--size-m);
+  }
+  .margin-end-l {
+    margin-block-end: var(--size-l);
+  }
+  .margin-end-xl {
+    margin-block-end: var(--size-xl);
+  }
+  .margin-end-2xl {
+    margin-block-end: var(--size-2xl);
+  }
+  .margin-end-3xl {
+    margin-block-end: var(--size-3xl);
+  }
+  .margin-end-4xl {
+    margin-block-end: var(--size-4xl);
+  }
+  .margin-end-5xl {
+    margin-block-end: var(--size-5xl);
+  }
+  .margin-end-6xl {
+    margin-block-end: var(--size-6xl);
+  }
+  .margin-end-space {
+    margin-block-end: var(--space);
+  }
+}
+
+/* modules/css/utilities/padding.css */
+@layer kelp.utilities {
+  .padding-0 {
+    padding: 0;
+  }
+  .padding-6xs {
+    padding: var(--size-6xs);
+  }
+  .padding-5xs {
+    padding: var(--size-5xs);
+  }
+  .padding-4xs {
+    padding: var(--size-4xs);
+  }
+  .padding-3xs {
+    padding: var(--size-3xs);
+  }
+  .padding-2xs {
+    padding: var(--size-2xs);
+  }
+  .padding-xs {
+    padding: var(--size-xs);
+  }
+  .padding-m {
+    padding: var(--size-m);
+  }
+  .padding-l {
+    padding: var(--size-l);
+  }
+  .padding-xl {
+    padding: var(--size-xl);
+  }
+  .padding-2xl {
+    padding: var(--size-2xl);
+  }
+  .padding-3xl {
+    padding: var(--size-3xl);
+  }
+  .padding-4xl {
+    padding: var(--size-4xl);
+  }
+  .padding-5xl {
+    padding: var(--size-5xl);
+  }
+  .padding-6xl {
+    padding: var(--size-6xl);
+  }
+  .padding-space {
+    padding: var(--space);
+  }
+}
+
+/* modules/css/utilities/flex.css */
+@layer kelp.utilities {
+  .flex {
+    --gap: 0;
+    display: flex;
+    gap: var(--gap);
+  }
+  .flex-inline {
+    --gap: 0;
+    display: inline-flex;
+    gap: var(--gap);
+  }
+  .direction-row {
+    flex-direction: row;
+  }
+  .direction-column {
+    flex-direction: column;
+  }
+  .wrap {
+    flex-wrap: wrap;
+  }
+  .no-wrap {
+    flex-wrap: nowrap;
+  }
+}
+
+/* modules/css/utilities/gap.css */
+@layer kelp.utilities {
+  .gap-0 {
+    --gap: 0;
+  }
+  .gap-6xs {
+    --gap: var(--size-6xs);
+  }
+  .gap-5xs {
+    --gap: var(--size-5xs);
+  }
+  .gap-4xs {
+    --gap: var(--size-4xs);
+  }
+  .gap-3xs {
+    --gap: var(--size-3xs);
+  }
+  .gap-2xs {
+    --gap: var(--size-2xs);
+  }
+  .gap-xs {
+    --gap: var(--size-xs);
+  }
+  .gap-m {
+    --gap: var(--size-m);
+  }
+  .gap-l {
+    --gap: var(--size-l);
+  }
+  .gap-xl {
+    --gap: var(--size-xl);
+  }
+  .gap-2xl {
+    --gap: var(--size-2xl);
+  }
+  .gap-3xl {
+    --gap: var(--size-3xl);
+  }
+  .gap-4xl {
+    --gap: var(--size-4xl);
+  }
+  .gap-5xl {
+    --gap: var(--size-5xl);
+  }
+  .gap-6xl {
+    --gap: var(--size-6xl);
+  }
+}
+
+/* modules/css/utilities/align.css */
+@layer kelp.utilities {
+  .align-start {
+    align-items: start;
+  }
+  .align-end {
+    align-items: end;
+  }
+  .align-center {
+    align-items: center;
+  }
+}
+
+/* modules/css/utilities/justify.css */
+@layer kelp.utilities {
+  .justify-start {
+    justify-content: start;
+  }
+  .justify-end {
+    justify-content: end;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-around {
+    justify-content: space-around;
+  }
+  .justify-even {
+    justify-content: space-evenly;
+  }
+}
+
+/* modules/css/utilities/accessibility.css */
+@layer kelp.utilities {
+  .scroll-horizontal {
+    display: block;
+    overflow-x: auto;
+  }
+  [class*=visually-hidden] {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+  .visually-hidden-focusable:is(:active, :focus) {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    white-space: inherit;
+    width: auto;
+  }
+}
+
+/* modules/css/tokens/style.css */
+@layer kelp.tokens {
+  .outline {
+    --background-color: transparent;
+    --background-color-hover: var(--color-fill-vivid);
+    --background-color-active: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-active));
+    --border-color: var(--color-outline);
+    --border-color-hover: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-hover));
+    --border-color-active: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-active));
+    --color: var(--color-outline);
+    --color-hover: var(--color-on-vivid);
+    --color-active: var(--color-on-vivid);
+  }
+  .muted {
+    --background-color: var(--color-fill-muted);
+    --background-color-hover: var(--color-fill-accent);
+    --background-color-active: color-mix(in oklab, var(--color-fill-muted), var(--color-mix-transparent));
+    --border-color: var(--color-border-muted);
+    --border-color-hover: var(--color-border-accent);
+    --border-color-active: color-mix(in oklab, var(--color-border-muted), var(--color-mix-transparent));
+    --color: var(--color-on-muted);
+    --color-hover: var(--color-on-accent);
+    --color-active: var(--color-on-muted);
+  }
+  .vivid {
+    --background-color: var(--color-fill-vivid);
+    --background-color-hover: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-hover));
+    --background-color-active: color-mix(in oklab, var(--color-fill-vivid), var(--color-mix-active));
+    --border-color: transparent;
+    --border-color-hover: transparent;
+    --border-color-active: transparent;
+    --color: var(--color-on-vivid);
+    --color-hover: var(--color-on-vivid);
+    --color-active: var(--color-on-vivid);
+    --color-text-link: var(--color);
+    --color-text-link-hover: color-mix(in oklab, var(--color), var(--color-mix-hover));
+    --focus-ring-color: var(--color);
+  }
+}
+
+/* modules/css/tokens/color.css */
+@layer kelp.tokens {
+  :where(:root, :root *),
+  .neutral {
+    --color-fill-vivid: var(--color-neutral-fill-vivid);
+    --color-fill-accent: var(--color-neutral-fill-accent);
+    --color-fill-muted: var(--color-neutral-fill-muted);
+    --color-border-vivid: var(--color-neutral-border-vivid);
+    --color-border-accent: var(--color-neutral-border-accent);
+    --color-border-muted: var(--color-neutral-border-muted);
+    --color-on-vivid: var(--color-neutral-on-vivid);
+    --color-on-accent: var(--color-neutral-on-accent);
+    --color-on-muted: var(--color-neutral-on-muted);
+    --color-outline: var(--color-neutral-outline);
+  }
+  .primary {
+    --color-fill-vivid: var(--color-primary-fill-vivid);
+    --color-fill-accent: var(--color-primary-fill-accent);
+    --color-fill-muted: var(--color-primary-fill-muted);
+    --color-border-vivid: var(--color-primary-border-vivid);
+    --color-border-accent: var(--color-primary-border-accent);
+    --color-border-muted: var(--color-primary-border-muted);
+    --color-on-vivid: var(--color-primary-on-vivid);
+    --color-on-accent: var(--color-primary-on-accent);
+    --color-on-muted: var(--color-primary-on-muted);
+    --color-outline: var(--color-primary-outline);
+  }
+  .secondary {
+    --color-fill-vivid: var(--color-secondary-fill-vivid);
+    --color-fill-accent: var(--color-secondary-fill-accent);
+    --color-fill-muted: var(--color-secondary-fill-muted);
+    --color-border-vivid: var(--color-secondary-border-vivid);
+    --color-border-accent: var(--color-secondary-border-accent);
+    --color-border-muted: var(--color-secondary-border-muted);
+    --color-on-vivid: var(--color-secondary-on-vivid);
+    --color-on-accent: var(--color-secondary-on-accent);
+    --color-on-muted: var(--color-secondary-on-muted);
+    --color-outline: var(--color-secondary-outline);
+  }
+  .success {
+    --color-fill-vivid: var(--color-success-fill-vivid);
+    --color-fill-accent: var(--color-success-fill-accent);
+    --color-fill-muted: var(--color-success-fill-muted);
+    --color-border-vivid: var(--color-success-border-vivid);
+    --color-border-accent: var(--color-success-border-accent);
+    --color-border-muted: var(--color-success-border-muted);
+    --color-on-vivid: var(--color-success-on-vivid);
+    --color-on-accent: var(--color-success-on-accent);
+    --color-on-muted: var(--color-success-on-muted);
+    --color-outline: var(--color-success-outline);
+  }
+  .danger {
+    --color-fill-vivid: var(--color-danger-fill-vivid);
+    --color-fill-accent: var(--color-danger-fill-accent);
+    --color-fill-muted: var(--color-danger-fill-muted);
+    --color-border-vivid: var(--color-danger-border-vivid);
+    --color-border-accent: var(--color-danger-border-accent);
+    --color-border-muted: var(--color-danger-border-muted);
+    --color-on-vivid: var(--color-danger-on-vivid);
+    --color-on-accent: var(--color-danger-on-accent);
+    --color-on-muted: var(--color-danger-on-muted);
+    --color-outline: var(--color-danger-outline);
+  }
+  .warning {
+    --color-fill-vivid: var(--color-warning-fill-vivid);
+    --color-fill-accent: var(--color-warning-fill-accent);
+    --color-fill-muted: var(--color-warning-fill-muted);
+    --color-border-vivid: var(--color-warning-border-vivid);
+    --color-border-accent: var(--color-warning-border-accent);
+    --color-border-muted: var(--color-warning-border-muted);
+    --color-on-vivid: var(--color-warning-on-vivid);
+    --color-on-accent: var(--color-warning-on-accent);
+    --color-on-muted: var(--color-warning-on-muted);
+    --color-outline: var(--color-warning-outline);
+  }
+}
+
+/* modules/css/kelp.css */

@@ -1,0 +1,17 @@
+{
+	"include": [
+		"modules/js/**/*.js",
+		"types.d.ts"
+	],
+	"compilerOptions": {
+		"target": "es2022",
+		"allowJs": true,
+		"checkJs": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"strictPropertyInitialization": false,
+		"noImplicitAny": false,
+		"skipLibCheck": true,
+		"noEmit": true
+	}
+}

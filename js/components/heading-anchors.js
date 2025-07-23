@@ -1,72 +1,87 @@
-import { debug } from '../utilities/debug.js';
-import { emit } from '../utilities/emit.js';
-import { ready } from '../utilities/ready.js';
-import { setTextAsID } from '../utilities/setTextAsID.js';
+/*! kelpui v0.14.7 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+"use strict";
+(() => {
+  // modules/js/utilities/debug.js
+  function debug(elem, detail = "") {
+    const event = new CustomEvent("kelp-debug", {
+      bubbles: true,
+      detail
+    });
+    return elem.dispatchEvent(event);
+  }
 
-customElements.define('kelp-heading-anchors', class extends HTMLElement {
+  // modules/js/utilities/emit.js
+  function emit(elem, component, id, detail = null) {
+    const event = new CustomEvent(`kelp:${component}-${id}`, {
+      bubbles: true,
+      cancelable: true,
+      detail
+    });
+    return elem.dispatchEvent(event);
+  }
 
-	// Private class properties
-	#icon
-	#levels;
-	#before;
+  // modules/js/utilities/ready.js
+  function ready(instance) {
+    if (document.readyState !== "loading") {
+      instance.init();
+      return;
+    }
+    document.addEventListener("DOMContentLoaded", () => instance.init(), { once: true });
+  }
 
-	// Initialize on connect
-	connectedCallback () {
-		ready(this);
-	}
+  // modules/js/utilities/setTextAsID.js
+  function setTextAsID(elem) {
+    if (elem.id) return;
+    const id = elem.textContent?.replace(/[^a-zA-Z0-9-_\u00A0-\uFFEF\s-]/g, "-").replace(/[\s-]+/g, "-");
+    if (!id) return;
+    let suffix = 0;
+    let existing = document.querySelector(`#kelp_${id}`);
+    while (existing) {
+      suffix++;
+      existing = document.querySelector(`#kelp_${id}_${suffix}`);
+    }
+    elem.id = `kelp_${id}${suffix ? `_${suffix}` : ""}`;
+  }
 
-	// Initialize the component
-	init () {
-
-		// Don't run if already initialized
-		if (this.hasAttribute('is-ready')) return;
-
-		// Get settings
-		this.#icon = this.getAttribute('icon') || '#';
-		this.#levels = this.getAttribute('levels') || 'h2, h3, h4, h5, h6';
-		this.#before = this.hasAttribute('before');
-
-		// Render
-		if (!this.render()) {
-			debug(this, 'No matching headings were found');
-			return;
-		}
-
-		// Ready
-		emit(this, 'headinganchors', 'ready');
-		this.setAttribute('is-ready', '');
-
-	}
-
-	// Render the anchor links
-	render () {
-
-		// Get the headings
-		const headings = this.querySelectorAll(this.#levels);
-		if (!headings.length) return;
-
-		for (const heading of headings) {
-
-			// Store original heading and add class
-			heading.classList.add('anchor-h');
-
-			// Add missing IDs
-			setTextAsID(heading);
-
-			// Create anchor content
-			const text = `<span class="anchor-text">${heading.innerHTML}</span>`;
-			const icon = `<span class="anchor-icon" aria-hidden="true">${this.#icon}</span>`;
-
-			// Inject the link
-			heading.innerHTML =
-				`<a class="anchor-link" href="#${heading.id}">
+  // modules/js/components/heading-anchors.js
+  customElements.define("kelp-heading-anchors", class extends HTMLElement {
+    /** @type String */
+    #icon;
+    /** @type String */
+    #levels;
+    /** @type Boolean */
+    #before;
+    // Initialize on connect
+    connectedCallback() {
+      ready(this);
+    }
+    // Initialize the component
+    init() {
+      if (this.hasAttribute("is-ready")) return;
+      this.#icon = this.getAttribute("icon") || "#";
+      this.#levels = this.getAttribute("levels") || "h2, h3, h4, h5, h6";
+      this.#before = this.hasAttribute("before");
+      if (!this.render()) {
+        debug(this, "No matching headings were found");
+        return;
+      }
+      emit(this, "headinganchors", "ready");
+      this.setAttribute("is-ready", "");
+    }
+    // Render the anchor links
+    render() {
+      const headings = this.querySelectorAll(this.#levels);
+      if (!headings.length) return;
+      for (const heading of headings) {
+        heading.classList.add("anchor-h");
+        setTextAsID(heading);
+        const text = `<span class="anchor-text">${heading.innerHTML}</span>`;
+        const icon = `<span class="anchor-icon" aria-hidden="true">${this.#icon}</span>`;
+        heading.innerHTML = `<a class="anchor-link" href="#${heading.id}">
 					${this.#before ? `${icon} ${text}` : `${text} ${icon}`}
 				</a>`;
-
-		}
-
-		return true;
-
-	}
-
-});
+      }
+      return true;
+    }
+  });
+})();
