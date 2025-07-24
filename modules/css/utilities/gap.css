@@ -33,6 +33,10 @@
 		--gap: var(--size-xs);
 	}
 
+	.gap-s {
+		--gap: var(--size-s);
+	}
+	
 	.gap-m {
 		--gap: var(--size-m);
 	}
