@@ -1,4 +1,4 @@
-/*! kelpui v0.14.8 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.14.9 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -75,9 +75,7 @@
       this.#target = this.getAttribute("target") || "";
       this.#listClass = this.getAttribute("list-class") || (this.#nested ? null : "list-inline");
       this.#listType = this.getAttribute("list-type") || "ul";
-      this.#index = {
-        val: 0
-      };
+      this.#index = 0;
       if (!this.render()) {
         debug(this, "No matching headings were found");
         return;
@@ -100,22 +98,22 @@
      * @return {String}            The HTML string
      */
     #createList(headings, isFirst = false) {
-      this.#index.val = isFirst ? 0 : this.#index.val + 1;
+      this.#index = isFirst ? 0 : this.#index + 1;
       let list = "";
-      for (; this.#index.val < headings.length; this.#index.val++) {
+      for (; this.#index < headings.length; this.#index++) {
         const heading = (
           /** @type {Element} */
-          headings[this.#index.val]
+          headings[this.#index]
         );
         setTextAsID(heading);
         const currentLevel = heading.tagName.slice(1);
         list += `<li>
 					<a class="link-subtle" href="#${heading.id}">${heading.textContent}</a>
 					${this.#nested && /** @type {Element} */
-        (headings[this.#index.val + 1]?.tagName.slice(1) || currentLevel) > currentLevel ? this.#createList(headings) : ""}
+        (headings[this.#index + 1]?.tagName.slice(1) || currentLevel) > currentLevel ? this.#createList(headings) : ""}
 				</li>`;
         if (!isFirst && /** @type {Element} */
-        (headings[this.#index.val + 1]?.tagName.slice(1) || currentLevel) < currentLevel) break;
+        (headings[this.#index + 1]?.tagName.slice(1) || currentLevel) < currentLevel) break;
       }
       const renderHeading = isFirst && this.#heading;
       return `
