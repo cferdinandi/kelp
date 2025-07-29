@@ -1,6 +1,6 @@
 {
 	"name": "kelpui",
-	"version": "0.14.8",
+	"version": "0.14.9",
 	"description": "A UI library for people who love HTML, powered by modern CSS and Web Components.",
 	"keywords": [
 		"html",
@@ -44,7 +44,6 @@
 		"typescript": "^5.8.3"
 	},
 	"dependencies": {
-		"glob": "^11.0.3",
 		"http-server": "^14.1.1"
 	}
 }
