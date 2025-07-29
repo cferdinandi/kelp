@@ -12,7 +12,7 @@ customElements.define('kelp-toc', class extends HTMLElement {
 	/** @type String */        #target;
 	/** @type String | null */ #listClass;
 	/** @type String */        #listType;
-	/** @type Object */	       #index;
+	/** @type Number */	       #index;
 
 	// Initialize on connect
 	connectedCallback () {
@@ -33,9 +33,7 @@ customElements.define('kelp-toc', class extends HTMLElement {
 		this.#target = this.getAttribute('target') || '';
 		this.#listClass = this.getAttribute('list-class') || (this.#nested ? null : 'list-inline');
 		this.#listType = this.getAttribute('list-type') || 'ul';
-		this.#index = {
-			val: 0
-		};
+		this.#index = 0;
 
 		// Render
 		if (!this.render()) {
@@ -72,15 +70,15 @@ customElements.define('kelp-toc', class extends HTMLElement {
 	 */
 	#createList (headings, isFirst = false) {
 
-		// Define or update this.#index.value
-		this.#index.val = isFirst ? 0 : this.#index.val + 1;
+		// Define or update this.#indexue
+		this.#index = isFirst ? 0 : this.#index + 1;
 
 		// Create HTML string
 		let list = '';
-		for (; this.#index.val < headings.length; this.#index.val++) {
+		for (; this.#index < headings.length; this.#index++) {
 
 			// Get the heading element
-			const heading = /** @type {Element} */ (headings[this.#index.val]);
+			const heading = /** @type {Element} */ (headings[this.#index]);
 
 			// If there's no heading, create one
 			setTextAsID(heading);
@@ -93,11 +91,11 @@ customElements.define('kelp-toc', class extends HTMLElement {
 			list +=
 				`<li>
 					<a class="link-subtle" href="#${heading.id}">${heading.textContent}</a>
-					${this.#nested && (/** @type {Element} */ (headings[this.#index.val + 1])?.tagName.slice(1) || currentLevel) > currentLevel ? this.#createList(headings) : ''}
+					${this.#nested && (/** @type {Element} */ (headings[this.#index + 1])?.tagName.slice(1) || currentLevel) > currentLevel ? this.#createList(headings) : ''}
 				</li>`;
 
 			// If next heading is bigger, finish this list
-			if (!isFirst && (/** @type {Element} */ (headings[this.#index.val + 1])?.tagName.slice(1) || currentLevel) < currentLevel) break;
+			if (!isFirst && (/** @type {Element} */ (headings[this.#index + 1])?.tagName.slice(1) || currentLevel) < currentLevel) break;
 
 		}
 
