@@ -59,7 +59,7 @@
     #listClass;
     /** @type String */
     #listType;
-    /** @type Object */
+    /** @type Number */
     #index;
     // Initialize on connect
     connectedCallback() {
