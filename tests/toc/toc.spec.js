@@ -67,7 +67,7 @@ test.describe(`<${componentName}>`, () => {
 		const links = page.locator('kelp-toc li a');
 		const numberOfLinks = await links.count();
 		const skipLevel = await page.locator('kelp-toc').getByText('The Brig');
-		const skipLevelLink = await skipLevel.evaluate((elem) => elem.closest('ul').parentElement.querySelector('a').textContent);
+		const skipLevelLink = await skipLevel.evaluate((elem) => elem.closest('ul')?.parentElement?.querySelector('a')?.textContent);
 		const topLevelLinks = page.locator('kelp-toc > ul > li > a');
 
 		// Number of links should match number of headings

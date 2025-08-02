@@ -9,8 +9,8 @@ import { test, expect } from '@playwright/test';
 export async function waitForCustomEvent (component, eventID) {
 	return await component.evaluate((element, eventID) => {
 		return new Promise((resolve) => {
-			return element.addEventListener(eventID, () => {
-				return resolve(true);
+			return element.addEventListener(eventID, (event) => {
+				return resolve(event.detail ?? true);
 			});
 		});
 	}, eventID);
