@@ -2,7 +2,6 @@ import { debug } from '../utilities/debug.js';
 import { emit } from '../utilities/emit.js';
 import { ready } from '../utilities/ready.js';
 
-// @todo styles
 // @todo figure out how to prevent TOC from rendering headings in tabs (maybe a special attribute?)
 // @todo figure out how to prevent anchor links from rendering on headings in tabs
 // @todo for TOC and anchor links, use non-HTML text property
