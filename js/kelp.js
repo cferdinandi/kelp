@@ -1,4 +1,4 @@
-/*! kelpui v0.14.10 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.15.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -72,20 +72,23 @@
         const pane = this.querySelector(link.hash);
         if (!pane) {
           (link.closest("li") || link).remove();
+          debug(this, `A tab pane for ${link.textContent} with the ID ${link.hash} could not be found. The corresponding tab was removed.`);
           return;
         }
         const isActive = this.#start ? this.#start === link.hash : index === 0;
-        link.setAttribute("role", "tab");
-        link.setAttribute("aria-controls", link.hash.slice(1));
-        link.setAttribute("aria-selected", isActive ? "true" : "false");
+        const btn = document.createElement("button");
+        btn.innerHTML = link.innerHTML;
+        btn.id = link.id || `tab_${pane.id}`;
+        btn.setAttribute("type", "button");
+        btn.setAttribute("role", "tab");
+        btn.setAttribute("aria-controls", link.hash.slice(1));
+        btn.setAttribute("aria-selected", isActive ? "true" : "false");
         if (!isActive) {
-          link.setAttribute("tabindex", "-1");
+          btn.setAttribute("tabindex", "-1");
         }
-        if (!link.id) {
-          link.id = `tab_${pane.id}`;
-        }
+        link.replaceWith(btn);
         pane.setAttribute("role", "tabpanel");
-        pane.setAttribute("aria-labelledby", link.id);
+        pane.setAttribute("aria-labelledby", btn.id);
         if (!isActive) {
           pane.setAttribute("hidden", "");
         }
@@ -107,11 +110,10 @@
      * @param  {Event} event The event object
      */
     #onClick(event) {
-      const link = event.target instanceof Element ? event.target.closest('[role="tab"]') : null;
-      if (!link) return;
-      event.preventDefault();
-      if (link.matches('[aria-selected="true"]')) return;
-      this.toggle(link);
+      const btn = event.target instanceof Element ? event.target.closest('[role="tab"]') : null;
+      if (!btn) return;
+      if (btn.matches('[aria-selected="true"]')) return;
+      this.toggle(btn);
     }
     /**
      * Handle keydown events
@@ -133,7 +135,7 @@
       const currentTab = this.#list.querySelector('[role="tab"][aria-selected="true"]');
       const listItem = currentTab?.closest("li");
       const nextListItem = keyNext.includes(event.key) ? listItem?.nextElementSibling : listItem?.previousElementSibling;
-      const nextTab = nextListItem?.querySelector("a");
+      const nextTab = nextListItem?.querySelector("button");
       if (!nextTab) return;
       this.toggle(nextTab);
       nextTab.focus();
@@ -144,10 +146,10 @@
      */
     toggle(tab) {
       if (!tab) return;
-      const pane = tab instanceof HTMLAnchorElement ? this.querySelector(tab?.hash) : null;
+      const pane = this.querySelector(`#${tab?.getAttribute("aria-controls")}` || "");
       if (!pane) return;
       const currentTab = tab.closest('[role="tablist"]')?.querySelector('[aria-selected="true"]');
-      const currentPane = currentTab instanceof HTMLAnchorElement ? document.querySelector(currentTab?.hash) : null;
+      const currentPane = document.querySelector(`#${currentTab?.getAttribute("aria-controls")}` || "");
       const event = emit(
         this,
         "tabs",
