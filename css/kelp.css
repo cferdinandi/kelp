@@ -1178,6 +1178,10 @@
   }
 }
 
+/* modules/css/components/tabs.css */
+@layer kelp.core {
+}
+
 /* modules/css/components/heading-anchors.css */
 @layer kelp.core {
   .anchor-link {

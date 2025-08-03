@@ -4,6 +4,45 @@
 
 @layer kelp.core {
 
-/*	kelp-tabs {}*/
+	kelp-tabs {
+		--background-color: var(--color-fill-muted);
+		--background-color-hover: var(--color-fill-accent);
+		--background-color-active: var(--color-fill-vivid);
+		--color: var(--color-on-muted);
+		--color-hover: var(--color-on-accent);
+		--color-active: var(--color-on-vivid);
+	}
+
+	kelp-tabs [role="tab"] {
+		--decoration: none;
+		--decoration-hover: none;
+		--color: var(--color);
+		--color-hover: var(--color-hover);
+
+		background-color: var(--background-color);
+		border-radius: var(--border-radius-m);
+		color: var(--color);
+		display: inline-flex;
+		padding-block: var(--size-6xs);
+		padding-inline: var(--size-3xs);
+	}
+
+	kelp-tabs [role="tab"][aria-selected="true"] {
+		background-color: var(--background-color-active);
+		color: var(--color-active);
+	}
+
+}
+
+@layer kelp.state {
+
+	kelp-tabs [role="tab"][aria-selected="false"]:hover {
+		background-color: var(--background-color-hover);
+		color: var(--color-hover);
+	}
+
+	kelp-tabs [role="tab"][aria-selected="true"]:hover {
+		color: var(--color-active);
+	}
 
 }
