@@ -130,8 +130,8 @@ test.describe(`<${componentName}>`, () => {
 		await wizardTab.press('Tab');
 		await expect(wizardBtn).toBeFocused();
 
-		const beforeEventPromise = waitForCustomEvent(wc, 'kelp:tabs-toggle-before');
-		const afterEventPromise = waitForCustomEvent(wc, 'kelp:tabs-toggle');
+		const beforeEventPromise = waitForCustomEvent(wc, 'kelp:tabs-select-before');
+		const afterEventPromise = waitForCustomEvent(wc, 'kelp:tabs-select');
 		await druidTab.click();
 		const beforeEvent = await beforeEventPromise;
 		const afterEvent = await afterEventPromise;

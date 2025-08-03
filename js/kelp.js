@@ -1,4 +1,4 @@
-/*! kelpui v0.15.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.15.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -113,7 +113,7 @@
       const btn = event.target instanceof Element ? event.target.closest('[role="tab"]') : null;
       if (!btn) return;
       if (btn.matches('[aria-selected="true"]')) return;
-      this.toggle(btn);
+      this.select(btn);
     }
     /**
      * Handle keydown events
@@ -137,23 +137,23 @@
       const nextListItem = keyNext.includes(event.key) ? listItem?.nextElementSibling : listItem?.previousElementSibling;
       const nextTab = nextListItem?.querySelector("button");
       if (!nextTab) return;
-      this.toggle(nextTab);
+      this.select(nextTab);
       nextTab.focus();
     }
     /**
      * Toggle tab visibility
      * @param  {Element} tab The tab to show
      */
-    toggle(tab) {
+    select(tab) {
       if (!tab) return;
       const pane = this.querySelector(`#${tab?.getAttribute("aria-controls")}` || "");
       if (!pane) return;
       const currentTab = tab.closest('[role="tablist"]')?.querySelector('[aria-selected="true"]');
-      const currentPane = document.querySelector(`#${currentTab?.getAttribute("aria-controls")}` || "");
+      const currentPane = this.querySelector(`#${currentTab?.getAttribute("aria-controls")}` || "");
       const event = emit(
         this,
         "tabs",
-        "toggle-before",
+        "select-before",
         {
           currentTab,
           currentPane,
@@ -168,7 +168,7 @@
       currentPane?.setAttribute("hidden", "");
       tab.removeAttribute("tabindex");
       currentTab?.setAttribute("tabindex", "-1");
-      emit(this, "tabs", "toggle", { tab, pane });
+      emit(this, "tabs", "select", { tab, pane });
     }
   });
 
