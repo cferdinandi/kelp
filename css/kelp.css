@@ -1,4 +1,4 @@
-/*! kelpui v0.14.10 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.15.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.palette, kelp.core, kelp.extend, kelp.layout, kelp.utilities, kelp.tokens, kelp.overrides, kelp.state, kelp.effects;
@@ -1175,6 +1175,37 @@
     100% {
       background-color: var(--color-fill-accent);
     }
+  }
+}
+
+/* modules/css/components/tabs.css */
+@layer kelp.core {
+  kelp-tabs [tabs] {
+    --tab-background-color: var(--color-fill-muted);
+    --tab-background-color-hover: var(--color-fill-accent);
+    --tab-background-color-active: color-mix(in oklab, var(--color-fill-muted), var(--color-mix-transparent));
+    --tab-background-color-selected: var(--color-fill-vivid);
+    --tab-color: var(--color-on-muted);
+    --tab-color-hover: var(--color-on-accent);
+    --tab-color-active: var(--color-on-muted);
+    --tab-color-selected: var(--color-on-vivid);
+  }
+  kelp-tabs [role=tab] {
+    --background-color: var(--tab-background-color);
+    --background-color-hover: var(--tab-background-color-hover);
+    --background-color-active: var(--tab-background-color-active);
+    --color: var(--tab-color);
+    --color-hover: var(--tab-color-hover);
+    --color-active: var(--tab-color-active);
+    border-radius: var(--border-radius-m);
+    padding-block: var(--size-6xs);
+    padding-inline: var(--size-3xs);
+  }
+}
+@layer kelp.state {
+  kelp-tabs [role=tab][aria-selected=true] {
+    background-color: var(--tab-background-color-selected);
+    color: var(--tab-color-selected);
   }
 }
 

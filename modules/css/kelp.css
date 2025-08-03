@@ -41,6 +41,7 @@
 
 
 /* Web Components */
+@import "./components/tabs.css";
 @import "./components/heading-anchors.css";
 @import "./components/toggle-pw.css";
 @import "./components/autogrow.css";

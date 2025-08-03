@@ -1,3 +1,4 @@
+import './components/tabs.js';
 import './components/toc.js';
 import './components/heading-anchors.js';
 import './components/toggle-pw.js';
