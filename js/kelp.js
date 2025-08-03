@@ -1,4 +1,4 @@
-/*! kelpui v0.15.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.15.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -202,7 +202,7 @@
     #listClass;
     /** @type String */
     #listType;
-    /** @type Number */
+    /** @type Object */
     #index;
     // Initialize on connect
     connectedCallback() {

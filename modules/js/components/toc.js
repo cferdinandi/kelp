@@ -12,7 +12,7 @@ customElements.define('kelp-toc', class extends HTMLElement {
 	/** @type String */        #target;
 	/** @type String | null */ #listClass;
 	/** @type String */        #listType;
-	/** @type Number */	       #index;
+	/** @type Object */	       #index;
 
 	// Initialize on connect
 	connectedCallback () {
