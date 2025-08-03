@@ -139,7 +139,7 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 		if (btn.matches('[aria-selected="true"]')) return;
 
 		// Toggle tab visibility
-		this.toggle(btn);
+		this.select(btn);
 
 	}
 
@@ -188,7 +188,7 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 		if (!nextTab) return;
 
 		// Toggle tab visibility
-		this.toggle(nextTab);
+		this.select(nextTab);
 		nextTab.focus();
 
 	}
@@ -197,7 +197,7 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 	 * Toggle tab visibility
 	 * @param  {Element} tab The tab to show
 	 */
-	toggle (tab) {
+	select (tab) {
 
 		// If there's no tab, bail
 		if (!tab) return;
@@ -208,14 +208,14 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 
 		// Get the current tab and content
 		const currentTab = tab.closest('[role="tablist"]')?.querySelector('[aria-selected="true"]');
-		const currentPane = document.querySelector(`#${currentTab?.getAttribute('aria-controls')}` || '');
+		const currentPane = this.querySelector(`#${currentTab?.getAttribute('aria-controls')}` || '');
 
-		// Emit toggle-before event
-		// If cancelled, don't toggle the tab
+		// Emit select-before event
+		// If cancelled, don't select the tab
 		const event = emit(
 			this,
 			'tabs',
-			'toggle-before',
+			'select-before',
 			{
 				currentTab,
 				currentPane,
@@ -237,8 +237,8 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 		tab.removeAttribute('tabindex');
 		currentTab?.setAttribute('tabindex', '-1');
 
-		// Emit toggle event
-		emit(this, 'tabs', 'toggle', { tab, pane });
+		// Emit select event
+		emit(this, 'tabs', 'select', { tab, pane });
 
 	}
 
