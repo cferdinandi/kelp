@@ -24,14 +24,14 @@ test.describe(`<${componentName}>`, () => {
 		await expect(label).toBeVisible();
 
 		// Checking checkbox should make password visible
-		const eventShow = waitForCustomEvent(wc, 'kelp:togglepw-show');
+		const eventShow = waitForCustomEvent(wc, 'kelp-toggle-pw:show');
 		await expect(password).toHaveAttribute('type', 'password');
 		await toggle.setChecked(true);
 		await expect(password).toHaveAttribute('type', 'text');
 		await expect(eventShow).toBeTruthy();
 
 		// Unchecking it should hide the password
-		const eventHide = waitForCustomEvent(wc, 'kelp:togglepw-hide');
+		const eventHide = waitForCustomEvent(wc, 'kelp-toggle-pw:hide');
 		await toggle.setChecked(false);
 		await expect(password).toHaveAttribute('type', 'password');
 		await expect(eventHide).toBeTruthy();
@@ -77,7 +77,7 @@ test.describe(`<${componentName}>`, () => {
 		await expect(toggle).toHaveAttribute('aria-pressed', 'false');
 
 		// Clicking button should make password visible and update attributes
-		const eventShow = waitForCustomEvent(wc, 'kelp:togglepw-show');
+		const eventShow = waitForCustomEvent(wc, 'kelp-toggle-pw:show');
 		await toggle.click();
 		await expect(password).toHaveAttribute('type', 'text');
 		await expect(showText).not.toBeVisible();
@@ -86,7 +86,7 @@ test.describe(`<${componentName}>`, () => {
 		await expect(eventShow).toBeTruthy();
 
 		// Clicking it again should hide the password
-		const eventHide = waitForCustomEvent(wc, 'kelp:togglepw-hide');
+		const eventHide = waitForCustomEvent(wc, 'kelp-toggle-pw:hide');
 		await toggle.click();
 		await expect(password).toHaveAttribute('type', 'password');
 		await expect(showText).toBeVisible();

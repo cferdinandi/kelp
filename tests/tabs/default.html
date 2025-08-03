@@ -15,18 +15,8 @@
 		<script type="module" src="../../modules/js/kelp.js"></script>
 		<script>
 			// Ensures we can test the ready event
-			document.addEventListener('kelp:tabs-ready', (event) => {
+			document.addEventListener('kelp-tabs:ready', (event) => {
 				console.log('ready');
-			});
-
-			// Ensures we can test the ready event
-			document.addEventListener('kelp:tabs-toggle-before', (event) => {
-				console.log('toggle-before', event.detail);
-			});
-
-			// Ensures we can test the ready event
-			document.addEventListener('kelp:tabs-toggle', (event) => {
-				console.log('toggle', event.detail);
 			});
 		</script>
 	</head>

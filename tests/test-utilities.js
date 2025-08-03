@@ -37,7 +37,7 @@ export async function testComponentReadyState (selector, url, path = 'default.ht
 }
 
 export async function testDebugEvent (url, id, error) {
-	test(`kelp-debug${error ? ` "${error}"` : ''} catches errors`, async ({ page }) => {
+	test(`kelp:debug${error ? ` "${error}"` : ''} catches errors`, async ({ page }) => {
 		let hasError = false;
 		page.on('console', msg => {
 			const text = msg.text();

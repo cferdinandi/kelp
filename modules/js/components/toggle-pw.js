@@ -59,7 +59,7 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 		this.#checkbox?.addEventListener('input', this);
 
 		// Ready
-		emit(this, 'togglepw', 'ready');
+		emit(this, 'toggle-pw', 'ready');
 		this.setAttribute('is-ready', '');
 
 	}
@@ -95,7 +95,7 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 		if (this.#checkbox) {
 			this.#checkbox.checked = true;
 		}
-		emit(this, 'togglepw', 'show');
+		emit(this, 'toggle-pw', 'show');
 	}
 
 	// Hide password visibility
@@ -109,7 +109,7 @@ customElements.define('kelp-toggle-pw', class extends HTMLElement {
 		if (this.#checkbox) {
 			this.#checkbox.checked = false;
 		}
-		emit(this, 'togglepw', 'hide');
+		emit(this, 'toggle-pw', 'hide');
 	}
 
 });
