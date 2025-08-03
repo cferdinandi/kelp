@@ -2,10 +2,6 @@ import { debug } from '../utilities/debug.js';
 import { emit } from '../utilities/emit.js';
 import { ready } from '../utilities/ready.js';
 
-// @todo figure out how to prevent TOC from rendering headings in tabs (maybe a special attribute?)
-// @todo figure out how to prevent anchor links from rendering on headings in tabs
-// @todo for TOC and anchor links, use non-HTML text property
-// @todo change format of event names: `kelp-{component}:{event}`
 customElements.define('kelp-tabs', class extends HTMLElement {
 
 	/** @type String | null */      #start;
@@ -76,30 +72,37 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 			// If there's no matching pane, remove the link and skip this one
 			if (!pane) {
 				(link.closest('li') || link).remove();
+				debug(this, `A tab pane for ${link.textContent} with the ID ${link.hash} could not be found. The corresponding tab was removed.`);
 				return;
 			}
 
 			// Determine if this is the active tab
 			const isActive = this.#start ? this.#start === link.hash : index === 0;
 
+			// Create the tab button
+			const btn = document.createElement('button');
+			btn.innerHTML = link.innerHTML;
+			btn.id = link.id || `tab_${pane.id}`;
+
+			// Prevent the button from submitting forms
+			btn.setAttribute('type', 'button');
+
 			// Add [role] and [aria-selected] attributes
-			link.setAttribute('role', 'tab');
-			link.setAttribute('aria-controls', link.hash.slice(1));
-			link.setAttribute('aria-selected', isActive ? 'true' : 'false');
+			btn.setAttribute('role', 'tab');
+			btn.setAttribute('aria-controls', link.hash.slice(1));
+			btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
 
-			// If it's not the active (first) tab, remove focus
+			// If it's not the active (first) tab, prevent focus
 			if (!isActive) {
-				link.setAttribute('tabindex', '-1');
+				btn.setAttribute('tabindex', '-1');
 			}
 
-			// If there's no link ID, add one
-			if (!link.id) {
-				link.id = `tab_${pane.id}`;
-			}
+			// Replace link with button
+			link.replaceWith(btn);
 
 			// Add ARIA to tab pane
 			pane.setAttribute('role', 'tabpanel');
-			pane.setAttribute('aria-labelledby', link.id);
+			pane.setAttribute('aria-labelledby', btn.id);
 
 			// If not the active pane, hide it
 			if (!isActive) {
@@ -128,18 +131,15 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 	 */
 	#onClick (event) {
 
-		// Only run on tab links
-		const link = event.target instanceof Element ? event.target.closest('[role="tab"]') : null;
-		if (!link) return;
-
-		// Prevent the link from updating the URL
-		event.preventDefault();
+		// Only run on tab buttons
+		const btn = event.target instanceof Element ? event.target.closest('[role="tab"]') : null;
+		if (!btn) return;
 
 		// Ignore the currently active tab
-		if (link.matches('[aria-selected="true"]')) return;
+		if (btn.matches('[aria-selected="true"]')) return;
 
 		// Toggle tab visibility
-		this.toggle(link);
+		this.toggle(btn);
 
 	}
 
@@ -184,7 +184,7 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 		// If right arrow, get the next sibling
 		// Otherwise, get the previous
 		const nextListItem = keyNext.includes(event.key) ? listItem?.nextElementSibling : listItem?.previousElementSibling;
-		const nextTab = nextListItem?.querySelector('a');
+		const nextTab = nextListItem?.querySelector('button');
 		if (!nextTab) return;
 
 		// Toggle tab visibility
@@ -203,12 +203,12 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 		if (!tab) return;
 
 		// Get the target tab pane
-		const pane = tab  instanceof HTMLAnchorElement ? this.querySelector(tab?.hash) : null;
+		const pane = this.querySelector(`#${tab?.getAttribute('aria-controls')}` || '');
 		if (!pane) return;
 
 		// Get the current tab and content
 		const currentTab = tab.closest('[role="tablist"]')?.querySelector('[aria-selected="true"]');
-		const currentPane = currentTab instanceof HTMLAnchorElement ? document.querySelector(currentTab?.hash) : null;
+		const currentPane = document.querySelector(`#${currentTab?.getAttribute('aria-controls')}` || '');
 
 		// Emit toggle-before event
 		// If cancelled, don't toggle the tab

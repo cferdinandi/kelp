@@ -18,10 +18,10 @@ test.describe(`<${componentName}>`, () => {
 		const wc = page.locator(componentName);
 		const tabList = page.locator('[tabs]');
 		const tabListItems = tabList.locator('li');
-		const wizardTab = page.locator('[href="#wizard"]');
-		const sorcererTab = page.locator('[href="#sorcerer"]');
-		const druidTab = page.locator('[href="#druid"]');
-		const fairyTab = page.locator('[href="#fairy"]');
+		const wizardTab = page.locator('[aria-controls="wizard"]');
+		const sorcererTab = page.locator('[aria-controls="sorcerer"]');
+		const druidTab = page.locator('[aria-controls="druid"]');
+		const fairyTab = page.locator('[aria-controls="fairy"]');
 		const wizardPane = page.locator('#wizard');
 		const sorcererPane = page.locator('#sorcerer');
 		const druidPane = page.locator('#druid');
@@ -43,9 +43,8 @@ test.describe(`<${componentName}>`, () => {
 			await expect(item).toHaveAttribute('role', 'presentation');
 		}
 		for (const tab of tabs) {
-			const id = await tab.first().evaluate((elem) => elem instanceof HTMLAnchorElement ? elem.hash.slice(1) : '');
+			const id = await tab.first().evaluate((elem) => elem.getAttribute('aria-controls'));
 			await expect(tab).toHaveAttribute('role', 'tab');
-			await expect(tab).toHaveAttribute('aria-controls', id);
 			await expect(tab).toHaveAttribute('aria-selected', id === 'wizard' ? 'true' : 'false');
 		}
 		await expect(sorcererTab).toHaveAttribute('tabindex', '-1');
@@ -151,9 +150,9 @@ test.describe(`<${componentName}>`, () => {
 
 		// Get elements
 		const tabList = page.locator('[tabs]');
-		const wizardTab = page.locator('[href="#wizard"]');
-		const sorcererTab = page.locator('[href="#sorcerer"]');
-		const druidTab = page.locator('[href="#druid"]');
+		const wizardTab = page.locator('[aria-controls="wizard"]');
+		const sorcererTab = page.locator('[aria-controls="sorcerer"]');
+		const druidTab = page.locator('[aria-controls="druid"]');
 		const wizardPane = page.locator('#wizard');
 		const sorcererPane = page.locator('#sorcerer');
 		const druidPane = page.locator('#druid');
