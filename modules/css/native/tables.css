@@ -36,6 +36,9 @@
 	 */
 	.table-striped tbody tr:nth-child(odd of :not([hidden])) {
 		background-color: var(--background-color);
+	}
+
+	.table-striped.vivid tbody tr:nth-child(odd of :not([hidden])) {
 		color: var(--color);
 	}
 
