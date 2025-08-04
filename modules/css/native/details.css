@@ -26,7 +26,8 @@
 		--icon: "\0025BC";
 		--icon-size: var(--size-xs);
 		--icon-font: var(--font-primary);
-		--rotation: rotate(180deg);
+		--rotation-closed: rotate(-90deg);
+		--rotation-open: none;
 		--transition: none;
 		display: flex;
 		align-items: center;
@@ -54,6 +55,7 @@
 		font-family: var(--icon-font);
 		font-size: var(--icon-size);
 		font-weight: bold;
+		transform: var(--rotation-closed);
 		transition: var(--transition);
 	}
 
@@ -74,7 +76,7 @@
 
 	[open] > summary::before,
 	[open] > summary::after {
-		transform: var(--rotation);
+		transform: var(--rotation-open);
 	}
 
 }
