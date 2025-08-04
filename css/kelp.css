@@ -1,4 +1,4 @@
-/*! kelpui v0.16.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.16.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.palette, kelp.core, kelp.extend, kelp.layout, kelp.utilities, kelp.tokens, kelp.overrides, kelp.state, kelp.effects;
@@ -799,6 +799,8 @@
   }
   .table-striped tbody tr:nth-child(odd of :not([hidden])) {
     background-color: var(--background-color);
+  }
+  .table-striped.vivid tbody tr:nth-child(odd of :not([hidden])) {
     color: var(--color);
   }
 }
