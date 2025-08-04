@@ -1,4 +1,4 @@
-/*! kelpui v0.15.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.16.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.palette, kelp.core, kelp.extend, kelp.layout, kelp.utilities, kelp.tokens, kelp.overrides, kelp.state, kelp.effects;
@@ -821,8 +821,11 @@
   }
   summary {
     --gap: var(--size-4xs);
-    --icon: "\ff0b";
-    --rotation: rotate(45deg);
+    --icon: "\25bc";
+    --icon-size: var(--size-xs);
+    --icon-font: var(--font-primary);
+    --rotation: rotate(180deg);
+    --transition: none;
     display: flex;
     align-items: center;
     gap: var(--gap);
@@ -837,11 +840,21 @@
   summary::-webkit-details-marker {
     display: none;
   }
+  summary::before,
   summary::after {
-    content: var(--icon);
+    font-family: var(--icon-font);
+    font-size: var(--icon-size);
     font-weight: bold;
-    transition: transform 150ms ease-in-out;
+    transition: var(--transition);
   }
+  summary::before,
+  :where(details + details, details:has(+ details)) summary::after {
+    content: var(--icon);
+  }
+  :where(details + details, details:has(+ details)) summary::before {
+    content: none;
+  }
+  [open] > summary::before,
   [open] > summary::after {
     transform: var(--rotation);
   }
