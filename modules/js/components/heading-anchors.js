@@ -32,7 +32,7 @@ customElements.define('kelp-heading-anchors', class extends HTMLElement {
 		}
 
 		// Ready
-		emit(this, 'headinganchors', 'ready');
+		emit(this, 'heading-anchors', 'ready');
 		this.setAttribute('is-ready', '');
 
 	}

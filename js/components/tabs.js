@@ -1,9 +1,9 @@
-/*! kelpui v0.15.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.16.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
   function debug(elem, detail = "") {
-    const event = new CustomEvent("kelp-debug", {
+    const event = new CustomEvent("kelp:debug", {
       bubbles: true,
       detail
     });
@@ -11,10 +11,10 @@
   }
 
   // modules/js/utilities/emit.js
-  function emit(elem, component, id, detail = null) {
-    const event = new CustomEvent(`kelp:${component}-${id}`, {
+  function emit(elem, component, id, detail = null, cancelable = false) {
+    const event = new CustomEvent(`kelp-${component}:${id}`, {
       bubbles: true,
-      cancelable: true,
+      cancelable,
       detail
     });
     return elem.dispatchEvent(event);
@@ -159,7 +159,8 @@
           currentPane,
           nextTab: tab,
           nextPane: pane
-        }
+        },
+        true
       );
       if (!event) return;
       tab.setAttribute("aria-selected", "true");

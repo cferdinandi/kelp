@@ -1,9 +1,9 @@
-/*! kelpui v0.15.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.16.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
   function debug(elem, detail = "") {
-    const event = new CustomEvent("kelp-debug", {
+    const event = new CustomEvent("kelp:debug", {
       bubbles: true,
       detail
     });
@@ -11,10 +11,10 @@
   }
 
   // modules/js/utilities/emit.js
-  function emit(elem, component, id, detail = null) {
-    const event = new CustomEvent(`kelp:${component}-${id}`, {
+  function emit(elem, component, id, detail = null, cancelable = false) {
+    const event = new CustomEvent(`kelp-${component}:${id}`, {
       bubbles: true,
-      cancelable: true,
+      cancelable,
       detail
     });
     return elem.dispatchEvent(event);
@@ -78,7 +78,7 @@
       }
       this.#btn?.addEventListener("click", this);
       this.#checkbox?.addEventListener("input", this);
-      emit(this, "togglepw", "ready");
+      emit(this, "toggle-pw", "ready");
       this.setAttribute("is-ready", "");
     }
     // readonly property
@@ -108,7 +108,7 @@
       if (this.#checkbox) {
         this.#checkbox.checked = true;
       }
-      emit(this, "togglepw", "show");
+      emit(this, "toggle-pw", "show");
     }
     // Hide password visibility
     hide() {
@@ -120,7 +120,7 @@
       if (this.#checkbox) {
         this.#checkbox.checked = false;
       }
-      emit(this, "togglepw", "hide");
+      emit(this, "toggle-pw", "hide");
     }
   });
 })();

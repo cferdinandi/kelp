@@ -221,7 +221,8 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 				currentPane,
 				nextTab: tab,
 				nextPane: pane,
-			}
+			},
+			true
 		);
 		if (!event) return;
 
