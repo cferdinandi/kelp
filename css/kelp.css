@@ -1,4 +1,4 @@
-/*! kelpui v0.16.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.17.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.palette, kelp.core, kelp.extend, kelp.layout, kelp.utilities, kelp.tokens, kelp.overrides, kelp.state, kelp.effects;
@@ -389,10 +389,6 @@
     min-height: 100vh;
     overflow-x: clip;
   }
-  button:not([disabled]),
-  summary {
-    cursor: pointer;
-  }
   :where(p, ol, ul, dl, dd, form, fieldset, audio, video, iframe, blockquote, details, table, pre, figure, address) {
     margin: 0;
     margin-block-end: var(--space);
@@ -712,6 +708,7 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-s);
     color: var(--color);
+    cursor: pointer;
     display: inline-flex;
     gap: var(--gap);
     align-items: center;
@@ -807,60 +804,12 @@
 
 /* modules/css/native/details.css */
 @layer kelp.core {
-  details {
-    --border-color: var(--color-border-accent);
-    --gap: var(--size-3xs);
-  }
-  details + details {
-    padding: 0;
-    padding-block-start: var(--gap);
-  }
-  details:has(+ details) {
-    border-block-end: 1px solid var(--border-color);
-    margin: 0;
-    padding-block: var(--gap);
-    padding-inline: 0;
-  }
   summary {
-    --gap: var(--size-4xs);
-    --icon: "\25bc";
-    --icon-size: var(--size-xs);
-    --icon-font: var(--font-primary);
-    --rotation-closed: rotate(-90deg);
-    --rotation-open: none;
-    --transition: none;
-    display: flex;
-    align-items: center;
-    gap: var(--gap);
-    list-style: none;
-  }
-  :where(details + details, details:has(+ details)) summary {
-    justify-content: space-between;
+    --margin: var(--size-3xs);
+    cursor: pointer;
   }
   [open] > summary {
-    margin-block-end: var(--size-3xs);
-  }
-  summary::-webkit-details-marker {
-    display: none;
-  }
-  summary::before,
-  summary::after {
-    font-family: var(--icon-font);
-    font-size: var(--icon-size);
-    font-weight: bold;
-    transform: var(--rotation-closed);
-    transition: var(--transition);
-  }
-  summary::before,
-  :where(details + details, details:has(+ details)) summary::after {
-    content: var(--icon);
-  }
-  :where(details + details, details:has(+ details)) summary::before {
-    content: none;
-  }
-  [open] > summary::before,
-  [open] > summary::after {
-    transform: var(--rotation-open);
+    margin-block-end: var(--margin);
   }
 }
 
@@ -1296,6 +1245,27 @@
   .fill.vivid {
     --color: var(--color-on-vivid);
     color: var(--color);
+  }
+}
+
+/* modules/css/utilities/divided.css */
+@layer kelp.core {
+  .divided {
+    --border-color: var(--color-border-accent);
+    --gap: var(--size-3xs);
+  }
+  .divided > * + * {
+    padding: 0;
+    padding-block-start: var(--gap);
+  }
+  .divided > *:first-child,
+  .divided > *:has(+ *) {
+    padding-block-end: var(--gap);
+  }
+  .divided > *:has(+ *) {
+    border-block-end: 1px solid var(--border-color);
+    margin: 0;
+    padding-inline: 0;
   }
 }
 
