@@ -49,6 +49,7 @@
 
 /* Utilities */
 @import "./utilities/fill.css";
+@import "./utilities/divided.css";
 @import "./utilities/aspect-ratios.css";
 @import "./utilities/text.css";
 @import "./utilities/size.css";

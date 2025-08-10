@@ -32,6 +32,7 @@
 		border: 1px solid var(--border-color);
 		border-radius: var(--border-radius-s);
 		color: var(--color);
+		cursor: pointer;
 		display: inline-flex;
 		gap: var(--gap);
 		align-items: center;
@@ -41,8 +42,6 @@
 		line-height: var(--line-height-xs);
 		padding-block: var(--size-4xs);
 		padding-inline: var(--size-m);
-
-		cursor: pointer;
 		text-align: center;
 		vertical-align: middle;
 	}

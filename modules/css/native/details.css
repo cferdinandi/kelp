@@ -4,79 +4,13 @@
 
 @layer kelp.core {
 
-	details {
-		--border-color: var(--color-border-accent);
-		--gap: var(--size-3xs);
-	}
-
-	details + details {
-		padding: 0;
-		padding-block-start: var(--gap);
-	}
-
-	details:has(+ details) {
-		border-block-end: 1px solid var(--border-color);
-		margin: 0;
-		padding-block: var(--gap);
-		padding-inline: 0;
-	}
-
 	summary {
-		--gap: var(--size-4xs);
-		--icon: "\0025BC";
-		--icon-size: var(--size-xs);
-		--icon-font: var(--font-primary);
-		--rotation-closed: rotate(-90deg);
-		--rotation-open: none;
-		--transition: none;
-		display: flex;
-		align-items: center;
-		gap: var(--gap);
-		list-style: none;
-	}
-
-	:where(
-		details + details,
-		details:has(+ details)
-	) summary {
-		justify-content: space-between;
+		--margin: var(--size-3xs);
+		cursor: pointer;
 	}
 
 	[open] > summary {
-		margin-block-end: var(--size-3xs);
-	}
-
-	summary::-webkit-details-marker {
-		display: none;
-	}
-
-	summary::before,
-	summary::after {
-		font-family: var(--icon-font);
-		font-size: var(--icon-size);
-		font-weight: bold;
-		transform: var(--rotation-closed);
-		transition: var(--transition);
-	}
-
-	summary::before,
-	:where(
-		details + details,
-		details:has(+ details)
-	) summary::after {
-		content: var(--icon);
-	}
-
-	:where(
-		details + details,
-		details:has(+ details)
-	) summary::before {
-		content: none;
-	}
-
-	[open] > summary::before,
-	[open] > summary::after {
-		transform: var(--rotation-open);
+		margin-block-end: var(--margin);
 	}
 
 }
