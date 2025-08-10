@@ -32,6 +32,7 @@
 		border: 1px solid var(--border-color);
 		border-radius: var(--border-radius-s);
 		color: var(--color);
+		cursor: pointer;
 		display: inline-flex;
 		gap: var(--gap);
 		align-items: center;

@@ -46,12 +46,8 @@
 	}
 
 	/**
-	 * Add a cursor to button and summary elements
+	 * Add block-end margin to various elements
 	 */
-	button:not([disabled]),
-	summary {
-	    cursor: pointer;
-	}
 
 	:where(
 		p,
@@ -92,6 +88,9 @@
 
 @layer kelp.state {
 
+	/**
+	 * Focus styles
+	 */
 	:is(
 		button, [href],
 		input, select, textarea,
@@ -103,8 +102,12 @@
 		outline-offset: var(--focus-ring-offset);
 	}
 
-	[hidden],
-	[hide-until-ready]:not([is-ready]) {
+	/**
+	 * 1. Ensure [hidden] takes priority over other display properties
+	 * 2. Hide web components with the [hide-until-ready] attribute before instantiation
+	 */
+	[hidden], /* 1 */
+	[hide-until-ready]:not([is-ready]) { /* 2 */
 		display: none;
 	}
 

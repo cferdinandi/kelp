@@ -1,0 +1,29 @@
+/**
+ * @section Divided
+ * Add horizontal dividers between each item in a stack
+ */
+
+@layer kelp.core {
+
+	.divided {
+		--border-color: var(--color-border-accent);
+		--gap: var(--size-3xs);
+	}
+
+	.divided > * + * {
+		padding: 0;
+		padding-block-start: var(--gap);
+	}
+
+	.divided > *:first-child,
+	.divided > *:has(+ *) {
+		padding-block-end: var(--gap);
+	}
+
+	.divided > *:has(+ *) {
+		border-block-end: 1px solid var(--border-color);
+		margin: 0;
+		padding-inline: 0;
+	}
+
+}
