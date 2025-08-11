@@ -1,0 +1,63 @@
+/**
+ * @section Avatars
+ * Rounded images
+ */
+
+@layer kelp.core {
+
+	.navbar {
+		--gap: var(--size-m);
+		display: flex;
+		column-gap: var(--gap);
+		row-gap: calc(var(--gap) * 0.5);
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		padding-block: var(--size-m);
+		text-align: center;
+	}
+
+	.navbar a {
+		--decoration: none;
+	}
+
+	.logo {
+		--color: var(--color, var(--color-text-normal));
+		--color-hover: var(--color-text-link);
+		--decoration: none;
+		--decoration-hover: none;
+		font-weight: bold;
+/*		flex-grow: 1;*/
+	}
+
+	.menu {
+		--gap: var(--size-m);
+		display: flex;
+		column-gap: var(--gap);
+		row-gap: calc(var(--gap) * 0.5);
+		flex-wrap: wrap;
+	}
+
+	:is(.navbar, .menu) > ul {
+		--gap: var(--size-m);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		column-gap: var(--gap);
+		flex-wrap: wrap;
+		list-style-type: "";
+		padding: 0;
+		margin: 0;
+	}
+
+	@media (max-width: 52em) {
+		.navbar > * {
+			flex-basis: 100%;
+		}
+
+		.menu {
+			justify-content: center;
+		}
+	}
+
+}
