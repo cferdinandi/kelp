@@ -1,11 +1,11 @@
 /**
- * @section Avatars
- * Rounded images
+ * @section Navigation
  */
 
 @layer kelp.core {
 
 	.navbar {
+		--align: center;
 		--gap: var(--size-m);
 		display: flex;
 		column-gap: var(--gap);
@@ -14,7 +14,7 @@
 		align-items: center;
 		justify-content: space-between;
 		padding-block: var(--size-m);
-		text-align: center;
+		text-align: var(--align);
 	}
 
 	.navbar a {
@@ -27,7 +27,6 @@
 		--decoration: none;
 		--decoration-hover: none;
 		font-weight: bold;
-/*		flex-grow: 1;*/
 	}
 
 	.menu {
@@ -42,7 +41,7 @@
 		--gap: var(--size-m);
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: var(--align);
 		column-gap: var(--gap);
 		flex-wrap: wrap;
 		list-style-type: "";
@@ -56,7 +55,7 @@
 		}
 
 		.menu {
-			justify-content: center;
+			justify-content: var(--align);
 		}
 	}
 
