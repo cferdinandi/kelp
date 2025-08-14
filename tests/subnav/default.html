@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Kelp</title>
+		<meta name="description" content="A UI library for people who love HTML, powered by modern CSS and Web Components.">
+
+		<!-- Mobile Screen Resizing -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Kelp CSS -->
+		<link rel="stylesheet" type="text/css" href="../../modules/css/kelp.css">
+
+		<!-- Kelp JS -->
+		<script type="module" src="../../modules/js/kelp.js"></script>
+		<script>
+			// Ensures we can test the ready event
+			document.addEventListener('kelp-subnav:ready', (event) => {
+				console.log('ready');
+			});
+		</script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-subnav - default settings</h1>
+
+			<header class="container-2xl">
+				<kelp-subnav>
+					<nav class="navbar">
+						<a class="logo" href="#">Kelp UI</a>
+						<ul>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Blog</a></li>
+							<li>
+								<details>
+									<summary>Contact</summary>
+									<ul>
+										<li><a href="#">Help</a></li>
+										<li><a href="#">Phone</a></li>
+										<li><a href="#">Email</a></li>
+									</ul>
+								</details>
+							</li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">Contact</a></li>
+							<li><a href="#">❤️</a></li>
+							<li><a href="#">🔍</a></li>
+							<li><a class="btn secondary size-s" href="#">Join</a></li>
+						</ul>
+					</nav>
+				</kelp-subnav>
+			</header>
+
+			<button data-testid="button">Button</button>
+
+		</main>
+
+	</body>
+</html>

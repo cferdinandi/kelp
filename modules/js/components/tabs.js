@@ -1,6 +1,7 @@
 import { debug } from '../utilities/debug.js';
 import { emit } from '../utilities/emit.js';
 import { ready } from '../utilities/ready.js';
+import { reinit } from '../utilities/reinit.js';
 
 customElements.define('kelp-tabs', class extends HTMLElement {
 
@@ -13,11 +14,18 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 		ready(this);
 	}
 
+	// Cleanup global events on disconnect
+	disconnectedCallback () {
+		document.removeEventListener('keydown', this);
+		this.setAttribute('is-paused', '');
+	}
+
 	// Initialize the component
 	init () {
 
 		// Don't run if already initialized
-		if (this.hasAttribute('is-ready')) return;
+		const isInit = reinit(this, () => document.addEventListener('keydown', this));
+		if (isInit) return;
 
 		// Get settings
 		this.#start = this.getAttribute('start');

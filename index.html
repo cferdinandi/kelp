@@ -17,39 +17,41 @@
 	<body>
 
 		<header class="container-2xl">
-			<nav class="navbar">
-				<a class="logo" href="#">Kelp UI</a>
-				<ul>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Blog</a></li>
-					<li>
-						<details name="navbar">
-							<summary>Contact</summary>
-							<ul>
-								<li><a href="#">Help</a></li>
-								<li><a href="#">Phone</a></li>
-								<li><a href="#">Email</a></li>
-							</ul>
-						</details>
-					</li>
-					<li>
-						<details name="navbar">
-							<summary>Services</summary>
-							<ul>
-								<li><a href="#">Overview</a></li>
-								<li><a href="#">Consulting</a></li>
-								<li><a href="#">Coaching</a></li>
-								<li><a href="#">Courses</a></li>
-							</ul>
-						</details>
-					</li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Contact</a></li>
-					<li><a href="#">❤️</a></li>
-					<li><a href="#">🔍</a></li>
-					<li><a class="btn secondary size-s" href="#">Join</a></li>
-				</ul>
-			</nav>
+			<kelp-subnav>
+				<nav class="navbar">
+					<a class="logo" href="#">Kelp UI</a>
+					<ul>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Blog</a></li>
+						<li>
+							<details name="navbar">
+								<summary>Contact</summary>
+								<ul>
+									<li><a href="#">Help</a></li>
+									<li><a href="#">Phone</a></li>
+									<li><a href="#">Email</a></li>
+								</ul>
+							</details>
+						</li>
+						<li>
+							<details name="navbar">
+								<summary>Services</summary>
+								<ul>
+									<li><a href="#">Overview</a></li>
+									<li><a href="#">Consulting</a></li>
+									<li><a href="#">Coaching</a></li>
+									<li><a href="#">Courses</a></li>
+								</ul>
+							</details>
+						</li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">❤️</a></li>
+						<li><a href="#">🔍</a></li>
+						<li><a class="btn secondary size-s" href="#">Join</a></li>
+					</ul>
+				</nav>
+			</kelp-subnav>
 		</header>
 
 		<hr>
@@ -1056,7 +1058,14 @@
 			</kelp-heading-anchors>
 		</main>
 
-
+		<script type="module">
+			document.addEventListener('kelp:debug', (event) => {
+				console.log('KELP DEBUG', {
+					element: event.target,
+					message: event.detail
+				});
+			});
+		</script>
 		<script type="module" src="./modules/js/kelp.js"></script>
 
 	</body>
