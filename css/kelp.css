@@ -1,4 +1,4 @@
-/*! kelpui v0.18.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.18.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.palette, kelp.core, kelp.extend, kelp.layout, kelp.utilities, kelp.tokens, kelp.overrides, kelp.state, kelp.effects;
@@ -1060,7 +1060,7 @@
 /* modules/css/navigation/navbar.css */
 @layer kelp.core {
   .navbar {
-    --align: center;
+    --justify: center;
     --gap: var(--size-m);
     display: flex;
     column-gap: var(--gap);
@@ -1069,7 +1069,7 @@
     align-items: center;
     justify-content: space-between;
     padding-block: var(--size-m);
-    text-align: var(--align);
+    text-align: var(--justify);
   }
   .logo {
     --color: var(--color, var(--color-text-normal));
@@ -1089,7 +1089,7 @@
     --gap: var(--size-m);
     display: flex;
     align-items: center;
-    justify-content: var(--align);
+    justify-content: var(--justify);
     column-gap: var(--gap);
     flex-wrap: wrap;
     list-style-type: "";
@@ -1104,7 +1104,7 @@
       flex-basis: 100%;
     }
     .menu {
-      justify-content: var(--align);
+      justify-content: var(--justify);
     }
   }
 }
