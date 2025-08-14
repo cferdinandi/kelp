@@ -1,4 +1,4 @@
-/*! kelpui v0.17.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.18.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -29,6 +29,15 @@
     document.addEventListener("DOMContentLoaded", () => instance.init(), { once: true });
   }
 
+  // modules/js/utilities/reinit.js
+  function reinit(instance, callback) {
+    if (!instance.hasAttribute("is-ready")) return false;
+    if (!instance.hasAttribute("is-paused") || typeof callback !== "function") return true;
+    callback();
+    instance.removeAttribute("is-paused");
+    return true;
+  }
+
   // modules/js/components/tabs.js
   customElements.define("kelp-tabs", class extends HTMLElement {
     /** @type String | null */
@@ -41,9 +50,15 @@
     connectedCallback() {
       ready(this);
     }
+    // Cleanup global events on disconnect
+    disconnectedCallback() {
+      document.removeEventListener("keydown", this);
+      this.setAttribute("is-paused", "");
+    }
     // Initialize the component
     init() {
-      if (this.hasAttribute("is-ready")) return;
+      const isInit = reinit(this, () => document.addEventListener("keydown", this));
+      if (isInit) return;
       this.#start = this.getAttribute("start");
       this.#isVertical = this.hasAttribute("vertical");
       this.#list = this.querySelector("[tabs]");
