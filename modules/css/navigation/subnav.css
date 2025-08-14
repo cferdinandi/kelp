@@ -1,0 +1,65 @@
+/**
+ * @section Subnav Menus
+ */
+
+@layer kelp.core {
+
+	.navbar summary {
+		--color: var(--color-text-link);
+		--color-hover: var(--color-text-link-hover);
+		--decoration: none;
+		--decoration-hover: var(--decoration-text-link-hover);
+		text-decoration: var(--decoration);
+		-webkit-text-decoration: var(--decoration);
+		color: var(--color);
+	}
+
+}
+
+@layer kelp.state {
+
+	.navbar summary:hover {
+		color: var(--color-hover);
+		text-decoration: var(--decoration-hover);
+		-webkit-text-decoration: var(--decoration-hover);
+	}
+
+	.navbar li:has(details) {
+		position: relative;
+	}
+
+	.navbar details summary {
+		--margin: 0;
+	}
+
+	.navbar details ul {
+		--border-color: var(--color-border-muted);
+		--gap: var(--size-6xs);
+
+		background-color: var(--color-background);
+		border: 1px solid var(--border-color);
+		border-radius: var(--border-radius-m);
+		min-width: 6em;
+
+		list-style-type: "";
+		padding-block: var(--size-5xs);
+		padding-inline: var(--size-5xs);
+
+		position: absolute;
+		left: 0;
+		top: var(--size-5xl);
+		text-align: start;
+	}
+
+	.navbar details li {
+		margin-block-end: var(--gap);
+	}
+
+	.navbar details a {
+		display: block;
+		padding-block: var(--size-6xs);
+		padding-inline: var(--size-4xs);
+		width: 100%;
+	}
+
+}

@@ -1,4 +1,4 @@
-/*! kelpui v0.17.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.18.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.palette, kelp.core, kelp.extend, kelp.layout, kelp.utilities, kelp.tokens, kelp.overrides, kelp.state, kelp.effects;
@@ -1054,6 +1054,108 @@
     flex-basis: 0;
     flex-grow: 999;
     min-inline-size: var(--main-size, 50%);
+  }
+}
+
+/* modules/css/navigation/navbar.css */
+@layer kelp.core {
+  .navbar {
+    --align: center;
+    --gap: var(--size-m);
+    display: flex;
+    column-gap: var(--gap);
+    row-gap: calc(var(--gap) * 0.5);
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--size-m);
+    text-align: var(--align);
+  }
+  .logo {
+    --color: var(--color, var(--color-text-normal));
+    --color-hover: var(--color-text-link);
+    --decoration: none;
+    --decoration-hover: none;
+    font-weight: bold;
+  }
+  .menu {
+    --gap: var(--size-m);
+    display: flex;
+    column-gap: var(--gap);
+    row-gap: calc(var(--gap) * 0.5);
+    flex-wrap: wrap;
+  }
+  :is(.navbar, .menu) > ul {
+    --gap: var(--size-m);
+    display: flex;
+    align-items: center;
+    justify-content: var(--align);
+    column-gap: var(--gap);
+    flex-wrap: wrap;
+    list-style-type: "";
+    padding: 0;
+    margin: 0;
+  }
+  .navbar a {
+    --decoration: none;
+  }
+  @media (max-width: 52em) {
+    .navbar > * {
+      flex-basis: 100%;
+    }
+    .menu {
+      justify-content: var(--align);
+    }
+  }
+}
+
+/* modules/css/navigation/subnav.css */
+@layer kelp.core {
+  .navbar summary {
+    --color: var(--color-text-link);
+    --color-hover: var(--color-text-link-hover);
+    --decoration: none;
+    --decoration-hover: var(--decoration-text-link-hover);
+    text-decoration: var(--decoration);
+    -webkit-text-decoration: var(--decoration);
+    color: var(--color);
+  }
+}
+@layer kelp.state {
+  .navbar summary:hover {
+    color: var(--color-hover);
+    text-decoration: var(--decoration-hover);
+    -webkit-text-decoration: var(--decoration-hover);
+  }
+  .navbar li:has(details) {
+    position: relative;
+  }
+  .navbar details summary {
+    --margin: 0;
+  }
+  .navbar details ul {
+    --border-color: var(--color-border-muted);
+    --gap: var(--size-6xs);
+    background-color: var(--color-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-m);
+    min-width: 6em;
+    list-style-type: "";
+    padding-block: var(--size-5xs);
+    padding-inline: var(--size-5xs);
+    position: absolute;
+    left: 0;
+    top: var(--size-5xl);
+    text-align: start;
+  }
+  .navbar details li {
+    margin-block-end: var(--gap);
+  }
+  .navbar details a {
+    display: block;
+    padding-block: var(--size-6xs);
+    padding-inline: var(--size-4xs);
+    width: 100%;
   }
 }
 

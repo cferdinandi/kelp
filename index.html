@@ -16,6 +16,114 @@
 	</head>
 	<body>
 
+		<header class="container-2xl">
+			<kelp-subnav>
+				<nav class="navbar">
+					<a class="logo" href="#">Kelp UI</a>
+					<ul>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Blog</a></li>
+						<li>
+							<details name="navbar">
+								<summary>Contact</summary>
+								<ul>
+									<li><a href="#">Help</a></li>
+									<li><a href="#">Phone</a></li>
+									<li><a href="#">Email</a></li>
+								</ul>
+							</details>
+						</li>
+						<li>
+							<details name="navbar">
+								<summary>Services</summary>
+								<ul>
+									<li><a href="#">Overview</a></li>
+									<li><a href="#">Consulting</a></li>
+									<li><a href="#">Coaching</a></li>
+									<li><a href="#">Courses</a></li>
+								</ul>
+							</details>
+						</li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">❤️</a></li>
+						<li><a href="#">🔍</a></li>
+						<li><a class="btn secondary size-s" href="#">Join</a></li>
+					</ul>
+				</nav>
+			</kelp-subnav>
+		</header>
+
+		<hr>
+
+		<header class="container-2xl">
+			<nav class="navbar">
+				<a class="logo" href="#">Kelp UI</a>
+				<ul class="nav-hide-s">
+					<li><a href="#">About</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Contact</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">❤️</a></li>
+					<li><a href="#">🔍</a></li>
+					<li><a class="btn secondary size-s" href="#">Join</a></li>
+					<li class="nav-hide-l">
+						<button class="btn-link link-subtle padding-0">
+							<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg>
+							Menu
+						</button>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<hr>
+
+		<header class="container-2xl">
+			<nav class="navbar">
+				<a class="logo" href="#">Kelp UI</a>
+				<div class="menu">
+					<ul>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+
+					<ul>
+						<li><a href="#">❤️</a></li>
+						<li><a href="#">🔍</a></li>
+						<li><a class="btn secondary size-s" href="#">Join</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		<div class="fill vivid secondary">
+			<header class="container-2xl">
+				<nav class="navbar">
+					<a class="logo" href="#">Kelp UI</a>
+					<ul>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">❤️</a></li>
+						<li><a href="#">🔍</a></li>
+						<li><a class="btn muted size-s" href="#">Join</a></li>
+					</ul>
+				</nav>
+			</header>
+		</div>
+
 		<main class="margin-end-space">
 			<kelp-heading-anchors>
 				<div class="container">
@@ -950,7 +1058,14 @@
 			</kelp-heading-anchors>
 		</main>
 
-
+		<script type="module">
+			document.addEventListener('kelp:debug', (event) => {
+				console.log('KELP DEBUG', {
+					element: event.target,
+					message: event.detail
+				});
+			});
+		</script>
 		<script type="module" src="./modules/js/kelp.js"></script>
 
 	</body>

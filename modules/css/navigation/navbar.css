@@ -1,0 +1,62 @@
+/**
+ * @section Navbar Navigation
+ */
+
+@layer kelp.core {
+
+	.navbar {
+		--align: center;
+		--gap: var(--size-m);
+		display: flex;
+		column-gap: var(--gap);
+		row-gap: calc(var(--gap) * 0.5);
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		padding-block: var(--size-m);
+		text-align: var(--align);
+	}
+
+	.logo {
+		--color: var(--color, var(--color-text-normal));
+		--color-hover: var(--color-text-link);
+		--decoration: none;
+		--decoration-hover: none;
+		font-weight: bold;
+	}
+
+	.menu {
+		--gap: var(--size-m);
+		display: flex;
+		column-gap: var(--gap);
+		row-gap: calc(var(--gap) * 0.5);
+		flex-wrap: wrap;
+	}
+
+	:is(.navbar, .menu) > ul {
+		--gap: var(--size-m);
+		display: flex;
+		align-items: center;
+		justify-content: var(--align);
+		column-gap: var(--gap);
+		flex-wrap: wrap;
+		list-style-type: "";
+		padding: 0;
+		margin: 0;
+	}
+
+	.navbar a {
+		--decoration: none;
+	}
+
+	@media (max-width: 52em) {
+		.navbar > * {
+			flex-basis: 100%;
+		}
+
+		.menu {
+			justify-content: var(--align);
+		}
+	}
+
+}
