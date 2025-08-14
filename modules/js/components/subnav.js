@@ -62,7 +62,7 @@ customElements.define('kelp-subnav', class extends HTMLElement {
 	#onClick () {
 
 		// Get all open subnav's that aren't currently focused
-		const navs = this.querySelectorAll('details[open]:not(:has(:focus))');
+		const navs = this.querySelectorAll('details[open]:not(:focus-within)');
 
 		// Close them
 		for (const nav of navs) {

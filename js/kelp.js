@@ -1,4 +1,4 @@
-/*! kelpui v0.18.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.18.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -491,7 +491,7 @@
      * Handle click events
      */
     #onClick() {
-      const navs = this.querySelectorAll("details[open]:not(:has(:focus))");
+      const navs = this.querySelectorAll("details[open]:not(:focus-within)");
       for (const nav of navs) {
         nav.removeAttribute("open");
       }
