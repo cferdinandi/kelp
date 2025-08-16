@@ -3,7 +3,7 @@
  * Fill an element with color
  */
 
-@layer kelp.core {
+@layer kelp.utilities {
 
 	.fill {
 		--background-color: var(--color-fill-muted);

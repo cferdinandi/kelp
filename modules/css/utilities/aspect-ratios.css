@@ -3,7 +3,7 @@
  * Crop content to a specific ratio
  */
 
-@layer kelp.core {
+@layer kelp.utilities {
 
 	iframe[class*="aspect-ratio"] {
 		height: 100%;

@@ -1,0 +1,44 @@
+/**
+ * @section Show Above
+ * Utilities for showing content above certain breakpoints
+ */
+
+@layer kelp.utilities {
+
+	@media (max-width: calc(18em - 1px)) {
+		.show-above-xs {
+			display: none;
+		}
+	}
+
+	@media (max-width: calc(28em - 1px)) {
+		.show-above-s {
+			display: none;
+		}
+	}
+
+	@media (max-width: calc(38em - 1px)) {
+		.show-above-m {
+			display: none;
+		}
+	}
+
+	@media (max-width: calc(52em - 1px)) {
+		.show-above-l {
+			display: none;
+		}
+	}
+
+	@media (max-width: calc(60em - 1px)) {
+		.show-above-xl {
+			display: none;
+		}
+	}
+
+	@media (max-width: calc(80em - 1px)) {
+		.show-above-2xl {
+			display: none;
+		}
+	}
+
+}
