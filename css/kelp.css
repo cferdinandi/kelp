@@ -1,4 +1,4 @@
-/*! kelpui v0.18.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.19.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.palette, kelp.core, kelp.extend, kelp.layout, kelp.utilities, kelp.tokens, kelp.overrides, kelp.state, kelp.effects;
@@ -1065,7 +1065,6 @@
     display: flex;
     column-gap: var(--gap);
     row-gap: calc(var(--gap) * 0.5);
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding-block: var(--size-m);
@@ -1083,7 +1082,6 @@
     display: flex;
     column-gap: var(--gap);
     row-gap: calc(var(--gap) * 0.5);
-    flex-wrap: wrap;
   }
   :is(.navbar, .menu) > ul {
     --gap: var(--size-m);
@@ -1091,19 +1089,22 @@
     align-items: center;
     justify-content: var(--justify);
     column-gap: var(--gap);
-    flex-wrap: wrap;
     list-style-type: "";
     padding: 0;
     margin: 0;
+  }
+  .navbar,
+  :not(.no-wrap) :is(.menu, .navbar > ul, .menu > ul) {
+    flex-wrap: wrap;
   }
   .navbar a {
     --decoration: none;
   }
   @media (max-width: 52em) {
-    .navbar > * {
+    .navbar:not(.no-wrap) > * {
       flex-basis: 100%;
     }
-    .menu {
+    :not(.no-wrap) .menu {
       justify-content: var(--justify);
     }
   }
@@ -1338,7 +1339,7 @@
 }
 
 /* modules/css/utilities/fill.css */
-@layer kelp.core {
+@layer kelp.utilities {
   .fill {
     --background-color: var(--color-fill-muted);
     background-color: var(--background-color);
@@ -1350,7 +1351,7 @@
 }
 
 /* modules/css/utilities/divided.css */
-@layer kelp.core {
+@layer kelp.utilities {
   .divided {
     --border-color: var(--color-border-accent);
     --gap: var(--size-3xs);
@@ -1371,7 +1372,7 @@
 }
 
 /* modules/css/utilities/aspect-ratios.css */
-@layer kelp.core {
+@layer kelp.utilities {
   iframe[class*=aspect-ratio] {
     height: 100%;
     width: 100%;
@@ -1443,6 +1444,9 @@
     --font-size: 1em;
     font-size: var(--font-size);
   }
+  .size-3xs {
+    --font-size: var(--size-3xs);
+  }
   .size-2xs {
     --font-size: var(--size-2xs);
   }
@@ -1501,6 +1505,9 @@
   .margin-start-xs {
     margin-block-start: var(--size-xs);
   }
+  .margin-start-s {
+    margin-block-start: var(--size-s);
+  }
   .margin-start-m {
     margin-block-start: var(--size-m);
   }
@@ -1548,6 +1555,9 @@
   }
   .margin-end-xs {
     margin-block-end: var(--size-xs);
+  }
+  .margin-end-s {
+    margin-block-end: var(--size-s);
   }
   .margin-end-m {
     margin-block-end: var(--size-m);
@@ -1740,6 +1750,74 @@
   }
   .justify-even {
     justify-content: space-evenly;
+  }
+}
+
+/* modules/css/utilities/show-above.css */
+@layer kelp.utilities {
+  @media (max-width: calc(18em - 1px)) {
+    .show-above-xs {
+      display: none;
+    }
+  }
+  @media (max-width: calc(28em - 1px)) {
+    .show-above-s {
+      display: none;
+    }
+  }
+  @media (max-width: calc(38em - 1px)) {
+    .show-above-m {
+      display: none;
+    }
+  }
+  @media (max-width: calc(52em - 1px)) {
+    .show-above-l {
+      display: none;
+    }
+  }
+  @media (max-width: calc(60em - 1px)) {
+    .show-above-xl {
+      display: none;
+    }
+  }
+  @media (max-width: calc(80em - 1px)) {
+    .show-above-2xl {
+      display: none;
+    }
+  }
+}
+
+/* modules/css/utilities/hide-above.css */
+@layer kelp.utilities {
+  @media (min-width: 18em) {
+    .hide-above-xs {
+      display: none;
+    }
+  }
+  @media (min-width: 28em) {
+    .hide-above-s {
+      display: none;
+    }
+  }
+  @media (min-width: 38em) {
+    .hide-above-m {
+      display: none;
+    }
+  }
+  @media (min-width: 52em) {
+    .hide-above-l {
+      display: none;
+    }
+  }
+  @media (min-width: 60em) {
+    .hide-above-xl {
+      display: none;
+    }
+  }
+  @media (min-width: 80em) {
+    .hide-above-2xl {
+      display: none;
+    }
   }
 }
 
