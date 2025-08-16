@@ -10,7 +10,6 @@
 		display: flex;
 		column-gap: var(--gap);
 		row-gap: calc(var(--gap) * 0.5);
-/*		flex-wrap: wrap;*/
 		align-items: center;
 		justify-content: space-between;
 		padding-block: var(--size-m);
@@ -30,7 +29,6 @@
 		display: flex;
 		column-gap: var(--gap);
 		row-gap: calc(var(--gap) * 0.5);
-/*		flex-wrap: wrap;*/
 	}
 
 	:is(.navbar, .menu) > ul {
@@ -39,7 +37,6 @@
 		align-items: center;
 		justify-content: var(--justify);
 		column-gap: var(--gap);
-/*		flex-wrap: wrap;*/
 		list-style-type: "";
 		padding: 0;
 		margin: 0;
