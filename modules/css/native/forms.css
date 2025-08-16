@@ -163,7 +163,7 @@
 		background-color: var(--color-checked);
 		border-radius: 50%;
 		content: '';
-		width: round(calc(100% * 0.75), var(--border-size));
+		width: 0.667em;
 		aspect-ratio: 1;
 	}
 
