@@ -10,7 +10,6 @@
 
 
 /* Native Elements */
-@import "./native/light-dark.css";
 @import "./native/base.css";
 @import "./native/lists.css";
 @import "./native/headings.css";
