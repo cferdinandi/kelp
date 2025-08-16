@@ -3,7 +3,7 @@
  * Side-by-side content
  */
 
-@layer kelp.layout {
+@layer kelp.core {
 
 	[class*="sidecar"] > * {
 		margin: 0;

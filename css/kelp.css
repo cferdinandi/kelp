@@ -1,7 +1,7 @@
-/*! kelpui v0.19.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v0.20.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
-@layer kelp.base, kelp.theme, kelp.palette, kelp.core, kelp.extend, kelp.layout, kelp.utilities, kelp.tokens, kelp.overrides, kelp.state, kelp.effects;
+@layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
 
 /* modules/css/theme/palette.css */
 @layer kelp.base {
@@ -38,7 +38,7 @@
     --color-gray-chroma: 0;
   }
 }
-@layer kelp.palette {
+@layer kelp.tokens {
   :where(:root) {
     --color-red-05: oklch(18.5% calc(.08 * var(--color-red-chroma)) var(--color-red-hue));
     --color-red-10: oklch(24% calc(.1 * var(--color-red-chroma)) var(--color-red-hue));
@@ -156,7 +156,7 @@
 /* modules/css/theme/colors.css */
 @layer kelp.base {
   :where(:root),
-  .kelp-theme-light {
+  .light {
     --color-background: white;
     --color-text-normal: var(--color-gray-10);
     --color-text-muted: var(--color-gray-50);
@@ -243,7 +243,7 @@
     --color-code-border: var(--color-gray-20);
     --color-code-on: white;
   }
-  .kelp-theme-dark {
+  .dark {
     --color-background: var(--color-gray-10);
     --color-text-normal: white;
     --color-text-muted: var(--color-gray-80);
@@ -380,9 +380,6 @@
     text-size-adjust: none;
   }
   body {
-    --color: var(--color-text-normal);
-    background: var(--color-background);
-    color: var(--color);
     font-family: var(--font-primary);
     line-height: var(--line-height-m);
     margin: 0;
@@ -880,7 +877,7 @@
 }
 
 /* modules/css/layout/containers.css */
-@layer kelp.layout {
+@layer kelp.core {
   [class*=container] {
     --width: var(--breakpoint-m);
     margin-inline: auto;
@@ -912,7 +909,7 @@
 }
 
 /* modules/css/layout/grid.css */
-@layer kelp.layout {
+@layer kelp.core {
   [class*=grid] {
     --gap: var(--size-m);
     grid-template-columns: repeat(12, 1fr);
@@ -992,7 +989,7 @@
 }
 
 /* modules/css/layout/stack.css */
-@layer kelp.layout {
+@layer kelp.core {
   .stack > * {
     margin: 0;
   }
@@ -1005,7 +1002,7 @@
 }
 
 /* modules/css/layout/split.css */
-@layer kelp.layout {
+@layer kelp.core {
   .split > * {
     margin: 0;
   }
@@ -1019,7 +1016,7 @@
 }
 
 /* modules/css/layout/cluster.css */
-@layer kelp.layout {
+@layer kelp.core {
   .cluster > * {
     margin: 0;
   }
@@ -1032,7 +1029,7 @@
 }
 
 /* modules/css/layout/sidecar.css */
-@layer kelp.layout {
+@layer kelp.core {
   [class*=sidecar] > * {
     margin: 0;
   }
@@ -1891,7 +1888,17 @@
 
 /* modules/css/tokens/color.css */
 @layer kelp.tokens {
-  :where(:root, :root *),
+  :where(:root),
+  .light,
+  .dark {
+    --background-color: var(--color-background);
+    --color: var(--color-text-normal);
+    background: var(--background-color);
+    color: var(--color);
+  }
+  :where(:root),
+  .light,
+  .dark,
   .neutral {
     --color-fill-vivid: var(--color-neutral-fill-vivid);
     --color-fill-accent: var(--color-neutral-fill-accent);

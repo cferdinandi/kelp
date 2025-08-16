@@ -3,7 +3,7 @@
  * Stack content on top of each other and control spacing
  */
 
-@layer kelp.layout {
+@layer kelp.core {
 
 	.stack > * {
 		margin: 0;

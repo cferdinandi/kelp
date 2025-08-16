@@ -35,9 +35,6 @@
 	 * 3. Prevent overflow in breakout containers
 	 */
 	body {
-		--color: var(--color-text-normal);
-		background: var(--color-background);
-		color: var(--color);
 		font-family: var(--font-primary);
 		line-height: var(--line-height-m);
 		margin: 0; /* 1 */

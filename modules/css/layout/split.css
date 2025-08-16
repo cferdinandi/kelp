@@ -3,7 +3,7 @@
  * Horizontal content with space between
  */
 
-@layer kelp.layout {
+@layer kelp.core {
 
 	.split > * {
 		margin: 0;

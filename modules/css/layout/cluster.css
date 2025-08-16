@@ -2,7 +2,7 @@
  * @section Cluster
  */
 
-@layer kelp.layout {
+@layer kelp.core {
 
 	.cluster > * {
 		margin: 0;

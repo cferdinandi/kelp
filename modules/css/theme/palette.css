@@ -51,7 +51,7 @@
 
 }
 
-@layer kelp.palette {
+@layer kelp.tokens {
 
 	:where(:root) {
 
