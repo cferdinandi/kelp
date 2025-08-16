@@ -3,7 +3,7 @@
  * Contain the max width of content
  */
 
-@layer kelp.layout {
+@layer kelp.core {
 
 	[class*="container"] {
 		--width: var(--breakpoint-m);

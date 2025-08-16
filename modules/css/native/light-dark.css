@@ -1,0 +1,14 @@
+/**
+ * @section Light & Dark Mode
+ */
+
+/*@layer kelp.core {
+
+	:where(:root),
+	.light,
+	.dark {
+		background: var(--color-background);
+		color: var(--color);
+	}
+
+}*/

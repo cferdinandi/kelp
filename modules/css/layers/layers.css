@@ -1,21 +1,28 @@
 /**
  * Establish Cascade Layer order
- * 1. User theme customizations
- * 2. Add more components
- * 3. override utilities
- * 4. Add/override state-based effects (eg. :hover)
+ * Items with a ✅ next to them are for public use.
+ * Items with a 🏴‍☠️ are internal layers and should not be used for customizations.
+ *
+ * 🏴‍☠️ kelp: the parent layer for the Kelp library.
+ * 🏴‍☠️ kelp.base: The base CSS variables, configurations, and theme.
+ * ✅ kelp.theme: Theme customizations (colors, fonts, sizes, etc.)
+ * 🏴‍☠️ kelp.core: The core styles and components.
+ * ✅ kelp.extend: Add your own components and customize existing ones.
+ * 🏴‍☠️ kelp.utilities: Utility classes for nudging and tweaking the UI.
+ * ✅ kelp.helpers: Add your own utilities and customize existing ones.
+ * 🏴‍☠️ kelp.tokens: Design tokens that define semantic colors.
+ * 🏴‍☠️ kelp.state: State effects (:hover, :active, etc.).
+ * ✅ kelp.effects: Add your own state effects and customize existing ones.
  */
 
 @layer kelp;
 @layer
 	kelp.base,
-	kelp.theme, /* 1 */
-	kelp.palette,
+	kelp.theme,
 	kelp.core,
-	kelp.extend, /* 2 */
-	kelp.layout,
+	kelp.extend,
 	kelp.utilities,
+	kelp.helpers,
 	kelp.tokens,
-	kelp.overrides, /* 3 */
 	kelp.state,
-	kelp.effects; /* 4 */
+	kelp.effects;

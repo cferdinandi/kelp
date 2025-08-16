@@ -7,7 +7,7 @@
 
 	/* Light Theme (default) */
 	:where(:root),
-	.kelp-theme-light {
+	.light {
 
 		/* Page & Text  */
 		--color-background: white;
@@ -115,7 +115,7 @@
 
 
 	/* Dark Theme */
-	.kelp-theme-dark {
+	.dark {
 
 		/* Page & Text  */
 		--color-background: var(--color-gray-10);

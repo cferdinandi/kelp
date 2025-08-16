@@ -3,7 +3,7 @@
  * 12 columns, divided using simple fractions
  */
 
-@layer kelp.layout {
+@layer kelp.core {
 
 	/**
 	 * Base Grid styles
