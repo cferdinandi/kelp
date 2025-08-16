@@ -3,7 +3,7 @@
  * Add horizontal dividers between each item in a stack
  */
 
-@layer kelp.core {
+@layer kelp.utilities {
 
 	.divided {
 		--border-color: var(--color-border-accent);

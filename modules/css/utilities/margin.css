@@ -37,6 +37,10 @@
 		margin-block-start: var(--size-xs);
 	}
 
+	.margin-start-s {
+		margin-block-start: var(--size-s);
+	}
+
 	.margin-start-m {
 		margin-block-start: var(--size-m);
 	}
@@ -104,6 +108,10 @@
 
 	.margin-end-xs {
 		margin-block-end: var(--size-xs);
+	}
+
+	.margin-end-s {
+		margin-block-end: var(--size-s);
 	}
 
 	.margin-end-m {

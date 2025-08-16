@@ -1,0 +1,44 @@
+/**
+ * @section Hide Above
+ * Utilities for hiding content above certain breakpoints
+ */
+
+@layer kelp.utilities {
+
+	@media (min-width: 18em) {
+		.hide-above-xs {
+			display: none;
+		}
+	}
+
+	@media (min-width: 28em) {
+		.hide-above-s {
+			display: none;
+		}
+	}
+
+	@media (min-width: 38em) {
+		.hide-above-m {
+			display: none;
+		}
+	}
+
+	@media (min-width: 52em) {
+		.hide-above-l {
+			display: none;
+		}
+	}
+
+	@media (min-width: 60em) {
+		.hide-above-xl {
+			display: none;
+		}
+	}
+
+	@media (min-width: 80em) {
+		.hide-above-2xl {
+			display: none;
+		}
+	}
+
+}
