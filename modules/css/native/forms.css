@@ -31,6 +31,30 @@
 	}
 
 	/**
+	 * Implicit labels
+	 */
+	label:has(
+		:is(
+			input, select, textarea
+		):not(
+			[type="radio"], [type="checkbox"]
+		)
+	) {
+	    display: block;
+	    margin-block-end: 0;
+	}
+
+	label:has(
+		input, select, textarea
+	) :is(
+		input, select, textarea
+	):not(
+		[type="radio"], [type="checkbox"]
+	) {
+	    margin-block-start: var(--gap);
+	}
+
+	/**
 	 * 1. Correct font properties not being inherited.
 	 */
 	input,
@@ -48,7 +72,7 @@
 		color: var(--color-text-muted);
 	}
 
-	.kelp-theme-dark ::-webkit-calendar-picker-indicator {
+	.dark ::-webkit-calendar-picker-indicator {
 		filter: invert(1);
 	}
 
@@ -98,7 +122,6 @@
 		appearance: none;
 		height: var(--size-m);
 		width: var(--size-m);
-		margin: 0;
 
 		display: inline-flex;
 		flex: 0 0 auto;
