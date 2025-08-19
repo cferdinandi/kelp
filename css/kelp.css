@@ -1,4 +1,4 @@
-/*! kelpui v1.0.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.1.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -577,6 +577,13 @@
     column-gap: var(--gap);
     width: 100%;
   }
+  label:has(:is(input, select, textarea):not([type=radio], [type=checkbox])) {
+    display: block;
+    margin-block-end: 0;
+  }
+  label:has(input, select, textarea) :is(input, select, textarea):not([type=radio], [type=checkbox]) {
+    margin-block-start: var(--gap);
+  }
   input,
   optgroup,
   select,
@@ -590,7 +597,7 @@
   ::placeholder {
     color: var(--color-text-muted);
   }
-  .kelp-theme-dark ::-webkit-calendar-picker-indicator {
+  .dark ::-webkit-calendar-picker-indicator {
     filter: invert(1);
   }
   input,
@@ -631,7 +638,6 @@
     appearance: none;
     height: var(--size-m);
     width: var(--size-m);
-    margin: 0;
     display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
@@ -649,12 +655,6 @@
   }
 }
 @layer kelp.state {
-  :is(input, textarea, select)[readonly] {
-    --background-color: var(--color-fill-muted);
-    --color: var(--color-on-muted);
-    background-color: var(--background-color);
-    color: var(--color);
-  }
   :is(input, textarea, select):not([type=checkbox], [type=radio], [type=range]):focus,
   :is([type=checkbox], [type=radio], [type=range]):focus-visible {
     outline-color: var(--focus-ring-color);
@@ -681,6 +681,17 @@
   [type=checkbox]:checked::after {
     content: "\2713";
     font-size: var(--size-xs);
+  }
+  :is(input, textarea, select):is([readonly], [disabled]) {
+    --background-color: var(--color-fill-muted);
+    --color: var(--color-on-muted);
+    background-color: var(--background-color);
+    color: var(--color);
+  }
+  [disabled]:checked {
+    --color-checked: var(--color-fill-muted);
+    --color-checked-icon: var(--color-on-muted);
+    border-color: var(--border-color);
   }
 }
 
