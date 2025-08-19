@@ -636,7 +636,7 @@
 
 					<h2>Forms</h2>
 
-					<div class="stack">
+					<div class="stack margin-end-space">
 						<div>
 							<label for="greeting">What's your preferred greeting?</label>
 							<input type="text" id="greeting" name="greeting">
@@ -671,37 +671,6 @@
 							<label for="url">URL</label>
 							<input type="url" id="url" name="url">
 						</div>
-
-						<div>
-							<label for="greeting-readonly">What's your preferred greeting (readonly)?</label>
-							<input
-								type="text"
-								id="greeting-readonly"
-								name="greeting"
-								value="Hey there!"
-								readonly
-							>
-						</div>
-
-						<div>
-							<label for="vacation-readonly">What's your favorite vacation spot (readonly)?</label>
-							<textarea
-								type="text"
-								id="vacation-readonly"
-								name="vacation"
-								readonly
-							>Anywhere with sun and sand!</textarea>
-						</div>
-
-						<label>
-							<input type="checkbox" name="awesome" disabled>
-							I love Pixar movies (disabled)
-						</label>
-
-						<label>
-							<input type="checkbox" name="awesome" checked disabled>
-							I love Pixar movies (disabled)
-						</label>
 
 						<label>
 							<input type="checkbox" name="awesome">
@@ -759,6 +728,64 @@
 								<input type="datetime-local" id="appointment" name="appointment">
 							</div>
 						</div>
+					</div>
+
+					<h3>Readonly &amp; Disabled</h3>
+
+					<div class="stack margin-end-space">
+						<div>
+							<label for="greeting-readonly">What's your preferred greeting (readonly)?</label>
+							<input
+								type="text"
+								id="greeting-readonly"
+								name="greeting"
+								value="Hey there!"
+								readonly
+							>
+						</div>
+
+						<div>
+							<label for="vacation-readonly">What's your favorite vacation spot (readonly)?</label>
+							<textarea
+								type="text"
+								id="vacation-readonly"
+								name="vacation"
+								readonly
+							>Anywhere with sun and sand!</textarea>
+						</div>
+
+						<label>
+							<input type="checkbox" name="awesome" disabled>
+							I love Pixar movies (disabled)
+						</label>
+
+						<label>
+							<input type="checkbox" name="awesome" checked disabled>
+							I love Pixar movies (disabled)
+						</label>
+					</div>
+
+					<h3>Implicit Labels</h3>
+
+					<div class="stack margin-end-space">
+						<label>
+							What's your preferred greeting?
+							<input type="text" name="greeting">
+						</label>
+
+						<label>
+							Who is the best wizard?
+							<select name="wizard">
+								<option value="merlin">Merlin the Wise</option>
+								<option value="gandalf">Gandalf the Gray</option>
+								<option value="radagast">Radagast the Brown</option>
+							</select>
+						</label>
+
+						<label>
+							What's your favorite vacation spot?
+							<textarea type="text" name="vacation"></textarea>
+						</label>
 					</div>
 
 
