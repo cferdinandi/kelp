@@ -127,17 +127,6 @@
 		input,
 		textarea,
 		select
-	)[readonly] {
-		--background-color: var(--color-fill-muted);
-		--color: var(--color-on-muted);
-		background-color: var(--background-color);
-		color: var(--color);
-	}
-
-	:is(
-		input,
-		textarea,
-		select
 	):not(
 		[type="checkbox"],
 		[type="radio"],
@@ -176,6 +165,26 @@
 	[type="checkbox"]:checked::after {
 		content: '\002713';
 		font-size: var(--size-xs);
+	}
+
+	:is(
+		input,
+		textarea,
+		select
+	):is(
+		[readonly],
+		[disabled]
+	) {
+		--background-color: var(--color-fill-muted);
+		--color: var(--color-on-muted);
+		background-color: var(--background-color);
+		color: var(--color);
+	}
+
+	[disabled]:checked {
+		--color-checked: var(--color-fill-muted);
+		--color-checked-icon: var(--color-on-muted);
+		border-color: var(--border-color);
 	}
 
 }
