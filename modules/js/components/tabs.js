@@ -173,15 +173,15 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 		// Only run for left and right arrow keys
 		if (![...keyNext, ...keyPrev].includes(event.key)) return;
 
-		// Prevent page scroll
-		event.preventDefault();
-
 		// Only run if element in focus is on a tab
 		const tab = document.activeElement?.closest('[role="tab"]');
 		if (!tab) return;
 
 		// Only run if focused tab is in this component
 		if (!this.#list?.contains(tab)) return;
+
+		// Prevent page scroll
+		event.preventDefault();
 
 		// Get the currently active tab
 		const currentTab = this.#list.querySelector('[role="tab"][aria-selected="true"]');
