@@ -1,4 +1,4 @@
-/*! kelpui v1.1.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.2.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -44,6 +44,8 @@
     #start;
     /** @type Boolean */
     #isVertical;
+    /** @type Boolean */
+    #isManual;
     /** @type HTMLElement | null */
     #list;
     // Initialize on connect
@@ -61,6 +63,7 @@
       if (isInit) return;
       this.#start = this.getAttribute("start");
       this.#isVertical = this.hasAttribute("vertical");
+      this.#isManual = this.hasAttribute("manual");
       this.#list = this.querySelector("[tabs]");
       if (!this.render()) {
         debug(this, "No tabs were was found");
@@ -143,17 +146,16 @@
         keyPrev.push("ArrowUp");
       }
       if (![...keyNext, ...keyPrev].includes(event.key)) return;
+      const currentTab = this.#list?.querySelector('[role="tab"]:focus-within');
+      if (!currentTab) return;
       event.preventDefault();
-      const tab = document.activeElement?.closest('[role="tab"]');
-      if (!tab) return;
-      if (!this.#list?.contains(tab)) return;
-      const currentTab = this.#list.querySelector('[role="tab"][aria-selected="true"]');
       const listItem = currentTab?.closest("li");
       const nextListItem = keyNext.includes(event.key) ? listItem?.nextElementSibling : listItem?.previousElementSibling;
       const nextTab = nextListItem?.querySelector("button");
       if (!nextTab) return;
-      this.select(nextTab);
       nextTab.focus();
+      if (this.#isManual) return;
+      this.select(nextTab);
     }
     /**
      * Toggle tab visibility
