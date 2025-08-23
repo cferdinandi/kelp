@@ -7,6 +7,7 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 
 	/** @type String | null */      #start;
 	/** @type Boolean */            #isVertical;
+	/** @type Boolean */            #isManual;
 	/** @type HTMLElement | null */ #list;
 
 	// Initialize on connect
@@ -30,6 +31,7 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 		// Get settings
 		this.#start = this.getAttribute('start');
 		this.#isVertical = this.hasAttribute('vertical');
+		this.#isManual = this.hasAttribute('manual');
 
 		// Get the list element
 		this.#list = this.querySelector('[tabs]');
@@ -173,18 +175,12 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 		// Only run for left and right arrow keys
 		if (![...keyNext, ...keyPrev].includes(event.key)) return;
 
-		// Only run if element in focus is on a tab
-		const tab = document.activeElement?.closest('[role="tab"]');
-		if (!tab) return;
-
-		// Only run if focused tab is in this component
-		if (!this.#list?.contains(tab)) return;
+		// Only run if element in focus is on a tab inside the component
+		const currentTab = this.#list?.querySelector('[role="tab"]:focus-within');
+		if (!currentTab) return;
 
 		// Prevent page scroll
 		event.preventDefault();
-
-		// Get the currently active tab
-		const currentTab = this.#list.querySelector('[role="tab"][aria-selected="true"]');
 
 		// Get the parent list item
 		const listItem = currentTab?.closest('li');
@@ -195,9 +191,12 @@ customElements.define('kelp-tabs', class extends HTMLElement {
 		const nextTab = nextListItem?.querySelector('button');
 		if (!nextTab) return;
 
-		// Toggle tab visibility
-		this.select(nextTab);
+		// Shift focus
 		nextTab.focus();
+
+		// If not in manual mode, toggle tab visibility
+		if (this.#isManual) return;
+		this.select(nextTab);
 
 	}
 

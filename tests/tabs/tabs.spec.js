@@ -228,6 +228,49 @@ test.describe(`<${componentName}>`, () => {
 
 	});
 
+	test('manual mode', async ({ page }) => {
+
+		await page.goto(`${testPath}/manual.html`);
+
+		// Get elements
+		const wc = page.locator(componentName);
+		const tabList = page.locator('[tabs]');
+		const tabListItems = tabList.locator('li');
+		const wizardTab = page.locator('[aria-controls="wizard"]');
+		const sorcererTab = page.locator('[aria-controls="sorcerer"]');
+		const druidTab = page.locator('[aria-controls="druid"]');
+		const wizardPane = page.locator('#wizard');
+		const sorcererPane = page.locator('#sorcerer');
+		const druidPane = page.locator('#druid');
+
+		// Clicking on a tab should...
+		await druidTab.click();
+		// 1. Reveal it's content
+		await expect(druidPane).toBeVisible();
+		// 2. Hide the other content
+		await expect(wizardPane).not.toBeVisible();
+		await expect(sorcererPane).not.toBeVisible();
+
+		// Pressing the left arrow key while a tab has focus should...
+		await druidTab.press('ArrowLeft');
+		// 1. Focus the previous tab
+		await expect(sorcererTab).toBeFocused();
+		// 2. NOT change the visible content
+		await expect(druidPane).toBeVisible();
+		await expect(wizardPane).not.toBeVisible();
+		await expect(sorcererPane).not.toBeVisible();
+
+		// Pressing the left arrow key again should...
+		await sorcererTab.press('ArrowLeft');
+		// 1. Focus the previous tab
+		await expect(wizardTab).toBeFocused();
+		// 2. NOT change the visible content
+		await expect(druidPane).toBeVisible();
+		await expect(wizardPane).not.toBeVisible();
+		await expect(sorcererPane).not.toBeVisible();
+
+	});
+
 	test('error handling', async ({ page }) => {
 
 		await page.goto(`${testPath}/errors.html`);
