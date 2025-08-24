@@ -1,4 +1,4 @@
-/*! kelpui v1.2.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.3.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -188,7 +188,7 @@
     --color-neutral-on-muted: var(--color-gray-10);
     --color-neutral-on-accent: var(--color-gray-10);
     --color-neutral-on-vivid: white;
-    --color-neutral-outline: var(--color-gray-20);
+    --color-neutral-outline: var(--color-gray-10);
     --color-primary-fill-muted: var(--color-blue-95);
     --color-primary-fill-accent: var(--color-blue-90);
     --color-primary-fill-vivid: var(--color-blue-50);
@@ -411,7 +411,9 @@
     outline-offset: var(--focus-ring-offset);
   }
   [hidden],
-  [hide-until-ready]:not([is-ready]) {
+  [hide-until-ready]:not([is-ready]),
+  :not([is-ready]):has(> [show-until-ready]) > :not([show-until-ready]),
+  [is-ready] [show-until-ready] {
     display: none;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -820,6 +822,66 @@
   }
 }
 
+/* modules/css/native/dialog.css */
+@layer kelp.core {
+  html:has([open]:modal) {
+    overflow: hidden;
+  }
+  dialog {
+    --backdrop-opacity: 0.5;
+    --background-color: var(--color-background);
+    --border-color: var(--color-border-muted);
+    --color: var(--color-text-normal);
+    --gap: var(--size-2xl);
+    --width: 32em;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    color: var(--color);
+    border-radius: var(--border-radius-m);
+    max-height: calc(100% - var(--size-5xl));
+    max-width: calc(100% - var(--size-5xl));
+    padding: var(--gap);
+    width: var(--width);
+  }
+  dialog:modal::backdrop {
+    background-color: rgba(0, 0, 0, var(--backdrop-opacity));
+  }
+  dialog:has(.action-body) .action-header {
+    position: sticky;
+    top: 0;
+  }
+  dialog:has(.action-body) .action-footer {
+    position: sticky;
+    bottom: 0;
+  }
+  dialog[open]:has(.action-body) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    overflow: hidden;
+  }
+  dialog .action-body {
+    overflow: auto;
+    margin-inline-end: calc(-1 * var(--gap));
+    padding-inline-end: var(--gap);
+  }
+  [class*=drawer] {
+    border-radius: 0;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+  .drawer {
+    inset-inline-end: 0;
+    inset-inline-start: auto;
+  }
+  .drawer-start {
+    inset-inline-start: 0;
+    inset-inline-end: auto;
+  }
+}
+
 /* modules/css/native/media.css */
 @layer kelp.core {
   img,
@@ -1062,6 +1124,38 @@
     flex-basis: 0;
     flex-grow: 999;
     min-inline-size: var(--main-size, 50%);
+  }
+}
+
+/* modules/css/layout/action-header.css */
+@layer kelp.core {
+  .action-header > * {
+    margin: 0;
+  }
+  .action-header {
+    --gap: var(--size-m);
+    --main-size: initial;
+    --secondary-size: initial;
+    display: flex;
+    align-items: baseline;
+    gap: var(--gap);
+  }
+  .action-header > :last-child {
+    flex-basis: var(--secondary-size, auto);
+    flex-grow: 1;
+  }
+  .action-header > :first-child {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-inline-size: var(--main-size, 50%);
+  }
+  .action-header > :last-child button {
+    --padding: var(--size-4xs);
+    padding: var(--padding);
+  }
+  .action-header > :last-child button:last-child {
+    margin-block-start: calc(-1 * var(--padding));
+    margin-inline-end: calc(-1 * var(--padding));
   }
 }
 
@@ -1737,6 +1831,9 @@
   .align-center {
     align-items: center;
   }
+  .align-baseline {
+    align-items: baseline;
+  }
 }
 
 /* modules/css/utilities/justify.css */
@@ -1869,6 +1966,17 @@
     --color: var(--color-outline);
     --color-hover: var(--color-on-vivid);
     --color-active: var(--color-on-vivid);
+  }
+  .plain {
+    --background-color: transparent;
+    --background-color-hover: var(--color-fill-muted);
+    --background-color-active: var(--color-fill-accent);
+    --border-color: transparent;
+    --border-color-hover: var(--color-fill-muted);
+    --border-color-active: var(--color-fill-accent);
+    --color: var(--color-outline);
+    --color-hover: var(--color-outline);
+    --color-active: var(--color-outline);
   }
   .muted {
     --background-color: var(--color-fill-muted);
