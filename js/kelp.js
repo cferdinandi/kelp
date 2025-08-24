@@ -321,7 +321,7 @@
     }
     // Render the anchor links
     render() {
-      const selector = getFilteredSelector(this.#levels);
+      const selector = getFilteredSelector(`:is(${this.#levels})`);
       const headings = this.querySelectorAll(selector);
       if (!headings.length) return;
       for (const heading of headings) {
@@ -527,6 +527,7 @@
   });
 
   // modules/js/components/invoker.polyfill.js
+  //! Invoker Command API Polyfill by Keith Cirkel - https://github.com/keithamus/invokers-polyfill/tree/main
   function isSupported() {
     return typeof HTMLButtonElement !== "undefined" && "command" in HTMLButtonElement.prototype && "source" in ((globalThis.CommandEvent || {}).prototype || {});
   }

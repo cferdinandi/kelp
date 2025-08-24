@@ -1,3 +1,5 @@
+//! Invoker Command API Polyfill by Keith Cirkel - https://github.com/keithamus/invokers-polyfill/tree/main
+
 export function isSupported() {
 	return (
 		typeof HTMLButtonElement !== "undefined" &&
