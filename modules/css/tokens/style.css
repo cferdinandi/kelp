@@ -23,6 +23,23 @@
 	}
 
 	/**
+	 * Transparent outline and background
+	 */
+	.plain {
+		--background-color: transparent;
+		--background-color-hover: var(--color-fill-muted);
+		--background-color-active: var(--color-fill-accent);
+
+		--border-color: transparent;
+		--border-color-hover: var(--color-fill-muted);
+		--border-color-active: var(--color-fill-accent);
+
+		--color: var(--color-outline);
+		--color-hover: var(--color-outline);
+		--color-active: var(--color-outline);
+	}
+
+	/**
 	 * Light background with gentle border
 	 */
 	.muted {

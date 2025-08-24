@@ -1,5 +1,6 @@
 import { debug } from '../utilities/debug.js';
 import { emit } from '../utilities/emit.js';
+import { getFilteredSelector } from '../utilities/getFilteredSelector.js';
 import { ready } from '../utilities/ready.js';
 import { setTextAsID } from '../utilities/setTextAsID.js';
 
@@ -51,8 +52,10 @@ customElements.define('kelp-toc', class extends HTMLElement {
 	render () {
 
 		// Get matching headings
-		const headings = document.querySelectorAll(`${this.#target} :is(${this.#level})`);
-		if (!headings.length) return;
+		const selector = getFilteredSelector(`:is(${this.#level})`);
+		const target = this.#target ? document.querySelector(this.#target) : document;
+		const headings = target?.querySelectorAll(selector);
+		if (!headings?.length) return;
 
 		// Create TOC
 		this.innerHTML = this.#createList(headings, true);

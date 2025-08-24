@@ -1117,34 +1117,179 @@
 
 						<h3>Vertical Orientation</h3>
 
-						<kelp-tabs class="secondary" start="#druid2" vertical>
-							<div class="sidecar">
-								<ul class="list-unstyled stack gap-4xs secondary" tabs>
-									<li><a href="#wizard2">Wizard</a></li>
-									<li><a href="#sorcerer2">Sorcerer</a></li>
-									<li><a href="#druid2">Druid</a></li>
-								</ul>
-								<div>
-									<div id="wizard2">
-										Wizards gain their magic through study...
-									</div>
+						<div class="margin-end-space">
+							<kelp-tabs class="secondary" start="#druid2" vertical>
+								<div class="sidecar">
+									<ul class="list-unstyled stack gap-4xs secondary" tabs>
+										<li><a href="#wizard2">Wizard</a></li>
+										<li><a href="#sorcerer2">Sorcerer</a></li>
+										<li><a href="#druid2">Druid</a></li>
+									</ul>
+									<div>
+										<div id="wizard2">
+											Wizards gain their magic through study...
+										</div>
 
-									<div id="sorcerer2">
-										Sorcerers get their power from an otherworldly being...
-									</div>
+										<div id="sorcerer2">
+											Sorcerers get their power from an otherworldly being...
+										</div>
 
-									<div id="druid2">
-										Druids get their power from nature...
+										<div id="druid2">
+											Druids get their power from nature...
+										</div>
 									</div>
 								</div>
-							</div>
-						</kelp-tabs>
+							</kelp-tabs>
+						</div>
+
+
+						<h2>Modals</h2>
+
+						<p>
+							<button commandfor="modal" command="show-modal">Show Modal</button>
+							<button commandfor="modal-tall" command="show-modal">Show Autoscrolling Modal</button>
+							<button commandfor="modal-tall-body" command="show-modal">Show Autoscrolling Modal + Body</button>
+						</p>
+
+						<h3>Drawers</h3>
+
+						<p class="cluster">
+							<button commandfor="drawer-start" command="show-modal">Show Drawer Start</button>
+							<button commandfor="drawer" command="show-modal">Show Drawer</button>
+						</p>
 
 					</div>
 
 				</div>
 
 			</kelp-heading-anchors>
+
+			<dialog class="modal" id="modal" closedby="any">
+				<div class="action-header">
+					<h2>This is a modal heading</h2>
+					<form>
+						<button class="plain" formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
+					</form>
+				</div>
+				<p>Here's some body text inside the modal.</p>
+				<form method="dialog">
+					<button>Close</button>
+				</form>
+			</dialog>
+
+			<dialog class="drawer" id="drawer" closedby="any">
+				<div class="action-header">
+					<h2>This is a modal heading</h2>
+					<form>
+						<button class="plain" formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
+					</form>
+				</div>
+				<p>Here's some body text inside the modal.</p>
+				<form method="dialog">
+					<button>Close</button>
+				</form>
+			</dialog>
+
+			<dialog class="drawer-start" id="drawer-start" closedby="any">
+				<div class="action-header">
+					<h2>This is a modal heading</h2>
+					<form>
+						<button class="plain" formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
+					</form>
+				</div>
+				<p>Here's some body text inside the modal.</p>
+				<form method="dialog">
+					<button>Close</button>
+				</form>
+			</dialog>
+
+			<dialog id="modal-tall" closedby="any">
+				<div class="action-header">
+					<h2>This is a modal heading</h2>
+					<form>
+						<button class="plain" formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
+					</form>
+				</div>
+				<p>Here's some body text inside the modal.</p>
+				<p>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+				</p>
+				<form method="dialog">
+					<button>Close</button>
+				</form>
+			</dialog>
+
+			<dialog id="modal-tall-body" closedby="any">
+				<div class="action-header">
+					<h2>This is a modal heading</h2>
+					<form>
+						<button class="plain" formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
+					</form>
+				</div>
+				<div class="action-body">
+					<p>Here's some body text inside the modal.</p>
+					<p>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+						.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>
+					</p>
+				</div>
+				<form class="action-footer" method="dialog">
+					<button>Close</button>
+				</form>
+			</dialog>
 		</main>
 
 		<script type="module">

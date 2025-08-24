@@ -16,4 +16,5 @@ await esbuild.build({
 	},
 	bundle: true,
 	write: true,
+	legalComments: 'inline',
 });

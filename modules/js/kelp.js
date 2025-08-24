@@ -4,3 +4,4 @@ import './components/heading-anchors.js';
 import './components/toggle-pw.js';
 import './components/autogrow.js';
 import './components/subnav.js';
+import './components/invoker.polyfill.js';
