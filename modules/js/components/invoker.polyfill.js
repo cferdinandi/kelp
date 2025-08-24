@@ -1,5 +1,6 @@
 // biome-ignore-all lint: third-party code
-//! Invoker Command API Polyfill by Keith Cirkel - https://github.com/keithamus/invokers-polyfill/tree/main
+// @ts-nocheck
+//! Invoker Command API Polyfill by Keith Cirkel - https://github.com/keithamus/invokers-polyfill/tree/main - MIT License
 
 export function isSupported() {
 	return (
