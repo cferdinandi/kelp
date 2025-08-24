@@ -20,6 +20,7 @@
 		--background-color: var(--color-background);
 		--border-color: var(--color-border-muted);
 		--color: var(--color-text-normal);
+		--gap: var(--size-2xl);
 		--width: 32em;
 
 		background-color: var(--background-color);
@@ -28,13 +29,39 @@
 		border-radius: var(--border-radius-m);
 		max-height: calc(100% - var(--size-5xl));
 		max-width: calc(100% - var(--size-5xl));
-		overflow: auto;
-		padding: var(--size-2xl);
+		padding: var(--gap);
 		width: var(--width);
 	}
 
 	dialog:modal::backdrop {
 		background-color: rgba(0, 0, 0, var(--backdrop-opacity));
+	}
+
+
+	/**
+	 * Auto-scrolling with fixed header/footer
+	 */
+	dialog:has(.action-body) .action-header {
+		position: sticky;
+		top: 0;
+	}
+
+	dialog:has(.action-body) .action-footer {
+		position: sticky;
+		bottom: 0;
+	}
+
+	dialog[open]:has(.action-body) {
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap);
+		overflow: hidden;
+	}
+
+	dialog .action-body {
+		overflow: auto;
+		margin-inline-end: calc(-1 * var(--gap));
+		padding-inline-end: var(--gap);
 	}
 
 

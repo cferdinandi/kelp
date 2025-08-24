@@ -1,5 +1,6 @@
 import { debug } from '../utilities/debug.js';
 import { emit } from '../utilities/emit.js';
+import { getFilteredSelector } from '../utilities/getFilteredSelector.js';
 import { ready } from '../utilities/ready.js';
 import { setTextAsID } from '../utilities/setTextAsID.js';
 
@@ -41,7 +42,8 @@ customElements.define('kelp-heading-anchors', class extends HTMLElement {
 	render () {
 
 		// Get the headings
-		const headings = this.querySelectorAll(this.#levels);
+		const selector = getFilteredSelector(this.#levels);
+		const headings = this.querySelectorAll(selector);
 		if (!headings.length) return;
 
 		for (const heading of headings) {
