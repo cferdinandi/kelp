@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Kelp</title>
+		<meta name="description" content="A UI library for people who love HTML, powered by modern CSS and Web Components.">
+
+		<!-- Mobile Screen Resizing -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Kelp CSS -->
+		<link rel="stylesheet" type="text/css" href="../../modules/css/kelp.css">
+
+		<!-- Kelp JS -->
+		<script type="module" src="../../modules/js/kelp.js"></script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-dialog - errors</h1>
+
+			<kelp-dialog target="#not-a-modal">
+				<button>Show Modal</button>
+			</kelp-dialog>
+
+			<kelp-dialog>
+				<button>Show Modal</button>
+			</kelp-dialog>
+
+			<dialog id="modal" closedby="any">
+				<div class="sidecar-end align-start">
+					<h2>This is a modal heading</h2>
+					<form>
+						<button formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
+					</form>
+				</div>
+				<p>Here's some body text inside the modal.</p>
+				<form method="dialog">
+					<button>Close</button>
+				</form>
+			</dialog>
+
+		</main>
+
+	</body>
+</html>

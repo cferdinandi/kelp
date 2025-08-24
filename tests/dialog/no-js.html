@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Kelp</title>
+		<meta name="description" content="A UI library for people who love HTML, powered by modern CSS and Web Components.">
+
+		<!-- Mobile Screen Resizing -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Kelp CSS -->
+		<link rel="stylesheet" type="text/css" href="../../modules/css/kelp.css">
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-tabs - no JS</h1>
+
+			<div class="callout margin-end-space">
+				<kelp-dialog target="#not-a-modal" is-ready>
+					<div show-until-ready>
+						IS READY: This is fallback content that will be hidden once the Web Component is ready...
+					</div>
+					<button>Show Modal</button>
+				</kelp-dialog>
+			</div>
+
+			<div class="callout margin-end-space">
+				<kelp-dialog target="#not-a-modal">
+					<div show-until-ready>
+						NOT READY: This is fallback content that will be hidden once the Web Component is ready...
+					</div>
+					<button>Show Modal</button>
+				</kelp-dialog>
+			</div>
+
+		</main>
+
+	</body>
+</html>

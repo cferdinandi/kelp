@@ -102,9 +102,13 @@
 	/**
 	 * 1. Ensure [hidden] takes priority over other display properties
 	 * 2. Hide web components with the [hide-until-ready] attribute before instantiation
+	 * 3. If there's a [show-until-ready] attribute, hide everything else before instantiation
+	 * 4. Hide content with a [show-until-ready] after instantiation
 	 */
 	[hidden], /* 1 */
-	[hide-until-ready]:not([is-ready]) { /* 2 */
+	[hide-until-ready]:not([is-ready]), /* 2 */
+	:not([is-ready]):has(> [show-until-ready]) > :not([show-until-ready]), /* 3 */
+	[is-ready] [show-until-ready] { /* 4 */
 		display: none;
 	}
 
