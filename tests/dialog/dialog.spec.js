@@ -21,9 +21,23 @@ test.describe(`<${componentName}>`, () => {
 
 		// Clicking a button inside the modal closes it
 
+		// Clicking outside the modal closes it
+
+		// Pressing the Esc key closes the modal
+
+		// The autofocus attribute focuses on the thing after opening
+
 		// Closing the modal returns focus to the trigger button
 
 		// open event emits on the dialog
+
+	});
+
+	test('options and settings', async ({ page }) => {
+
+		await page.goto(`${testPath}/options.html`);
+
+		// Get elements
 
 	});
 
