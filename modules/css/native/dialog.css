@@ -1,0 +1,62 @@
+/**
+ * @section Dialog
+ */
+
+@layer kelp.core {
+
+	/**
+	 * Prevent background scrolling with a modal dialog is open
+	 */
+	html:has([open]:modal) {
+		overflow: hidden;
+	}
+
+
+	/**
+	 * Default dialog styles
+	 */
+	dialog {
+		--backdrop-opacity: 0.5;
+		--background-color: var(--color-background);
+		--border-color: var(--color-border-muted);
+		--color: var(--color-text-normal);
+		--width: 32em;
+
+		background-color: var(--background-color);
+		border: 1px solid var(--border-color);
+		color: var(--color);
+		border-radius: var(--border-radius-m);
+		max-height: calc(100% - var(--size-5xl));
+		max-width: calc(100% - var(--size-5xl));
+		overflow: auto;
+		padding: var(--size-2xl);
+		width: var(--width);
+	}
+
+	dialog:modal::backdrop {
+		background-color: rgba(0, 0, 0, var(--backdrop-opacity));
+	}
+
+
+	/**
+	 * Drawer styles
+	 */
+	[class*="drawer"] {
+		border-radius: 0;
+		height: 100%;
+		max-height: 100%;
+		max-width: 100%;
+		margin: 0;
+	}
+
+	.drawer {
+		inset-inline-end: 0;
+		inset-inline-start: auto;
+	}
+
+	.drawer-start {
+		inset-inline-start: 0;
+		inset-inline-end: auto;
+	}
+
+}

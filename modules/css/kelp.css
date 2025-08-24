@@ -20,6 +20,7 @@
 @import "./native/buttons.css";
 @import "./native/tables.css";
 @import "./native/details.css";
+@import "./native/dialog.css";
 @import "./native/media.css";
 @import "./native/code.css";
 
@@ -31,6 +32,7 @@
 @import "./layout/split.css";
 @import "./layout/cluster.css";
 @import "./layout/sidecar.css";
+@import "./layout/action-header.css";
 
 
 /* Navigation */

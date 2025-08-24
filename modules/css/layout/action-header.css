@@ -1,0 +1,45 @@
+/**
+ * @section Sidecar
+ * Side-by-side content
+ */
+
+@layer kelp.core {
+
+	.action-header > * {
+		margin: 0;
+	}
+
+	.action-header {
+		--gap: var(--size-m);
+		--main-size: initial;
+		--secondary-size: initial;
+		display: flex;
+		align-items: baseline;
+		gap: var(--gap);
+	}
+
+	.action-header > :last-child {
+		flex-basis: var(--secondary-size, auto);
+		flex-grow: 1;
+	}
+
+	.action-header > :first-child {
+		flex-basis: 0;
+		flex-grow: 999;
+		min-inline-size: var(--main-size, 50%);
+	}
+
+	/**
+	 * Adjust padding/margin on the button used for the action
+	 */
+	.action-header > :last-child button {
+		--padding: var(--size-4xs);
+		padding: var(--padding);
+	}
+
+	.action-header > :last-child button:last-child {
+		margin-block-start: calc(-1 * var(--padding));
+		margin-inline-end: calc(-1 * var(--padding));
+	}
+
+}

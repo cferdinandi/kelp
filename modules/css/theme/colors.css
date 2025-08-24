@@ -49,7 +49,7 @@
 		--color-neutral-on-muted: var(--color-gray-10);
 		--color-neutral-on-accent: var(--color-gray-10);
 		--color-neutral-on-vivid: white;
-		--color-neutral-outline: var(--color-gray-20);
+		--color-neutral-outline: var(--color-gray-10);
 
 		--color-primary-fill-muted: var(--color-blue-95);
 		--color-primary-fill-accent: var(--color-blue-90);
