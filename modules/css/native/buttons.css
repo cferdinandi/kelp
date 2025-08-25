@@ -24,6 +24,8 @@
 		--border-color-active: transparent;
 
 		--gap: var(--size-4xs);
+		--padding-block: var(--size-4xs);
+		--padding-inline: var(--size-m);
 
 		--decoration: none;
 		--decoration-hover: none;
@@ -40,8 +42,8 @@
 		font-size: var(--size-s);
 		font-weight: 400;
 		line-height: var(--line-height-xs);
-		padding-block: var(--size-4xs);
-		padding-inline: var(--size-m);
+		padding-block: var(--padding-block);
+		padding-inline: var(--padding-inline);
 		text-align: center;
 		vertical-align: middle;
 	}

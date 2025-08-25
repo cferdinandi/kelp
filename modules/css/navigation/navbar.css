@@ -47,8 +47,13 @@
 		flex-wrap: wrap;
 	}
 
-	.navbar a {
+	.navbar a,
+	.nav-collapse a {
 		--decoration: none;
+	}
+
+	:is(.navbar, .menu) li:last-child .plain {
+		margin-inline-end: calc(-1 * var(--padding-inline));
 	}
 
 	@media (max-width: 52em) {
