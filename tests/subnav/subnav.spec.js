@@ -18,6 +18,7 @@ test.describe(`<${componentName}>`, () => {
 		const summary = details.locator('summary');
 		const button = page.locator('button');
 		const link = details.locator('a').first();
+		const anchor = details.locator('[href*="test-anchor"]').first();
 
 		// Clicking outside of the subnav should close it
 		await summary.click();
@@ -38,6 +39,12 @@ test.describe(`<${componentName}>`, () => {
 		await link.press('Escape');
 		await expect(details).not.toHaveAttribute('open');
 		await expect(summary).toBeFocused();
+
+		// Clicking an anchor link inside a subnav should close it
+		await summary.click();
+		await expect(details).toHaveAttribute('open');
+		await anchor.click();
+		await expect(details).not.toHaveAttribute('open');
 
 	});
 
