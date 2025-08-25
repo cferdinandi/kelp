@@ -1,4 +1,4 @@
-/*! kelpui v1.3.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.4.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -712,6 +712,8 @@
     --border-color-hover: transparent;
     --border-color-active: transparent;
     --gap: var(--size-4xs);
+    --padding-block: var(--size-4xs);
+    --padding-inline: var(--size-m);
     --decoration: none;
     --decoration-hover: none;
     background-color: var(--background-color);
@@ -726,8 +728,8 @@
     font-size: var(--size-s);
     font-weight: 400;
     line-height: var(--line-height-xs);
-    padding-block: var(--size-4xs);
-    padding-inline: var(--size-m);
+    padding-block: var(--padding-block);
+    padding-inline: var(--padding-inline);
     text-align: center;
     vertical-align: middle;
   }
@@ -1150,12 +1152,12 @@
     min-inline-size: var(--main-size, 50%);
   }
   .action-header > :last-child button {
-    --padding: var(--size-4xs);
-    padding: var(--padding);
+    --padding-block: var(--size-4xs);
+    --padding-inline: var(--size-4xs);
   }
   .action-header > :last-child button:last-child {
-    margin-block-start: calc(-1 * var(--padding));
-    margin-inline-end: calc(-1 * var(--padding));
+    margin-block-start: calc(-1 * var(--padding-block));
+    margin-inline-end: calc(-1 * var(--padding-inline));
   }
 }
 
@@ -1199,8 +1201,12 @@
   :not(.no-wrap) :is(.menu, .navbar > ul, .menu > ul) {
     flex-wrap: wrap;
   }
-  .navbar a {
+  .navbar a,
+  .nav-collapse a {
     --decoration: none;
+  }
+  :is(.navbar, .menu) li:last-child .plain {
+    margin-inline-end: calc(-1 * var(--padding-inline));
   }
   @media (max-width: 52em) {
     .navbar:not(.no-wrap) > * {

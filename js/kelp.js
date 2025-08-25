@@ -1,4 +1,4 @@
-/*! kelpui v1.3.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.4.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -467,8 +467,8 @@
     }
     // Cleanup global events on disconnect
     disconnectedCallback() {
-      document.removeEventListener("click", this);
       document.removeEventListener("keydown", this);
+      this.removeEventListener("blur", this, { capture: true });
       this.setAttribute("is-paused", "");
     }
     // Initialize the component
@@ -485,23 +485,23 @@
     }
     // Setup event listeners
     #listen() {
-      document.addEventListener("click", this);
       document.addEventListener("keydown", this);
+      this.addEventListener("blur", this, { capture: true });
     }
     /**
      * Handle events
      * @param  {Event} event The event object
      */
     handleEvent(event) {
-      if (event.type === "click") {
-        return this.#onClick();
+      if (event.type === "blur") {
+        return this.#onBlur();
       }
       this.#onKeydown(event);
     }
     /**
      * Handle click events
      */
-    #onClick() {
+    #onBlur() {
       const navs = this.querySelectorAll("details[open]:not(:focus-within)");
       for (const nav of navs) {
         nav.removeAttribute("open");
