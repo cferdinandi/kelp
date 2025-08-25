@@ -1,4 +1,4 @@
-/*! kelpui v1.3.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.3.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -374,7 +374,7 @@
   html {
     font-size: var(--font-size-base);
     scroll-behavior: smooth;
-    overflow-y: scroll;
+    scrollbar-gutter: stable;
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
