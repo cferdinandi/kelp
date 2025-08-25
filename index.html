@@ -57,27 +57,54 @@
 		<hr>
 
 		<header class="container-2xl">
-			<nav class="navbar">
+			<nav class="navbar no-wrap">
 				<a class="logo" href="#">Kelp UI</a>
-				<ul>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Contact</a></li>
+				<ul class="show-above-m">
 					<li><a href="#">About</a></li>
 					<li><a href="#">Blog</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>
-				<ul>
+				<ul class="show-above-m">
 					<li><a href="#">❤️</a></li>
 					<li><a href="#">🔍</a></li>
 					<li><a class="btn secondary size-s" href="#">Join</a></li>
-					<li class="nav-hide-l">
-						<button class="btn-link link-subtle padding-0">
+				</ul>
+				<ul class="hide-above-m">
+					<li>
+						<button command="show-modal" commandfor="mobile-nav" class="plain">
 							<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg>
 							Menu
 						</button>
 					</li>
 				</ul>
+			</nav>
+		</header>
+
+		<hr>
+
+		<header class="container-2xl">
+			<nav class="navbar no-wrap">
+				<a class="logo" href="#">Kelp UI</a>
+				<div class="menu">
+					<ul class="show-above-m">
+						<li><a href="#">About</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+					<ul class="show-above-m">
+						<li><a href="#">❤️</a></li>
+						<li><a href="#">🔍</a></li>
+						<li><a class="btn secondary size-s" href="#">Join</a></li>
+					</ul>
+					<ul class="hide-above-m">
+						<li>
+							<button command="show-modal" commandfor="mobile-nav" class="plain">
+								<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg>
+								Menu
+							</button>
+						</li>
+					</ul>
+				</div>
 			</nav>
 		</header>
 
@@ -136,6 +163,37 @@
 				</nav>
 			</header>
 		</div>
+
+		<dialog id="mobile-nav" class="drawer" closedby="any">
+			<div class="action-header">
+				<h2>Nav Menu</h2>
+				<form method="dialog">
+					<button
+						class="plain"
+						aria-label="Close Modal"
+					>
+						&#x2715;
+					</button>
+				</form>
+			</div>
+
+			<div class="action-body nav-collapse">
+
+				<h3>Products &amp; Services</h3>
+				<ul class="list-unstyled stack gap-5xs">
+					<li><a href="#">About</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+
+				<h3>Account</h3>
+				<ul class="list-unstyled stack gap-5xs">
+					<li><a href="#">❤️</a></li>
+					<li><a href="#">🔍</a></li>
+					<li><a class="btn secondary size-s" href="#">Join</a></li>
+				</ul>
+			</div>
+		</dialog>
 
 		<main class="margin-end-space">
 			<kelp-heading-anchors>

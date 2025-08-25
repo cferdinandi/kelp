@@ -12,8 +12,8 @@ customElements.define('kelp-subnav', class extends HTMLElement {
 
 	// Cleanup global events on disconnect
 	disconnectedCallback () {
-		document.removeEventListener('click', this);
 		document.removeEventListener('keydown', this);
+		this.removeEventListener('blur', this, { capture: true });
 		this.setAttribute('is-paused', '');
 	}
 
@@ -41,8 +41,8 @@ customElements.define('kelp-subnav', class extends HTMLElement {
 
 	// Setup event listeners
 	#listen () {
-		document.addEventListener('click', this);
 		document.addEventListener('keydown', this);
+		this.addEventListener('blur', this, { capture: true });
 	}
 
 	/**
@@ -50,8 +50,8 @@ customElements.define('kelp-subnav', class extends HTMLElement {
 	 * @param  {Event} event The event object
 	 */
 	handleEvent (event) {
-		if (event.type === 'click') {
-			return this.#onClick();
+		if (event.type === 'blur') {
+			return this.#onBlur();
 		}
 		this.#onKeydown(event);
 	}
@@ -59,7 +59,7 @@ customElements.define('kelp-subnav', class extends HTMLElement {
 	/**
 	 * Handle click events
 	 */
-	#onClick () {
+	#onBlur () {
 
 		// Get all open subnav's that aren't currently focused
 		const navs = this.querySelectorAll('details[open]:not(:focus-within)');
