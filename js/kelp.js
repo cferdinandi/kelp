@@ -1,4 +1,4 @@
-/*! kelpui v1.3.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.3.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -527,7 +527,7 @@
   });
 
   // modules/js/components/invoker.polyfill.js
-  //! Invoker Command API Polyfill by Keith Cirkel - https://github.com/keithamus/invokers-polyfill/tree/main
+  //! Invoker Command API Polyfill by Keith Cirkel - https://github.com/keithamus/invokers-polyfill/tree/main - MIT License
   function isSupported() {
     return typeof HTMLButtonElement !== "undefined" && "command" in HTMLButtonElement.prototype && "source" in ((globalThis.CommandEvent || {}).prototype || {});
   }

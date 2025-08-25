@@ -15,14 +15,14 @@
 	}
 
 	/**
-	 * 1. Force scrollbar display to prevent jumping on pages.
+	 * 1. Hold space for scrollbar to prevent jumping on pages.
 	 * 2. Prevent iOS text size adjust after orientation change, without disabling
 	 *    user zoom.
 	 */
 	html {
 		font-size: var(--font-size-base);
 		scroll-behavior: smooth;
-		overflow-y: scroll; /* 1 */
+		scrollbar-gutter: stable; /* 1 */
 		/* 2 */
 		-moz-text-size-adjust: none;
 		-webkit-text-size-adjust: none;
