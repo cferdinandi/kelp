@@ -1,4 +1,4 @@
-/*! kelpui v1.4.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.4.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -874,7 +874,8 @@
     max-width: 100%;
     margin: 0;
   }
-  .drawer {
+  .drawer,
+  .drawer-end {
     inset-inline-end: 0;
     inset-inline-start: auto;
   }

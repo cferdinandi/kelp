@@ -1,4 +1,4 @@
-/*! kelpui v1.4.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.4.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -841,12 +841,6 @@
           invokee.hidePopover();
         }
       } else if (invokee.localName === "dialog") {
-        let setCollapsedState2 = function() {
-          source.setAttribute("aria-expanded", "false");
-          invokee.removeEventListener("close", setCollapsedState2);
-          invokee.removeEventListener("cancel", setCollapsedState2);
-        };
-        var setCollapsedState = setCollapsedState2;
         const canShow = !invokee.hasAttribute("open");
         const shouldShow = canShow && command === "show-modal";
         const shouldHide = !canShow && command === "close";
@@ -854,8 +848,10 @@
           invokee.showModal();
           source.setAttribute("aria-expanded", "true");
           source.setAttribute("aria-controls", invokee.id);
-          invokee.addEventListener("close", setCollapsedState2);
-          invokee.addEventListener("cancel", setCollapsedState2);
+          invokee.addEventListener("close", () => {
+            source.setAttribute("aria-expanded", "false");
+            source.focus();
+          }, { once: true });
         } else if (shouldHide) {
           invokee.close();
         }
