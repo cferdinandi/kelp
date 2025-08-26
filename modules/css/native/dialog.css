@@ -76,7 +76,8 @@
 		margin: 0;
 	}
 
-	.drawer {
+	.drawer,
+	.drawer-end {
 		inset-inline-end: 0;
 		inset-inline-start: auto;
 	}
