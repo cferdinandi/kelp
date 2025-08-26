@@ -380,18 +380,14 @@ export function apply() {
 			const shouldShow = canShow && command === "show-modal";
 			const shouldHide = !canShow && command === "close";
 
-			function setCollapsedState () {
-				source.setAttribute('aria-expanded', 'false');
-				invokee.removeEventListener('close', setCollapsedState);
-				invokee.removeEventListener('cancel', setCollapsedState);
-			}
-
 			if (shouldShow) {
 				invokee.showModal();
 				source.setAttribute('aria-expanded', 'true');
 				source.setAttribute('aria-controls', invokee.id);
-				invokee.addEventListener('close', setCollapsedState);
-				invokee.addEventListener('cancel', setCollapsedState);
+				invokee.addEventListener('close', () => {
+					source.setAttribute('aria-expanded', 'false');
+					source.focus();
+				}, { once: true });
 			} else if (shouldHide) {
 				invokee.close();
 			}
