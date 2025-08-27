@@ -1,4 +1,4 @@
-/*! kelpui v1.4.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.4.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -1066,9 +1066,6 @@
 
 /* modules/css/layout/stack.css */
 @layer kelp.core {
-  .stack > * {
-    margin: 0;
-  }
   .stack {
     --gap: var(--size-m);
     display: flex;
@@ -1076,12 +1073,14 @@
     gap: var(--gap);
   }
 }
+@layer kelp.utilities {
+  .stack > * {
+    margin: 0;
+  }
+}
 
 /* modules/css/layout/split.css */
 @layer kelp.core {
-  .split > * {
-    margin: 0;
-  }
   .split {
     --gap: var(--size-m);
     display: flex;
@@ -1090,12 +1089,14 @@
     flex-wrap: wrap;
   }
 }
+@layer kelp.utilities {
+  .split > * {
+    margin: 0;
+  }
+}
 
 /* modules/css/layout/cluster.css */
 @layer kelp.core {
-  .cluster > * {
-    margin: 0;
-  }
   .cluster {
     --gap: var(--size-m);
     display: flex;
@@ -1103,12 +1104,14 @@
     gap: var(--gap);
   }
 }
+@layer kelp.utilities {
+  .cluster > * {
+    margin: 0;
+  }
+}
 
 /* modules/css/layout/sidecar.css */
 @layer kelp.core {
-  [class*=sidecar] > * {
-    margin: 0;
-  }
   [class*=sidecar] {
     --gap: var(--size-m);
     --main-size: initial;
@@ -1117,24 +1120,26 @@
     flex-wrap: wrap;
     gap: var(--gap);
   }
-  .sidecar > :first-child,
+  :is(.sidecar, .sidecar-start) > :first-child,
   .sidecar-end > :last-child {
     flex-basis: var(--secondary-size, auto);
     flex-grow: 1;
   }
-  .sidecar > :last-child,
+  :is(.sidecar, .sidecar-start) > :last-child,
   .sidecar-end > :first-child {
     flex-basis: 0;
     flex-grow: 999;
     min-inline-size: var(--main-size, 50%);
   }
 }
+@layer kelp.utilities {
+  [class*=sidecar] > * {
+    margin: 0;
+  }
+}
 
 /* modules/css/layout/action-header.css */
 @layer kelp.core {
-  .action-header > * {
-    margin: 0;
-  }
   .action-header {
     --gap: var(--size-m);
     --main-size: initial;
@@ -1159,6 +1164,11 @@
   .action-header > :last-child button:last-child {
     margin-block-start: calc(-1 * var(--padding-block));
     margin-inline-end: calc(-1 * var(--padding-inline));
+  }
+}
+@layer kelp.utilities {
+  .action-header > * {
+    margin: 0;
   }
 }
 
