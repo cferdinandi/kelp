@@ -4,15 +4,19 @@
 
 @layer kelp.core {
 
-	.cluster > * {
-		margin: 0;
-	}
-
 	.cluster {
 		--gap: var(--size-m);
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--gap);
+	}
+
+}
+
+@layer kelp.utilities {
+
+	.cluster > * {
+		margin: 0;
 	}
 
 }

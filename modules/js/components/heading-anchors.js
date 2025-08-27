@@ -42,7 +42,7 @@ customElements.define('kelp-heading-anchors', class extends HTMLElement {
 	render () {
 
 		// Get the headings
-		const selector = getFilteredSelector(`:is(${this.#levels})`);
+		const selector = getFilteredSelector(`:is(${this.#levels}):not(:has(a)`);
 		const headings = this.querySelectorAll(selector);
 		if (!headings.length) return;
 

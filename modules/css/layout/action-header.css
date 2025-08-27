@@ -5,10 +5,6 @@
 
 @layer kelp.core {
 
-	.action-header > * {
-		margin: 0;
-	}
-
 	.action-header {
 		--gap: var(--size-m);
 		--main-size: initial;
@@ -40,6 +36,14 @@
 	.action-header > :last-child button:last-child {
 		margin-block-start: calc(-1 * var(--padding-block));
 		margin-inline-end: calc(-1 * var(--padding-inline));
+	}
+
+}
+
+@layer kelp.utilities {
+
+	.action-header > * {
+		margin: 0;
 	}
 
 }

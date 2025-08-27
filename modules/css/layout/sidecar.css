@@ -5,10 +5,6 @@
 
 @layer kelp.core {
 
-	[class*="sidecar"] > * {
-		margin: 0;
-	}
-
 	[class*="sidecar"] {
 		--gap: var(--size-m);
 		--main-size: initial;
@@ -18,17 +14,31 @@
 		gap: var(--gap);
 	}
 
-	.sidecar > :first-child,
+	:is(
+		.sidecar,
+		.sidecar-start
+	) > :first-child,
 	.sidecar-end > :last-child {
 		flex-basis: var(--secondary-size, auto);
 		flex-grow: 1;
 	}
 
-	.sidecar > :last-child,
+	:is(
+		.sidecar,
+		.sidecar-start
+	) > :last-child,
 	.sidecar-end > :first-child {
 		flex-basis: 0;
 		flex-grow: 999;
 		min-inline-size: var(--main-size, 50%);
+	}
+
+}
+
+@layer kelp.utilities {
+
+	[class*="sidecar"] > * {
+		margin: 0;
 	}
 
 }
