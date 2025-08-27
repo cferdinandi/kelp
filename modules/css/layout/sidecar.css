@@ -18,13 +18,19 @@
 		gap: var(--gap);
 	}
 
-	.sidecar > :first-child,
+	:is(
+		.sidecar,
+		.sidecar-start
+	) > :first-child,
 	.sidecar-end > :last-child {
 		flex-basis: var(--secondary-size, auto);
 		flex-grow: 1;
 	}
 
-	.sidecar > :last-child,
+	:is(
+		.sidecar,
+		.sidecar-start
+	) > :last-child,
 	.sidecar-end > :first-child {
 		flex-basis: 0;
 		flex-grow: 999;
