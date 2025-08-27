@@ -18,9 +18,13 @@ test.describe(`<${componentName}>`, () => {
 		const headings = wc.locator('.anchor-h');
 		const count = await headings.count();
 		const hasHTML = page.getByTestId('code').locator('.anchor-link code');
+		const hasAnchor = page.getByTestId('anchor');
 
 		// All headings targeted
 		await expect(count).toEqual(5);
+
+		// Headings with anchor links should be skipped
+		await expect(hasAnchor).not.toHaveClass('anchor-h');
 
 		// Every heading...
 		for (const heading of await headings.all()) {
