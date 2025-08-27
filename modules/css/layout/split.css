@@ -5,16 +5,20 @@
 
 @layer kelp.core {
 
-	.split > * {
-		margin: 0;
-	}
-
 	.split {
 		--gap: var(--size-m);
 		display: flex;
 		gap: var(--gap);
 		justify-content: space-between;
 		flex-wrap: wrap;
+	}
+
+}
+
+@layer kelp.utilities {
+
+	.split > * {
+		margin: 0;
 	}
 
 }
