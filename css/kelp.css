@@ -1,4 +1,4 @@
-/*! kelpui v1.4.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.5.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -733,11 +733,8 @@
     text-align: center;
     vertical-align: middle;
   }
-  .btn-block {
-    display: block;
-    width: 100%;
-  }
-  .btn-link {
+  .btn-link,
+  .link {
     --background-color: transparent;
     --background-color-hover: transparent;
     --background-color-active: transparent;
@@ -775,7 +772,8 @@
     opacity: var(--opacity);
     pointer-events: none;
   }
-  .btn-link:hover {
+  .btn-link:hover,
+  .link:hover {
     --decoration: var(--decoration-text-link-hover);
   }
 }
@@ -1756,6 +1754,22 @@
   }
   .padding-space {
     padding: var(--space);
+  }
+}
+
+/* modules/css/utilities/display.css */
+@layer kelp.utilities {
+  .btn-block,
+  .block {
+    display: block;
+    width: 100%;
+  }
+  .inline {
+    display: inline;
+    width: auto;
+  }
+  .inline-block {
+    display: inline-block;
   }
 }
 

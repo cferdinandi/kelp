@@ -62,6 +62,7 @@
 @import "./utilities/size.css";
 @import "./utilities/margin.css";
 @import "./utilities/padding.css";
+@import "./utilities/display.css";
 @import "./utilities/flex.css";
 @import "./utilities/gap.css";
 @import "./utilities/align.css";

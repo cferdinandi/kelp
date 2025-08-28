@@ -1,0 +1,26 @@
+/**
+ * @section Display
+ * Generic display utilities
+ */
+
+@layer kelp.utilities {
+
+	/**
+	 * @deprecated .btn-block will be removed in the next major version
+	 */
+	.btn-block,
+	.block {
+		display: block;
+		width: 100%;
+	}
+
+	.inline {
+		display: inline;
+		width: auto;
+	}
+
+	.inline-block {
+		display: inline-block;
+	}
+
+}

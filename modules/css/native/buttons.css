@@ -50,19 +50,11 @@
 
 
 	/**
-	 * Button size
-	 */
-
-	.btn-block {
-		display: block;
-		width: 100%;
-	}
-
-
-	/**
 	 * Buttons styled like links
+	 * @deprecated .btn-link will be removed in the next major version of Kelp
 	 */
-	.btn-link {
+	.btn-link,
+	.link {
 		--background-color: transparent;
 		--background-color-hover: transparent;
 		--background-color-active: transparent;
@@ -129,7 +121,11 @@
 		pointer-events: none;
 	}
 
-	.btn-link:hover {
+	/**
+	 * @deprecated .btn-link will be removed in the next major version of Kelp
+	 */
+	.btn-link:hover,
+	.link:hover {
 		--decoration: var(--decoration-text-link-hover);
 	}
 
