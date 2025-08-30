@@ -32,6 +32,12 @@
 		width: var(--width);
 	}
 
+	@media (forced-colors: active) {
+		dialog {
+			border-width: var(--size-5xs);
+		}
+	}
+
 	dialog:modal::backdrop {
 		background-color: rgba(0, 0, 0, 0.5);
 	}

@@ -1,4 +1,4 @@
-/*! kelpui v1.5.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.5.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -551,6 +551,12 @@
     background: var(--color-fill-highlight);
     color: var(--color-on-highlight);
   }
+  @media (forced-colors: active) {
+    mark {
+      background: revert;
+      color: revert;
+    }
+  }
   del {
     color: color-mix(in oklab, var(--color), var(--color-mix-deleted));
   }
@@ -601,6 +607,11 @@
   }
   .dark ::-webkit-calendar-picker-indicator {
     filter: invert(1);
+  }
+  @media (forced-colors: active) {
+    .dark ::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
   }
   input,
   textarea,
@@ -674,6 +685,11 @@
     content: "";
     width: 0.667em;
     aspect-ratio: 1;
+  }
+  @media (forced-colors: active) {
+    [type=radio]:checked::after {
+      content: "\2713";
+    }
   }
   [type=checkbox]:checked {
     background-color: var(--color-checked);
@@ -841,6 +857,11 @@
     max-width: calc(100% - var(--size-5xl));
     padding: var(--gap);
     width: var(--width);
+  }
+  @media (forced-colors: active) {
+    dialog {
+      border-width: var(--size-5xs);
+    }
   }
   dialog:modal::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
@@ -1349,6 +1370,11 @@
     height: var(--height);
     width: var(--width);
   }
+  @media (forced-colors: active) {
+    .skeleton {
+      border: var(--size-6xs) solid;
+    }
+  }
   @keyframes loadingPulse {
     0% {
       background-color: var(--color-fill-accent);
@@ -1390,6 +1416,11 @@
   kelp-tabs [role=tab][aria-selected=true] {
     background-color: var(--tab-background-color-selected);
     color: var(--tab-color-selected);
+  }
+  @media (forced-colors: active) {
+    kelp-tabs [role=tab][aria-selected=true] {
+      border-width: var(--size-5xs);
+    }
   }
 }
 

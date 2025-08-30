@@ -17,6 +17,13 @@
 		color: var(--color-on-highlight);
 	}
 
+	@media (forced-colors: active) {
+		mark {
+			background: revert;
+			color: revert;
+		}
+	}
+
 	del {
 		color: color-mix(in oklab, var(--color), var(--color-mix-deleted));
 	}
