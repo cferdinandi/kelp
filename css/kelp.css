@@ -1,4 +1,4 @@
-/*! kelpui v1.5.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.5.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -828,7 +828,6 @@
     overflow: hidden;
   }
   dialog {
-    --backdrop-opacity: 0.5;
     --background-color: var(--color-background);
     --border-color: var(--color-border-muted);
     --color: var(--color-text-normal);
@@ -844,7 +843,7 @@
     width: var(--width);
   }
   dialog:modal::backdrop {
-    background-color: rgba(0, 0, 0, var(--backdrop-opacity));
+    background-color: rgba(0, 0, 0, 0.5);
   }
   dialog:has(.action-body) .action-header {
     position: sticky;
