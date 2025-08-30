@@ -39,4 +39,10 @@
 		color: var(--tab-color-selected);
 	}
 
+	@media (forced-colors: active) {
+		kelp-tabs [role="tab"][aria-selected="true"] {
+			border-width: var(--size-5xs);
+		}
+	}
+
 }

@@ -76,6 +76,12 @@
 		filter: invert(1);
 	}
 
+	@media (forced-colors: active) {
+		.dark ::-webkit-calendar-picker-indicator {
+			filter: invert(1);
+		}
+	}
+
 	input,
 	textarea,
 	select {
@@ -177,6 +183,12 @@
 		content: '';
 		width: 0.667em;
 		aspect-ratio: 1;
+	}
+
+	@media (forced-colors: active) {
+		[type="radio"]:checked::after {
+			content: '\002713';
+		}
 	}
 
 	[type="checkbox"]:checked {
