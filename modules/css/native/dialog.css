@@ -16,7 +16,6 @@
 	 * Default dialog styles
 	 */
 	dialog {
-		--backdrop-opacity: 0.5;
 		--background-color: var(--color-background);
 		--border-color: var(--color-border-muted);
 		--color: var(--color-text-normal);
@@ -34,7 +33,7 @@
 	}
 
 	dialog:modal::backdrop {
-		background-color: rgba(0, 0, 0, var(--backdrop-opacity));
+		background-color: rgba(0, 0, 0, 0.5);
 	}
 
 
