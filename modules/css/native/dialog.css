@@ -75,10 +75,15 @@
 	 */
 	[class*="drawer"] {
 		border-radius: 0;
-		height: 100%;
 		max-height: 100%;
 		max-width: 100%;
 		margin: 0;
+	}
+
+	.drawer,
+	.drawer-end,
+	.drawer-start {
+		height: 100%;
 	}
 
 	.drawer,
@@ -90,6 +95,48 @@
 	.drawer-start {
 		inset-inline-start: 0;
 		inset-inline-end: auto;
+	}
+
+	.drawer-top,
+	.drawer-bottom {
+		--width: 100%;
+		inset-inline-end: 0;
+		inset-inline-start: 0;
+	}
+
+	.drawer-top {
+		inset-block-start: 0;
+	}
+
+	.drawer-bottom {
+		inset-block-end: 0;
+		inset-block-start: auto;
+	}
+
+
+	/**
+	 * Dialog width modifiers
+	 */
+
+	.dialog-xs {
+		--width: 22em;
+	}
+
+	.dialog-s {
+		--width: 26em;
+	}
+
+	.dialog-l {
+		--width: 40em;
+	}
+
+	.dialog-xl {
+		--width: 52em;
+	}
+
+	.dialog-full {
+		--width: 100%;
+		height: 100%;
 	}
 
 }
