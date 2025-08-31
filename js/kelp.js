@@ -1,4 +1,4 @@
-/*! kelpui v1.5.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.6.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -191,9 +191,8 @@
   });
 
   // modules/js/utilities/getFilteredSelector.js
-  var exclude = ["kelp-tabs", "kelp-accordion", "dialog"];
   function getFilteredSelector(selector) {
-    return `${selector}:not(${exclude.map((elem) => `${elem} ${selector}`)}) `;
+    return `${selector}:not(:is(kelp-tabs, kelp-accordion, dialog) ${selector}) `;
   }
 
   // modules/js/utilities/setTextAsID.js
