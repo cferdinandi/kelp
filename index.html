@@ -1203,7 +1203,7 @@
 
 						<h2>Modals</h2>
 
-						<p>
+						<p class="cluster">
 							<button commandfor="modal" command="show-modal">Show Modal</button>
 							<button commandfor="modal-tall" command="show-modal">Show Autoscrolling Modal</button>
 							<button commandfor="modal-tall-body" command="show-modal">Show Autoscrolling Modal + Body</button>
@@ -1213,7 +1213,9 @@
 
 						<p class="cluster">
 							<button commandfor="drawer-start" command="show-modal">Show Drawer Start</button>
-							<button commandfor="drawer" command="show-modal">Show Drawer</button>
+							<button commandfor="drawer" command="show-modal">Show Drawer End</button>
+							<button commandfor="drawer-top" command="show-modal">Show Drawer Top</button>
+							<button commandfor="drawer-bottom" command="show-modal">Show Drawer Bottom</button>
 						</p>
 
 					</div>
@@ -1221,32 +1223,6 @@
 				</div>
 
 				<dialog id="modal" closedby="any">
-					<div class="action-header">
-						<h2>This is a modal heading</h2>
-						<form>
-							<button class="plain" formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
-						</form>
-					</div>
-					<p>Here's some body text inside the modal.</p>
-					<form method="dialog">
-						<button>Close</button>
-					</form>
-				</dialog>
-
-				<dialog class="drawer" id="drawer" closedby="any">
-					<div class="action-header">
-						<h2>This is a modal heading</h2>
-						<form>
-							<button class="plain" formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
-						</form>
-					</div>
-					<p>Here's some body text inside the modal.</p>
-					<form method="dialog">
-						<button>Close</button>
-					</form>
-				</dialog>
-
-				<dialog class="drawer-start" id="drawer-start" closedby="any">
 					<div class="action-header">
 						<h2>This is a modal heading</h2>
 						<form>
@@ -1343,6 +1319,58 @@
 						</p>
 					</div>
 					<form class="action-footer" method="dialog">
+						<button>Close</button>
+					</form>
+				</dialog>
+
+				<dialog class="drawer" id="drawer" closedby="any">
+					<div class="action-header">
+						<h2>This is a modal heading</h2>
+						<form>
+							<button class="plain" formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
+						</form>
+					</div>
+					<p>Here's some body text inside the modal.</p>
+					<form method="dialog">
+						<button>Close</button>
+					</form>
+				</dialog>
+
+				<dialog class="drawer-start" id="drawer-start" closedby="any">
+					<div class="action-header">
+						<h2>This is a modal heading</h2>
+						<form>
+							<button class="plain" formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
+						</form>
+					</div>
+					<p>Here's some body text inside the modal.</p>
+					<form method="dialog">
+						<button>Close</button>
+					</form>
+				</dialog>
+
+				<dialog class="drawer-top" id="drawer-top" closedby="any">
+					<div class="action-header">
+						<h2>This is a modal heading</h2>
+						<form>
+							<button class="plain" formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
+						</form>
+					</div>
+					<p>Here's some body text inside the modal.</p>
+					<form method="dialog">
+						<button>Close</button>
+					</form>
+				</dialog>
+
+				<dialog class="drawer-bottom" id="drawer-bottom" closedby="any">
+					<div class="action-header">
+						<h2>This is a modal heading</h2>
+						<form>
+							<button class="plain" formmethod="dialog" aria-label="Close Modal">&#x2715;</button>
+						</form>
+					</div>
+					<p>Here's some body text inside the modal.</p>
+					<form method="dialog">
 						<button>Close</button>
 					</form>
 				</dialog>
