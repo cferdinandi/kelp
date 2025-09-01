@@ -82,6 +82,19 @@ test.describe(`<${componentName}>`, () => {
 
 	});
 
+	test('exclude restricted components', async({ page }) => {
+
+		await page.goto(`${testPath}/exclude.html`);
+
+		// Get elements
+		const links = page.locator('kelp-toc li a');
+		const numberOfLinks = await links.count();
+
+		// Number of links should match number of H2 headings
+		await expect(numberOfLinks).toEqual(1);
+
+	});
+
 	test('error handling', async ({ page }) => {
 
 		await page.goto(`${testPath}/errors.html`);

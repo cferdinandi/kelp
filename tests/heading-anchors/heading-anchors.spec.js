@@ -85,6 +85,20 @@ test.describe(`<${componentName}>`, () => {
 
 	});
 
+	test('exclude restricted components', async({ page }) => {
+
+		await page.goto(`${testPath}/exclude.html`);
+
+		// Get elements
+		const wc = page.locator('kelp-heading-anchors');
+		const headings = wc.locator('.anchor-h');
+		const count = await headings.count();
+
+		// All headings targeted
+		await expect(count).toEqual(1);
+
+	});
+
 	test('error handling', async ({ page }) => {
 
 		await page.goto(`${testPath}/errors.html`);
