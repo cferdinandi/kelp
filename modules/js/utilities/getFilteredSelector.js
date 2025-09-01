@@ -4,5 +4,5 @@
  * @return {String}          The filtered version of the string
  */
 export function getFilteredSelector (selector) {
-	return `${selector}:not(:is(kelp-tabs, kelp-accordion, dialog) ${selector}) `;
+	return `${selector}:not(:is(kelp-tabs, kelp-accordion, dialog, details) ${selector}) `;
 }
