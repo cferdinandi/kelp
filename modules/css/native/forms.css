@@ -94,9 +94,14 @@
 		border-radius: var(--border-radius);
 		color: var(--color-text-input);
 		line-height: var(--line-height-m);
-		/*display: inline-flex;
-		align-items: center;*/
-		width: 100%;
+
+		/**
+		 * @bugfix Required for proper width in Safari
+		 * width: 100% is ignored by Safari unless display: block is set,
+		 * but that messes up the vertical padding
+		 */
+		max-width: 100%;
+		width: 100vw;
 	}
 
 	/**
@@ -107,8 +112,9 @@
 	::-webkit-datetime-edit,
 	::-webkit-datetime-edit-fields-wrapper,
 	::-webkit-datetime-edit-text,
-	::-webkit-datetime-edit-minute,
+	::-webkit-datetime-edit-minute-field,
 	::-webkit-datetime-edit-hour-field,
+	::-webkit-datetime-edit-meridiem-field,
 	::-webkit-datetime-edit-day-field,
 	::-webkit-datetime-edit-month-field,
 	::-webkit-datetime-edit-year-field  {
