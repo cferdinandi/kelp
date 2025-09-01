@@ -1,4 +1,4 @@
-/*! kelpui v1.6.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.6.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -625,13 +625,15 @@
     border-radius: var(--border-radius);
     color: var(--color-text-input);
     line-height: var(--line-height-m);
-    width: 100%;
+    max-width: 100%;
+    width: 100vw;
   }
   ::-webkit-datetime-edit,
   ::-webkit-datetime-edit-fields-wrapper,
   ::-webkit-datetime-edit-text,
-  ::-webkit-datetime-edit-minute,
+  ::-webkit-datetime-edit-minute-field,
   ::-webkit-datetime-edit-hour-field,
+  ::-webkit-datetime-edit-meridiem-field,
   ::-webkit-datetime-edit-day-field,
   ::-webkit-datetime-edit-month-field,
   ::-webkit-datetime-edit-year-field {
