@@ -1,4 +1,4 @@
-/*! kelpui v1.6.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.6.3 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // modules/js/utilities/debug.js
@@ -322,7 +322,6 @@
     render() {
       const selector = getFilteredSelector(`:is(${this.#levels})`);
       const headings = this.querySelectorAll(`:where(${selector}):not(:has(a)`);
-      console.log(`:where(${selector}):not(:has(a)`);
       if (!headings.length) return;
       for (const heading of headings) {
         heading.classList.add("anchor-h");
