@@ -597,7 +597,8 @@
   select,
   textarea {
     color: var(--color-text-normal);
-    font: inherit;
+    font-family: inherit;
+    font-size: inherit;
     margin: 0;
     padding-block: var(--size-5xs);
     padding-inline: var(--size-4xs);
@@ -625,8 +626,12 @@
     border-radius: var(--border-radius);
     color: var(--color-text-input);
     line-height: var(--line-height-m);
-    max-width: 100%;
-    width: 100vw;
+    width: 100%;
+  }
+  input:not([type=date], [type=time], [type=datetime-local], [type=month], [type=week]),
+  textarea,
+  select {
+    display: block;
   }
   ::-webkit-datetime-edit,
   ::-webkit-datetime-edit-fields-wrapper,

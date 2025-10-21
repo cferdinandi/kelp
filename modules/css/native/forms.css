@@ -62,7 +62,8 @@
 	select,
 	textarea {
 		color: var(--color-text-normal);
-		font: inherit; /* 1 */
+		font-family: inherit; /* 1 */
+		font-size: inherit; /* 1 */
 		margin: 0;
 		padding-block: var(--size-5xs);
 		padding-inline: var(--size-4xs);
@@ -100,8 +101,21 @@
 		 * width: 100% is ignored by Safari unless display: block is set,
 		 * but that messes up the vertical padding
 		 */
-		max-width: 100%;
-		width: 100vw;
+		/*max-width: 100%;
+		width: 100vw;*/
+		width: 100%;
+	}
+
+	input:not(
+		[type="date"],
+		[type="time"],
+		[type="datetime-local"],
+		[type="month"],
+		[type="week"]
+	),
+	textarea,
+	select {
+		display: block;
 	}
 
 	/**
