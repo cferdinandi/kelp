@@ -95,17 +95,15 @@
 		border-radius: var(--border-radius);
 		color: var(--color-text-input);
 		line-height: var(--line-height-m);
-
-		/**
-		 * @bugfix Required for proper width in Safari
-		 * width: 100% is ignored by Safari unless display: block is set,
-		 * but that messes up the vertical padding
-		 */
-		/*max-width: 100%;
-		width: 100vw;*/
 		width: 100%;
 	}
 
+	/**
+	 * @bugfix Required for proper width in Safari
+	 * width: 100% is ignored by Safari unless display: block is set,
+	 * but that messes up the vertical padding in temporal inputs.
+	 * This let's temporal inputs keep their default inline-flex value.
+	 */
 	input:not(
 		[type="date"],
 		[type="time"],
