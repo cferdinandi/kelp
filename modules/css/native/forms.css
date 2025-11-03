@@ -109,7 +109,9 @@
 		[type="time"],
 		[type="datetime-local"],
 		[type="month"],
-		[type="week"]
+		[type="week"],
+		[type="checkbox"],
+		[type="radio"]
 	),
 	textarea,
 	select {
@@ -224,21 +226,44 @@
 		aspect-ratio: 1;
 	}
 
-	@media (forced-colors: active) {
-		[type="radio"]:checked::after {
-			content: '\002713';
-		}
-	}
-
-	[type="checkbox"]:checked {
+	[type="checkbox"]:is(
+		:checked,
+		:indeterminate
+	) {
 		background-color: var(--color-checked);
 		border-color: var(--color-checked);
 		color: var(--color-checked-icon);
 	}
 
+	[type="checkbox"]:is(
+		:checked,
+		:indeterminate
+	)::after {
+		content: '';
+		height: 0.667em;
+		width: 0.667em;
+		box-shadow: inset 1em 1em var(--color-checked-icon);
+	}
+
 	[type="checkbox"]:checked::after {
-		content: '\002713';
-		font-size: var(--size-xs);
+		clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 0%, 70% 0%, 70% 100%);
+		rotate: 45deg;
+	}
+
+	[type="checkbox"]:indeterminate::after {
+		clip-path: inset(40% 10% round 50%);
+	}
+
+	@media (forced-colors: active) {
+		:is(
+			[type="checkbox"],
+			[type="radio"]
+		):is(
+			:checked,
+			:indeterminate
+		)::after {
+			background-color: CanvasText;
+		}
 	}
 
 	:is(
