@@ -1,4 +1,4 @@
-/*! kelpui v1.6.4 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.7.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -628,7 +628,7 @@
     line-height: var(--line-height-m);
     width: 100%;
   }
-  input:not([type=date], [type=time], [type=datetime-local], [type=month], [type=week]),
+  input:not([type=date], [type=time], [type=datetime-local], [type=month], [type=week], [type=checkbox], [type=radio]),
   textarea,
   select {
     display: block;
@@ -705,19 +705,28 @@
     width: 0.667em;
     aspect-ratio: 1;
   }
-  @media (forced-colors: active) {
-    [type=radio]:checked::after {
-      content: "\2713";
-    }
-  }
-  [type=checkbox]:checked {
+  [type=checkbox]:is(:checked, :indeterminate) {
     background-color: var(--color-checked);
     border-color: var(--color-checked);
     color: var(--color-checked-icon);
   }
+  [type=checkbox]:is(:checked, :indeterminate)::after {
+    content: "";
+    height: 0.667em;
+    width: 0.667em;
+    box-shadow: inset 1em 1em var(--color-checked-icon);
+  }
   [type=checkbox]:checked::after {
-    content: "\2713";
-    font-size: var(--size-xs);
+    clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 0%, 70% 0%, 70% 100%);
+    rotate: 45deg;
+  }
+  [type=checkbox]:indeterminate::after {
+    clip-path: inset(40% 10% round 50%);
+  }
+  @media (forced-colors: active) {
+    :is([type=checkbox], [type=radio]):is(:checked, :indeterminate)::after {
+      background-color: CanvasText;
+    }
   }
   :is(input, textarea, select):is([readonly], [disabled]) {
     --background-color: var(--color-fill-muted);
