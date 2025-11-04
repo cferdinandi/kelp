@@ -16,8 +16,7 @@
  */
 
 @layer kelp;
-@layer
-	kelp.base,
+@layer kelp.base,
 	kelp.theme,
 	kelp.core,
 	kelp.extend,

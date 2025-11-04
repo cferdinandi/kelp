@@ -1,10 +1,7 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"files": {
-		"includes": [
-			"modules/css/**/*",
-			"modules/js/**/*"
-		]
+		"includes": ["modules/css/**/*", "modules/js/**/*"]
 	},
 	"linter": {
 		"rules": {
@@ -24,12 +21,7 @@
 				"noConsole": {
 					"level": "warn",
 					"options": {
-						"allow": [
-							"assert",
-							"error",
-							"info",
-							"warn"
-						]
+						"allow": ["assert", "error", "info", "warn"]
 					}
 				}
 			}

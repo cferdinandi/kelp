@@ -4,7 +4,6 @@
  */
 
 @layer kelp.core {
-
 	/**
 	 * Prevent elements from spilling outside of the page on smaller screens.
 	 */
@@ -21,7 +20,7 @@
 	img,
 	picture,
 	video {
-	    height: auto;
+		height: auto;
 	}
 
 	/**
@@ -40,5 +39,4 @@
 		padding-block-start: var(--size-4xs);
 		text-align: center;
 	}
-
 }

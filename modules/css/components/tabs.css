@@ -3,11 +3,14 @@
  */
 
 @layer kelp.core {
-
 	kelp-tabs [tabs] {
 		--tab-background-color: var(--color-fill-muted);
 		--tab-background-color-hover: var(--color-fill-accent);
-		--tab-background-color-active: color-mix(in oklab, var(--color-fill-muted), var(--color-mix-transparent));
+		--tab-background-color-active: color-mix(
+			in oklab,
+			var(--color-fill-muted),
+			var(--color-mix-transparent)
+		);
 		--tab-background-color-selected: var(--color-fill-vivid);
 
 		--tab-color: var(--color-on-muted);
@@ -29,11 +32,9 @@
 		padding-block: var(--size-6xs);
 		padding-inline: var(--size-3xs);
 	}
-
 }
 
 @layer kelp.state {
-
 	kelp-tabs [role="tab"][aria-selected="true"] {
 		background-color: var(--tab-background-color-selected);
 		color: var(--tab-color-selected);
@@ -44,5 +45,4 @@
 			border-width: var(--size-5xs);
 		}
 	}
-
 }

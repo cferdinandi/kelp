@@ -4,7 +4,6 @@
  */
 
 @layer kelp.utilities {
-
 	.fill {
 		--background-color: var(--color-fill-muted);
 		background-color: var(--background-color);
@@ -14,5 +13,4 @@
 		--color: var(--color-on-vivid);
 		color: var(--color);
 	}
-
 }

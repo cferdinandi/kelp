@@ -3,20 +3,16 @@
  */
 
 @layer kelp.core {
-
 	.cluster {
 		--gap: var(--size-m);
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--gap);
 	}
-
 }
 
 @layer kelp.utilities {
-
 	.cluster > * {
 		margin: 0;
 	}
-
 }

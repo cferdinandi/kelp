@@ -4,7 +4,6 @@
  */
 
 @layer kelp.utilities {
-
 	.padding-0 {
 		padding: 0;
 	}
@@ -68,5 +67,4 @@
 	.padding-space {
 		padding: var(--space);
 	}
-
 }

@@ -4,7 +4,6 @@
  */
 
 @layer kelp.core {
-
 	.skeleton {
 		--border-radius: var(--border-radius-s);
 		--height: var(--space);
@@ -29,11 +28,14 @@
 			background-color: var(--color-fill-accent);
 		}
 		50% {
-			background-color: color-mix(in oklab, var(--color-fill-accent), var(--color-mix-hover));
+			background-color: color-mix(
+				in oklab,
+				var(--color-fill-accent),
+				var(--color-mix-hover)
+			);
 		}
 		100% {
 			background-color: var(--color-fill-accent);
 		}
 	}
-
 }

@@ -4,7 +4,6 @@
  */
 
 @layer kelp.utilities {
-
 	@media (max-width: calc(18em - 1px)) {
 		.show-above-xs {
 			display: none;
@@ -40,5 +39,4 @@
 			display: none;
 		}
 	}
-
 }

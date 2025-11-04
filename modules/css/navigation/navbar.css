@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	.navbar {
 		--justify: center;
 		--gap: var(--size-m);
@@ -65,5 +64,4 @@
 			justify-content: var(--justify);
 		}
 	}
-
 }

@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	.navbar summary {
 		--color: var(--color-text-link);
 		--color-hover: var(--color-text-link-hover);
@@ -13,11 +12,9 @@
 		-webkit-text-decoration: var(--decoration);
 		color: var(--color);
 	}
-
 }
 
 @layer kelp.state {
-
 	.navbar summary:hover {
 		color: var(--color-hover);
 		text-decoration: var(--decoration-hover);
@@ -61,5 +58,4 @@
 		padding-inline: var(--size-4xs);
 		width: 100%;
 	}
-
 }

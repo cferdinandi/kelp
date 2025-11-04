@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	summary {
 		--margin: var(--size-3xs);
 		cursor: pointer;
@@ -12,5 +11,4 @@
 	[open] > summary {
 		margin-block-end: var(--margin);
 	}
-
 }

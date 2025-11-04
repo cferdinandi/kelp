@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	kelp-autogrow {
 		display: grid;
 	}
@@ -30,5 +29,4 @@
 		padding-block: var(--size-5xs);
 		padding-inline: var(--size-4xs);
 	}
-
 }

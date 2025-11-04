@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	code,
 	kbd,
 	pre,
@@ -41,5 +40,4 @@
 	pre code {
 		color: inherit;
 	}
-
 }

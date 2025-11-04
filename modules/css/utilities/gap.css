@@ -4,7 +4,6 @@
  */
 
 @layer kelp.utilities {
-
 	.gap-0 {
 		--gap: 0;
 	}
@@ -36,7 +35,7 @@
 	.gap-s {
 		--gap: var(--size-s);
 	}
-	
+
 	.gap-m {
 		--gap: var(--size-m);
 	}
@@ -68,5 +67,4 @@
 	.gap-6xl {
 		--gap: var(--size-6xl);
 	}
-
 }

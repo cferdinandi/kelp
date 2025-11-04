@@ -359,8 +359,7 @@ export function apply() {
 			cancelable: true,
 		});
 		invokee.dispatchEvent(invokeEvent);
-		if (invokeEvent.defaultPrevented)
-			return;
+		if (invokeEvent.defaultPrevented) return;
 
 		const command = invokeEvent.command.toLowerCase();
 
@@ -382,12 +381,16 @@ export function apply() {
 
 			if (shouldShow) {
 				invokee.showModal();
-				source.setAttribute('aria-expanded', 'true');
-				source.setAttribute('aria-controls', invokee.id);
-				invokee.addEventListener('close', () => {
-					source.setAttribute('aria-expanded', 'false');
-					source.focus();
-				}, { once: true });
+				source.setAttribute("aria-expanded", "true");
+				source.setAttribute("aria-controls", invokee.id);
+				invokee.addEventListener(
+					"close",
+					() => {
+						source.setAttribute("aria-expanded", "false");
+						source.focus();
+					},
+					{ once: true },
+				);
 			} else if (shouldHide) {
 				invokee.close();
 			}

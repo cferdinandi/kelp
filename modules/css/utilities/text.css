@@ -3,7 +3,6 @@
  */
 
 @layer kelp.utilities {
-
 	.text-capitalize {
 		text-transform: capitalize;
 	}
@@ -49,5 +48,4 @@
 	.font-secondary {
 		font-family: var(--font-secondary);
 	}
-
 }

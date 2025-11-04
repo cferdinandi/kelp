@@ -4,7 +4,6 @@
  */
 
 @layer kelp.utilities {
-
 	/**
 	 * @deprecated .btn-block will be removed in the next major version
 	 */
@@ -22,5 +21,4 @@
 	.inline-block {
 		display: inline-block;
 	}
-
 }

@@ -4,7 +4,6 @@
  */
 
 @layer kelp.core {
-
 	[class*="container"] {
 		--width: var(--breakpoint-m);
 		margin-inline: auto;
@@ -39,5 +38,4 @@
 		max-width: var(--width);
 		width: var(--width);
 	}
-
 }

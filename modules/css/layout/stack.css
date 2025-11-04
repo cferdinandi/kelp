@@ -4,20 +4,16 @@
  */
 
 @layer kelp.core {
-
 	.stack {
 		--gap: var(--size-m);
 		display: flex;
 		flex-direction: column;
 		gap: var(--gap);
 	}
-
 }
 
 @layer kelp.utilities {
-
 	.stack > * {
 		margin: 0;
 	}
-
 }

@@ -4,7 +4,6 @@
  */
 
 @layer kelp.utilities {
-
 	.divided {
 		--border-color: var(--color-border-accent);
 		--gap: var(--size-3xs);
@@ -25,5 +24,4 @@
 		margin: 0;
 		padding-inline: 0;
 	}
-
 }

@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	table {
 		--border-color: var(--color-border-muted);
 		--background-color: var(--color-fill-muted);
@@ -41,5 +40,4 @@
 	.table-striped.vivid tbody tr:nth-child(odd of :not([hidden])) {
 		color: var(--color);
 	}
-
 }

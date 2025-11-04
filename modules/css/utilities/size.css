@@ -4,7 +4,6 @@
  */
 
 @layer kelp.utilities {
-
 	[class*="size-"] {
 		--font-size: 1em;
 		font-size: var(--font-size);
@@ -57,5 +56,4 @@
 	.size-6xl {
 		--font-size: var(--size-6xl);
 	}
-
 }
