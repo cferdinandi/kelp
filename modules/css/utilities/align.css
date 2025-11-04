@@ -4,7 +4,6 @@
  */
 
 @layer kelp.utilities {
-
 	.align-start {
 		align-items: start;
 	}
@@ -20,5 +19,4 @@
 	.align-baseline {
 		align-items: baseline;
 	}
-
 }

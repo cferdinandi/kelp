@@ -1,6 +1,6 @@
 {
 	"name": "kelpui",
-	"version": "1.7.0",
+	"version": "1.7.1",
 	"description": "A UI library for people who love HTML, powered by modern CSS and Web Components.",
 	"keywords": [
 		"html",
@@ -37,7 +37,7 @@
 		"dev": "http-server -o"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.0.0",
+		"@biomejs/biome": "2.0.6",
 		"@playwright/test": "^1.53.2",
 		"@types/node": "^24.0.10",
 		"esbuild": "0.25.6",

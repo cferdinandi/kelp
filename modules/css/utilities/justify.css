@@ -4,7 +4,6 @@
  */
 
 @layer kelp.utilities {
-
 	.justify-start {
 		justify-content: start;
 	}
@@ -28,5 +27,4 @@
 	.justify-even {
 		justify-content: space-evenly;
 	}
-
 }

@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	hr {
 		--border-color: var(--color-border-accent);
 		border: 0;
@@ -27,5 +26,4 @@
 	del {
 		color: color-mix(in oklab, var(--color), var(--color-mix-deleted));
 	}
-
 }

@@ -4,7 +4,6 @@
  */
 
 @layer kelp.core {
-
 	fieldset {
 		border: 0;
 		padding: 0;
@@ -34,24 +33,15 @@
 	 * Implicit labels
 	 */
 	label:has(
-		:is(
-			input, select, textarea
-		):not(
-			[type="radio"], [type="checkbox"]
-		)
-	) {
-	    display: block;
-	    margin-block-end: 0;
+			:is(input, select, textarea):not([type="radio"], [type="checkbox"])
+		) {
+		display: block;
+		margin-block-end: 0;
 	}
 
-	label:has(
-		input, select, textarea
-	) :is(
-		input, select, textarea
-	):not(
-		[type="radio"], [type="checkbox"]
-	) {
-	    margin-block-start: var(--gap);
+	label:has(input, select, textarea)
+		:is(input, select, textarea):not([type="radio"], [type="checkbox"]) {
+		margin-block-start: var(--gap);
 	}
 
 	/**
@@ -105,14 +95,14 @@
 	 * This let's temporal inputs keep their default inline-flex value.
 	 */
 	input:not(
-		[type="date"],
-		[type="time"],
-		[type="datetime-local"],
-		[type="month"],
-		[type="week"],
-		[type="checkbox"],
-		[type="radio"]
-	),
+			[type="date"],
+			[type="time"],
+			[type="datetime-local"],
+			[type="month"],
+			[type="week"],
+			[type="checkbox"],
+			[type="radio"]
+		),
 	textarea,
 	select {
 		display: block;
@@ -131,7 +121,7 @@
 	::-webkit-datetime-edit-meridiem-field,
 	::-webkit-datetime-edit-day-field,
 	::-webkit-datetime-edit-month-field,
-	::-webkit-datetime-edit-year-field  {
+	::-webkit-datetime-edit-year-field {
 		padding: 0;
 	}
 
@@ -139,11 +129,7 @@
 		height: auto;
 	}
 
-	:where(
-		input,
-		textarea,
-		select
-	):not(:last-child) {
+	:where(input, textarea, select):not(:last-child) {
 		margin-block-end: var(--size-xl);
 	}
 
@@ -188,25 +174,15 @@
 		height: 3em;
 		width: 3em;
 	}
-
 }
 
 @layer kelp.state {
-
-	:is(
-		input,
-		textarea,
-		select
-	):not(
-		[type="checkbox"],
-		[type="radio"],
-		[type="range"]
-	):focus,
-	:is(
-		[type="checkbox"],
-		[type="radio"],
-		[type="range"]
-	):focus-visible {
+	:is(input, textarea, select):not(
+			[type="checkbox"],
+			[type="radio"],
+			[type="range"]
+		):focus,
+	:is([type="checkbox"], [type="radio"], [type="range"]):focus-visible {
 		outline-color: var(--focus-ring-color);
 		outline-style: var(--focus-ring-style);
 		outline-width: var(--focus-ring-width);
@@ -221,25 +197,19 @@
 	[type="radio"]:checked::after {
 		background-color: var(--color-checked);
 		border-radius: 50%;
-		content: '';
+		content: "";
 		width: 0.667em;
 		aspect-ratio: 1;
 	}
 
-	[type="checkbox"]:is(
-		:checked,
-		:indeterminate
-	) {
+	[type="checkbox"]:is(:checked, :indeterminate) {
 		background-color: var(--color-checked);
 		border-color: var(--color-checked);
 		color: var(--color-checked-icon);
 	}
 
-	[type="checkbox"]:is(
-		:checked,
-		:indeterminate
-	)::after {
-		content: '';
+	[type="checkbox"]:is(:checked, :indeterminate)::after {
+		content: "";
 		height: 0.667em;
 		width: 0.667em;
 		box-shadow: inset 1em 1em var(--color-checked-icon);
@@ -255,25 +225,12 @@
 	}
 
 	@media (forced-colors: active) {
-		:is(
-			[type="checkbox"],
-			[type="radio"]
-		):is(
-			:checked,
-			:indeterminate
-		)::after {
+		:is([type="checkbox"], [type="radio"]):is(:checked, :indeterminate)::after {
 			background-color: CanvasText;
 		}
 	}
 
-	:is(
-		input,
-		textarea,
-		select
-	):is(
-		[readonly],
-		[disabled]
-	) {
+	:is(input, textarea, select):is([readonly], [disabled]) {
 		--background-color: var(--color-fill-muted);
 		--color: var(--color-on-muted);
 		background-color: var(--background-color);
@@ -285,5 +242,4 @@
 		--color-checked-icon: var(--color-on-muted);
 		border-color: var(--border-color);
 	}
-
 }

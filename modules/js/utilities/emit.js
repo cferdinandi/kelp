@@ -6,16 +6,14 @@
  * @param  {*}       detail     Any details about the event (optional)
  * @param  {Boolean} cancelable If true, event can be cancelled
  */
-export function emit (elem, component, id, detail = null, cancelable = false) {
-
+export function emit(elem, component, id, detail = null, cancelable = false) {
 	// Create a new event
 	const event = new CustomEvent(`kelp-${component}:${id}`, {
 		bubbles: true,
 		cancelable,
-		detail
+		detail,
 	});
 
 	// Dispatch the event
 	return elem.dispatchEvent(event);
-
 }

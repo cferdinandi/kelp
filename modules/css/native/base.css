@@ -3,7 +3,6 @@
  */
 
 @layer kelp.core {
-
 	/**
 	 * Add box sizing to everything
 	 * @link http://www.paulirish.com/2012/box-sizing-border-box-ftw/
@@ -47,25 +46,45 @@
 	 */
 
 	:where(
-		p,
-		ol, ul, dl, dd,
-		form, fieldset,
-		audio, video, iframe,
-		blockquote, details, table,
-		pre, figure, address
-	) {
+			p,
+			ol,
+			ul,
+			dl,
+			dd,
+			form,
+			fieldset,
+			audio,
+			video,
+			iframe,
+			blockquote,
+			details,
+			table,
+			pre,
+			figure,
+			address
+		) {
 		margin: 0;
 		margin-block-end: var(--space);
 	}
 
 	:where(
-		p,
-		ol, ul, dl, dd,
-		form, fieldset,
-		audio, video, iframe,
-		blockquote, details, table,
-		pre, figure, address
-	):last-child {
+			p,
+			ol,
+			ul,
+			dl,
+			dd,
+			form,
+			fieldset,
+			audio,
+			video,
+			iframe,
+			blockquote,
+			details,
+			table,
+			pre,
+			figure,
+			address
+		):last-child {
 		margin-block-end: 0;
 	}
 
@@ -80,19 +99,21 @@
 	:where(h2) {
 		margin-block-start: var(--size-5xl);
 	}
-
 }
 
 @layer kelp.state {
-
 	/**
 	 * Focus styles
 	 */
 	:is(
-		button, [href],
-		input, select, textarea,
-		summary, [tabindex]
-	):focus-visible {
+			button,
+			[href],
+			input,
+			select,
+			textarea,
+			summary,
+			[tabindex]
+		):focus-visible {
 		outline-color: var(--focus-ring-color);
 		outline-style: var(--focus-ring-style);
 		outline-width: var(--focus-ring-width);
@@ -105,10 +126,11 @@
 	 * @beta 3. If there's a [show-until-ready] attribute, hide everything else before instantiation
 	 * @beta 4. Hide content with a [show-until-ready] after instantiation
 	 */
-	[hidden], /* 1 */
-	[hide-until-ready]:not([is-ready]), /* 2 */
-	:not([is-ready]):has(> [show-until-ready]) > :not([show-until-ready]), /* 3 */
-	[is-ready] [show-until-ready] { /* 4 */
+	[hidden] /* 1 */,
+	[hide-until-ready]:not([is-ready]) /* 2 */,
+	:not([is-ready]):has(> [show-until-ready]) > :not([show-until-ready]) /* 3 */,
+	[is-ready] [show-until-ready] {
+		/* 4 */
 		display: none;
 	}
 
@@ -116,12 +138,13 @@
 	 * Remove all animations and transitions for people that prefer not to see them
 	 */
 	@media (prefers-reduced-motion: reduce) {
-		*, :after, :before {
+		*,
+		:after,
+		:before {
 			animation-duration: 0.01ms !important;
 			animation-iteration-count: 1 !important;
 			transition-duration: 0.01ms !important;
 			scroll-behavior: auto !important;
 		}
 	}
-
 }
