@@ -82,7 +82,7 @@ customElements.define(
 			// Create HTML string
 			let list = '';
 			for (; this.#index < headings.length; this.#index++) {
-				// Get the heading element
+				// Get the current and next heading elements
 				const heading = /** @type {Element} */ (headings[this.#index]);
 
 				// If there's no heading, create one
@@ -95,15 +95,13 @@ customElements.define(
 				// If nested and next heading is smaller than current, run recursively
 				list += `<li>
 					<a class="link-subtle" href="#${heading.id}">${heading.textContent}</a>
-					${this.#nested && /** @type {Element} */ (headings[this.#index + 1]?.tagName.slice(1) || currentLevel) > currentLevel ? this.#createList(headings) : ''}
+					${this.#nested && this.#getNextLevel(headings, currentLevel) > currentLevel ? this.#createList(headings) : ''}
 				</li>`;
 
 				// If next heading is bigger, finish this list
 				if (
 					!isFirst &&
-					/** @type {Element} */ (
-						headings[this.#index + 1]?.tagName.slice(1) || currentLevel
-					) < currentLevel
+					this.#getNextLevel(headings, currentLevel) < currentLevel
 				)
 					break;
 			}
@@ -117,6 +115,17 @@ customElements.define(
 				${renderHeading && this.#headingType === 'li' ? `<li><strong>${this.#heading}</strong></li>` : ''}
 				${list}
 			</${this.#listType}>`;
+		}
+
+		/**
+		 * Returns the level of the next heading
+		 * @param  {NodeList} headings     The collection of heading elments
+		 * @param  {String}   currentLevel The current heading level
+		 * @return {String}              The next heading level
+		 */
+		#getNextLevel(headings, currentLevel) {
+			const nextHeading = /** @type {Element} */ (headings[this.#index + 1]);
+			return nextHeading?.tagName.slice(1) || currentLevel;
 		}
 	},
 );

@@ -295,11 +295,9 @@
           const currentLevel = heading.tagName.slice(1);
           list += `<li>
 					<a class="link-subtle" href="#${heading.id}">${heading.textContent}</a>
-					${this.#nested && /** @type {Element} */
-          (headings[this.#index + 1]?.tagName.slice(1) || currentLevel) > currentLevel ? this.#createList(headings) : ""}
+					${this.#nested && this.#getNextLevel(headings, currentLevel) > currentLevel ? this.#createList(headings) : ""}
 				</li>`;
-          if (!isFirst && /** @type {Element} */
-          (headings[this.#index + 1]?.tagName.slice(1) || currentLevel) < currentLevel)
+          if (!isFirst && this.#getNextLevel(headings, currentLevel) < currentLevel)
             break;
         }
         const renderHeading = isFirst && this.#heading;
@@ -309,6 +307,19 @@
 				${renderHeading && this.#headingType === "li" ? `<li><strong>${this.#heading}</strong></li>` : ""}
 				${list}
 			</${this.#listType}>`;
+      }
+      /**
+       * Returns the level of the next heading
+       * @param  {NodeList} headings     The collection of heading elments
+       * @param  {String}   currentLevel The current heading level
+       * @return {String}              The next heading level
+       */
+      #getNextLevel(headings, currentLevel) {
+        const nextHeading = (
+          /** @type {Element} */
+          headings[this.#index + 1]
+        );
+        return nextHeading?.tagName.slice(1) || currentLevel;
       }
     }
   );
