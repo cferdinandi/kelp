@@ -7,13 +7,13 @@
  */
 export function reinit(instance, callback) {
 	// Make sure function should run
-	if (!instance.hasAttribute("is-ready")) return false;
-	if (!instance.hasAttribute("is-paused") || typeof callback !== "function")
+	if (!instance.hasAttribute('is-ready')) return false;
+	if (!instance.hasAttribute('is-paused') || typeof callback !== 'function')
 		return true;
 
 	// Run callback and remove paused state
 	callback();
-	instance.removeAttribute("is-paused");
+	instance.removeAttribute('is-paused');
 
 	return true;
 }

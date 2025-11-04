@@ -8,8 +8,8 @@ export function setTextAsID(elem) {
 
 	// Generate the ID string
 	const id = elem.textContent
-		?.replace(/[^a-zA-Z0-9-_\u00A0-\uFFEF\s-]/g, "-")
-		.replace(/[\s-]+/g, "-");
+		?.replace(/[^a-zA-Z0-9-_\u00A0-\uFFEF\s-]/g, '-')
+		.replace(/[\s-]+/g, '-');
 	if (!id) return;
 
 	// Make sure it's not already in use
@@ -21,5 +21,5 @@ export function setTextAsID(elem) {
 	}
 
 	// Set the ID on the element
-	elem.id = `kelp_${id}${suffix ? `_${suffix}` : ""}`;
+	elem.id = `kelp_${id}${suffix ? `_${suffix}` : ''}`;
 }

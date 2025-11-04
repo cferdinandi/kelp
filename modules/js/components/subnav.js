@@ -1,10 +1,10 @@
-import { debug } from "../utilities/debug.js";
-import { emit } from "../utilities/emit.js";
-import { ready } from "../utilities/ready.js";
-import { reinit } from "../utilities/reinit.js";
+import { debug } from '../utilities/debug.js';
+import { emit } from '../utilities/emit.js';
+import { ready } from '../utilities/ready.js';
+import { reinit } from '../utilities/reinit.js';
 
 customElements.define(
-	"kelp-subnav",
+	'kelp-subnav',
 	class extends HTMLElement {
 		// Initialize on connect
 		connectedCallback() {
@@ -13,9 +13,9 @@ customElements.define(
 
 		// Cleanup global events on disconnect
 		disconnectedCallback() {
-			document.removeEventListener("keydown", this);
-			this.removeEventListener("blur", this, { capture: true });
-			this.setAttribute("is-paused", "");
+			document.removeEventListener('keydown', this);
+			this.removeEventListener('blur', this, { capture: true });
+			this.setAttribute('is-paused', '');
 		}
 
 		// Initialize the component
@@ -25,8 +25,8 @@ customElements.define(
 			if (isInit) return;
 
 			// Only run if there's a subnav to close
-			if (!this.querySelector("details")) {
-				debug(this, "No subnav was found");
+			if (!this.querySelector('details')) {
+				debug(this, 'No subnav was found');
 				return;
 			}
 
@@ -34,14 +34,14 @@ customElements.define(
 			this.#listen();
 
 			// Ready
-			emit(this, "subnav", "ready");
-			this.setAttribute("is-ready", "");
+			emit(this, 'subnav', 'ready');
+			this.setAttribute('is-ready', '');
 		}
 
 		// Setup event listeners
 		#listen() {
-			document.addEventListener("keydown", this);
-			this.addEventListener("blur", this, { capture: true });
+			document.addEventListener('keydown', this);
+			this.addEventListener('blur', this, { capture: true });
 		}
 
 		/**
@@ -49,7 +49,7 @@ customElements.define(
 		 * @param  {Event} event The event object
 		 */
 		handleEvent(event) {
-			if (event.type === "blur") {
+			if (event.type === 'blur') {
 				return this.#onBlur();
 			}
 			this.#onKeydown(event);
@@ -60,11 +60,11 @@ customElements.define(
 		 */
 		#onBlur() {
 			// Get all open subnav's that aren't currently focused
-			const navs = this.querySelectorAll("details[open]:not(:focus-within)");
+			const navs = this.querySelectorAll('details[open]:not(:focus-within)');
 
 			// Close them
 			for (const nav of navs) {
-				nav.removeAttribute("open");
+				nav.removeAttribute('open');
 			}
 		}
 
@@ -77,18 +77,18 @@ customElements.define(
 			if (!(event instanceof KeyboardEvent)) return;
 
 			// Only run if pressed key was Escape
-			if (event.key !== "Escape") return;
+			if (event.key !== 'Escape') return;
 
 			// Get all open subnav's
-			const navs = this.querySelectorAll("details[open]");
+			const navs = this.querySelectorAll('details[open]');
 
 			// Close them
 			// If focus is inside it, shift focus to toggle
 			for (const nav of navs) {
-				const hasFocus = nav.matches(":has(:focus)");
-				nav.removeAttribute("open");
+				const hasFocus = nav.matches(':has(:focus)');
+				nav.removeAttribute('open');
 				if (hasFocus) {
-					const summary = nav.querySelector("summary");
+					const summary = nav.querySelector('summary');
 					summary?.focus();
 				}
 			}

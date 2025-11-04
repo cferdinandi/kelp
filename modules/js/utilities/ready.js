@@ -3,11 +3,11 @@
  * @param  {KelpWCInstance} instance The component class instance
  */
 export function ready(instance) {
-	if (document.readyState !== "loading") {
+	if (document.readyState !== 'loading') {
 		instance.init();
 		return;
 	}
-	document.addEventListener("DOMContentLoaded", () => instance.init(), {
+	document.addEventListener('DOMContentLoaded', () => instance.init(), {
 		once: true,
 	});
 }

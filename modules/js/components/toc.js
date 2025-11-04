@@ -1,11 +1,11 @@
-import { debug } from "../utilities/debug.js";
-import { emit } from "../utilities/emit.js";
-import { getFilteredSelector } from "../utilities/getFilteredSelector.js";
-import { ready } from "../utilities/ready.js";
-import { setTextAsID } from "../utilities/setTextAsID.js";
+import { debug } from '../utilities/debug.js';
+import { emit } from '../utilities/emit.js';
+import { getFilteredSelector } from '../utilities/getFilteredSelector.js';
+import { ready } from '../utilities/ready.js';
+import { setTextAsID } from '../utilities/setTextAsID.js';
 
 customElements.define(
-	"kelp-toc",
+	'kelp-toc',
 	class extends HTMLElement {
 		/** @type Boolean */ #nested;
 		/** @type String */ #level;
@@ -24,32 +24,32 @@ customElements.define(
 		// Initialize the component
 		init() {
 			// Don't run if already initialized
-			if (this.hasAttribute("is-ready")) return;
+			if (this.hasAttribute('is-ready')) return;
 
 			// Get settings
-			this.#nested = this.hasAttribute("nested");
+			this.#nested = this.hasAttribute('nested');
 			this.#level =
-				this.getAttribute("level") ||
-				(this.#nested ? "h2, h3, h4, h5, h6" : "h2");
-			this.#heading = this.getAttribute("heading");
+				this.getAttribute('level') ||
+				(this.#nested ? 'h2, h3, h4, h5, h6' : 'h2');
+			this.#heading = this.getAttribute('heading');
 			this.#headingType =
-				this.getAttribute("heading-type") || (this.#nested ? "h2" : "li");
-			this.#target = this.getAttribute("target") || "";
+				this.getAttribute('heading-type') || (this.#nested ? 'h2' : 'li');
+			this.#target = this.getAttribute('target') || '';
 			this.#listClass =
-				this.getAttribute("list-class") ||
-				(this.#nested ? null : "list-inline");
-			this.#listType = this.getAttribute("list-type") || "ul";
+				this.getAttribute('list-class') ||
+				(this.#nested ? null : 'list-inline');
+			this.#listType = this.getAttribute('list-type') || 'ul';
 			this.#index = 0;
 
 			// Render
 			if (!this.render()) {
-				debug(this, "No matching headings were found");
+				debug(this, 'No matching headings were found');
 				return;
 			}
 
 			// Ready
-			emit(this, "toc", "ready");
-			this.setAttribute("is-ready", "");
+			emit(this, 'toc', 'ready');
+			this.setAttribute('is-ready', '');
 		}
 
 		// Render the TOC
@@ -80,7 +80,7 @@ customElements.define(
 			this.#index = isFirst ? 0 : this.#index + 1;
 
 			// Create HTML string
-			let list = "";
+			let list = '';
 			for (; this.#index < headings.length; this.#index++) {
 				// Get the heading element
 				const heading = /** @type {Element} */ (headings[this.#index]);
@@ -95,15 +95,15 @@ customElements.define(
 				// If nested and next heading is smaller than current, run recursively
 				list += `<li>
 					<a class="link-subtle" href="#${heading.id}">${heading.textContent}</a>
-					${this.#nested && /** @type {Element} */ ((headings[this.#index + 1])?.tagName.slice(1) || currentLevel) > currentLevel ? this.#createList(headings) : ""}
+					${this.#nested && /** @type {Element} */ (headings[this.#index + 1]?.tagName.slice(1) || currentLevel) > currentLevel ? this.#createList(headings) : ''}
 				</li>`;
 
 				// If next heading is bigger, finish this list
 				if (
 					!isFirst &&
-					/** @type {Element} */ ((headings[this.#index + 1])?.tagName.slice(
-						1,
-					) || currentLevel) < currentLevel
+					/** @type {Element} */ (
+						headings[this.#index + 1]?.tagName.slice(1) || currentLevel
+					) < currentLevel
 				)
 					break;
 			}
@@ -112,9 +112,9 @@ customElements.define(
 			const renderHeading = isFirst && this.#heading;
 
 			return `
-			${renderHeading && this.#headingType !== "li" ? `<${this.#headingType}>${this.#heading}</${this.#headingType}>` : ""}
-			<${this.#listType} ${this.#listClass ? `class="${this.#listClass}"` : ""}>
-				${renderHeading && this.#headingType === "li" ? `<li><strong>${this.#heading}</strong></li>` : ""}
+			${renderHeading && this.#headingType !== 'li' ? `<${this.#headingType}>${this.#heading}</${this.#headingType}>` : ''}
+			<${this.#listType} ${this.#listClass ? `class="${this.#listClass}"` : ''}>
+				${renderHeading && this.#headingType === 'li' ? `<li><strong>${this.#heading}</strong></li>` : ''}
 				${list}
 			</${this.#listType}>`;
 		}

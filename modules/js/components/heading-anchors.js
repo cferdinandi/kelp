@@ -1,11 +1,11 @@
-import { debug } from "../utilities/debug.js";
-import { emit } from "../utilities/emit.js";
-import { getFilteredSelector } from "../utilities/getFilteredSelector.js";
-import { ready } from "../utilities/ready.js";
-import { setTextAsID } from "../utilities/setTextAsID.js";
+import { debug } from '../utilities/debug.js';
+import { emit } from '../utilities/emit.js';
+import { getFilteredSelector } from '../utilities/getFilteredSelector.js';
+import { ready } from '../utilities/ready.js';
+import { setTextAsID } from '../utilities/setTextAsID.js';
 
 customElements.define(
-	"kelp-heading-anchors",
+	'kelp-heading-anchors',
 	class extends HTMLElement {
 		/** @type String */ #icon;
 		/** @type String */ #levels;
@@ -19,22 +19,22 @@ customElements.define(
 		// Initialize the component
 		init() {
 			// Don't run if already initialized
-			if (this.hasAttribute("is-ready")) return;
+			if (this.hasAttribute('is-ready')) return;
 
 			// Get settings
-			this.#icon = this.getAttribute("icon") || "#";
-			this.#levels = this.getAttribute("levels") || "h2, h3, h4, h5, h6";
-			this.#before = this.hasAttribute("before");
+			this.#icon = this.getAttribute('icon') || '#';
+			this.#levels = this.getAttribute('levels') || 'h2, h3, h4, h5, h6';
+			this.#before = this.hasAttribute('before');
 
 			// Render
 			if (!this.render()) {
-				debug(this, "No matching headings were found");
+				debug(this, 'No matching headings were found');
 				return;
 			}
 
 			// Ready
-			emit(this, "heading-anchors", "ready");
-			this.setAttribute("is-ready", "");
+			emit(this, 'heading-anchors', 'ready');
+			this.setAttribute('is-ready', '');
 		}
 
 		// Render the anchor links
@@ -48,7 +48,7 @@ customElements.define(
 
 			for (const heading of headings) {
 				// Store original heading and add class
-				heading.classList.add("anchor-h");
+				heading.classList.add('anchor-h');
 
 				// Add missing IDs
 				setTextAsID(heading);

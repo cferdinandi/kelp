@@ -1,9 +1,9 @@
-import { debug } from "../utilities/debug.js";
-import { emit } from "../utilities/emit.js";
-import { ready } from "../utilities/ready.js";
+import { debug } from '../utilities/debug.js';
+import { emit } from '../utilities/emit.js';
+import { ready } from '../utilities/ready.js';
 
 customElements.define(
-	"kelp-autogrow",
+	'kelp-autogrow',
 	class extends HTMLElement {
 		/** @type HTMLTextAreaElement | null */
 		#textarea;
@@ -15,30 +15,30 @@ customElements.define(
 
 		// Handle events
 		handleEvent() {
-			this.setAttribute("data-replicated-value", this.#textarea?.value ?? "");
+			this.setAttribute('data-replicated-value', this.#textarea?.value ?? '');
 		}
 
 		// Initialize the component
 		init() {
 			// Don't run if already initialized
-			if (this.hasAttribute("is-ready")) return;
+			if (this.hasAttribute('is-ready')) return;
 
 			// Get textarea
-			this.#textarea = this.querySelector("textarea");
+			this.#textarea = this.querySelector('textarea');
 			if (!this.#textarea) {
-				debug(this, "No textarea was found");
+				debug(this, 'No textarea was found');
 				return;
 			}
 
 			// Listen for input events
-			this.#textarea.addEventListener("input", this);
+			this.#textarea.addEventListener('input', this);
 
 			// Set initial value
-			this.setAttribute("data-replicated-value", this.#textarea.value);
+			this.setAttribute('data-replicated-value', this.#textarea.value);
 
 			// Ready
-			emit(this, "autogrow", "ready");
-			this.setAttribute("is-ready", "");
+			emit(this, 'autogrow', 'ready');
+			this.setAttribute('is-ready', '');
 		}
 	},
 );

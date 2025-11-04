@@ -26,5 +26,10 @@
 				}
 			}
 		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single"
+		}
 	}
 }
