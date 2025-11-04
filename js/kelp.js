@@ -299,9 +299,7 @@
           (headings[this.#index + 1]?.tagName.slice(1) || currentLevel) > currentLevel ? this.#createList(headings) : ""}
 				</li>`;
           if (!isFirst && /** @type {Element} */
-          (headings[this.#index + 1]?.tagName.slice(
-            1
-          ) || currentLevel) < currentLevel)
+          (headings[this.#index + 1]?.tagName.slice(1) || currentLevel) < currentLevel)
             break;
         }
         const renderHeading = isFirst && this.#heading;
