@@ -6,11 +6,8 @@
 @layer kelp.utilities {
 	.fill {
 		--background-color: var(--color-fill-muted);
+		--color: var(--color-on-muted);
 		background-color: var(--background-color);
-	}
-
-	.fill.vivid {
-		--color: var(--color-on-vivid);
 		color: var(--color);
 	}
 }

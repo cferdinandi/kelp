@@ -99,12 +99,19 @@
 		--color-hover: var(--color-on-vivid);
 		--color-active: var(--color-on-vivid);
 
+		--focus-ring-color: var(--color);
+	}
+
+	/**
+	 * Adjust link color against dark backgrounds
+	 */
+	.dark :is(.muted, .callout, .fill):not(.outline, .plain),
+	.vivid {
 		--color-text-link: var(--color);
 		--color-text-link-hover: color-mix(
 			in oklab,
 			var(--color),
 			var(--color-mix-hover)
 		);
-		--focus-ring-color: var(--color);
 	}
 }

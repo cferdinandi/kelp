@@ -1,4 +1,4 @@
-/*! kelpui v1.7.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.7.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* modules/css/layers/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -1550,10 +1550,8 @@
 @layer kelp.utilities {
   .fill {
     --background-color: var(--color-fill-muted);
+    --color: var(--color-on-muted);
     background-color: var(--background-color);
-  }
-  .fill.vivid {
-    --color: var(--color-on-vivid);
     color: var(--color);
   }
 }
@@ -2121,9 +2119,12 @@
     --color: var(--color-on-vivid);
     --color-hover: var(--color-on-vivid);
     --color-active: var(--color-on-vivid);
+    --focus-ring-color: var(--color);
+  }
+  .dark :is(.muted, .callout, .fill):not(.outline, .plain),
+  .vivid {
     --color-text-link: var(--color);
     --color-text-link-hover: color-mix( in oklab, var(--color), var(--color-mix-hover) );
-    --focus-ring-color: var(--color);
   }
 }
 
