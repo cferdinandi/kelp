@@ -5,10 +5,10 @@ const banner = `/*! ${pkg.name} v${pkg.version} | (c) ${pkg.author.name} | ${pkg
 
 await esbuild.build({
 	entryPoints: [
-		'modules/js/*.js',
-		'modules/css/*.css',
+		'src/js/*.js',
+		'src/css/*.css',
 	],
-	outbase: 'modules',
+	outbase: 'src',
 	outdir: './',
 	banner: {
 		js: banner,

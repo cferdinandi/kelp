@@ -1,0 +1,17 @@
+/**
+ * @section Mark
+ */
+
+@layer kelp.core {
+	mark {
+		background: var(--color-fill-highlight);
+		color: var(--color-on-highlight);
+	}
+
+	@media (forced-colors: active) {
+		mark {
+			background: revert;
+			color: revert;
+		}
+	}
+}
