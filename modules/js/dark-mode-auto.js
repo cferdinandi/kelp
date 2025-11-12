@@ -1,9 +1,7 @@
 /**
- * Automatically toggle dark mode based on users prefers-color-scheme OS setting
+ * ⚠️ Kelp's source files have moved!
+ *
+ * Please use the /src directory for your builds going forward.
  */
-const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-document.documentElement.classList.toggle('dark', prefersDarkMode.matches);
-
-prefersDarkMode.addEventListener('change', (event) => {
-	document.documentElement.classList.toggle('dark', event.matches);
-});
+import '../../src/js/dark-mode-auto.js';
+console.log(`⚠️ Kelp's source files have moved! Please use the /src directory for your builds going forward.`);

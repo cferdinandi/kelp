@@ -1,6 +1,6 @@
 {
 	"include": [
-		"modules/js/**/*.js",
+		"src/js/**/*.js",
 		"types.d.ts"
 	],
 	"compilerOptions": {

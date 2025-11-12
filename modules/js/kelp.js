@@ -1,7 +1,7 @@
-import './components/tabs.js';
-import './components/toc.js';
-import './components/heading-anchors.js';
-import './components/toggle-pw.js';
-import './components/autogrow.js';
-import './components/subnav.js';
-import './components/invoker.polyfill.js';
+/**
+ * ⚠️ Kelp's source files have moved!
+ *
+ * Please use the /src directory for your builds going forward.
+ */
+import '../../src/js/kelp.js';
+console.log(`⚠️ Kelp's source files have moved! Please use the /src directory for your builds going forward.`);

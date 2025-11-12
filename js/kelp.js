@@ -1,7 +1,7 @@
-/*! kelpui v1.7.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.8.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
-  // modules/js/utilities/debug.js
+  // src/js/utilities/debug.js
   function debug(elem, detail = "") {
     const event = new CustomEvent("kelp:debug", {
       bubbles: true,
@@ -10,7 +10,7 @@
     return elem.dispatchEvent(event);
   }
 
-  // modules/js/utilities/emit.js
+  // src/js/utilities/emit.js
   function emit(elem, component, id, detail = null, cancelable = false) {
     const event = new CustomEvent(`kelp-${component}:${id}`, {
       bubbles: true,
@@ -20,7 +20,7 @@
     return elem.dispatchEvent(event);
   }
 
-  // modules/js/utilities/ready.js
+  // src/js/utilities/ready.js
   function ready(instance) {
     if (document.readyState !== "loading") {
       instance.init();
@@ -31,7 +31,7 @@
     });
   }
 
-  // modules/js/utilities/reinit.js
+  // src/js/utilities/reinit.js
   function reinit(instance, callback) {
     if (!instance.hasAttribute("is-ready")) return false;
     if (!instance.hasAttribute("is-paused") || typeof callback !== "function")
@@ -41,7 +41,7 @@
     return true;
   }
 
-  // modules/js/components/tabs.js
+  // src/js/components/tabs.js
   customElements.define(
     "kelp-tabs",
     class extends HTMLElement {
@@ -206,12 +206,12 @@
     }
   );
 
-  // modules/js/utilities/getFilteredSelector.js
+  // src/js/utilities/getFilteredSelector.js
   function getFilteredSelector(selector) {
     return `${selector}:not(:is(kelp-tabs, kelp-accordion, dialog, details) ${selector}) `;
   }
 
-  // modules/js/utilities/setTextAsID.js
+  // src/js/utilities/setTextAsID.js
   function setTextAsID(elem) {
     if (elem.id) return;
     const id = elem.textContent?.replace(/[^a-zA-Z0-9-_\u00A0-\uFFEF\s-]/g, "-").replace(/[\s-]+/g, "-");
@@ -225,7 +225,7 @@
     elem.id = `kelp_${id}${suffix ? `_${suffix}` : ""}`;
   }
 
-  // modules/js/components/toc.js
+  // src/js/components/toc.js
   customElements.define(
     "kelp-toc",
     class extends HTMLElement {
@@ -324,7 +324,7 @@
     }
   );
 
-  // modules/js/components/heading-anchors.js
+  // src/js/components/heading-anchors.js
   customElements.define(
     "kelp-heading-anchors",
     class extends HTMLElement {
@@ -370,7 +370,7 @@
     }
   );
 
-  // modules/js/components/toggle-pw.js
+  // src/js/components/toggle-pw.js
   customElements.define(
     "kelp-toggle-pw",
     class extends HTMLElement {
@@ -468,7 +468,7 @@
     }
   );
 
-  // modules/js/components/autogrow.js
+  // src/js/components/autogrow.js
   customElements.define(
     "kelp-autogrow",
     class extends HTMLElement {
@@ -498,7 +498,7 @@
     }
   );
 
-  // modules/js/components/subnav.js
+  // src/js/components/subnav.js
   customElements.define(
     "kelp-subnav",
     class extends HTMLElement {
@@ -568,7 +568,7 @@
     }
   );
 
-  // modules/js/components/invoker.polyfill.js
+  // src/js/components/invoker.polyfill.js
   //! Invoker Command API Polyfill by Keith Cirkel - https://github.com/keithamus/invokers-polyfill/tree/main - MIT License
   function isSupported() {
     return typeof HTMLButtonElement !== "undefined" && "command" in HTMLButtonElement.prototype && "source" in ((globalThis.CommandEvent || {}).prototype || {});

@@ -1,0 +1,9 @@
+/**
+ * @section Typography
+ */
+
+@layer kelp.core {
+	del {
+		color: color-mix(in oklab, var(--color), var(--color-mix-deleted));
+	}
+}

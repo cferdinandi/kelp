@@ -1,7 +1,7 @@
-/*! kelpui v1.7.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.8.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
-  // modules/js/dark-mode-auto.js
+  // src/js/dark-mode-auto.js
   var prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
   document.documentElement.classList.toggle("dark", prefersDarkMode.matches);
   prefersDarkMode.addEventListener("change", (event) => {
