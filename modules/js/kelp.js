@@ -1,0 +1,7 @@
+/**
+ * ⚠️ Kelp's source files have moved!
+ *
+ * Please use the /src directory for your builds going forward.
+ */
+import '../../src/js/kelp.js';
+console.log(`⚠️ Kelp's source files have moved! Please use the /src directory for your builds going forward.`);
