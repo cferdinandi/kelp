@@ -4,21 +4,50 @@ A UI library for people who love HTML, powered by modern CSS and Web Components.
 
 **[Read the Docs &rarr;](https://kelpui.com)**
 
-_**Note:** Kelp is currently under development in alpha. Please feel free to use it, experiment, and report bugs, but understand that things can and will change over time._
-
 
 
 ## Quick Start
 
 Kelp works without any build step.
 
-[The CDN](https://cdn.jsdelivr.net/npm/kelpui/) is the fastest and simplest way to get started, but you can [download the files from GitHub](https://github.com/cferdinandi/kelp) if you'd prefer.
+[The CDN](https://cdn.jsdelivr.net/npm/kelpui/) is the fastest and simplest way to get started.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kelpui@0/css/kelp.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/kelpui@1/css/kelp.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/kelpui@1/js/kelp.js"></script>
 ```
 
 Kelp uses semantic versioning. You can grab a major, minor, or patch version from the CDN with the `@1.2.3` syntax. You can find all available versions [under releases](https://github.com/cferdinandi/kelp/tags).
+
+
+
+## Source Code
+
+Kelp's compiled CSS and JS files are located in the `/css` and `/js` directories. The source files are located in the `/src` directory.
+
+Kelp uses [ESBuild](https://esbuild.github.io) to combine all of the modular files into a single file [for performance reasons](https://gomakethings.com/gzip-performance-is-wild/).
+
+To run your own build, comment out the imports you don't want in the `src/css` and/or `/src/js` files, then run `npm run build`.
+
+```bash
+npm install
+npm run build
+```
+
+Kelp is unminified by default. In performance testing, [minification had almost no performance impact](https://gomakethings.com/minification-doesnt-matter-much/) when gzip or brotli are used.
+
+If you'd prefer to minify anyways, you can add `minify: true` to the `esbuild.mjs` build function.
+
+```js
+await esbuild.build({
+	entryPoints: [
+		'src/js/*.js',
+		'src/css/*.css',
+	],
+	minify: true,
+	// ...
+});
+```
 
 
 
@@ -26,7 +55,7 @@ Kelp uses semantic versioning. You can grab a major, minor, or patch version fro
 
 The included `index.html` file is a kitchen sink demo of Kelp. It includes every feature and component in one giant file.
 
-While in beta, Kelp has no compile step. The web component use ES imports, and require a local server to run.
+The web component use ES imports, and require a local server to run.
 
 Use your preferred server, or use the included `http-server` by running `npm run dev`.
 
@@ -34,8 +63,6 @@ Use your preferred server, or use the included `http-server` by running `npm run
 npm install
 npm run dev
 ```
-
-As Kelp nears v1, it will use a compile step to make this unnecessary.
 
 
 
@@ -45,6 +72,7 @@ Kelp uses...
 
 - [Playwright](https://playwright.dev) for tests
 - [Biome](https://biomejs.dev) for linting and formatting
+- [Typescript with JSDoc](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#handbook-content) for more friendly (and fully optional) type checking
 - A continuous integration process on deploys and PRs
 
 ```bash

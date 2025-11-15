@@ -1,16 +1,17 @@
-import { test, expect } from '@playwright/test';
-import { testComponentReadyState, waitForCustomEvent } from '../test-utilities.js';
+import { expect, test } from '@playwright/test';
+import {
+	testComponentReadyState,
+	waitForCustomEvent,
+} from '../test-utilities.js';
 
 // Component details
 const componentName = 'kelp-subnav';
 const testPath = '/tests/subnav';
 
 test.describe(`<${componentName}>`, () => {
-
 	testComponentReadyState(componentName, testPath);
 
 	test('default component', async ({ page }) => {
-
 		await page.goto(`${testPath}/default.html`);
 
 		// Elements
@@ -45,11 +46,9 @@ test.describe(`<${componentName}>`, () => {
 		await expect(details).toHaveAttribute('open');
 		await anchor.click();
 		await expect(details).not.toHaveAttribute('open');
-
 	});
 
 	test('error handling', async ({ page }) => {
-
 		await page.goto(`${testPath}/errors.html`);
 
 		// Elements
@@ -57,7 +56,5 @@ test.describe(`<${componentName}>`, () => {
 
 		// Element should be ready
 		await expect(wc).not.toHaveAttribute('is-ready');
-
 	});
-
 });

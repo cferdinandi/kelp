@@ -1,0 +1,51 @@
+/**
+ * @section Switch
+ * Checkboxes displayed as a toggle switch
+ */
+
+@layer kelp.core {
+	[type="checkbox"][role="switch"] {
+		--color-fill-vivid: var(--color-primary-fill-vivid);
+		--height: var(--size-xl);
+		--width: 0.8;
+		appearance: none;
+		background-color: var(--color-neutral-border-accent);
+		height: var(--height);
+		width: calc(var(--height) * calc(1 + var(--width)));
+		border: 0;
+		border-radius: 99em;
+		display: inline-block;
+		transition: background-color 100ms ease-in-out;
+	}
+
+	/* thumb */
+	[type="checkbox"][role="switch"]::after {
+		content: "";
+		aspect-ratio: 1;
+		background-color: white;
+		border: max(2px, var(--size-6xs)) solid var(--color-neutral-border-accent);
+		height: 100%;
+		border-radius: 50%;
+		display: block;
+		transition: translate 100ms ease-in-out;
+	}
+
+	[type="checkbox"][role="switch"]:checked {
+		background-color: var(--color-fill-vivid);
+	}
+
+	[type="checkbox"][role="switch"]:checked::after {
+		border-color: var(--color-fill-vivid);
+		translate: calc(var(--height) * var(--width)) 0;
+	}
+
+	@media (forced-colors: active) {
+		[type="checkbox"][role="switch"] {
+			border: 1px solid CanvasText;
+		}
+
+		[type="checkbox"][role="switch"]:checked {
+			background-color: CanvasText;
+		}
+	}
+}

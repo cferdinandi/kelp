@@ -1,17 +1,17 @@
-import { test, expect } from '@playwright/test';
-import { testComponentReadyState, waitForCustomEvent } from '../test-utilities.js';
+import { expect, test } from '@playwright/test';
+import {
+	testComponentReadyState,
+	waitForCustomEvent,
+} from '../test-utilities.js';
 
 // Component details
 const componentName = 'kelp-tabs';
 const testPath = '/tests/tabs';
 
-
 test.describe(`<${componentName}>`, () => {
-
 	testComponentReadyState(componentName, testPath);
 
 	test('default component', async ({ page }) => {
-
 		await page.goto(`${testPath}/default.html`);
 
 		// Get elements
@@ -43,9 +43,14 @@ test.describe(`<${componentName}>`, () => {
 			await expect(item).toHaveAttribute('role', 'presentation');
 		}
 		for (const tab of tabs) {
-			const id = await tab.first().evaluate((elem) => elem.getAttribute('aria-controls'));
+			const id = await tab
+				.first()
+				.evaluate((elem) => elem.getAttribute('aria-controls'));
 			await expect(tab).toHaveAttribute('role', 'tab');
-			await expect(tab).toHaveAttribute('aria-selected', id === 'wizard' ? 'true' : 'false');
+			await expect(tab).toHaveAttribute(
+				'aria-selected',
+				id === 'wizard' ? 'true' : 'false',
+			);
 		}
 		await expect(sorcererTab).toHaveAttribute('tabindex', '-1');
 		await expect(druidTab).toHaveAttribute('tabindex', '-1');
@@ -130,7 +135,10 @@ test.describe(`<${componentName}>`, () => {
 		await wizardTab.press('Tab');
 		await expect(wizardBtn).toBeFocused();
 
-		const beforeEventPromise = waitForCustomEvent(wc, 'kelp-tabs:select-before');
+		const beforeEventPromise = waitForCustomEvent(
+			wc,
+			'kelp-tabs:select-before',
+		);
 		const afterEventPromise = waitForCustomEvent(wc, 'kelp-tabs:select');
 		await druidTab.click();
 		const beforeEvent = await beforeEventPromise;
@@ -141,11 +149,9 @@ test.describe(`<${componentName}>`, () => {
 		await expect(beforeEvent).toHaveProperty('nextTab');
 		await expect(afterEvent).toHaveProperty('tab');
 		await expect(afterEvent).toHaveProperty('pane');
-
 	});
 
 	test('options and settings', async ({ page }) => {
-
 		await page.goto(`${testPath}/options.html`);
 
 		// Get elements
@@ -225,11 +231,9 @@ test.describe(`<${componentName}>`, () => {
 		await expect(sorcererTab).toHaveAttribute('aria-selected', 'false');
 		await expect(wizardTab).not.toHaveAttribute('tabindex');
 		await expect(wizardTab).toHaveAttribute('aria-selected', 'true');
-
 	});
 
 	test('manual mode', async ({ page }) => {
-
 		await page.goto(`${testPath}/manual.html`);
 
 		// Get elements
@@ -268,11 +272,9 @@ test.describe(`<${componentName}>`, () => {
 		await expect(druidPane).toBeVisible();
 		await expect(wizardPane).not.toBeVisible();
 		await expect(sorcererPane).not.toBeVisible();
-
 	});
 
 	test('error handling', async ({ page }) => {
-
 		await page.goto(`${testPath}/errors.html`);
 
 		// Get elements
@@ -288,11 +290,9 @@ test.describe(`<${componentName}>`, () => {
 		await expect(wizardPane).toBeVisible();
 		await expect(sorcererPane).toBeVisible();
 		await expect(druidPane).toBeVisible();
-
 	});
 
 	test('all content is visible before JS loads', async ({ page }) => {
-
 		await page.goto(`${testPath}/no-js.html`);
 
 		// Elements
@@ -304,7 +304,5 @@ test.describe(`<${componentName}>`, () => {
 		await expect(wizardPane).toBeVisible();
 		await expect(sorcererPane).toBeVisible();
 		await expect(druidPane).toBeVisible();
-
 	});
-
 });

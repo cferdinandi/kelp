@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 /**
  * Wait for a custom event to run
@@ -6,7 +6,7 @@ import { test, expect } from '@playwright/test';
  * @param  {String}  eventName The event name to listen for
  * @return {Promise}           Resolves to true if event emits
  */
-export async function waitForCustomEvent (component, eventID) {
+export async function waitForCustomEvent(component, eventID) {
 	return await component.evaluate((element, eventID) => {
 		return new Promise((resolve) => {
 			return element.addEventListener(eventID, (event) => {
@@ -21,10 +21,16 @@ export async function waitForCustomEvent (component, eventID) {
  * @param  {String}  selector The component selector
  * @param  {String}  url      The URL to navigate to
  */
-export async function testComponentReadyState (selector, url, path = 'default.html') {
-	test(`component instantiates${path !== 'default.html' ? ` - ${path}` : ''}`, async ({ page }) => {
+export async function testComponentReadyState(
+	selector,
+	url,
+	path = 'default.html',
+) {
+	test(`component instantiates${path !== 'default.html' ? ` - ${path}` : ''}`, async ({
+		page,
+	}) => {
 		let isReady = false;
-		page.on('console', msg => {
+		page.on('console', (msg) => {
 			if (msg.text() !== 'ready') return;
 			isReady = true;
 		});
@@ -36,10 +42,12 @@ export async function testComponentReadyState (selector, url, path = 'default.ht
 	});
 }
 
-export async function testDebugEvent (url, id, error) {
-	test(`kelp:debug${error ? ` "${error}"` : ''} catches errors`, async ({ page }) => {
+export async function testDebugEvent(url, id, error) {
+	test(`kelp:debug${error ? ` "${error}"` : ''} catches errors`, async ({
+		page,
+	}) => {
 		let hasError = false;
-		page.on('console', msg => {
+		page.on('console', (msg) => {
 			const text = msg.text();
 			if (!text.includes(error ? error : 'kelp-debug')) return;
 			if (id && !text.includes(`target-${id}`)) return;

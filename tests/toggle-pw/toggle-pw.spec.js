@@ -1,17 +1,18 @@
-import { test, expect } from '@playwright/test';
-import { testComponentReadyState, waitForCustomEvent } from '../test-utilities.js';
+import { expect, test } from '@playwright/test';
+import {
+	testComponentReadyState,
+	waitForCustomEvent,
+} from '../test-utilities.js';
 
 // Component details
 const componentName = 'kelp-toggle-pw';
 const testPath = '/tests/toggle-pw';
 
 test.describe(`<${componentName}>`, () => {
-
 	testComponentReadyState(componentName, testPath, 'default-checkbox.html');
 	testComponentReadyState(componentName, testPath, 'default-button.html');
 
 	test('default component with checkbox', async ({ page }) => {
-
 		await page.goto(`${testPath}/default-checkbox.html`);
 
 		// Elements
@@ -53,11 +54,9 @@ test.describe(`<${componentName}>`, () => {
 		await wc.evaluate((elem) => elem.toggle());
 		await expect(password).toHaveAttribute('type', 'password');
 		await expect(toggle).not.toBeChecked();
-
 	});
 
 	test('default component with button', async ({ page }) => {
-
 		await page.goto(`${testPath}/default-button.html`);
 
 		// Elements
@@ -111,11 +110,9 @@ test.describe(`<${componentName}>`, () => {
 		await wc.evaluate((elem) => elem.toggle());
 		await expect(password).toHaveAttribute('type', 'password');
 		await expect(toggle).toHaveAttribute('aria-pressed', 'false');
-
 	});
 
 	test('options and settings with checkbox', async ({ page }) => {
-
 		await page.goto(`${testPath}/options-checkbox.html`);
 
 		// Elements
@@ -129,11 +126,9 @@ test.describe(`<${componentName}>`, () => {
 		// Unchecking it should hide password
 		await toggle.setChecked(false);
 		await expect(password).toHaveAttribute('type', 'password');
-
 	});
 
 	test('options and settings with button', async ({ page }) => {
-
 		await page.goto(`${testPath}/options-button.html`);
 
 		// Elements
@@ -148,11 +143,9 @@ test.describe(`<${componentName}>`, () => {
 		await toggle.click();
 		await expect(password).toHaveAttribute('type', 'password');
 		await expect(toggle).toHaveAttribute('aria-pressed', 'false');
-
 	});
 
 	test('error handling', async ({ page }) => {
-
 		await page.goto(`${testPath}/errors.html`);
 
 		// Elements
@@ -166,11 +159,9 @@ test.describe(`<${componentName}>`, () => {
 
 		// Toggle should be hidden if no password
 		await expect(toggle).not.toBeVisible();
-
 	});
 
 	test('toggles are hidden before JS loads', async ({ page }) => {
-
 		await page.goto(`${testPath}/no-js.html`);
 
 		// Elements
@@ -180,7 +171,5 @@ test.describe(`<${componentName}>`, () => {
 		// Neither element should be visible
 		await expect(label).not.toBeVisible();
 		await expect(button).not.toBeVisible();
-
 	});
-
 });

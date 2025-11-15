@@ -1,13 +1,11 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 // Component details
 const componentName = 'hide-until-ready';
 const testPath = '/tests/hide-until-ready';
 
 test.describe(`[${componentName}]`, () => {
-
 	test('default behavior', async ({ page }) => {
-
 		await page.goto(`${testPath}/default.html`);
 
 		// Get elements
@@ -19,7 +17,5 @@ test.describe(`[${componentName}]`, () => {
 		// Once ready, web component should be visible
 		await wc.evaluate((elem) => elem.setAttribute('is-ready', ''));
 		await expect(wc).toBeVisible();
-
 	});
-
 });
