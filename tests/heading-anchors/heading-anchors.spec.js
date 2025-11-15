@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { testComponentReadyState } from '../test-utilities.js';
 
 // Component details
@@ -6,11 +6,9 @@ const componentName = 'kelp-heading-anchors';
 const testPath = '/tests/heading-anchors';
 
 test.describe(`<${componentName}>`, () => {
-
 	testComponentReadyState(componentName, testPath);
 
 	test('default component', async ({ page }) => {
-
 		await page.goto(`${testPath}/default.html`);
 
 		// Get elements
@@ -28,7 +26,6 @@ test.describe(`<${componentName}>`, () => {
 
 		// Every heading...
 		for (const heading of await headings.all()) {
-
 			// Elements & Attributes
 			const link = heading.locator('.anchor-link').first();
 			const id = await heading.evaluate((elem) => elem.id);
@@ -46,16 +43,13 @@ test.describe(`<${componentName}>`, () => {
 
 			// Icon should be hidden from screen readers
 			await expect(last).toHaveAttribute('aria-hidden', 'true');
-
 		}
 
 		// HTML in the heading is preserved
 		await expect(hasHTML).toBeTruthy();
-
 	});
 
 	test('options and settings', async ({ page }) => {
-
 		await page.goto(`${testPath}/options.html`);
 
 		// Get elements
@@ -68,7 +62,6 @@ test.describe(`<${componentName}>`, () => {
 
 		// Every heading...
 		for (const heading of await headings.all()) {
-
 			// Elements & Attributes
 			const icon = heading.locator('.anchor-icon');
 			const link = heading.locator('.anchor-link').first();
@@ -80,13 +73,10 @@ test.describe(`<${componentName}>`, () => {
 
 			// Icon is before the text, not after
 			await expect(first).toHaveClass('anchor-icon');
-
 		}
-
 	});
 
-	test('exclude restricted components', async({ page }) => {
-
+	test('exclude restricted components', async ({ page }) => {
 		await page.goto(`${testPath}/exclude.html`);
 
 		// Get elements
@@ -96,11 +86,9 @@ test.describe(`<${componentName}>`, () => {
 
 		// All headings targeted
 		await expect(count).toEqual(1);
-
 	});
 
 	test('error handling', async ({ page }) => {
-
 		await page.goto(`${testPath}/errors.html`);
 
 		// Get elements
@@ -111,7 +99,5 @@ test.describe(`<${componentName}>`, () => {
 
 		// no heading links rendered
 		await expect(wc).toBeEmpty();
-
 	});
-
 });

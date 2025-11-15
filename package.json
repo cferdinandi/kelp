@@ -27,10 +27,12 @@
 		"url": "http://github.com/cferdinandi/kelp"
 	},
 	"scripts": {
-		"lint": "npx @biomejs/biome lint",
+		"lint": "npx @biomejs/biome check",
+		"lint:fix": "npx @biomejs/biome check --write",
 		"type": "npx tsc",
 		"test": "npx playwright test",
 		"check": "npm run lint && npm run type && npm run test",
+		"check:fix": "npm run lint:fix && npm run type && npm run test",
 		"build": "node ./esbuild.mjs",
 		"version": "npm --no-git-tag-version version",
 		"start": "http-server",

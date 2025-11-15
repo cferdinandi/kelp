@@ -40,6 +40,7 @@
 @import "./components/callouts.css";
 @import "./components/avatar.css";
 @import "./components/skeleton.css";
+@import "./components/switch.css";
 @import "./components/tabs-wc.css";
 @import "./components/heading-anchors-wc.css";
 @import "./components/toggle-pw-wc.css";

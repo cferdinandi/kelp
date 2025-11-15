@@ -903,9 +903,6 @@
     align-items: center;
     justify-content: center;
   }
-  [type=checkbox] {
-    font-weight: bold;
-  }
   [type=radio] {
     border-radius: 50%;
   }
@@ -933,26 +930,26 @@
     width: 0.667em;
     aspect-ratio: 1;
   }
-  [type=checkbox]:is(:checked, :indeterminate) {
+  [type=checkbox]:not([role=switch]):is(:checked, :indeterminate) {
     background-color: var(--color-checked);
     border-color: var(--color-checked);
     color: var(--color-checked-icon);
   }
-  [type=checkbox]:is(:checked, :indeterminate)::after {
+  [type=checkbox]:not([role=switch]):is(:checked, :indeterminate)::after {
     content: "";
     height: 0.667em;
     width: 0.667em;
     box-shadow: inset 1em 1em var(--color-checked-icon);
   }
-  [type=checkbox]:checked::after {
+  [type=checkbox]:not([role=switch]):checked::after {
     clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 0%, 70% 0%, 70% 100%);
     rotate: 45deg;
   }
-  [type=checkbox]:indeterminate::after {
+  [type=checkbox]:not([role=switch]):indeterminate::after {
     clip-path: inset(40% 10% round 50%);
   }
   @media (forced-colors: active) {
-    :is([type=checkbox], [type=radio]):is(:checked, :indeterminate)::after {
+    :is([type=checkbox], [type=radio]):not([role=switch]):is(:checked, :indeterminate)::after {
       background-color: CanvasText;
     }
   }
@@ -961,6 +958,10 @@
     --color: var(--color-on-muted);
     background-color: var(--background-color);
     color: var(--color);
+  }
+  :is([type=checkbox], [type=radio])[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
   }
   [disabled]:checked {
     --color-checked: var(--color-fill-muted);
@@ -1453,6 +1454,48 @@
     }
     100% {
       background-color: var(--color-fill-accent);
+    }
+  }
+}
+
+/* src/css/components/switch.css */
+@layer kelp.core {
+  [type=checkbox][role=switch] {
+    --color-fill-vivid: var(--color-primary-fill-vivid);
+    --height: var(--size-xl);
+    --width: 0.8;
+    appearance: none;
+    background-color: var(--color-neutral-border-accent);
+    height: var(--height);
+    width: calc(var(--height) * calc(1 + var(--width)));
+    border: 0;
+    border-radius: 99em;
+    display: inline-block;
+    transition: background-color 100ms ease-in-out;
+  }
+  [type=checkbox][role=switch]::after {
+    content: "";
+    aspect-ratio: 1;
+    background-color: white;
+    border: max(2px, var(--size-6xs)) solid var(--color-neutral-border-accent);
+    height: 100%;
+    border-radius: 50%;
+    display: block;
+    transition: translate 100ms ease-in-out;
+  }
+  [type=checkbox][role=switch]:checked {
+    background-color: var(--color-fill-vivid);
+  }
+  [type=checkbox][role=switch]:checked::after {
+    border-color: var(--color-fill-vivid);
+    translate: calc(var(--height) * var(--width)) 0;
+  }
+  @media (forced-colors: active) {
+    [type=checkbox][role=switch] {
+      border: 1px solid CanvasText;
+    }
+    [type=checkbox][role=switch]:checked {
+      background-color: CanvasText;
     }
   }
 }
