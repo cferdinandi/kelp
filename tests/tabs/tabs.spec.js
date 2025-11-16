@@ -143,12 +143,12 @@ test.describe(`<${componentName}>`, () => {
 		await druidTab.click();
 		const beforeEvent = await beforeEventPromise;
 		const afterEvent = await afterEventPromise;
-		await expect(beforeEvent).toHaveProperty('currentTab');
-		await expect(beforeEvent).toHaveProperty('currentPane');
-		await expect(beforeEvent).toHaveProperty('nextTab');
-		await expect(beforeEvent).toHaveProperty('nextTab');
-		await expect(afterEvent).toHaveProperty('tab');
-		await expect(afterEvent).toHaveProperty('pane');
+		expect(beforeEvent).toHaveProperty('currentTab');
+		expect(beforeEvent).toHaveProperty('currentPane');
+		expect(beforeEvent).toHaveProperty('nextTab');
+		expect(beforeEvent).toHaveProperty('nextTab');
+		expect(afterEvent).toHaveProperty('tab');
+		expect(afterEvent).toHaveProperty('pane');
 	});
 
 	test('options and settings', async ({ page }) => {
@@ -237,9 +237,6 @@ test.describe(`<${componentName}>`, () => {
 		await page.goto(`${testPath}/manual.html`);
 
 		// Get elements
-		const wc = page.locator(componentName);
-		const tabList = page.locator('[tabs]');
-		const tabListItems = tabList.locator('li');
 		const wizardTab = page.locator('[aria-controls="wizard"]');
 		const sorcererTab = page.locator('[aria-controls="sorcerer"]');
 		const druidTab = page.locator('[aria-controls="druid"]');

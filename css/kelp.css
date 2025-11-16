@@ -1,4 +1,4 @@
-/*! kelpui v1.8.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.9.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* src/css/config/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -953,7 +953,7 @@
       background-color: CanvasText;
     }
   }
-  :is(input, textarea, select):is([readonly], [disabled]) {
+  :is(input, textarea, select):not([type=checkbox], [type=radio]):is([readonly], [disabled]) {
     --background-color: var(--color-fill-muted);
     --color: var(--color-on-muted);
     background-color: var(--background-color);
@@ -961,12 +961,8 @@
   }
   :is([type=checkbox], [type=radio])[disabled] {
     cursor: not-allowed;
+    opacity: 0.6;
     pointer-events: none;
-  }
-  [disabled]:checked {
-    --color-checked: var(--color-fill-muted);
-    --color-checked-icon: var(--color-on-muted);
-    border-color: var(--border-color);
   }
 }
 

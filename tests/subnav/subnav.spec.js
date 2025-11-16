@@ -1,8 +1,5 @@
 import { expect, test } from '@playwright/test';
-import {
-	testComponentReadyState,
-	waitForCustomEvent,
-} from '../test-utilities.js';
+import { testComponentReadyState } from '../test-utilities.js';
 
 // Component details
 const componentName = 'kelp-subnav';
