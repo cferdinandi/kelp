@@ -43,27 +43,35 @@
 	/**
 	 * Auto-scrolling with fixed header/footer
 	 */
+	dialog:has(.action-body) {
+		--padding: var(--gap);
+		padding: 0;
+	}
+
 	dialog:has(.action-body) .action-header {
 		position: sticky;
 		top: 0;
+		padding-inline: var(--padding);
+		padding-block-start: var(--padding);
 	}
 
 	dialog:has(.action-body) .action-footer {
 		position: sticky;
 		bottom: 0;
+		padding-inline: var(--padding);
+		padding-block-end: var(--padding);
 	}
 
 	dialog[open]:has(.action-body) {
 		display: flex;
 		flex-direction: column;
 		gap: var(--gap);
-		overflow: hidden;
+		overflow: clip;
 	}
 
 	dialog .action-body {
 		overflow: auto;
-		margin-inline-end: calc(-1 * var(--gap));
-		padding-inline-end: var(--gap);
+		padding-inline: var(--padding);
 	}
 
 	/**
