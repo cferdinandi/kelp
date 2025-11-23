@@ -31,9 +31,7 @@
 		background: transparent;
 		border: 0;
 
-		/**
-		 * Provides offset so that focus outline doesn't get clipped
-		 */
+		/* Provides offset so that focus outline doesn't get clipped */
 		margin-block: calc(-1 * var(--input-padding-block));
 		margin-inline: calc(-1 * var(--input-padding-inline));
 	}
