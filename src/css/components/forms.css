@@ -185,6 +185,7 @@
 
 	[type="checkbox"]:not([role="switch"]):checked::after {
 		clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 0%, 70% 0%, 70% 100%);
+		margin-top: -0.0625em;
 		rotate: 45deg;
 	}
 
