@@ -28,6 +28,9 @@
 @import "./components/mark.css";
 @import "./components/del.css";
 @import "./components/forms.css";
+@import "./components/date-picker.css";
+@import "./components/color-picker.css";
+@import "./components/file-picker.css";
 @import "./components/switch.css";
 @import "./components/buttons.css";
 @import "./components/tables.css";

@@ -1,0 +1,10 @@
+/**
+ * @section Color Picker
+ */
+
+@layer kelp.core {
+	[type="color"] {
+		height: 3em;
+		width: 3em;
+	}
+}

@@ -1,4 +1,4 @@
-/*! kelpui v1.10.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.11.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* src/css/config/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -824,23 +824,17 @@
   optgroup,
   select,
   textarea {
+    --input-padding-block: var(--size-5xs);
+    --input-padding-inline: var(--size-4xs);
     color: var(--color-text-normal);
     font-family: inherit;
     font-size: inherit;
     margin: 0;
-    padding-block: var(--size-5xs);
-    padding-inline: var(--size-4xs);
+    padding-block: var(--input-padding-block);
+    padding-inline: var(--input-padding-inline);
   }
   ::placeholder {
     color: var(--color-text-muted);
-  }
-  .dark ::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-  }
-  @media (forced-colors: active) {
-    .dark ::-webkit-calendar-picker-indicator {
-      filter: invert(1);
-    }
   }
   input,
   textarea,
@@ -860,20 +854,6 @@
   textarea,
   select {
     display: block;
-  }
-  ::-webkit-datetime-edit,
-  ::-webkit-datetime-edit-fields-wrapper,
-  ::-webkit-datetime-edit-text,
-  ::-webkit-datetime-edit-minute-field,
-  ::-webkit-datetime-edit-hour-field,
-  ::-webkit-datetime-edit-meridiem-field,
-  ::-webkit-datetime-edit-day-field,
-  ::-webkit-datetime-edit-month-field,
-  ::-webkit-datetime-edit-year-field {
-    padding: 0;
-  }
-  input::-webkit-inner-spin-button {
-    height: auto;
   }
   :where(input, textarea, select):not(:last-child) {
     margin-block-end: var(--size-xl);
@@ -912,7 +892,7 @@
   }
 }
 @layer kelp.state {
-  :is(input, textarea, select):not([type=checkbox], [type=radio], [type=range]):focus,
+  :is(input, textarea, select):not([type=checkbox], [type=radio], [type=range], [type=file]):focus,
   :is([type=checkbox], [type=radio], [type=range]):focus-visible {
     outline-color: var(--focus-ring-color);
     outline-style: var(--focus-ring-style);
@@ -962,6 +942,93 @@
   :is([type=checkbox], [type=radio])[disabled] {
     cursor: not-allowed;
     opacity: 0.6;
+  }
+}
+
+/* src/css/components/date-picker.css */
+@layer kelp.core {
+  .dark ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+  @media (forced-colors: active) {
+    .dark ::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+  }
+  ::-webkit-datetime-edit,
+  ::-webkit-datetime-edit-fields-wrapper,
+  ::-webkit-datetime-edit-text,
+  ::-webkit-datetime-edit-minute-field,
+  ::-webkit-datetime-edit-hour-field,
+  ::-webkit-datetime-edit-meridiem-field,
+  ::-webkit-datetime-edit-day-field,
+  ::-webkit-datetime-edit-month-field,
+  ::-webkit-datetime-edit-year-field {
+    padding: 0;
+  }
+  input::-webkit-inner-spin-button {
+    height: auto;
+  }
+}
+
+/* src/css/components/color-picker.css */
+@layer kelp.core {
+  [type=color] {
+    height: 3em;
+    width: 3em;
+  }
+}
+
+/* src/css/components/file-picker.css */
+@layer kelp.core {
+  [type=file] {
+    --background-color: var(--color-fill-muted);
+    --background-color-hover: var(--color-fill-accent);
+    --background-color-active: color-mix( in oklab, var(--color-fill-muted), var(--color-mix-transparent) );
+    --border-color: var(--color-border-muted);
+    --border-color-hover: var(--color-border-accent);
+    --border-color-active: color-mix( in oklab, var(--color-border-muted), var(--color-mix-transparent) );
+    --color: var(--color-on-muted);
+    --color-hover: var(--color-on-accent);
+    --color-active: var(--color-on-muted);
+    --gap: var(--size-m);
+    --padding-block: var(--size-4xs);
+    --padding-inline: var(--size-m);
+    background: transparent;
+    border: 0;
+    margin-block: calc(-1 * var(--input-padding-block));
+    margin-inline: calc(-1 * var(--input-padding-inline));
+  }
+  [type=file]::file-selector-button {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-s);
+    color: var(--color);
+    cursor: pointer;
+    margin-inline-end: var(--gap);
+    padding-block: var(--padding-block);
+    padding-inline: var(--padding-inline);
+  }
+}
+@layer kelp.state {
+  [type=file]:focus {
+    outline-width: 0;
+  }
+  [type=file]:focus::file-selector-button {
+    outline-color: var(--focus-ring-color);
+    outline-style: var(--focus-ring-style);
+    outline-width: var(--focus-ring-width);
+    outline-offset: var(--focus-ring-offset);
+  }
+  [type=file]:hover::file-selector-button {
+    --background-color: var(--background-color-hover);
+    --border-color: var(--border-color-hover);
+    --color: var(--color-hover);
+  }
+  [type=file]:active::file-selector-button {
+    --background-color: var(--background-color-active);
+    --border-color: var(--border-color-active);
+    --color: var(--color-active);
   }
 }
 

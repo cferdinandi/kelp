@@ -1,0 +1,36 @@
+/**
+ * @section Date Picker
+ */
+
+@layer kelp.core {
+	.dark ::-webkit-calendar-picker-indicator {
+		filter: invert(1);
+	}
+
+	@media (forced-colors: active) {
+		.dark ::-webkit-calendar-picker-indicator {
+			filter: invert(1);
+		}
+	}
+
+	/**
+	 * @bugfix Safari styles temporal fields with inconsistent inner padding
+	 * This removes it, normalizing the fields with regular inputs
+	 * @see https://github.com/cferdinandi/kelp/issues/235
+	 */
+	::-webkit-datetime-edit,
+	::-webkit-datetime-edit-fields-wrapper,
+	::-webkit-datetime-edit-text,
+	::-webkit-datetime-edit-minute-field,
+	::-webkit-datetime-edit-hour-field,
+	::-webkit-datetime-edit-meridiem-field,
+	::-webkit-datetime-edit-day-field,
+	::-webkit-datetime-edit-month-field,
+	::-webkit-datetime-edit-year-field {
+		padding: 0;
+	}
+
+	input::-webkit-inner-spin-button {
+		height: auto;
+	}
+}
