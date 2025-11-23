@@ -1,4 +1,4 @@
-/*! kelpui v1.10.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.10.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* src/css/config/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -1499,7 +1499,7 @@
 @layer kelp.core {
   .spinner {
     --color-outline: var(--color-primary-outline);
-    --font-size: var(--size-m);
+    --font-size: var(--size-3xl);
     --border-width: max(var(--size-6xs), calc(var(--font-size) / 12));
     display: grid;
     aspect-ratio: 1;

@@ -5,7 +5,7 @@
 @layer kelp.core {
 	.spinner {
 		--color-outline: var(--color-primary-outline);
-		--font-size: var(--size-m);
+		--font-size: var(--size-3xl);
 		--border-width: max(var(--size-6xs), calc(var(--font-size) / 12));
 
 		display: grid;
