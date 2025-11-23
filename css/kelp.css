@@ -1,4 +1,4 @@
-/*! kelpui v1.11.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.11.3 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* src/css/config/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -411,7 +411,7 @@
     outline-offset: var(--focus-ring-offset);
   }
   [hidden],
-  [hide-until-ready]:not([is-ready]),
+  [hide-until-ready]:not([is-ready]):not(:has(> [show-until-ready])),
   :not([is-ready]):has(> [show-until-ready]) > :not([show-until-ready]),
   [is-ready] [show-until-ready] {
     display: none;
