@@ -1,4 +1,4 @@
-/*! kelpui v1.11.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.11.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* src/css/config/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -2228,8 +2228,11 @@
 /* src/css/utilities/accessibility.css */
 @layer kelp.utilities {
   .scroll-horizontal {
+    --buffer: calc(var(--focus-ring-offset) + var(--focus-ring-width));
     display: block;
     overflow-x: auto;
+    margin-inline: calc(-1 * var(--buffer));
+    padding-inline: var(--buffer);
   }
   [class*=visually-hidden] {
     border: 0;
