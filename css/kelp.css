@@ -1,4 +1,4 @@
-/*! kelpui v1.9.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.10.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* src/css/config/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -965,6 +965,48 @@
   }
 }
 
+/* src/css/components/switch.css */
+@layer kelp.core {
+  [type=checkbox][role=switch] {
+    --color-fill-vivid: var(--color-primary-fill-vivid);
+    --height: var(--size-xl);
+    --width: 0.8;
+    appearance: none;
+    background-color: var(--color-neutral-border-accent);
+    height: var(--height);
+    width: calc(var(--height) * calc(1 + var(--width)));
+    border: 0;
+    border-radius: 99em;
+    display: inline-block;
+    transition: background-color 100ms ease-in-out;
+  }
+  [type=checkbox][role=switch]::after {
+    content: "";
+    aspect-ratio: 1;
+    background-color: white;
+    border: max(2px, var(--size-6xs)) solid var(--color-neutral-border-accent);
+    height: 100%;
+    border-radius: 50%;
+    display: block;
+    transition: translate 100ms ease-in-out;
+  }
+  [type=checkbox][role=switch]:checked {
+    background-color: var(--color-fill-vivid);
+  }
+  [type=checkbox][role=switch]:checked::after {
+    border-color: var(--color-fill-vivid);
+    translate: calc(var(--height) * var(--width)) 0;
+  }
+  @media (forced-colors: active) {
+    [type=checkbox][role=switch] {
+      border: 1px solid CanvasText;
+    }
+    [type=checkbox][role=switch]:checked {
+      background-color: CanvasText;
+    }
+  }
+}
+
 /* src/css/components/buttons.css */
 @layer kelp.core {
   button,
@@ -1453,44 +1495,68 @@
   }
 }
 
-/* src/css/components/switch.css */
+/* src/css/components/spinner.css */
 @layer kelp.core {
-  [type=checkbox][role=switch] {
-    --color-fill-vivid: var(--color-primary-fill-vivid);
-    --height: var(--size-xl);
-    --width: 0.8;
-    appearance: none;
-    background-color: var(--color-neutral-border-accent);
-    height: var(--height);
-    width: calc(var(--height) * calc(1 + var(--width)));
-    border: 0;
-    border-radius: 99em;
-    display: inline-block;
-    transition: background-color 100ms ease-in-out;
-  }
-  [type=checkbox][role=switch]::after {
-    content: "";
+  .spinner {
+    --color-outline: var(--color-primary-outline);
+    --font-size: var(--size-m);
+    --border-width: max(var(--size-6xs), calc(var(--font-size) / 12));
+    display: grid;
     aspect-ratio: 1;
-    background-color: white;
-    border: max(2px, var(--size-6xs)) solid var(--color-neutral-border-accent);
-    height: 100%;
+    width: var(--font-size);
+  }
+  .spinner,
+  .spinner::before,
+  .spinner::after {
     border-radius: 50%;
-    display: block;
-    transition: translate 100ms ease-in-out;
+    grid-area: 1 / 1 / 2 / 2;
   }
-  [type=checkbox][role=switch]:checked {
-    background-color: var(--color-fill-vivid);
+  .spinner::before,
+  .spinner::after {
+    content: "";
+    border: var(--border-width) solid var(--color-outline);
   }
-  [type=checkbox][role=switch]:checked::after {
-    border-color: var(--color-fill-vivid);
-    translate: calc(var(--height) * var(--width)) 0;
+  .spinner::before {
+    opacity: 0.3;
   }
-  @media (forced-colors: active) {
-    [type=checkbox][role=switch] {
-      border: 1px solid CanvasText;
+  .spinner::after {
+    animation: spin-part-1 1.2s infinite linear alternate, spin-part-2 2.4s infinite linear;
+  }
+  @keyframes spin-part-1 {
+    0% {
+      clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
     }
-    [type=checkbox][role=switch]:checked {
-      background-color: CanvasText;
+    12.5% {
+      clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
+    }
+    25% {
+      clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
+    }
+    50% {
+      clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+    }
+    62.5% {
+      clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+    }
+    75% {
+      clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%);
+    }
+    100% {
+      clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%);
+    }
+  }
+  @keyframes spin-part-2 {
+    0% {
+      transform: scaleY(1) rotate(0deg);
+    }
+    49.99% {
+      transform: scaleY(1) rotate(135deg);
+    }
+    50% {
+      transform: scaleY(-1) rotate(0deg);
+    }
+    100% {
+      transform: scaleY(-1) rotate(-135deg);
     }
   }
 }

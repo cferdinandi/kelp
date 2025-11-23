@@ -1,4 +1,4 @@
-/*! kelpui v1.9.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.10.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // src/js/dark-mode-auto.js
