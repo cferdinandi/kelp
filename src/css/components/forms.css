@@ -51,26 +51,18 @@
 	optgroup,
 	select,
 	textarea {
+		--input-padding-block: var(--size-5xs);
+		--input-padding-inline: var(--size-4xs);
 		color: var(--color-text-normal);
 		font-family: inherit; /* 1 */
 		font-size: inherit; /* 1 */
 		margin: 0;
-		padding-block: var(--size-5xs);
-		padding-inline: var(--size-4xs);
+		padding-block: var(--input-padding-block);
+		padding-inline: var(--input-padding-inline);
 	}
 
 	::placeholder {
 		color: var(--color-text-muted);
-	}
-
-	.dark ::-webkit-calendar-picker-indicator {
-		filter: invert(1);
-	}
-
-	@media (forced-colors: active) {
-		.dark ::-webkit-calendar-picker-indicator {
-			filter: invert(1);
-		}
 	}
 
 	input,
@@ -106,27 +98,6 @@
 	textarea,
 	select {
 		display: block;
-	}
-
-	/**
-	 * @bugfix Safari styles temporal fields with inconsistent inner padding
-	 * This removes it, normalizing the fields with regular inputs
-	 * @see https://github.com/cferdinandi/kelp/issues/235
-	 */
-	::-webkit-datetime-edit,
-	::-webkit-datetime-edit-fields-wrapper,
-	::-webkit-datetime-edit-text,
-	::-webkit-datetime-edit-minute-field,
-	::-webkit-datetime-edit-hour-field,
-	::-webkit-datetime-edit-meridiem-field,
-	::-webkit-datetime-edit-day-field,
-	::-webkit-datetime-edit-month-field,
-	::-webkit-datetime-edit-year-field {
-		padding: 0;
-	}
-
-	input::-webkit-inner-spin-button {
-		height: auto;
 	}
 
 	:where(input, textarea, select):not(:last-child) {
@@ -176,7 +147,8 @@
 	:is(input, textarea, select):not(
 			[type="checkbox"],
 			[type="radio"],
-			[type="range"]
+			[type="range"],
+			[type="file"]
 		):focus,
 	:is([type="checkbox"], [type="radio"], [type="range"]):focus-visible {
 		outline-color: var(--focus-ring-color);

@@ -1,0 +1,76 @@
+/**
+ * @section File Picker
+ */
+
+@layer kelp.core {
+	[type="file"] {
+		--background-color: var(--color-fill-muted);
+		--background-color-hover: var(--color-fill-accent);
+		--background-color-active: color-mix(
+			in oklab,
+			var(--color-fill-muted),
+			var(--color-mix-transparent)
+		);
+
+		--border-color: var(--color-border-muted);
+		--border-color-hover: var(--color-border-accent);
+		--border-color-active: color-mix(
+			in oklab,
+			var(--color-border-muted),
+			var(--color-mix-transparent)
+		);
+
+		--color: var(--color-on-muted);
+		--color-hover: var(--color-on-accent);
+		--color-active: var(--color-on-muted);
+
+		--gap: var(--size-m);
+		--padding-block: var(--size-4xs);
+		--padding-inline: var(--size-m);
+
+		background: transparent;
+		border: 0;
+
+		/**
+		 * Provides offset so that focus outline doesn't get clipped
+		 */
+		margin-block: calc(-1 * var(--input-padding-block));
+		margin-inline: calc(-1 * var(--input-padding-inline));
+	}
+
+	[type="file"]::file-selector-button {
+		background-color: var(--background-color);
+		border: 1px solid var(--border-color);
+		border-radius: var(--border-radius-s);
+		color: var(--color);
+		cursor: pointer;
+		margin-inline-end: var(--gap);
+		padding-block: var(--padding-block);
+		padding-inline: var(--padding-inline);
+	}
+}
+
+@layer kelp.state {
+	[type="file"]:focus {
+		outline-width: 0;
+	}
+
+	[type="file"]:focus::file-selector-button {
+		outline-color: var(--focus-ring-color);
+		outline-style: var(--focus-ring-style);
+		outline-width: var(--focus-ring-width);
+		outline-offset: var(--focus-ring-offset);
+	}
+
+	[type="file"]:hover::file-selector-button {
+		--background-color: var(--background-color-hover);
+		--border-color: var(--border-color-hover);
+		--color: var(--color-hover);
+	}
+
+	[type="file"]:active::file-selector-button {
+		--background-color: var(--background-color-active);
+		--border-color: var(--border-color-active);
+		--color: var(--color-active);
+	}
+}
