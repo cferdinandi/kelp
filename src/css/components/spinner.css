@@ -1,0 +1,125 @@
+/**
+ * @section Typography
+ */
+
+@layer kelp.core {
+	.spinner {
+		--color-outline: var(--color-primary-outline);
+		--font-size: var(--size-m);
+		--border-width: max(var(--size-6xs), calc(var(--font-size) / 12));
+
+		display: grid;
+		aspect-ratio: 1;
+		width: var(--font-size);
+	}
+
+	.spinner,
+	.spinner::before,
+	.spinner::after {
+		border-radius: 50%;
+		grid-area: 1 / 1 / 2 / 2;
+	}
+
+	.spinner::before,
+	.spinner::after {
+		content: "";
+		border: var(--border-width) solid var(--color-outline);
+	}
+
+	.spinner::before {
+		opacity: 0.3;
+	}
+
+	.spinner::after {
+		animation:
+			spin-part-1 1.2s infinite linear alternate,
+			spin-part-2 2.4s infinite linear;
+	}
+
+	@keyframes spin-part-1 {
+		0% {
+			clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+		}
+		12.5% {
+			clip-path: polygon(
+				50% 50%,
+				0 0,
+				50% 0%,
+				100% 0%,
+				100% 0%,
+				100% 0%,
+				100% 0%
+			);
+		}
+		25% {
+			clip-path: polygon(
+				50% 50%,
+				0 0,
+				50% 0%,
+				100% 0%,
+				100% 100%,
+				100% 100%,
+				100% 100%
+			);
+		}
+		50% {
+			clip-path: polygon(
+				50% 50%,
+				0 0,
+				50% 0%,
+				100% 0%,
+				100% 100%,
+				50% 100%,
+				0% 100%
+			);
+		}
+		62.5% {
+			clip-path: polygon(
+				50% 50%,
+				100% 0,
+				100% 0%,
+				100% 0%,
+				100% 100%,
+				50% 100%,
+				0% 100%
+			);
+		}
+		75% {
+			clip-path: polygon(
+				50% 50%,
+				100% 100%,
+				100% 100%,
+				100% 100%,
+				100% 100%,
+				50% 100%,
+				0% 100%
+			);
+		}
+		100% {
+			clip-path: polygon(
+				50% 50%,
+				50% 100%,
+				50% 100%,
+				50% 100%,
+				50% 100%,
+				50% 100%,
+				0% 100%
+			);
+		}
+	}
+
+	@keyframes spin-part-2 {
+		0% {
+			transform: scaleY(1) rotate(0deg);
+		}
+		49.99% {
+			transform: scaleY(1) rotate(135deg);
+		}
+		50% {
+			transform: scaleY(-1) rotate(0deg);
+		}
+		100% {
+			transform: scaleY(-1) rotate(-135deg);
+		}
+	}
+}
