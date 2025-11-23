@@ -8,8 +8,13 @@
 	 * Allow horizontal scroll
 	 */
 	.scroll-horizontal {
+		--buffer: calc(var(--focus-ring-offset) + var(--focus-ring-width));
 		display: block;
 		overflow-x: auto;
+
+		/* Prevent focus outlines from getting clipped */
+		margin-inline: calc(-1 * var(--buffer));
+		padding-inline: var(--buffer);
 	}
 
 	/*
