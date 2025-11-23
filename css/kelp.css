@@ -1,4 +1,4 @@
-/*! kelpui v1.11.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.11.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* src/css/config/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -923,6 +923,7 @@
   }
   [type=checkbox]:not([role=switch]):checked::after {
     clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 0%, 70% 0%, 70% 100%);
+    margin-top: -0.0625em;
     rotate: 45deg;
   }
   [type=checkbox]:not([role=switch]):indeterminate::after {
@@ -1227,24 +1228,31 @@
   dialog:modal::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
   }
+  dialog:has(.action-body) {
+    --padding: var(--gap);
+    padding: 0;
+  }
   dialog:has(.action-body) .action-header {
     position: sticky;
     top: 0;
+    padding-inline: var(--padding);
+    padding-block-start: var(--padding);
   }
   dialog:has(.action-body) .action-footer {
     position: sticky;
     bottom: 0;
+    padding-inline: var(--padding);
+    padding-block-end: var(--padding);
   }
   dialog[open]:has(.action-body) {
     display: flex;
     flex-direction: column;
     gap: var(--gap);
-    overflow: hidden;
+    overflow: clip;
   }
   dialog .action-body {
     overflow: auto;
-    margin-inline-end: calc(-1 * var(--gap));
-    padding-inline-end: var(--gap);
+    padding-inline: var(--padding);
   }
   [class*=drawer] {
     border-radius: 0;
