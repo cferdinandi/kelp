@@ -24,6 +24,7 @@
 		/* State */
 		--color-checked: var(--color-blue-50);
 		--color-checked-icon: white;
+		--color-invalid: var(--color-red-50);
 
 		/* Mixes */
 		--color-mix-hover: black 10%;
@@ -129,6 +130,7 @@
 		/* State */
 		--color-checked: var(--color-blue-60);
 		--focus-ring-color: var(--color-blue-60);
+		--color-invalid: var(--color-red-60);
 
 		/* Fills & Borders */
 		--color-neutral-fill-muted: var(--color-gray-20);

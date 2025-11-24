@@ -5,24 +5,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
 		<script type="module" src="../../src/js/kelp.js"></script>
-
-		<script>
-			// Ensures we can test the ready event
-			document.addEventListener('kelp-autogrow:ready', (event) => {
-				console.log('ready');
-			});
-		</script>
 	</head>
 	<body>
 
 		<main class="container">
 
-			<h1>kelp-autogrow - default settings</h1>
+			<h1>kelp-form-validate - errors</h1>
 
-			<label for="kelp">The textarea</label>
-			<kelp-autogrow>
-				<textarea id="kelp"></textarea>
-			</kelp-autogrow>
+			<kelp-form-validate></kelp-form-validate>
 
 		</main>
 

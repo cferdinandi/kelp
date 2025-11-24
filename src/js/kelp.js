@@ -1,3 +1,8 @@
+/**
+ * IMPORTANT: form-validate.js *must* be imported before form-ajax.js,
+ * or event listeners won't load in the correct order.
+ */
+import './components/form-validate.js';
 import './components/tabs.js';
 import './components/toc.js';
 import './components/heading-anchors.js';

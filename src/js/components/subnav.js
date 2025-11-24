@@ -67,7 +67,11 @@ customElements.define(
 
 			// Close them
 			for (const nav of navs) {
-				if (event?.relatedTarget instanceof Node && nav.contains(event.relatedTarget)) continue;
+				if (
+					event?.relatedTarget instanceof Node &&
+					nav.contains(event.relatedTarget)
+				)
+					continue;
 				nav.removeAttribute('open');
 			}
 		}

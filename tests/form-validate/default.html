@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+		<script type="module" src="../../src/js/kelp.js"></script>
+
+		<script>
+			// Ensures we can test the ready event
+			document.addEventListener('kelp-form-validate:ready', (event) => {
+				console.log('ready');
+			});
+
+			// Test validation success event
+			document.addEventListener('kelp-form-validate:success', (event) => {
+				console.log('success');
+			});
+
+			// Test validation failed event
+			document.addEventListener('kelp-form-validate:failed', (event) => {
+				console.log('failed');
+			});
+		</script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-form-validate - default settings</h1>
+
+			<kelp-form-validate>
+				<form class="stack margin-end-6xl" action="success.html" method="get">
+
+					<!-- No validation requirements -->
+					<div>
+						<label for="username">Name</label>
+						<input type="text" name="username" id="username">
+					</div>
+
+					<!-- Specific data type and required -->
+					<div>
+						<label for="email">Email *</label>
+						<input type="email" name="email" id="email" required>
+					</div>
+
+					<!-- Specific data type, custom pattern, and required -->
+					<div>
+						<label for="code">Autho Code (5-digits) *</label>
+						<input
+							type="text"
+							name="code"
+							id="code"
+							pattern="[0-9]{5}"
+							required
+						>
+					</div>
+
+					<!-- Minimum length and required -->
+					<div>
+						<label for="description">Description *</label>
+						<textarea
+							name="description"
+							id="description"
+							minlength="10"
+							required
+							validate-msg="Not optional!"
+						></textarea>
+					</div>
+
+					<!-- Select required -->
+					<div>
+						<label for="wizard">Favorite Wizard *</label>
+						<select name="wizard" id="wizard" required>
+							<option value=""></option>
+							<option value="merlin">Merlin</option>
+							<option value="gandalf">Gandalf</option>
+							<option value="radagast">Radagast</option>
+						</select>
+					</div>
+
+					<!-- Fieldset: radio required -->
+					<fieldset validate-group data-testid="radio">
+						<legend>What's your favorite Pixar movie? *</legend>
+						<label for="up">
+							<input type="radio" id="up" name="movie" value="up">
+							Up!
+						</label>
+						<label for="wall-e">
+							<input type="radio" id="wall-e" name="movie" value="wall-e">
+							WALL-E
+						</label>
+						<label for="toy-story">
+							<input type="radio" id="toy-story" name="movie" value="toy-story">
+							Toy Story
+						</label>
+					</fieldset>
+
+					<!-- Fieldset: checkbox required -->
+					<fieldset validate-group validate-msg="Select at least one movie" data-testid="checkbox">
+						<legend>What are your favorite Pixar movies?</legend>
+						<label for="up-2">
+							<input type="checkbox" id="up-2" name="movie" value="up">
+							Up!
+						</label>
+						<label for="wall-e-2">
+							<input type="checkbox" id="wall-e-2" name="movie" value="wall-e">
+							WALL-E
+						</label>
+						<label for="toy-story-2">
+							<input type="checkbox" id="toy-story-2" name="movie" value="toy-story">
+							Toy Story
+						</label>
+					</fieldset>
+
+					<div>
+						<button>Submit</button>
+					</div>
+
+				</form>
+			</kelp-form-validate>
+
+		</main>
+
+	</body>
+</html>
