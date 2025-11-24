@@ -50,20 +50,24 @@ customElements.define(
 		 */
 		handleEvent(event) {
 			if (event.type === 'blur') {
-				return this.#onBlur();
+				return this.#onBlur(event);
 			}
 			this.#onKeydown(event);
 		}
 
 		/**
 		 * Handle click events
+		 * @param  {Event} event The event object
 		 */
-		#onBlur() {
+		#onBlur(event) {
+			if (!(event instanceof FocusEvent)) return;
+
 			// Get all open subnav's that aren't currently focused
 			const navs = this.querySelectorAll('details[open]:not(:focus-within)');
 
 			// Close them
 			for (const nav of navs) {
+				if (event?.relatedTarget instanceof Node && nav.contains(event.relatedTarget)) continue;
 				nav.removeAttribute('open');
 			}
 		}
