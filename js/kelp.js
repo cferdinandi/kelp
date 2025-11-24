@@ -1,4 +1,4 @@
-/*! kelpui v1.11.3 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.11.4 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // src/js/utilities/debug.js
@@ -535,16 +535,19 @@
        */
       handleEvent(event) {
         if (event.type === "blur") {
-          return this.#onBlur();
+          return this.#onBlur(event);
         }
         this.#onKeydown(event);
       }
       /**
        * Handle click events
+       * @param  {Event} event The event object
        */
-      #onBlur() {
+      #onBlur(event) {
+        if (!(event instanceof FocusEvent)) return;
         const navs = this.querySelectorAll("details[open]:not(:focus-within)");
         for (const nav of navs) {
+          if (event?.relatedTarget instanceof Node && nav.contains(event.relatedTarget)) continue;
           nav.removeAttribute("open");
         }
       }
