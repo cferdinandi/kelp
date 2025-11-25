@@ -1,4 +1,4 @@
-/*! kelpui v1.11.4 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.12.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // src/js/utilities/debug.js
@@ -30,6 +30,473 @@
       once: true
     });
   }
+
+  // src/js/components/form-validate.js
+  customElements.define(
+    "kelp-form-validate",
+    class extends HTMLElement {
+      /** @type HTMLFormElement | null */
+      #form;
+      /** @type NodeList */
+      #groups;
+      // Initialize on connect
+      connectedCallback() {
+        ready(this);
+      }
+      // Initialize the component
+      init() {
+        this.#form = this.querySelector("form");
+        if (!this.#form) {
+          debug(this, "No form was found");
+          return;
+        }
+        this.#groups = this.#form.querySelectorAll("[validate-group]");
+        this.#form.setAttribute("novalidate", "");
+        this.#form.addEventListener("submit", this);
+        this.#form.addEventListener("input", this);
+        this.#form.addEventListener("blur", this, { capture: true });
+        emit(this, "form-validate", "ready");
+        this.setAttribute("is-ready", "");
+      }
+      /**
+       * Handle events
+       * @param {Event} event The event object
+       */
+      handleEvent(event) {
+        if (event.type === "blur") {
+          return this.#onBlur(event);
+        }
+        if (event.type === "input") {
+          return this.#onInput(event);
+        }
+        this.#onSubmit(event);
+      }
+      /**
+       * Handle input events
+       * @param {Event} event The event object
+       */
+      #onInput(event) {
+        if (!(event.target instanceof Element)) return;
+        const group = event.target.closest("[validate-group]");
+        const field = group || event.target;
+        group?.setAttribute("validate-group", "interacted");
+        if (!group && field.getAttribute("aria-invalid") !== "true") return;
+        if (group) {
+          this.#isGroupValid(group);
+          return;
+        }
+        this.#isFieldValid(field);
+      }
+      /**
+       * Handle blur events
+       * @param {Event} event The event object
+       */
+      #onBlur(event) {
+        if (!(event.target instanceof Element)) return;
+        const group = event.target.closest('[validate-group="interacted"]');
+        if (group) {
+          this.#isGroupValid(group);
+          return;
+        }
+        if (!event.target.matches(":user-invalid")) {
+          this.#removeError(event.target);
+          return;
+        }
+        this.#showError(event.target);
+      }
+      /**
+       * Handle submit events
+       * @param {Event} event The event object
+       */
+      #onSubmit(event) {
+        const cancelled = !emit(
+          this,
+          "form-validate",
+          "validate",
+          { form: this.#form },
+          true
+        );
+        if (cancelled) return;
+        const areGroupsValid = this.#checkGroupValidity();
+        const isValid = this.#checkFieldValidity() && areGroupsValid;
+        if (isValid) {
+          emit(this, "form-validate", "success", { form: this.#form });
+          return;
+        }
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        const firstInvalidField = this.#form?.querySelector(
+          ':invalid, [aria-invalid="true"] :is([type="checkbox"], [type="radio"])'
+        );
+        firstInvalidField?.focus({ focusVisible: true });
+        emit(this, "form-validate", "failed", { form: this.#form });
+      }
+      /**
+       * Check the validity of fields that can be validated with HTMLFormElement.checkValidity().
+       * Show error messages for fields that are not.
+       *
+       * @return {Boolean} If true, all fields are valid
+       */
+      #checkFieldValidity() {
+        if (!this.#form || this.#form.checkValidity()) return true;
+        const invalidFields = this.#form.querySelectorAll(":invalid");
+        for (const field of invalidFields) {
+          if (!(field instanceof HTMLElement)) continue;
+          this.#showError(field);
+        }
+        return false;
+      }
+      /**
+       * Check if an input is valid and show/remove errors
+       * @param  {Element} field The field to validate
+       * @return {Boolean}       If true, field is valid
+       */
+      #isFieldValid(field) {
+        if (field.matches(":invalid")) {
+          this.#showError(field);
+          return false;
+        }
+        this.#removeError(field);
+        return true;
+      }
+      /**
+       * Check the validity of all input groups
+       * @return {Boolean} If true, all groups are valid
+       */
+      #checkGroupValidity() {
+        let isValid = true;
+        for (const group of this.#groups) {
+          if (!(group instanceof HTMLElement)) continue;
+          if (this.#isGroupValid(group)) continue;
+          isValid = false;
+        }
+        return isValid;
+      }
+      /**
+       * Check if an input group is valid and show/remove errors
+       * @param  {Element} group The input group
+       * @return {Boolean}       If true, the group is valid
+       */
+      #isGroupValid(group) {
+        if (group.querySelector("input:checked")) {
+          this.#removeError(group);
+          return true;
+        }
+        this.#showError(group, true);
+        return false;
+      }
+      /**
+       * Show error message on a field
+       * @param  {Element} field   The field or fieldset
+       * @param  {Boolean} isGroup If true, field is a fieldset input group
+       */
+      #showError(field, isGroup = false) {
+        const errorMsg = this.#getMsg(field, isGroup);
+        if (!errorMsg) return;
+        field.setAttribute("aria-invalid", "true");
+        const existingErrorID = field.getAttribute("aria-describedby");
+        const existingErrorEl = existingErrorID ? this.#form?.querySelector(`#${existingErrorID}`) : null;
+        const id = existingErrorID || `kelp-${crypto.randomUUID()}`;
+        const errorEl = existingErrorEl || document.createElement("div");
+        errorEl.textContent = errorMsg;
+        errorEl.id = id;
+        errorEl.className = "validation-error";
+        field.setAttribute("aria-describedby", id);
+        const location = isGroup ? "append" : "after";
+        field[location](errorEl);
+      }
+      /**
+       * Get the error message text
+       * @param  {Element} field   The field or fieldset
+       * @param  {Boolean} isGroup If true, field is a fieldset input group
+       * @return {String}          The error message
+       */
+      #getMsg(field, isGroup = false) {
+        const defaultMsg = isGroup ? field.querySelector('[type="checkbox"]') ? "Please select at least one option." : "Please select an option." : "validationMessage" in field ? (
+          /** @type {string} */
+          field.validationMessage
+        ) : "";
+        return field.getAttribute("validate-msg") || defaultMsg;
+      }
+      /**
+       * Remove the error message from a field
+       * @param  {Element} field The field or fieldset
+       */
+      #removeError(field) {
+        field.removeAttribute("aria-invalid");
+        const id = field.getAttribute("aria-describedby");
+        if (!id) return;
+        this.#form?.querySelector(`#${id}`)?.remove();
+      }
+    }
+  );
+
+  // src/js/utilities/getFromPath.js
+  function stringToPath(path) {
+    if (typeof path !== "string") return [];
+    const output = [];
+    for (const item of path.split(".")) {
+      for (const key of item.split(/\[([^}]+)\]/g)) {
+        if (key.length < 1) continue;
+        output.push(key);
+      }
+    }
+    return output;
+  }
+  function getFromPath(obj, path) {
+    if (!obj || !path) return;
+    const pathArr = stringToPath(path);
+    let current = structuredClone(obj);
+    for (const key of pathArr) {
+      if (!current[key]) return;
+      current = current[key];
+    }
+    return current;
+  }
+
+  // src/js/components/form-ajax.js
+  customElements.define(
+    "kelp-form-ajax",
+    class extends HTMLElement {
+      /** @type HTMLFormElement | null */
+      #form;
+      /** @type String | null */
+      #externalForms;
+      /** @type HTMLElement */
+      #announce;
+      /** @type String */
+      #msgSubmitting;
+      /** @type String */
+      #msgFailed;
+      /** @type String | null */
+      #msgSuccess;
+      /** @type String | null */
+      #pathSuccess;
+      /** @type String | null */
+      #pathFailed;
+      /** @type String | null */
+      #pathRedirect;
+      /** @type String | null */
+      #redirectOnSuccess;
+      /** @type Boolean */
+      #submitLoading;
+      /** @type HTMLElement | null */
+      #loadingIcon;
+      /** @type Boolean */
+      #removeFormOnSuccess;
+      /** @type Number */
+      #dismissMsgOnSuccess;
+      /** @type Boolean */
+      #keepFields;
+      /** @type Number */
+      #delay;
+      /** @type Array */
+      #eventKeys;
+      // Initialize on connect
+      connectedCallback() {
+        ready(this);
+      }
+      // Initialize the component
+      init() {
+        this.#form = this.querySelector("form");
+        if (!this.#form) {
+          debug(this, "No form was found");
+          return;
+        }
+        this.#externalForms = this.getAttribute("external-forms");
+        const announcePosition = this.hasAttribute("msg-start") ? "prepend" : "append";
+        this.#announce = document.createElement("div");
+        this.#announce.setAttribute("role", "status");
+        this[announcePosition](this.#announce);
+        this.#msgSubmitting = this.getAttribute("msg-submitting") ?? "Submitting...";
+        this.#msgSuccess = this.getAttribute("msg-success");
+        this.#msgFailed = this.getAttribute("msg-failed") ?? "Something went wrong. Unable to submit form.";
+        this.#pathSuccess = this.getAttribute("path-success");
+        this.#pathFailed = this.getAttribute("path-failed");
+        this.#submitLoading = this.hasAttribute("submit-loading");
+        this.#removeFormOnSuccess = this.hasAttribute("remove-form-on-success");
+        this.#dismissMsgOnSuccess = this.hasAttribute("dismiss-msg-on-success") ? Number.parseInt(
+          this.getAttribute("dismiss-msg-on-success") || "6000",
+          10
+        ) : 0;
+        this.#redirectOnSuccess = this.getAttribute("redirect-on-success");
+        this.#pathRedirect = this.getAttribute("path-redirect");
+        this.#keepFields = this.hasAttribute("keep-fields");
+        this.#delay = this.hasAttribute("delay") ? Number.parseInt(this.getAttribute("delay") || "6000", 10) : 0;
+        this.#eventKeys = (this.getAttribute("event-keys")?.split(" ") || [this.#form.action]).map((name) => name.trim()).filter((name) => !!name);
+        this.#loadingIcon = this.#submitLoading ? document.createElement("div") : null;
+        if (this.#loadingIcon) {
+          this.#loadingIcon.innerHTML = `<div class="spinner ${this.getAttribute("submit-loading")}"></div>`;
+          this.#loadingIcon.setAttribute("loading-icon", "");
+          this.append(this.#loadingIcon);
+        }
+        this.#form.addEventListener("submit", this);
+        emit(this, "form-ajax", "ready");
+        this.setAttribute("is-ready", "");
+      }
+      /**
+       * Handle events
+       * @param {SubmitEvent} event The event object
+       */
+      handleEvent(event) {
+        this.#onSubmit(event);
+      }
+      /**
+       * Handle submit events
+       * @param  {SubmitEvent} event The event object
+       */
+      async #onSubmit(event) {
+        event.preventDefault();
+        if (this.#isDisabled() || !this.#form) return;
+        const submitter = this.#submitLoading ? this.#form.querySelector(":focus") : null;
+        try {
+          const formData = this.#getFormData(event.submitter);
+          const cancelled = !emit(
+            this,
+            "form-ajax",
+            "submit",
+            {
+              formData,
+              eventKeys: this.#eventKeys
+            },
+            true
+          );
+          if (cancelled) return;
+          this.#disable();
+          this.#showStatus(this.#msgSubmitting, "submitting");
+          const response = await this.#callAPI(formData);
+          const data = await response.json();
+          const failed = getFromPath(data, this.#pathFailed);
+          if (failed) throw failed;
+          if (!response.ok) throw response;
+          const msgSuccess = getFromPath(data, this.#pathSuccess) ?? this.#msgSuccess ?? "";
+          this.#showStatus(msgSuccess, "success");
+          const redirect = getFromPath(data, this.#pathRedirect) ?? this.#redirectOnSuccess;
+          if (redirect) {
+            window.location.href = redirect;
+          }
+          this.#reset();
+          if (this.#removeFormOnSuccess) {
+            this.#form?.remove();
+          }
+          emit(this, "form-ajax", "success", {
+            data,
+            eventKeys: this.#eventKeys
+          });
+        } catch (error) {
+          emit(this, "form-ajax", "failed", {
+            error,
+            eventKeys: this.#eventKeys
+          });
+          const msgError = typeof error === "string" ? error : Array.isArray(error) ? error.join(" ") : this.#msgFailed;
+          this.#showStatus(msgError, "danger");
+        } finally {
+          setTimeout(() => {
+            this.#enable();
+            submitter?.focus();
+          }, this.#delay);
+        }
+      }
+      /**
+       * Get FormData for the submitting form and any linked external forms
+       * @param  {HTMLElement | null} submitter The submitting button
+       * @return {FormData}                     The FormData object
+       */
+      #getFormData(submitter = null) {
+        const formData = new FormData(this.#form ?? void 0, submitter);
+        for (const form of this.#getExternalForms()) {
+          if (!(form instanceof HTMLFormElement)) continue;
+          const data = new FormData(form);
+          for (const [key, value] of data) {
+            formData.append(key, value);
+          }
+        }
+        return formData;
+      }
+      /**
+       * Get any linked external forms
+       * @return {NodeList | Array}
+       */
+      #getExternalForms() {
+        return this.#externalForms ? document.querySelectorAll(this.#externalForms) : [];
+      }
+      /**
+       * Asynchronously call the API endpoint
+       * @param  {FormData} formData The FormData object for the form(s)
+       * @return {Promise}           The fetch object
+       */
+      #callAPI(formData) {
+        if (!this.#form) throw new Error("No form found");
+        const { action, method, enctype } = this.#form;
+        const options = {
+          method,
+          headers: {
+            "X-Requested-With": "XMLHttpRequest"
+          }
+        };
+        if (enctype.toLowerCase() === "multipart/form-data") {
+          options.body = formData;
+          return fetch(action, options);
+        }
+        const params = new URLSearchParams(formData).toString();
+        if (method.toLowerCase() === "get") {
+          return fetch(`${action}?${params}`);
+        }
+        options.body = params;
+        options.headers["Content-type"] = "application/x-www-form-urlencoded";
+        return fetch(action, options);
+      }
+      /**
+       * Update the form status text
+       * @param  {String} msg  The message to display
+       * @param  {String} type The status type (success | danger | submitting)
+       */
+      #showStatus(msg, type) {
+        if (!this.#announce) return;
+        this.#announce.innerHTML = msg;
+        this.#announce.className = this.#submitLoading || !msg ? "" : type;
+        if (type === "success" && this.#dismissMsgOnSuccess) {
+          setTimeout(() => {
+            if (!this.#announce) return;
+            this.#announce.innerHTML = "";
+            this.#announce.className = "";
+          }, this.#dismissMsgOnSuccess);
+        }
+        this.#announce.classList.toggle("visually-hidden", type === "submitting" && this.#submitLoading);
+      }
+      /**
+       * Disable the form so it can't be submitted while waiting for an API response
+       */
+      #disable() {
+        this.setAttribute("is-submitting", "");
+      }
+      /**
+       * Re-enable the form after the API resolves
+       */
+      #enable() {
+        this.removeAttribute("is-submitting");
+      }
+      /**
+       * Check if the form is currently submitting to the API
+       * @return {Boolean} If true, the form is submitting
+       */
+      #isDisabled() {
+        return this.hasAttribute("is-submitting");
+      }
+      /**
+       * Reset form element values
+       */
+      #reset() {
+        if (this.#keepFields) return;
+        this.#form?.reset();
+        for (const form of this.#getExternalForms()) {
+          if (!(form instanceof HTMLFormElement)) continue;
+          form.reset();
+        }
+      }
+    }
+  );
 
   // src/js/utilities/reinit.js
   function reinit(instance, callback) {
@@ -547,7 +1014,8 @@
         if (!(event instanceof FocusEvent)) return;
         const navs = this.querySelectorAll("details[open]:not(:focus-within)");
         for (const nav of navs) {
-          if (event?.relatedTarget instanceof Node && nav.contains(event.relatedTarget)) continue;
+          if (event?.relatedTarget instanceof Node && nav.contains(event.relatedTarget))
+            continue;
           nav.removeAttribute("open");
         }
       }

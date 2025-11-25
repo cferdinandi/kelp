@@ -1,4 +1,4 @@
-/*! kelpui v1.11.4 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.12.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* src/css/config/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -171,6 +171,7 @@
     --decoration-text-link-hover: underline;
     --color-checked: var(--color-blue-50);
     --color-checked-icon: white;
+    --color-invalid: var(--color-red-50);
     --color-mix-hover: black 10%;
     --color-mix-active: black 20%;
     --color-mix-transparent: transparent 20%;
@@ -254,6 +255,7 @@
     --color-text-link-hover: var(--color-blue-80);
     --color-checked: var(--color-blue-60);
     --focus-ring-color: var(--color-blue-60);
+    --color-invalid: var(--color-red-60);
     --color-neutral-fill-muted: var(--color-gray-20);
     --color-neutral-fill-accent: var(--color-gray-30);
     --color-neutral-fill-vivid: var(--color-gray-80);
@@ -855,7 +857,14 @@
   select {
     display: block;
   }
-  :where(input, textarea, select):not(:last-child) {
+  :where(input, textarea, select):not(:last-child, [aria-invalid=true]) {
+    margin-block-end: var(--size-xl);
+  }
+  .validation-error {
+    color: var(--color-danger-outline);
+    margin-block-start: var(--size-5xs);
+  }
+  .validation-error:not(:last-child) {
     margin-block-end: var(--size-xl);
   }
   textarea {
@@ -898,6 +907,11 @@
     outline-style: var(--focus-ring-style);
     outline-width: var(--focus-ring-width);
     outline-offset: var(--focus-ring-offset);
+  }
+  :is(:user-invalid, [aria-invalid=true], [aria-invalid=true] :is([type=radio], [type=checkbox])) {
+    --border-color: var(--color-invalid);
+    --color-checked: var(--color-invalid);
+    --focus-ring-color: var(--color-invalid);
   }
   [type=radio]:checked {
     background-color: transparent;
@@ -1669,6 +1683,27 @@
     kelp-tabs [role=tab][aria-selected=true] {
       border-width: var(--size-5xs);
     }
+  }
+}
+
+/* src/css/components/form-ajax-wc.css */
+@layer kelp.core {
+  kelp-form-ajax[submit-loading][is-submitting] {
+    display: grid;
+  }
+  kelp-form-ajax[submit-loading][is-submitting] form {
+    visibility: hidden;
+  }
+  kelp-form-ajax[submit-loading] [loading-icon] {
+    display: none;
+  }
+  kelp-form-ajax[submit-loading][is-submitting] [loading-icon] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  kelp-form-ajax[submit-loading][is-submitting] :is(form, [loading-icon]) {
+    grid-area: 1 / 1 / 2 / 2;
   }
 }
 
