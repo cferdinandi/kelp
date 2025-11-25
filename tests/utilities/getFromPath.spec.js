@@ -31,8 +31,12 @@ test.describe('getFromPath()', () => {
 
 	test('gets data from path', () => {
 		// Arrays
-		expect(getFromPath(arr, '[1].address.street')).toEqual('35558 Rosemarie Grove');
-		expect(getFromPath(arr, '[1]address.street')).toEqual('35558 Rosemarie Grove');
+		expect(getFromPath(arr, '[1].address.street')).toEqual(
+			'35558 Rosemarie Grove',
+		);
+		expect(getFromPath(arr, '[1]address.street')).toEqual(
+			'35558 Rosemarie Grove',
+		);
 		expect(getFromPath(arr, '[1].full_name')).toEqual('Misty Rolling');
 		expect(getFromPath(arr, '[1]full_name')).toEqual('Misty Rolling');
 		expect(getFromPath(arr, '[0]')).toEqual(obj);
