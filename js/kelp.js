@@ -327,7 +327,7 @@
         this.#pathRedirect = this.getAttribute("path-redirect");
         this.#keepFields = this.hasAttribute("keep-fields");
         this.#delay = this.hasAttribute("delay") ? Number.parseInt(this.getAttribute("delay") || "6000", 10) : 0;
-        this.#eventKeys = (this.getAttribute("event-keys")?.split(" ") || [this.#form.action]).map((name) => name.trim()).filter((name) => !!name);
+        this.#eventKeys = (this.getAttribute("event-keys")?.split(",") || [this.#form.action]).map((name) => name.trim()).filter((name) => !!name);
         this.#loadingIcon = this.#submitLoading ? document.createElement("div") : null;
         if (this.#loadingIcon) {
           this.#loadingIcon.innerHTML = `<div class="spinner ${this.getAttribute("submit-loading")}"></div>`;
@@ -524,8 +524,8 @@
       }
       // Initialize the component
       init() {
-        this.#events = (this.getAttribute("events")?.split(" ") || []).map((name) => name.trim()).filter((name) => !!name);
-        this.#keys = (this.getAttribute("keys")?.split(" ") || []).map((key) => key.trim()).filter((key) => !!key);
+        this.#events = (this.getAttribute("events")?.split(",") || []).map((name) => name.trim()).filter((name) => !!name);
+        this.#keys = (this.getAttribute("keys")?.split(",") || []).map((key) => key.trim()).filter((key) => !!key);
         if (!this.#events.length) {
           debug(this, "No events were provided");
           return;

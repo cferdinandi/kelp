@@ -79,7 +79,7 @@ customElements.define(
 				? Number.parseInt(this.getAttribute('delay') || '6000', 10)
 				: 0;
 			this.#eventKeys = (
-				this.getAttribute('event-keys')?.split(' ') || [this.#form.action]
+				this.getAttribute('event-keys')?.split(',') || [this.#form.action]
 			)
 				.map((name) => name.trim())
 				.filter((name) => !!name);

@@ -23,10 +23,10 @@ customElements.define(
 		// Initialize the component
 		init() {
 			// Get options
-			this.#events = (this.getAttribute('events')?.split(' ') || [])
+			this.#events = (this.getAttribute('events')?.split(',') || [])
 				.map((name) => name.trim())
 				.filter((name) => !!name);
-			this.#keys = (this.getAttribute('keys')?.split(' ') || [])
+			this.#keys = (this.getAttribute('keys')?.split(',') || [])
 				.map((key) => key.trim())
 				.filter((key) => !!key);
 
