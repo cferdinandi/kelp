@@ -166,7 +166,11 @@
 		outline-offset: var(--focus-ring-offset);
 	}
 
-	:is(:user-invalid, [aria-invalid="true"], [aria-invalid="true"] :is([type="radio"], [type="checkbox"])) {
+	:is(
+			:user-invalid,
+			[aria-invalid="true"],
+			[aria-invalid="true"] :is([type="radio"], [type="checkbox"])
+		) {
 		--border-color: var(--color-invalid);
 		--color-checked: var(--color-invalid);
 		--focus-ring-color: var(--color-invalid);

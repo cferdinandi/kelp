@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+		<script type="module" src="../../src/js/kelp.js"></script>
+
+		<script>
+			// Test submit error event
+			document.addEventListener('kelp-form-ajax:failed', (event) => {
+				console.log('failed');
+			});
+		</script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-form-ajax - default error handling</h1>
+
+			<kelp-form-ajax>
+				<form class="stack" action="/noop" method="get">
+					<div>
+						<label for="username">Name</label>
+						<input type="text" name="username" id="username">
+					</div>
+
+					<div>
+						<button>Submit</button>
+					</div>
+
+				</form>
+			</kelp-form-ajax>
+
+		</main>
+
+	</body>
+</html>

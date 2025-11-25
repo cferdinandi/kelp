@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+		<script type="module" src="../../src/js/kelp.js"></script>
+
+		<script>
+			// Test submit success event with event key
+			document.addEventListener('kelp-form-ajax:success', (event) => {
+				if (!event.detail?.eventKeys.includes('working')) return;
+				console.log('success');
+			});
+		</script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-form-ajax - options and settings</h1>
+
+			<kelp-form-ajax
+				msg-start
+				msg-success="Form submitted!"
+				dismiss-msg-on-success="100"
+				keep-fields
+				delay="100"
+				event-keys="working"
+			>
+				<form class="stack" action="api/success.json" method="get">
+					<div>
+						<label for="username">Name</label>
+						<input type="text" name="username" id="username">
+					</div>
+
+					<div>
+						<button>Submit</button>
+					</div>
+
+				</form>
+			</kelp-form-ajax>
+
+		</main>
+
+	</body>
+</html>

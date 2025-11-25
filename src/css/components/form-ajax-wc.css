@@ -1,0 +1,30 @@
+/**
+ * @section <kelp-form-ajax>
+ */
+
+@layer kelp.core {
+	/**
+	 * Submitting state with loading spinner
+	 */
+	kelp-form-ajax[submit-loading][is-submitting] {
+		display: grid;
+	}
+
+	kelp-form-ajax[submit-loading][is-submitting] form {
+		visibility: hidden;
+	}
+
+	kelp-form-ajax[submit-loading] [loading-icon] {
+		display: none;
+	}
+
+	kelp-form-ajax[submit-loading][is-submitting] [loading-icon] {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	kelp-form-ajax[submit-loading][is-submitting] :is(form, [loading-icon]) {
+		grid-area: 1 / 1 / 2 / 2;
+	}
+}
