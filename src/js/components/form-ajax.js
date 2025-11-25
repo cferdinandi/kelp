@@ -122,7 +122,9 @@ customElements.define(
 			// Store the submitting element if a loading icon is displayed.
 			// When visibility is hidden, the button loses focus. We retore it later.
 			/** @type HTMLElement | null */
-			const submitter = this.#submitLoading ? this.#form.querySelector(':focus') : null;
+			const submitter = this.#submitLoading
+				? this.#form.querySelector(':focus')
+				: null;
 
 			try {
 				// Get the form values
@@ -157,11 +159,13 @@ customElements.define(
 				if (!response.ok) throw response;
 
 				// If message, display it
-				const msgSuccess = getFromPath(data, this.#pathSuccess) ?? this.#msgSuccess ?? '';
+				const msgSuccess =
+					getFromPath(data, this.#pathSuccess) ?? this.#msgSuccess ?? '';
 				this.#showStatus(msgSuccess, 'success');
 
 				// If there's a redirect URL, redirect the user
-				const redirect = getFromPath(data, this.#pathRedirect) ?? this.#redirectOnSuccess;
+				const redirect =
+					getFromPath(data, this.#pathRedirect) ?? this.#redirectOnSuccess;
 				if (redirect) {
 					window.location.href = redirect;
 				}
@@ -184,9 +188,12 @@ customElements.define(
 					error,
 					eventKeys: this.#eventKeys,
 				});
-				const msgError = typeof error === 'string' ?
-					error :
-					(Array.isArray(error) ? error.join(' ') : this.#msgFailed);
+				const msgError =
+					typeof error === 'string'
+						? error
+						: Array.isArray(error)
+							? error.join(' ')
+							: this.#msgFailed;
 				this.#showStatus(msgError, 'danger');
 			} finally {
 				setTimeout(() => {
@@ -223,7 +230,9 @@ customElements.define(
 		 * @return {NodeList | Array}
 		 */
 		#getExternalForms() {
-			return this.#externalForms ? document.querySelectorAll(this.#externalForms) : [];
+			return this.#externalForms
+				? document.querySelectorAll(this.#externalForms)
+				: [];
 		}
 
 		/**
@@ -286,7 +295,10 @@ customElements.define(
 			}
 
 			// If currently submitting and showing a loading icon, visually hide the status message
-			this.#announce.classList.toggle('visually-hidden', type === 'submitting' && this.#submitLoading);
+			this.#announce.classList.toggle(
+				'visually-hidden',
+				type === 'submitting' && this.#submitLoading,
+			);
 		}
 
 		/**
