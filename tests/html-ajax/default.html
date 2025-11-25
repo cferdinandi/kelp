@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+		<script type="module" src="../../src/js/kelp.js"></script>
+
+		<script>
+			// Ensures we can test the ready event
+			document.addEventListener('kelp-html-ajax:ready', (event) => {
+				console.log('ready');
+			});
+		</script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-html-ajax - default settings</h1>
+
+			<kelp-html-ajax
+				id="test-component"
+				events="test-event"
+			>
+				<span data-testid="text">Hello world!</span>
+				<button id="demo-button">Press Me</button>
+			</kelp-html-ajax>
+
+		</main>
+
+
+		<script type="module">
+			const btn = document.querySelector('#demo-button');
+			const html = document.querySelector('[data-testid="text"]');
+			btn.addEventListener('click', () => {
+				html.textContent = 'Updated text';
+				setTimeout(() => {
+					const event = new CustomEvent('test-event', { bubbles: true });
+					document.dispatchEvent(event);
+				}, 2000);
+			});
+		</script>
+
+	</body>
+</html>

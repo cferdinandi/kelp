@@ -1,4 +1,4 @@
-/*! kelpui v1.12.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.13.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // src/js/utilities/debug.js
@@ -283,6 +283,8 @@
       #submitLoading;
       /** @type HTMLElement | null */
       #loadingIcon;
+      /** @type String */
+      #msgClass;
       /** @type Boolean */
       #removeFormOnSuccess;
       /** @type Number */
@@ -314,6 +316,7 @@
         this.#msgFailed = this.getAttribute("msg-failed") ?? "Something went wrong. Unable to submit form.";
         this.#pathSuccess = this.getAttribute("path-success");
         this.#pathFailed = this.getAttribute("path-failed");
+        this.#msgClass = this.getAttribute("msg-class") || "";
         this.#submitLoading = this.hasAttribute("submit-loading");
         this.#removeFormOnSuccess = this.hasAttribute("remove-form-on-success");
         this.#dismissMsgOnSuccess = this.hasAttribute("dismiss-msg-on-success") ? Number.parseInt(
@@ -455,7 +458,7 @@
       #showStatus(msg, type) {
         if (!this.#announce) return;
         this.#announce.innerHTML = msg;
-        this.#announce.className = this.#submitLoading || !msg ? "" : type;
+        this.#announce.className = this.#submitLoading || !msg ? "" : `${type} ${this.#msgClass}`;
         if (type === "success" && this.#dismissMsgOnSuccess) {
           setTimeout(() => {
             if (!this.#announce) return;
@@ -496,6 +499,99 @@
         for (const form of this.#getExternalForms()) {
           if (!(form instanceof HTMLFormElement)) continue;
           form.reset();
+        }
+      }
+    }
+  );
+
+  // src/js/components/html-ajax.js
+  customElements.define(
+    "kelp-html-ajax",
+    class extends HTMLElement {
+      /** @type String[] */
+      #events;
+      /** @type String[] */
+      #keys;
+      // Initialize on connect
+      connectedCallback() {
+        ready(this);
+      }
+      // Cleanup global events on disconnect
+      disconnectedCallback() {
+        for (const name of this.#events) {
+          document.removeEventListener(name, this);
+        }
+      }
+      // Initialize the component
+      init() {
+        this.#events = (this.getAttribute("events")?.split(" ") || []).map((name) => name.trim()).filter((name) => !!name);
+        this.#keys = (this.getAttribute("keys")?.split(" ") || []).map((key) => key.trim()).filter((key) => !!key);
+        if (!this.#events.length) {
+          debug(this, "No events were provided");
+          return;
+        }
+        if (!this.id) {
+          debug(this, "The <kelp-html-ajax> component requires a unique ID");
+          return;
+        }
+        for (const name of this.#events) {
+          document.addEventListener(name, this);
+        }
+        emit(this, "html-ajax", "ready");
+        this.setAttribute("is-ready", "");
+      }
+      /**
+       * Handle events
+       * @param {CustomEvent} event The event object
+       */
+      handleEvent(event) {
+        this.#updateHTML(event);
+      }
+      /**
+       * Update the component HTML in response to an event
+       * @param {CustomEvent} event The event object
+       */
+      async #updateHTML(event) {
+        if (!this.#events.includes(event.type)) return;
+        if (this.#keys.length) {
+          if (!event?.detail.eventKeys || !Array.isArray(event.detail.eventKeys))
+            return;
+          const hasMatch = this.#keys.find(
+            (key) => event.detail.eventKeys.includes(key)
+          );
+          if (!hasMatch) return;
+        }
+        const cancelled = !emit(
+          this,
+          "html-ajax",
+          "before-replace",
+          { eventKeys: [this.id] },
+          true
+        );
+        if (cancelled) return;
+        try {
+          const response = await fetch(globalThis.location.href);
+          if (!response.ok) throw new Error(response.statusText);
+          const data = await response.text();
+          const parser = new DOMParser();
+          const html = parser.parseFromString(data, "text/html");
+          const freshElem = html.querySelector(`#${this.id}`);
+          if (!freshElem) {
+            emit(this, "html-ajax", "remove", { eventKeys: [this.id] });
+            this.remove();
+            return;
+          }
+          const focusedID = this.querySelector(":focus")?.id;
+          this.replaceWith(freshElem);
+          if (focusedID) {
+            freshElem.querySelector(`#${focusedID}`)?.focus();
+          }
+          emit(freshElem, "html-ajax", "replace", { eventKeys: [this.id] });
+        } catch (error) {
+          const msg = `Unable to update HTML: ${error}`;
+          console.warn(msg);
+          debug(this, msg);
+          emit(this, "html-ajax", "failed", { eventKeys: [this.id] });
         }
       }
     }
