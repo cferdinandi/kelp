@@ -463,7 +463,10 @@
             this.#announce.className = "";
           }, this.#dismissMsgOnSuccess);
         }
-        this.#announce.classList.toggle("visually-hidden", type === "submitting" && this.#submitLoading);
+        this.#announce.classList.toggle(
+          "visually-hidden",
+          type === "submitting" && this.#submitLoading
+        );
       }
       /**
        * Disable the form so it can't be submitted while waiting for an API response
