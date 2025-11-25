@@ -18,6 +18,7 @@ customElements.define(
 		/** @type String | null */ #redirectOnSuccess;
 		/** @type Boolean */ #submitLoading;
 		/** @type HTMLElement | null */ #loadingIcon;
+		/** @type String */ #msgClass;
 		/** @type Boolean */ #removeFormOnSuccess;
 		/** @type Number */ #dismissMsgOnSuccess;
 		/** @type Boolean */ #keepFields;
@@ -58,6 +59,7 @@ customElements.define(
 				'Something went wrong. Unable to submit form.';
 			this.#pathSuccess = this.getAttribute('path-success');
 			this.#pathFailed = this.getAttribute('path-failed');
+			this.#msgClass = this.getAttribute('msg-class') || '';
 
 			// Form behavior options
 			this.#submitLoading = this.hasAttribute('submit-loading');
@@ -283,7 +285,8 @@ customElements.define(
 
 			// Show the message
 			this.#announce.innerHTML = msg;
-			this.#announce.className = this.#submitLoading || !msg ? '' : type;
+			this.#announce.className =
+				this.#submitLoading || !msg ? '' : `${type} ${this.#msgClass}`;
 
 			// If success and message should be removed on success, schedule removal
 			if (type === 'success' && this.#dismissMsgOnSuccess) {

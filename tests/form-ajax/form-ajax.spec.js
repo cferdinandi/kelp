@@ -112,6 +112,9 @@ test.describe(`<${componentName}>`, () => {
 		// A custom success message is rendered
 		await expect(announce).toHaveText('Form submitted!');
 
+		// The status message has custom classes
+		await expect(announce).toHaveClass('success callout');
+
 		// The form remains inactive for a few moments
 		await expect(wc).toHaveAttribute('is-submitting');
 
