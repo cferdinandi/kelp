@@ -20,7 +20,7 @@ test.describe(`<${componentName}>`, () => {
 		await expect(textEl).toHaveText(startingText);
 
 		// Update the component text manually
-		await textEl.evaluate(elem => {
+		await textEl.evaluate((elem) => {
 			elem.innerHTML = 'abc123';
 		});
 		await expect(textEl).toHaveText('abc123');
@@ -52,7 +52,7 @@ test.describe(`<${componentName}>`, () => {
 		await expect(wc).toHaveText(startingText);
 
 		// Update the component text manually
-		await wc.evaluate(elem => {
+		await wc.evaluate((elem) => {
 			elem.innerHTML = 'abc123';
 		});
 		await expect(wc).toHaveText('abc123');

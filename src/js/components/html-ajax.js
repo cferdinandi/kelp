@@ -24,11 +24,11 @@ customElements.define(
 		init() {
 			// Get options
 			this.#events = (this.getAttribute('events')?.split(' ') || [])
-				.map(name => name.trim())
-				.filter(name => !!name);
+				.map((name) => name.trim())
+				.filter((name) => !!name);
 			this.#keys = (this.getAttribute('keys')?.split(' ') || [])
-				.map(key => key.trim())
-				.filter(key => !!key);
+				.map((key) => key.trim())
+				.filter((key) => !!key);
 
 			// Make sure there are events to listen for
 			if (!this.#events.length) {
@@ -70,13 +70,22 @@ customElements.define(
 
 			// If there are event keys, make sure the event has a matching key
 			if (this.#keys.length) {
-				if (!event?.detail.eventKeys || !Array.isArray(event.detail.eventKeys)) return;
-				const hasMatch = this.#keys.find(key => event.detail.eventKeys.includes(key));
+				if (!event?.detail.eventKeys || !Array.isArray(event.detail.eventKeys))
+					return;
+				const hasMatch = this.#keys.find((key) =>
+					event.detail.eventKeys.includes(key),
+				);
 				if (!hasMatch) return;
 			}
 
 			// Emit a cancellable before event
-			const cancelled = !emit(this, 'html-ajax', 'before-replace', { eventKeys: [this.id] }, true);
+			const cancelled = !emit(
+				this,
+				'html-ajax',
+				'before-replace',
+				{ eventKeys: [this.id] },
+				true,
+			);
 			if (cancelled) return;
 
 			try {
@@ -108,7 +117,9 @@ customElements.define(
 
 				// If an element inside the component had focus, restore it
 				if (focusedID) {
-					/** @type {HTMLElement} */ (freshElem.querySelector(`#${focusedID}`))?.focus();
+					/** @type {HTMLElement} */ (
+						freshElem.querySelector(`#${focusedID}`)
+					)?.focus();
 				}
 
 				// Emit a success event
