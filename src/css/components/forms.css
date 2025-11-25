@@ -100,7 +100,16 @@
 		display: block;
 	}
 
-	:where(input, textarea, select):not(:last-child) {
+	:where(input, textarea, select):not(:last-child, [aria-invalid="true"]) {
+		margin-block-end: var(--size-xl);
+	}
+
+	.validation-error {
+		color: var(--color-danger-outline);
+		margin-block-start: var(--size-5xs);
+	}
+
+	.validation-error:not(:last-child) {
 		margin-block-end: var(--size-xl);
 	}
 
@@ -155,6 +164,16 @@
 		outline-style: var(--focus-ring-style);
 		outline-width: var(--focus-ring-width);
 		outline-offset: var(--focus-ring-offset);
+	}
+
+	:is(
+			:user-invalid,
+			[aria-invalid="true"],
+			[aria-invalid="true"] :is([type="radio"], [type="checkbox"])
+		) {
+		--border-color: var(--color-invalid);
+		--color-checked: var(--color-invalid);
+		--focus-ring-color: var(--color-invalid);
 	}
 
 	[type="radio"]:checked {

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+		<script type="module" src="../../src/js/kelp.js"></script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-form-ajax - loading state</h1>
+
+			<h2>Standard Loading Spinner</h2>
+
+			<kelp-form-ajax
+				submit-loading
+				is-submitting
+				data-testid="wc"
+			>
+				<form class="stack" action="api/success.json" method="get" data-testid="form">
+					<div>
+						<label for="username">Name</label>
+						<input type="text" name="username" id="username">
+					</div>
+
+					<div>
+						<button>Submit</button>
+					</div>
+
+				</form>
+			</kelp-form-ajax>
+
+
+			<h2>Loading Spinner Options</h2>
+
+			<kelp-form-ajax
+				submit-loading="size-m success"
+				is-submitting
+			>
+				<form class="stack" action="api/success.json" method="get">
+					<div>
+						<label for="username-2">Name</label>
+						<input type="text" name="username" id="username-2">
+					</div>
+
+					<div>
+						<button>Submit</button>
+					</div>
+
+				</form>
+			</kelp-form-ajax>
+
+		</main>
+
+	</body>
+</html>

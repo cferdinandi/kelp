@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+		<script type="module" src="../../src/js/kelp.js"></script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-form-ajax - external form options</h1>
+
+			<kelp-form-ajax
+				external-forms="external-1, #external-2"
+				keep-fields
+				msg-success="success"
+			>
+				<form class="stack" action="api/merge.json" method="get">
+					<div>
+						<button>Submit</button>
+					</div>
+				</form>
+			</kelp-form-ajax>
+
+			<form id="external-1">
+				<input type="hidden" name="id" value="abc123">
+			</form>
+
+			<form id="external-2">
+				<input type="text" name="features">
+			</form>
+
+		</main>
+
+	</body>
+</html>
