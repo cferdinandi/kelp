@@ -554,11 +554,20 @@
       async #updateHTML(event) {
         if (!this.#events.includes(event.type)) return;
         if (this.#keys.length) {
-          if (!event?.detail.eventKeys || !Array.isArray(event.detail.eventKeys)) return;
-          const hasMatch = this.#keys.find((key) => event.detail.eventKeys.includes(key));
+          if (!event?.detail.eventKeys || !Array.isArray(event.detail.eventKeys))
+            return;
+          const hasMatch = this.#keys.find(
+            (key) => event.detail.eventKeys.includes(key)
+          );
           if (!hasMatch) return;
         }
-        const cancelled = !emit(this, "html-ajax", "before-replace", { eventKeys: [this.id] }, true);
+        const cancelled = !emit(
+          this,
+          "html-ajax",
+          "before-replace",
+          { eventKeys: [this.id] },
+          true
+        );
         if (cancelled) return;
         try {
           const response = await fetch(globalThis.location.href);
