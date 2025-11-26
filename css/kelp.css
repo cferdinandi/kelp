@@ -1,4 +1,4 @@
-/*! kelpui v1.13.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.14.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 /* src/css/config/layers.css */
 @layer kelp;
 @layer kelp.base, kelp.theme, kelp.core, kelp.extend, kelp.utilities, kelp.helpers, kelp.tokens, kelp.state, kelp.effects;
@@ -1646,6 +1646,19 @@
     }
     100% {
       transform: scaleY(-1) rotate(-135deg);
+    }
+  }
+}
+@layer kelp.state {
+  @media (prefers-reduced-motion: reduce) {
+    .spinner {
+      --color-outline: transparent;
+      --border-width: transparent;
+      display: block;
+      aspect-ratio: auto;
+    }
+    .spinner::after {
+      content: attr(fallback) / "";
     }
   }
 }
