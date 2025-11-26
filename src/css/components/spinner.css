@@ -123,3 +123,18 @@
 		}
 	}
 }
+
+@layer kelp.state {
+	@media (prefers-reduced-motion: reduce) {
+		.spinner {
+			--color-outline: transparent;
+			--border-width: transparent;
+			display: block;
+			aspect-ratio: auto;
+		}
+
+		.spinner::after {
+			content: attr(fallback) / "";
+		}
+	}
+}
