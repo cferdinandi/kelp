@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+		<script type="module" src="../../src/js/kelp.js"></script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-disclosure - dropdown variant options</h1>
+
+			<kelp-disclosure target="#content" is-dropdown hide-until-ready>
+				<a href="#" show-until-ready>Fallback Link</a>
+				<button data-testid="toggle">Toggle Content</button>
+				<ul id="content">
+					<li>Now you see me...</li>
+					<li>Now you don't!</li>
+					<li><a href="#">With a link</a></li>
+					<li><button command="show-modal" commandfor="dialog" data-testid="open modal">With a button</button></li>
+				</ul>
+			</kelp-disclosure>
+
+			<dialog id="dialog">
+				<form method="dialog">
+					<button data-testid="close modal">Close</button>
+				</form>
+			</dialog>
+
+			<button data-testid="button">An unrelated button</button>
+
+		</main>
+
+	</body>
+</html>
