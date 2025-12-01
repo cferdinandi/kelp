@@ -2,6 +2,7 @@
  * IMPORTANT: form-validate.js *must* be imported before form-ajax.js,
  * or event listeners won't load in the correct order.
  */
+import './components/disclosure.js';
 import './components/form-validate.js';
 import './components/form-ajax.js';
 import './components/html-ajax.js';

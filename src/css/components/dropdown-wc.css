@@ -1,0 +1,70 @@
+/**
+ * @section Disclosure Dropdown Variants
+ */
+
+@layer kelp.core {
+	kelp-disclosure[is-dropdown] {
+		--gap: var(--size-6xs);
+		position: relative;
+	}
+
+	kelp-disclosure[is-dropdown] > ul {
+		display: flex;
+		flex-direction: column;
+		max-width: 14em;
+		width: max-content;
+
+		background-color: var(--color-background);
+		border: 1px solid var(--color-neutral-border-accent);
+		border-radius: var(--border-radius-m);
+
+		list-style-type: "";
+		padding-block: var(--size-4xs);
+		padding-inline: 0;
+
+		position: absolute;
+		inset-block-start: 0;
+		inset-inline-start: 0;
+	}
+
+	kelp-disclosure[is-dropdown] > ul.dropdown-end {
+		inset-inline-start: auto;
+		inset-inline-end: 0;
+	}
+
+	kelp-disclosure[is-dropdown] > ul :is(li, a, button) {
+		--background-color: transparent;
+		--background-color-hover: transparent;
+		--background-color-active: transparent;
+
+		--border-color: transparent;
+		--border-color-hover: transparent;
+		--border-color-active: transparent;
+
+		--color: var(--color-text-normal);
+		--color-hover: var(--color-text-normal);
+		--color-active: var(--color-text-normal);
+
+		--decoration-text-link: none;
+		--decoration-text-link-hover: none;
+
+		display: inline-block;
+		border-radius: 0;
+		font-size: var(--size-m);
+		text-align: start;
+		width: 100%;
+	}
+
+	kelp-disclosure[is-dropdown]
+		> ul
+		:is(li:not(:has(a, button)), li :is(a, button)) {
+		padding-block: var(--size-4xs);
+		padding-inline: var(--size-m);
+	}
+}
+
+@layer kelp.state {
+	kelp-disclosure[is-dropdown] > ul li:hover {
+		background-color: var(--color-neutral-fill-muted);
+	}
+}
