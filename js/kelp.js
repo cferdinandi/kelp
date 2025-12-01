@@ -31,6 +31,146 @@
     });
   }
 
+  // src/js/components/disclosure.js
+  customElements.define(
+    "kelp-disclosure",
+    class extends HTMLElement {
+      /** @type HTMLElement | null */
+      #btn;
+      /** @type HTMLElement | null */
+      #content;
+      /** @type boolean */
+      #isDropdown;
+      // Initialize on connect
+      connectedCallback() {
+        ready(this);
+      }
+      // Cleanup global events on disconnect
+      disconnectedCallback() {
+        document.removeEventListener("click", this);
+        document.removeEventListener("keydown", this);
+      }
+      // Initialize the component
+      init() {
+        this.#btn = this.querySelector("button");
+        const target = this.getAttribute("target");
+        this.#content = target ? document.querySelector(target) : null;
+        this.#isDropdown = this.hasAttribute("is-dropdown");
+        if (this.#isDropdown && !this.#content) {
+          this.#content = this.querySelector("ul");
+        }
+        if (!this.#btn) {
+          debug(this, "No toggle button was provided");
+          return;
+        }
+        if (!this.#content) {
+          debug(this, "No content was found");
+          return;
+        }
+        if (this.#isDropdown && !this.contains(this.#content)) {
+          debug(this, "Dropdown content must be inside the component");
+          return;
+        }
+        if (!this.#content.id) {
+          this.#content.id = `kelp-${crypto.randomUUID()}`;
+        }
+        this.#btn.setAttribute("aria-controls", this.#content.id);
+        this.#btn.setAttribute("aria-expanded", "false");
+        this.#content.setAttribute("hidden", "");
+        if (this.#isDropdown) {
+          this.addEventListener("blur", this, { capture: true });
+          document.addEventListener("click", this);
+          document.addEventListener("keydown", this);
+        } else {
+          this.#btn.addEventListener("click", this);
+        }
+        emit(this, "disclosure", "ready");
+        this.setAttribute("is-ready", "");
+      }
+      /**
+       * Handle events
+       * @param {Event} event The event object
+       */
+      handleEvent(event) {
+        if (event.type === "click") {
+          return this.#onClick(event);
+        }
+        if (event.type === "keydown") {
+          return this.#onKeydown(event);
+        }
+        this.#onBlur(event);
+      }
+      /**
+       * Handle click events
+       * @param {Event} event The event object
+       */
+      #onClick(event) {
+        if (!(event.target instanceof Element)) return;
+        if (!this.contains(event.target) && !event.target.closest("dialog:modal")) {
+          this.hide();
+          return;
+        }
+        if (event.target.closest("button") !== this.#btn) return;
+        this.toggle();
+      }
+      /**
+       * Handle keydown events
+       * @param {Event} event The event object
+       */
+      #onKeydown(event) {
+        if (!(event instanceof KeyboardEvent)) return;
+        if (event.key !== "Escape") return;
+        if (document.querySelector("dialog:modal[open]")) return;
+        if (this.#content?.querySelector(":focus")) {
+          this.#btn?.focus();
+        }
+        this.hide();
+      }
+      /**
+       * Handle blur events
+       * @param {Event} event The event object
+       */
+      #onBlur(event) {
+        if (!(event instanceof FocusEvent)) return;
+        if (!event.relatedTarget || !(event.relatedTarget instanceof Element) || this.contains(event.relatedTarget) || event.relatedTarget.closest("dialog:modal"))
+          return;
+        this.hide();
+      }
+      /**
+       * If content is collapsed, show it.
+       * Otherwise, hide it.
+       */
+      toggle() {
+        const action = this.#btn?.getAttribute("aria-expanded") === "false" ? "show" : "hide";
+        this[action]();
+      }
+      /**
+       * Show the content
+       */
+      show() {
+        const cancelled = !emit(this, "disclosure", "show-before", null, true);
+        if (cancelled) return;
+        if (this.#isDropdown && this.#btn && this.#content) {
+          const height = window.getComputedStyle(this.#btn).height;
+          this.#content.style.insetBlockStart = `calc(${height} + var(--gap))`;
+        }
+        this.#btn?.setAttribute("aria-expanded", "true");
+        this.#content?.removeAttribute("hidden");
+        emit(this, "disclosure", "show");
+      }
+      /**
+       * Hide the content
+       */
+      hide() {
+        const cancelled = !emit(this, "disclosure", "hide-before", null, true);
+        if (cancelled) return;
+        this.#btn?.setAttribute("aria-expanded", "false");
+        this.#content?.setAttribute("hidden", "");
+        emit(this, "disclosure", "hide");
+      }
+    }
+  );
+
   // src/js/components/form-validate.js
   customElements.define(
     "kelp-form-validate",
