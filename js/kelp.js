@@ -1,4 +1,4 @@
-/*! kelpui v1.16.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.17.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // src/js/utilities/debug.js
@@ -1371,6 +1371,142 @@
           checkbox: this.#checkbox,
           fields,
           isChecked
+        });
+      }
+    }
+  );
+
+  // src/js/components/hide-until-selected.js
+  customElements.define(
+    "kelp-hide-until-selected",
+    class extends HTMLElement {
+      /** @type String | null */
+      #target;
+      /** @type String */
+      #method;
+      /** @type String | null */
+      #focus;
+      /** @type String[] */
+      #events;
+      /** @type String[] */
+      #keys;
+      // Initialize on connect
+      connectedCallback() {
+        ready(this);
+      }
+      // Cleanup global events on disconnect
+      disconnectedCallback() {
+        document.removeEventListener("input", this);
+        document.removeEventListener("kelp-select-all:toggle", this);
+        for (const name of this.#events) {
+          document.removeEventListener(name, this);
+        }
+        this.#toggleVisibility(true);
+      }
+      // Initialize the component
+      init() {
+        this.#target = this.getAttribute("target");
+        this.#method = this.getAttribute("action") || "hidden";
+        this.#focus = this.getAttribute("focus");
+        this.#events = (this.getAttribute("events")?.split(",") || []).map((name) => name.trim()).filter((name) => name.trim());
+        this.#keys = (this.getAttribute("keys")?.split(",") || []).map((key) => key.trim()).filter((key) => key.trim());
+        if (!this.#target) {
+          debug(this, "No target selector provided");
+          return;
+        }
+        if (!["invisible", "disabled", "hidden"].includes(this.#method)) {
+          debug(this, "Invalid action specified");
+          return;
+        }
+        this.#toggleVisibility();
+        document.addEventListener("input", this);
+        document.addEventListener("kelp-select-all:toggle", this);
+        for (const name of this.#events) {
+          document.addEventListener(name, this);
+        }
+        emit(this, "hide-until-selected", "ready");
+        this.setAttribute("is-ready", "");
+      }
+      /**
+       * Handle events
+       * @param  {Event} event The event object
+       */
+      handleEvent(event) {
+        if (event.type === "input") {
+          return this.#onInput(event);
+        }
+        if (event.type === "kelp-select-all:toggle") {
+          return this.#onSelectAllToggle(event);
+        }
+        this.#onCustomEvent(event);
+      }
+      /**
+       * Handle custom events
+       * @param  {Event | CustomEvent} event The event object
+       */
+      #onCustomEvent(event) {
+        if (!this.#events.includes(event.type)) return;
+        if (!(event instanceof CustomEvent)) return;
+        if (this.#keys.length) {
+          if (!event?.detail?.eventKeys || !Array.isArray(event.detail.eventKeys))
+            return;
+          const hasMatch = this.#keys.find(
+            (key) => event.detail.eventKeys.includes(key)
+          );
+          if (!hasMatch) return;
+        }
+        this.#toggleVisibility();
+      }
+      /**
+       * Handle select toggle events
+       * @param  {Event | CustomEvent} event The event object
+       */
+      #onSelectAllToggle(event) {
+        if (!(event instanceof CustomEvent) || !this.#target) return;
+        if (!event?.detail?.checkbox.matches(this.#target)) return;
+        this.#toggleVisibility();
+      }
+      /**
+       * Handle input events
+       * @param  {Event} event The event object
+       */
+      #onInput(event) {
+        if (!(event.target instanceof Element) || !this.#target) return;
+        if (!event.target.matches(this.#target)) return;
+        this.#toggleVisibility();
+      }
+      /**
+       * Check if any controlling checkbox is checked
+       * @return {Boolean} If true, at least one checkbox is checked
+       */
+      #isAnyCheckboxChecked() {
+        if (!this.#target) return false;
+        const checkboxes = [...document.querySelectorAll(this.#target)];
+        return !!checkboxes.find(
+          (checkbox) => checkbox instanceof HTMLInputElement && checkbox.checked
+        );
+      }
+      /**
+       * Toggle the visibility of content elements
+       * @param  {Boolean} forceShow If true, display content regardless of checkbox state
+       */
+      #toggleVisibility(forceShow = false) {
+        const shouldBeExpanded = forceShow || this.#isAnyCheckboxChecked();
+        if (!shouldBeExpanded && this.#focus && this.matches(":focus-within")) {
+          document.querySelector(this.#focus)?.focus();
+        }
+        if (this.#method === "invisible") {
+          this.style.visibility = shouldBeExpanded ? "" : "hidden";
+        }
+        if (this.#method === "hidden") {
+          this.toggleAttribute("hidden", !shouldBeExpanded);
+        }
+        const fields = this.querySelectorAll("button, input, select, textarea");
+        for (const field of fields) {
+          field.toggleAttribute("disabled", !shouldBeExpanded);
+        }
+        emit(this, "hide-until-selected", "toggle", {
+          expanded: shouldBeExpanded
         });
       }
     }
