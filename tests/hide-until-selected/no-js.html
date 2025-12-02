@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-hide-until-selected - no JS</h1>
+
+			<kelp-hide-until-selected target="#pixar-movies [type='checkbox']" data-testid="content 1">
+				<div>
+					<p>I'm hidden unless a checkbox is checked.</p>
+				</div>
+			</kelp-hide-until-selected>
+
+			<kelp-hide-until-selected target="#pixar-movies [type='checkbox']" action="invisible" data-testid="content 2">
+				<div>
+					<p>I'm hidden, too.</p>
+				</div>
+			</kelp-hide-until-selected>
+
+			<kelp-hide-until-selected target="#pixar-movies [type='checkbox']" action="disabled" data-testid="content 3">
+				<select data-testid="select">
+					<option></option>
+					<option>Merlin</option>
+					<option>Gandalf</option>
+					<option>Radagast</option>
+				</select>
+
+				<label>
+					<input type="checkbox" data-testid="checkbox">
+					Checkbox
+				</label>
+
+				<input type="text" data-testid="input">
+
+				<button data-testid="btn">Press Me</button>
+			</kelp-hide-until-selected>
+
+		</main>
+
+	</body>
+</html>
