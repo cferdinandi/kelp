@@ -51,6 +51,7 @@
 @import "./components/toggle-pw-wc.css";
 @import "./components/autogrow-wc.css";
 @import "./components/dropdown-wc.css";
+@import "./components/select-all-wc.css";
 
 /* Utilities */
 @import "./utilities/fill.css";

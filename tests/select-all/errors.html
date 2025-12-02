@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+		<script type="module" src="../../src/js/kelp.js"></script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-select-all - errors</h1>
+
+			<!-- No [target] -->
+			<kelp-select-all data-testid="no target">
+				<label for="select-all">
+					<input type="checkbox" id="select-all">
+					Select All
+				</label>
+			</kelp-select-all>
+
+			<!-- No checkbox -->
+			<kelp-select-all target="#pixar-movies [type='checkbox']" data-testid="no checkbox"></kelp-select-all>
+
+		</main>
+
+	</body>
+</html>

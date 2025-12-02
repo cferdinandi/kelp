@@ -1,0 +1,9 @@
+/**
+ * @section Select All Web Component
+ */
+
+@layer kelp.state {
+	kelp-select-all:not([is-ready]) {
+		visibility: hidden;
+	}
+}

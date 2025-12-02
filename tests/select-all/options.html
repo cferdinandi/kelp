@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+		<script type="module" src="../../src/js/kelp.js"></script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-select-all - options and settings</h1>
+
+			<fieldset>
+				<legend>What's your favorite Pixar movie?</legend>
+
+				<kelp-select-all target="#pixar-movies [type='checkbox']">
+					<label for="select-all">
+						<input type="checkbox" id="select-all" checked>
+						Select All
+					</label>
+				</kelp-select-all>
+
+				<div id="pixar-movies">
+					<label for="up">
+						<input type="checkbox" id="up" name="movie" value="up">
+						Up!
+					</label>
+					<label for="wall-e">
+						<input type="checkbox" id="wall-e" name="movie" value="wall-e">
+						WALL-E
+					</label>
+					<label for="toy-story">
+						<input type="checkbox" id="toy-story" name="movie" value="toy-story">
+						Toy Story
+					</label>
+				</div>
+			</fieldset>
+
+			<label for="uncontrol">
+				<input type="checkbox" id="uncontrol">
+				A separate, uncontrolled checkbox
+			</label>
+
+		</main>
+
+	</body>
+</html>
