@@ -1,4 +1,4 @@
-/*! kelpui v1.15.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.16.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // src/js/utilities/debug.js
@@ -1274,6 +1274,104 @@
             summary?.focus();
           }
         }
+      }
+    }
+  );
+
+  // src/js/components/select-all.js
+  customElements.define(
+    "kelp-select-all",
+    class extends HTMLElement {
+      /** @type String | null */
+      #target;
+      /** @type HTMLInputElement | null */
+      #checkbox;
+      // Initialize on connect
+      connectedCallback() {
+        ready(this);
+      }
+      // Cleanup global events on disconnect
+      disconnectedCallback() {
+        document.removeEventListener("input", this);
+      }
+      // Initialize the component
+      init() {
+        this.#target = this.getAttribute("target");
+        this.#checkbox = this.querySelector('[type="checkbox"]');
+        if (!this.#target) {
+          debug(this, "No target selector provided");
+          return;
+        }
+        if (!this.#checkbox) {
+          debug(this, "No select-all checkbox provided");
+          return;
+        }
+        if (this.#checkbox.checked) {
+          this.#updateAllChecked(true);
+        }
+        document.addEventListener("input", this);
+        emit(this, "select-all", "ready");
+        this.setAttribute("is-ready", "");
+      }
+      /**
+       * Handle events
+       * @param  {Event} event The event object
+       */
+      handleEvent(event) {
+        this.#onInput(event);
+      }
+      /**
+       * Handle input events
+       * @param  {Event} event The event object
+       */
+      #onInput(event) {
+        if (!(event.target instanceof Element) || !this.#target || !this.#checkbox)
+          return;
+        if (!event.target.matches('[type="checkbox"]')) return;
+        if (!event.target.matches(this.#target) && event.target !== this.#checkbox)
+          return;
+        if (event.target === this.#checkbox) {
+          this.#updateAllChecked(this.#checkbox.checked);
+          return;
+        }
+        const allFields = this.#getAllFields();
+        const numberOfCheckedFields = allFields.filter(
+          (field) => field.checked
+        ).length;
+        this.#checkbox.indeterminate = false;
+        if (numberOfCheckedFields === allFields.length) {
+          this.#checkbox.checked = true;
+          return;
+        }
+        this.#checkbox.checked = false;
+        if (numberOfCheckedFields > 0) {
+          this.#checkbox.indeterminate = true;
+        }
+      }
+      /**
+       * Get all controlled fields that aren't [disabled]
+       * @return {Array}
+       */
+      #getAllFields() {
+        if (!this.#target || !this.#checkbox) return [];
+        return [...document.querySelectorAll(this.#target)].filter(
+          (field) => field !== this.#checkbox && !field.hasAttribute("disabled") && field.matches('[type="checkbox"]')
+        );
+      }
+      /**
+       * Check or uncheck all controlled fields
+       * @param {Boolean} isChecked If true, fields should be checked
+       */
+      #updateAllChecked(isChecked = false) {
+        const fields = this.#getAllFields();
+        for (const field of fields) {
+          field.checked = isChecked;
+        }
+        emit(this, "select-all", "toggle", {
+          checkbox: this.#checkbox,
+          fields,
+          isChecked
+        });
       }
     }
   );
