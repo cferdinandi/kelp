@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+		<script type="module" src="../../src/js/kelp.js"></script>
+
+		<script>
+			// Ensures we can test the ready event
+			document.addEventListener('kelp-hide-until-selected:ready', (event) => {
+				console.log('ready');
+			});
+		</script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-hide-until-selected - default settings</h1>
+
+			<kelp-hide-until-selected target="#pixar-movies [type='checkbox']" data-testid="content 1">
+				<div>
+					<p>I'm hidden unless a checkbox is checked.</p>
+				</div>
+			</kelp-hide-until-selected>
+
+			<kelp-hide-until-selected target="#pixar-movies [type='checkbox']" data-testid="content 2">
+				<div>
+					<p>I'm hidden, too.</p>
+				</div>
+			</kelp-hide-until-selected>
+
+			<fieldset>
+				<legend>What's your favorite Pixar movie?</legend>
+
+				<div id="pixar-movies">
+					<label for="up">
+						<input type="checkbox" id="up" name="movie" value="up">
+						Up!
+					</label>
+					<label for="wall-e">
+						<input type="checkbox" id="wall-e" name="movie" value="wall-e">
+						WALL-E
+					</label>
+					<label for="toy-story">
+						<input type="checkbox" id="toy-story" name="movie" value="toy-story">
+						Toy Story
+					</label>
+				</div>
+			</fieldset>
+
+		</main>
+
+	</body>
+</html>
