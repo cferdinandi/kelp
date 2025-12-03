@@ -3,7 +3,7 @@ import { emit } from '../utilities/emit.js';
 import { ready } from '../utilities/ready.js';
 
 customElements.define(
-	'kelp-hide-until-selected',
+	'kelp-until-selected',
 	class extends HTMLElement {
 		/** @type String | null */ #target;
 		/** @type String */ #method;
@@ -65,7 +65,7 @@ customElements.define(
 			}
 
 			// Ready
-			emit(this, 'hide-until-selected', 'ready');
+			emit(this, 'until-selected', 'ready');
 			this.setAttribute('is-ready', '');
 		}
 
@@ -129,11 +129,33 @@ customElements.define(
 		#onInput(event) {
 			if (!(event.target instanceof Element) || !this.#target) return;
 
-			// Only run if event.target is a controlling checkbox
-			if (!event.target.matches(this.#target)) return;
+			// Only run if event.target is a controlling checkbox or radio button
+			if (
+				!event.target.matches(this.#target) &&
+				!this.#isFieldsetChange(event.target)
+			)
+				return;
 
 			// Toggle visibility
 			this.#toggleVisibility();
+		}
+
+		/**
+		 * Check if input was on an input that's part of a fieldset the #target field is in.
+		 * This is necessary because the input event for a radio button fires on the selected
+		 * input, not every one in the group.
+		 *
+		 * @param  {Element} elem The selected element
+		 * @return {Boolean}
+		 */
+		#isFieldsetChange(elem) {
+			if (!(elem instanceof HTMLInputElement)) return false;
+			return (
+				elem.type === 'radio' &&
+				!![
+					...document.querySelectorAll(`[type="radio"][name="${elem.name}"]`),
+				].find((radio) => this.#target && radio.matches(this.#target))
+			);
 		}
 
 		/**
@@ -179,8 +201,8 @@ customElements.define(
 			}
 
 			// Emit custom event
-			emit(this, 'hide-until-selected', 'toggle', {
-				expanded: shouldBeExpanded,
+			emit(this, 'until-selected', 'toggle', {
+				isEnabled: shouldBeExpanded,
 			});
 		}
 	},

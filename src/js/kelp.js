@@ -13,5 +13,5 @@ import './components/toggle-pw.js';
 import './components/autogrow.js';
 import './components/subnav.js';
 import './components/select-all.js';
-import './components/hide-until-selected.js';
+import './components/until-selected.js';
 import './components/invoker.polyfill.js';

@@ -5,16 +5,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
 		<script type="module" src="../../src/js/kelp.js"></script>
+
+		<script>
+			// Ensures we can test the ready event
+			document.addEventListener('kelp-until-selected:ready', (event) => {
+				console.log('ready');
+			});
+		</script>
 	</head>
 	<body>
 
 		<main class="container">
 
-			<h1>kelp-hide-until-selected - unchecked while focused within</h1>
+			<h1>kelp-until-selected - default settings</h1>
 
-			<kelp-hide-until-selected target="#pixar-movies [type='checkbox']" focus="#up" events="test-event" data-testid="content">
-				<button data-testid="button">Press Me</button>
-			</kelp-hide-until-selected>
+			<kelp-until-selected target="#pixar-movies [type='checkbox']" data-testid="content 1">
+				<div>
+					<p>I'm hidden unless a checkbox is checked.</p>
+				</div>
+			</kelp-until-selected>
+
+			<kelp-until-selected target="#pixar-movies [type='checkbox']" data-testid="content 2">
+				<div>
+					<p>I'm hidden, too.</p>
+				</div>
+			</kelp-until-selected>
 
 			<fieldset>
 				<legend>What's your favorite Pixar movie?</legend>
@@ -36,17 +51,6 @@
 			</fieldset>
 
 		</main>
-
-		<script type="module">
-			const btn = document.querySelector('[data-testid="button"]');
-			const toyStory = document.querySelector('#toy-story');
-
-			btn.addEventListener('click', () => {
-				toyStory.checked = false;
-				const event = new CustomEvent('test-event', { bubbles: true });
-				document.dispatchEvent(event);
-			});
-		</script>
 
 	</body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../src/css/kelp.css">
+		<script type="module" src="../../src/js/kelp.js"></script>
+	</head>
+	<body>
+
+		<main class="container">
+
+			<h1>kelp-until-selected - unchecked while focused within</h1>
+
+			<kelp-until-selected target="#pixar-movies [type='checkbox']" focus="#up" events="test-event" data-testid="content">
+				<button data-testid="button">Press Me</button>
+			</kelp-until-selected>
+
+			<fieldset>
+				<legend>What's your favorite Pixar movie?</legend>
+
+				<div id="pixar-movies">
+					<label for="up">
+						<input type="checkbox" id="up" name="movie" value="up">
+						Up!
+					</label>
+					<label for="wall-e">
+						<input type="checkbox" id="wall-e" name="movie" value="wall-e">
+						WALL-E
+					</label>
+					<label for="toy-story">
+						<input type="checkbox" id="toy-story" name="movie" value="toy-story">
+						Toy Story
+					</label>
+				</div>
+			</fieldset>
+
+		</main>
+
+		<script type="module">
+			const btn = document.querySelector('[data-testid="button"]');
+			const toyStory = document.querySelector('#toy-story');
+
+			btn.addEventListener('click', () => {
+				toyStory.checked = false;
+				const event = new CustomEvent('test-event', { bubbles: true });
+				document.dispatchEvent(event);
+			});
+		</script>
+
+	</body>
+</html>

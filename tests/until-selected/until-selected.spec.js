@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
 
 // Component details
-const componentName = 'kelp-hide-until-selected';
-const testPath = '/tests/hide-until-selected';
+const componentName = 'kelp-until-selected';
+const testPath = '/tests/until-selected';
 
 test.describe(`<${componentName}>`, () => {
 	test('component instantiates', async ({ page }) => {
@@ -87,6 +87,30 @@ test.describe(`<${componentName}>`, () => {
 		);
 		expect(height).toBeGreaterThan(0);
 		expect(width).toBeGreaterThan(0);
+	});
+
+	test('radio buttons', async ({ page }) => {
+		await page.goto(`${testPath}/radio.html`);
+
+		// Get elements
+		const targetEl1 = page.getByTestId('content 1');
+		const targetEl2 = page.getByTestId('content 2');
+		const upEl = page.locator('#up');
+		const walleEl = page.locator('#wall-e');
+
+		// Target content should be hidden by default
+		await expect(targetEl1).not.toBeVisible();
+		await expect(targetEl2).not.toBeVisible();
+
+		// Checking #up should show the target content
+		await upEl.check();
+		await expect(targetEl1).toBeVisible();
+		await expect(targetEl2).toBeVisible();
+
+		// Checking anything other than #up should hide the content
+		await walleEl.check();
+		await expect(targetEl1).not.toBeVisible();
+		await expect(targetEl2).not.toBeVisible();
 	});
 
 	test('unchecked while focused within', async ({ page }) => {

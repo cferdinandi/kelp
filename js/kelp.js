@@ -1,4 +1,4 @@
-/*! kelpui v1.17.0 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.17.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // src/js/utilities/debug.js
@@ -1376,9 +1376,9 @@
     }
   );
 
-  // src/js/components/hide-until-selected.js
+  // src/js/components/until-selected.js
   customElements.define(
-    "kelp-hide-until-selected",
+    "kelp-until-selected",
     class extends HTMLElement {
       /** @type String | null */
       #target;
@@ -1424,7 +1424,7 @@
         for (const name of this.#events) {
           document.addEventListener(name, this);
         }
-        emit(this, "hide-until-selected", "ready");
+        emit(this, "until-selected", "ready");
         this.setAttribute("is-ready", "");
       }
       /**
@@ -1472,8 +1472,23 @@
        */
       #onInput(event) {
         if (!(event.target instanceof Element) || !this.#target) return;
-        if (!event.target.matches(this.#target)) return;
+        if (!event.target.matches(this.#target) && !this.#isFieldsetChange(event.target))
+          return;
         this.#toggleVisibility();
+      }
+      /**
+       * Check if input was on an input that's part of a fieldset the #target field is in.
+       * This is necessary because the input event for a radio button fires on the selected
+       * input, not every one in the group.
+       *
+       * @param  {Element} elem The selected element
+       * @return {Boolean}
+       */
+      #isFieldsetChange(elem) {
+        if (!(elem instanceof HTMLInputElement)) return false;
+        return elem.type === "radio" && !![
+          ...document.querySelectorAll(`[type="radio"][name="${elem.name}"]`)
+        ].find((radio) => this.#target && radio.matches(this.#target));
       }
       /**
        * Check if any controlling checkbox is checked
@@ -1505,8 +1520,8 @@
         for (const field of fields) {
           field.toggleAttribute("disabled", !shouldBeExpanded);
         }
-        emit(this, "hide-until-selected", "toggle", {
-          expanded: shouldBeExpanded
+        emit(this, "until-selected", "toggle", {
+          isEnabled: shouldBeExpanded
         });
       }
     }
