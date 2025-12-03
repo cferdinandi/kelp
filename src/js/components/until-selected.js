@@ -23,7 +23,7 @@ customElements.define(
 			for (const name of this.#events) {
 				document.removeEventListener(name, this);
 			}
-			this.#toggleVisibility(true);
+			this.toggle(true);
 		}
 
 		// Initialize the component
@@ -53,7 +53,7 @@ customElements.define(
 			}
 
 			// Set initial visibility
-			this.#toggleVisibility();
+			this.toggle();
 
 			// Listen for events
 			document.addEventListener('input', this);
@@ -105,7 +105,7 @@ customElements.define(
 			}
 
 			// If it's a matching event, toggle visibility
-			this.#toggleVisibility();
+			this.toggle();
 		}
 
 		/**
@@ -119,7 +119,7 @@ customElements.define(
 			if (!event?.detail?.checkbox.matches(this.#target)) return;
 
 			// Toggle visibility
-			this.#toggleVisibility();
+			this.toggle();
 		}
 
 		/**
@@ -137,7 +137,7 @@ customElements.define(
 				return;
 
 			// Toggle visibility
-			this.#toggleVisibility();
+			this.toggle();
 		}
 
 		/**
@@ -174,7 +174,7 @@ customElements.define(
 		 * Toggle the visibility of content elements
 		 * @param  {Boolean} forceShow If true, display content regardless of checkbox state
 		 */
-		#toggleVisibility(forceShow = false) {
+		toggle(forceShow = false) {
 			// Check if content should be shown or hidden
 			const shouldBeExpanded = forceShow || this.#isAnyCheckboxChecked();
 

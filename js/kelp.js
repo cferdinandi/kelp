@@ -1,4 +1,4 @@
-/*! kelpui v1.17.1 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
+/*! kelpui v1.17.2 | (c) Chris Ferdinandi | http://github.com/cferdinandi/kelp */
 "use strict";
 (() => {
   // src/js/utilities/debug.js
@@ -1401,7 +1401,7 @@
         for (const name of this.#events) {
           document.removeEventListener(name, this);
         }
-        this.#toggleVisibility(true);
+        this.toggle(true);
       }
       // Initialize the component
       init() {
@@ -1418,7 +1418,7 @@
           debug(this, "Invalid action specified");
           return;
         }
-        this.#toggleVisibility();
+        this.toggle();
         document.addEventListener("input", this);
         document.addEventListener("kelp-select-all:toggle", this);
         for (const name of this.#events) {
@@ -1455,7 +1455,7 @@
           );
           if (!hasMatch) return;
         }
-        this.#toggleVisibility();
+        this.toggle();
       }
       /**
        * Handle select toggle events
@@ -1464,7 +1464,7 @@
       #onSelectAllToggle(event) {
         if (!(event instanceof CustomEvent) || !this.#target) return;
         if (!event?.detail?.checkbox.matches(this.#target)) return;
-        this.#toggleVisibility();
+        this.toggle();
       }
       /**
        * Handle input events
@@ -1474,7 +1474,7 @@
         if (!(event.target instanceof Element) || !this.#target) return;
         if (!event.target.matches(this.#target) && !this.#isFieldsetChange(event.target))
           return;
-        this.#toggleVisibility();
+        this.toggle();
       }
       /**
        * Check if input was on an input that's part of a fieldset the #target field is in.
@@ -1505,7 +1505,7 @@
        * Toggle the visibility of content elements
        * @param  {Boolean} forceShow If true, display content regardless of checkbox state
        */
-      #toggleVisibility(forceShow = false) {
+      toggle(forceShow = false) {
         const shouldBeExpanded = forceShow || this.#isAnyCheckboxChecked();
         if (!shouldBeExpanded && this.#focus && this.matches(":focus-within")) {
           document.querySelector(this.#focus)?.focus();
