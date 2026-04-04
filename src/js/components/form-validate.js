@@ -66,8 +66,8 @@ customElements.define(
 			// If a group, set the interacted status
 			group?.setAttribute('validate-group', 'interacted');
 
-			// If the field or group is not currently invalid, do nothing
-			if (!group && field.getAttribute('aria-invalid') !== 'true') return;
+			// If the field or group has not been validated yet, do nothing
+			if (!group && !field.hasAttribute('aria-invalid')) return;
 
 			// Otherwise, re-validate the group or field
 			if (group) {
@@ -263,7 +263,7 @@ customElements.define(
 		 * @param  {Element} field The field or fieldset
 		 */
 		#removeError(field) {
-			field.removeAttribute('aria-invalid');
+			field.setAttribute('aria-invalid', 'false');
 			const id = field.getAttribute('aria-describedby');
 			if (!id) return;
 			this.#form?.querySelector(`#${id}`)?.remove();
