@@ -220,7 +220,7 @@
         const group = event.target.closest("[validate-group]");
         const field = group || event.target;
         group?.setAttribute("validate-group", "interacted");
-        if (!group && field.getAttribute("aria-invalid") !== "true") return;
+        if (!group && !field.hasAttribute("aria-invalid")) return;
         if (group) {
           this.#isGroupValid(group);
           return;
@@ -364,7 +364,7 @@
        * @param  {Element} field The field or fieldset
        */
       #removeError(field) {
-        field.removeAttribute("aria-invalid");
+        field.setAttribute("aria-invalid", "false");
         const id = field.getAttribute("aria-describedby");
         if (!id) return;
         this.#form?.querySelector(`#${id}`)?.remove();

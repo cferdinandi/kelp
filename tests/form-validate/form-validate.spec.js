@@ -178,6 +178,37 @@ test.describe(`<${componentName}>`, () => {
 		expect(isSuccess).toEqual(true);
 	});
 
+	test('validates on input when introducing a new error after fixing one', async ({
+		page,
+	}) => {
+		await page.goto(`${testPath}/default.html`);
+
+		// Get elements
+		const email = page.locator('#email');
+		const auth = page.locator('#code');
+
+		// Enter invalid data into field
+		await email.fill('invalid-email');
+		// @ts-expect-error Custom method
+		await expect(email).not.toHaveError();
+
+		// Blur the field to trigger initial validation
+		await auth.focus();
+		// @ts-expect-error Custom method
+		await expect(email).toHaveError();
+
+		// Fix the error by typing valid data
+		await email.fill('valid@email.com');
+		// @ts-expect-error Custom method
+		await expect(email).not.toHaveError();
+
+		// WITHOUT blurring, introduce a new error
+		// The error should show immediately
+		await email.fill('invalid-again');
+		// @ts-expect-error Custom method
+		await expect(email).toHaveError();
+	});
+
 	test('with the kelp-form-ajax component', async ({ page }) => {
 		await page.goto(`${testPath}/ajax.html`);
 
