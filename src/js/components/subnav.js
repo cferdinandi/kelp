@@ -15,6 +15,8 @@ customElements.define(
 		disconnectedCallback() {
 			document.removeEventListener('keydown', this);
 			this.removeEventListener('blur', this, { capture: true });
+			this.removeEventListener('mousedown', this, { capture: true });
+			this.removeEventListener('click', this, { capture: true });
 			this.setAttribute('is-paused', '');
 		}
 
@@ -42,6 +44,8 @@ customElements.define(
 		#listen() {
 			document.addEventListener('keydown', this);
 			this.addEventListener('blur', this, { capture: true });
+			this.addEventListener('mousedown', this, { capture: true });
+			this.addEventListener('click', this, { capture: true });
 		}
 
 		/**
@@ -52,18 +56,61 @@ customElements.define(
 			if (event.type === 'blur') {
 				return this.#onBlur(event);
 			}
+			if (event.type === 'mousedown') {
+				return this.#onMouseDown(event);
+			}
+			if (event.type === 'click') {
+				return this.#onClick(event);
+			}
 			this.#onKeydown(event);
 		}
 
 		/**
-		 * Handle click events
+		 * Handle mousedown events on links
+		 * @param  {Event} event The event object
+		 */
+		#onMouseDown(event) {
+			// Check if a link inside an open details was clicked
+			if (!(event.target instanceof Element)) return;
+			const link = event.target.closest('a');
+			if (!link) return;
+
+			const details = link.closest('details[open]');
+			if (!details) return;
+
+			// Prevent blur handler from closing this details too early
+			details.setAttribute('data-navigating', '');
+		}
+
+		/**
+		 * Handle click events on links
+		 * @param  {Event} event The event object
+		 */
+		#onClick(event) {
+			// Check if a link inside details was clicked
+			if (!(event.target instanceof Element)) return;
+			const link = event.target.closest('a');
+			if (!link) return;
+
+			const details = link.closest('details[data-navigating]');
+			if (!details) return;
+
+			// Navigation has started, safe to close now
+			details.removeAttribute('data-navigating');
+			details.removeAttribute('open');
+		}
+
+		/**
+		 * Handle blur events
 		 * @param  {Event} event The event object
 		 */
 		#onBlur(event) {
 			if (!(event instanceof FocusEvent)) return;
 
 			// Get all open subnav's that aren't currently focused
-			const navs = this.querySelectorAll('details[open]:not(:focus-within)');
+			const navs = this.querySelectorAll(
+				'details[open]:not(:focus-within):not([data-navigating])',
+			);
 
 			// Close them
 			for (const nav of navs) {

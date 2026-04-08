@@ -1216,6 +1216,8 @@
       disconnectedCallback() {
         document.removeEventListener("keydown", this);
         this.removeEventListener("blur", this, { capture: true });
+        this.removeEventListener("mousedown", this, { capture: true });
+        this.removeEventListener("click", this, { capture: true });
         this.setAttribute("is-paused", "");
       }
       // Initialize the component
@@ -1234,6 +1236,8 @@
       #listen() {
         document.addEventListener("keydown", this);
         this.addEventListener("blur", this, { capture: true });
+        this.addEventListener("mousedown", this, { capture: true });
+        this.addEventListener("click", this, { capture: true });
       }
       /**
        * Handle events
@@ -1243,15 +1247,48 @@
         if (event.type === "blur") {
           return this.#onBlur(event);
         }
+        if (event.type === "mousedown") {
+          return this.#onMouseDown(event);
+        }
+        if (event.type === "click") {
+          return this.#onClick(event);
+        }
         this.#onKeydown(event);
       }
       /**
-       * Handle click events
+       * Handle mousedown events on links
+       * @param  {Event} event The event object
+       */
+      #onMouseDown(event) {
+        if (!(event.target instanceof Element)) return;
+        const link = event.target.closest("a");
+        if (!link) return;
+        const details = link.closest("details[open]");
+        if (!details) return;
+        details.setAttribute("data-navigating", "");
+      }
+      /**
+       * Handle click events on links
+       * @param  {Event} event The event object
+       */
+      #onClick(event) {
+        if (!(event.target instanceof Element)) return;
+        const link = event.target.closest("a");
+        if (!link) return;
+        const details = link.closest("details[data-navigating]");
+        if (!details) return;
+        details.removeAttribute("data-navigating");
+        details.removeAttribute("open");
+      }
+      /**
+       * Handle blur events
        * @param  {Event} event The event object
        */
       #onBlur(event) {
         if (!(event instanceof FocusEvent)) return;
-        const navs = this.querySelectorAll("details[open]:not(:focus-within)");
+        const navs = this.querySelectorAll(
+          "details[open]:not(:focus-within):not([data-navigating])"
+        );
         for (const nav of navs) {
           if (event?.relatedTarget instanceof Node && nav.contains(event.relatedTarget))
             continue;
