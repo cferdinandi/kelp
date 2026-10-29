@@ -29,8 +29,7 @@ expect.extend({
 				: field.nextElementSibling;
 
 			if (
-				!errorEl ||
-				!errorEl.textContent.length ||
+				!errorEl?.textContent.length ||
 				errorEl.id !== errorID ||
 				!errorEl.classList.contains('validation-error')
 			)

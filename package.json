@@ -39,7 +39,7 @@
 		"dev": "http-server -o"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.0.6",
+		"@biomejs/biome": "2.6.4",
 		"@playwright/test": "^1.53.2",
 		"@types/node": "^24.0.10",
 		"esbuild": "0.25.6",

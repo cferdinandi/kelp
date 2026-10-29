@@ -46,45 +46,45 @@
 	 */
 
 	:where(
-			p,
-			ol,
-			ul,
-			dl,
-			dd,
-			form,
-			fieldset,
-			audio,
-			video,
-			iframe,
-			blockquote,
-			details,
-			table,
-			pre,
-			figure,
-			address
-		) {
+		p,
+		ol,
+		ul,
+		dl,
+		dd,
+		form,
+		fieldset,
+		audio,
+		video,
+		iframe,
+		blockquote,
+		details,
+		table,
+		pre,
+		figure,
+		address
+	) {
 		margin: 0;
 		margin-block-end: var(--space);
 	}
 
 	:where(
-			p,
-			ol,
-			ul,
-			dl,
-			dd,
-			form,
-			fieldset,
-			audio,
-			video,
-			iframe,
-			blockquote,
-			details,
-			table,
-			pre,
-			figure,
-			address
-		):last-child {
+		p,
+		ol,
+		ul,
+		dl,
+		dd,
+		form,
+		fieldset,
+		audio,
+		video,
+		iframe,
+		blockquote,
+		details,
+		table,
+		pre,
+		figure,
+		address
+	):last-child {
 		margin-block-end: 0;
 	}
 
@@ -106,14 +106,14 @@
 	 * Focus styles
 	 */
 	:is(
-			button,
-			[href],
-			input,
-			select,
-			textarea,
-			summary,
-			[tabindex]
-		):focus-visible {
+		button,
+		[href],
+		input,
+		select,
+		textarea,
+		summary,
+		[tabindex]
+	):focus-visible {
 		outline-color: var(--focus-ring-color);
 		outline-style: var(--focus-ring-style);
 		outline-width: var(--focus-ring-width);
@@ -140,10 +140,10 @@
 		*,
 		:after,
 		:before {
-			animation-duration: 0.01ms !important;
-			animation-iteration-count: 1 !important;
-			transition-duration: 0.01ms !important;
-			scroll-behavior: auto !important;
+			animation-duration: 0.01ms;
+			animation-iteration-count: 1;
+			transition-duration: 0.01ms;
+			scroll-behavior: auto;
 		}
 	}
 }

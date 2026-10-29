@@ -84,20 +84,20 @@
 
 @layer kelp.state {
 	:where(
-			button,
-			.btn,
-			input:is([type="button"], [type="reset"], [type="submit"])
-		):hover {
+		button,
+		.btn,
+		input:is([type="button"], [type="reset"], [type="submit"])
+	):hover {
 		--background-color: var(--background-color-hover);
 		--border-color: var(--border-color-hover);
 		--color: var(--color-hover);
 	}
 
 	:where(
-			button,
-			.btn,
-			input:is([type="button"], [type="reset"], [type="submit"])
-		):is(:active, [data-active]) {
+		button,
+		.btn,
+		input:is([type="button"], [type="reset"], [type="submit"])
+	):is(:active, [data-active]) {
 		--background-color: var(--background-color-active);
 		--border-color: var(--border-color-active);
 		--color: var(--color-active);
